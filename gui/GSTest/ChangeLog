@@ -1,3 +1,9 @@
+Sun Jun 10 20:00:51 2001  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* StringDrawing-test/StringDrawing-test.m
+	([-chooseTextFile:sender]): Use an NSOpenPanel rather than a
+	NSSavePanel.
+
 Thu Feb  8 19:42:38 2001  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* GNUmakefile (SUBPROJECTS), testList.h (testList): Added
