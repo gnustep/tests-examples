@@ -79,14 +79,16 @@ setup_box (NSString *command, NSTextField *field, int tag, id target)
 {
   GSVbox *vbox;
   NSBox *box;
-  GSHbox *hbox;
+  GSHbox *hbox, *bshbox;
   NSButton *defaultButton;
   NSRect panFrame;
   NSSize buttonSize;
 
   if (fm == nil)
-    fm = [NSFileManager defaultManager];
-  
+    {
+      fm = [NSFileManager defaultManager];
+    }
+
   vbox = AUTORELEASE ([GSVbox new]);
   [vbox setBorder: 10];
   [vbox setDefaultMinYMargin: 10];
@@ -112,11 +114,13 @@ setup_box (NSString *command, NSTextField *field, int tag, id target)
   [setButton setTarget: self];
   /* We have a nice trick here.  When the user presses the 'set'
      button, the first responder is changed, so that editing ends -- and
-     this saves the setting.  We need to do nothing more. */
+     this saves the setting.  We need to do nothing more.  */
   [setButton setAction: NULL];
 
   if ([setButton frame].size.width > buttonSize.width)
-    buttonSize.width = [setButton frame].size.width;
+    {
+      buttonSize.width = [setButton frame].size.width;
+    }
 
   [setButton setFrameSize: NSMakeSize (buttonSize.width + 6, 
 				       buttonSize.height + 4)];
@@ -135,6 +139,33 @@ setup_box (NSString *command, NSTextField *field, int tag, id target)
 	enablingYResizing: NO];
 
   /* Preferences */
+
+  buttonsSize = AUTORELEASE ([NSPopUpButton new]);
+  [buttonsSize setPullsDown: NO];
+  [buttonsSize addItemWithTitle: @"Large"];
+  [buttonsSize addItemWithTitle: @"Small"];
+  [buttonsSize setTarget: self];
+  [buttonsSize setAction: @selector(set:)];
+  [buttonsSize sizeToFit];
+  [buttonsSize setAutoresizingMask: (NSViewWidthSizable | NSViewMinYMargin 
+				     | NSViewMaxYMargin)];
+
+  bshbox = AUTORELEASE ([GSHbox new]);
+  [bshbox setBorder: 0];
+  [bshbox setDefaultMinXMargin: 8];
+  [bshbox addView: buttonsSize];
+  [bshbox setAutoresizingMask: NSViewWidthSizable | NSViewMinYMargin];  
+
+  box = AUTORELEASE ([NSBox new]);
+  [box setTitlePosition: NSAtTop];
+  [box setTitle: @"Button Size"];
+  [box setBorderType: NSGrooveBorder];
+  [box addSubview: bshbox];
+  [box sizeToFit];
+  [box setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];  
+
+  [vbox addView: box];
+
   tracerouteCommand = AUTORELEASE ([NSTextField new]);
   box = setup_box (@"Traceroute Command", tracerouteCommand, 
 		   TRACEROUTE_TAG, self);
@@ -144,11 +175,16 @@ setup_box (NSString *command, NSTextField *field, int tag, id target)
   box = setup_box (@"Ping Command", pingCommand, PING_TAG, self);
   [vbox addView: box];
 
+  whoisCommand = AUTORELEASE ([NSTextField new]);
+  box = setup_box (@"Whois Command", whoisCommand, WHOIS_TAG, self);
+  [vbox addView: box];
+
   fingerCommand = AUTORELEASE ([NSTextField new]);
   box = setup_box (@"Finger Command", fingerCommand, FINGER_TAG, self);
   [vbox addView: box];
 
-  [fingerCommand setNextText: pingCommand];
+  [fingerCommand setNextText: whoisCommand];
+  [whoisCommand setNextText: pingCommand];
   [pingCommand setNextText: tracerouteCommand];
   [tracerouteCommand setNextText: fingerCommand];
 
@@ -157,7 +193,7 @@ setup_box (NSString *command, NSTextField *field, int tag, id target)
   
   pan = [[NSPanel alloc] initWithContentRect: panFrame
 			 styleMask: (NSTitledWindowMask 
-				     | NSClosableWindowMask 
+				     | NSClosableWindowMask
 				     | NSResizableWindowMask)	
 			 backing: NSBackingStoreBuffered
 			 defer: YES];
@@ -171,17 +207,21 @@ setup_box (NSString *command, NSTextField *field, int tag, id target)
   NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
   
   [fingerCommand setStringValue: [ud stringForKey: @"FingerCommand"]];
+  [whoisCommand setStringValue: [ud stringForKey: @"WhoisCommand"]];
   [pingCommand setStringValue: [ud stringForKey: @"PingCommand"]];
   [tracerouteCommand setStringValue: [ud stringForKey: 
 					   @"TracerouteCommand"]];
+  [buttonsSize selectItemWithTitle: [ud stringForKey: @"ButtonSize"]];
 }
 -(void) resetToDefault:(id)sender
 {
   NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
 
   [ud removeObjectForKey: @"FingerCommand"];
+  [ud removeObjectForKey: @"WhoisCommand"];
   [ud removeObjectForKey: @"PingCommand"];
   [ud removeObjectForKey: @"TracerouteCommand"];
+  [ud removeObjectForKey: @"ButtonSize"];
   [self reset];
 }
 -(void) set:(id)sender
@@ -189,9 +229,12 @@ setup_box (NSString *command, NSTextField *field, int tag, id target)
   NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
 
   [ud setObject: [fingerCommand stringValue] forKey: @"FingerCommand"];
+  [ud setObject: [whoisCommand stringValue] forKey: @"WhoisCommand"];
   [ud setObject: [pingCommand stringValue] forKey: @"PingCommand"];
   [ud setObject: [tracerouteCommand stringValue] forKey: 
 	@"TracerouteCommand"];
+  [ud setObject: [buttonsSize titleOfSelectedItem] forKey: @"ButtonSize"];
+  [ud synchronize];
 }
 -(void) changePreference: (id)sender
 {
@@ -209,6 +252,10 @@ setup_box (NSString *command, NSTextField *field, int tag, id target)
     case PING_TAG: 
       [openPanel setPrompt: @"Ping Command:"];
       file = [pingCommand stringValue];
+      break;
+    case WHOIS_TAG:
+      [openPanel setPrompt: @"Whois Command:"];
+      file = [whoisCommand stringValue];
       break;
     case FINGER_TAG:
       [openPanel setPrompt: @"Finger Command:"];
@@ -236,6 +283,9 @@ setup_box (NSString *command, NSTextField *field, int tag, id target)
 	case PING_TAG: 
 	  [pingCommand setStringValue: [openPanel filename]];
 	  break;
+        case WHOIS_TAG:
+          [whoisCommand setStringValue: [openPanel filename]];
+          break;
 	case FINGER_TAG:
 	  [fingerCommand setStringValue: [openPanel filename]];
 	  break;
@@ -277,6 +327,9 @@ setup_box (NSString *command, NSTextField *field, int tag, id target)
 	case PING_TAG: 
 	  pref = @"PingCommand";
 	  break;
+        case WHOIS_TAG:
+          pref = @"WhoisCommand";
+          break;
 	case FINGER_TAG:
 	  pref = @"FingerCommand";
 	  break;
