@@ -117,6 +117,7 @@ main(int argc, char **argv, char** env)
   mchange = [[NSButton alloc] initWithFrame: bf5];
   [mchange setButtonType: NSMomentaryChangeButton];
   [mchange setTitle: @"MomentaryChange"];
+  [mchange setAlternateTitle: @"Alternate"];
 
   onoff = [[NSButton alloc] initWithFrame: bf6];
   [onoff setButtonType: NSOnOffButton];
