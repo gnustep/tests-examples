@@ -1,3 +1,8 @@
+Tue Jan 25 15:02:41 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* fontpanel.m: Rewritten completely, based on a contribution 
+	by Fred Kiefer.
+
 Tue Jan 25 00:28:31 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	Added Info Panel to Calculator and CurrencyConverter:
