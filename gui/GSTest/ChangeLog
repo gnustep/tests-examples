@@ -1,3 +1,11 @@
+Tue Jul 18 17:46:12 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* KeyboardInput-test/KeyboardInput-test.m ([-init]): Fixed min
+	size of window.
+	* NSBox-test/NSBox-test.m ([-init]): Idem.
+	* NSColorWell-test/NSColorWell-test.m ([-init]): Idem. 
+	* NSSlider-test/NSSlider-test.m ([-init]): Idem.
+	
 Thu Apr 13 19:00:36 2000  Nicola Pero  <nicola@brainstorm.co.uk>
 
 	* EncodingDecoding-test/EncodingDecoding-test.m ([-decode:]):
