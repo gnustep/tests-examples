@@ -1,0 +1,21 @@
+Sun Feb 13 01:55:21 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	New program: 
+	* GNUmakefile: New file.
+	* README: Idem.
+	* TODO: Idem.
+	* Finger.h: Idem.
+	* main.m: Idem.
+	* Controller.h: Idem.
+	* Controller.m: Idem.
+	* FingerWindow.h: Idem.
+	* FingerWindow.m: Idem.
+	* PreferencesController.h: Idem.
+	* PreferencesController.m: Idem.
+	* TrivialTextView.h: Idem.
+	* TrivialTextView.m: Idem.
+
+
+
+	
+
