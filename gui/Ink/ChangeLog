@@ -2,6 +2,9 @@
 
 	* Document.m
 	Added a horizontal ruler view in [makeWindow].
+	* main.m
+	Restructured all the menu creation. Release the delegate when no
+	longer needed in [applicationDidFinishLaunching:]. 
 	
 Wed Feb 20 19:25:20 2002  Nicola Pero  <nicola@brainstorm.co.uk>
 
