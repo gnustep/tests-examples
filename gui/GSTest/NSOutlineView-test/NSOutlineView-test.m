@@ -29,7 +29,7 @@
 #include "../GSTestProtocol.h"
 
 // Something to show in the table
-NSString *keys[20] = 
+static NSString *keys[20] = 
 { 
   @"NSObject",
   @"NSApplication",
@@ -37,7 +37,7 @@ NSString *keys[20] =
   @"NSWindow",
   @"NSPanel"
 }; 
-NSString *values[20] = 
+static NSString *values[20] = 
 { 
   @"Nicola Pero <n.pero@mi.flashnet.it>",
   @"Nicola Pero <n.pero@mi.flashnet.it>",
@@ -46,7 +46,7 @@ NSString *values[20] =
   @"greg_casamento@yahoo.com"
 };
 
-NSString *test[20] = 
+static NSString *test[20] = 
 { 
   @"Other info (1)",
   @"Other info (2)",

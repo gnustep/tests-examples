@@ -5,6 +5,7 @@
 	keys, values and test are now declared as static.
 	* NSOutlineView-test/NSOutlineView-test.m 
 	Modified to use drag'n'drop.
+	keys, values and test are now declared as static.
 	
 2002-03-05  Gregory John Casamento <greg_casamento@yahoo.com>
 
