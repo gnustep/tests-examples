@@ -1,3 +1,9 @@
+Wed Nov 14 16:55:21 2001  Nicola Pero  <n.pero@mi.flashnet.it>
+	
+	* main.m (main): Added 'n' as a key equivalent for a new Finger 
+	window.
+	* FingerInfo.plist: Version 0.9.1.
+
 Wed Nov 14 16:51:42 2001  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	Added whois command and sizable buttons - based on code
