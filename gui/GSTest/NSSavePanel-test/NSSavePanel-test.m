@@ -23,58 +23,25 @@
 #include <Foundation/Foundation.h>
 #include <AppKit/AppKit.h>
 #include <AppKit/GSHbox.h>
+#include <AppKit/GSTable.h>
 #include <AppKit/GSVbox.h>
 #include "../GSTestProtocol.h"
 
-// An entry to show a single result
-@interface ResultsEntry: GSHbox 
-{
-  NSTextField *entryField;
-}
--(id)initWithName: (NSString *)name;
--(void)setStringValue: (NSString *)result;
+// A unit rectangle of the little results table
+@interface TableEntry: NSTextField
 @end
 
-@implementation ResultsEntry
--(id)initWithName: (NSString *)name
+@implementation TableEntry
+- (id) initWithFrame: (NSRect)frameRect
 {
-  NSTextField *entryName;
-
-  [super init];
-  [self setDefaultMinXMargin: 5];
+  [super initWithFrame: frameRect];
+  [self setEditable: NO];
+  [self setSelectable: NO];
+  [self setBezeled: NO];
+  [self setDrawsBackground: NO];
   [self setAutoresizingMask: NSViewWidthSizable];
-  
-  entryName = [NSTextField new];
-  [entryName setDrawsBackground: NO];
-  [entryName setEditable: NO];
-  [entryName setSelectable: NO];
-  [entryName setBezeled: NO];
-  [entryName setAlignment: NSLeftTextAlignment];
-  [entryName setStringValue: name];
-  [entryName sizeToFit];
-  [self addView: entryName
-	enablingXResizing: NO];
-  [entryName release];
-
-  entryField = [NSTextField new];
-  [entryField setDrawsBackground: YES];
-  [entryField setBackgroundColor: [NSColor controlBackgroundColor]];
-  [entryField setEditable: NO];
-  [entryField setSelectable: NO];
-  [entryField setBezeled: YES];
-  [entryField setAlignment: NSLeftTextAlignment];
-  [entryField setStringValue: @""];
-  [entryField sizeToFit];
-  [entryField setAutoresizingMask: NSViewWidthSizable];
-  [self addView: entryField];
-  [entryField release];
   return self;
 }
--(void)setStringValue: (NSString *)result
-{
-  [entryField setStringValue: result];
-}
-@end
 
 @interface NSSavePanelTest: NSObject <GSTest>
 {
@@ -82,9 +49,9 @@
   NSButton *accessoryViewButton;
   NSForm *configureForm;
   NSWindow *win;
-  ResultsEntry *filenameEntry;
-  ResultsEntry *directoryEntry;
-  ResultsEntry *buttonEntry;
+  TableEntry *filenameEntry;
+  TableEntry *directoryEntry;
+  TableEntry *buttonEntry;
 }
 -(void)restart;
 -(void)startSavePanel: (id)sender;
@@ -100,95 +67,156 @@
   NSButton *button;
   GSVbox *vbox;
   GSVbox *ivbox;
-  GSVbox *resultsVbox;
+  GSVbox *tmp_box;
   NSBox *configureBox;
   NSBox *resultsBox;
+  GSTable *resultsTable;
+  TableEntry *entry;
   NSRect winFrame;
   
-  vbox = [GSVbox new];
+  vbox = [[GSVbox new] autorelease];
   [vbox setDefaultMinYMargin: 5];
   [vbox setBorder: 5];
  
-  button = [NSButton new];
+  button = [[NSButton new] autorelease];
   [button setTitle: @"Start Save Panel"];
   [button sizeToFit];
-  [button setFrameSize: NSMakeSize ([button frame].size.width + 10, 
-				    [button frame].size.height + 10)];
+  // Stand-alone buttons look better slighlty bigger
+  [button setFrameSize: NSMakeSize ([button frame].size.width + 6, 
+				    [button frame].size.height + 4)];
   [button setAutoresizingMask: NSViewMinXMargin];
   [button setTarget: self];
   [button setAction: @selector (startSavePanel:)];
-  [vbox addView: button];
-  [button release];
+  [vbox addView: button
+	enablingYResizing: NO];
 
-  // Results
-  directoryEntry = [[ResultsEntry alloc] initWithName: @"Directory:"];
-  filenameEntry = [[ResultsEntry alloc] initWithName: @"Filename:"];
-  buttonEntry = [[ResultsEntry alloc] initWithName: @"Button:"];
+  // The little results table
+  resultsTable = [[[GSTable alloc] initWithNumberOfRows: 3
+				   numberOfColumns: 2] autorelease];
+  // Set resizing properties
+  [resultsTable setXResizingEnabled: NO
+		forColumn: 0];
+  [resultsTable setXResizingEnabled: YES
+		forColumn: 1];
 
-  resultsVbox = [GSVbox new];
-  [resultsVbox setDefaultMinYMargin: 10];
-  [resultsVbox setBorder: 0];
-  [resultsVbox setAutoresizingMask: NSViewWidthSizable];
-  
-  [resultsVbox addView: filenameEntry];
-  [filenameEntry release];
-  [resultsVbox addView: directoryEntry];
-  [directoryEntry release];
-  [resultsVbox addView: buttonEntry];
-  [buttonEntry release];
-  
-  resultsBox = [NSBox new];
+  [resultsTable setYResizingEnabled: NO
+		forRow: 0];
+  [resultsTable setYResizingEnabled: NO
+		forRow: 1];
+  [resultsTable setYResizingEnabled: NO
+		forRow: 2];
+
+  [resultsTable setAutoresizingMask: NSViewWidthSizable | NSViewMinYMargin];
+  //Add entries in the table
+  entry = [[TableEntry new] autorelease];
+  [entry setStringValue: @"Button:"];
+  [entry setAlignment: NSRightTextAlignment];
+  [entry sizeToFit];
+  [resultsTable putView: entry
+		atRow: 0
+		column: 0
+		withMargins: 2];
+
+  entry = [[TableEntry new] autorelease];
+  [entry setStringValue: @"Filename:"];
+  [entry setAlignment: NSRightTextAlignment];
+  [entry sizeToFit];
+  [resultsTable putView: entry
+		atRow: 1
+		column: 0
+		withMargins: 2];
+
+  entry = [[TableEntry new] autorelease];
+  [entry setStringValue: @"Directory:"];
+  [entry setAlignment: NSRightTextAlignment];
+  [entry sizeToFit];
+  [resultsTable putView: entry
+		atRow: 2
+		column: 0
+		withMargins: 2];
+
+  buttonEntry = [[TableEntry new] autorelease];
+  [buttonEntry setStringValue: @" "];
+  [buttonEntry setAlignment: NSLeftTextAlignment];
+  [buttonEntry sizeToFit];
+  [resultsTable putView: buttonEntry
+		atRow: 0
+		column: 1
+		withMargins: 2];
+
+  filenameEntry = [[TableEntry new] autorelease];
+  [filenameEntry setStringValue: @" "];
+  [filenameEntry setAlignment: NSLeftTextAlignment];
+  [filenameEntry sizeToFit];
+  [resultsTable putView: filenameEntry
+		atRow: 1
+		column: 1
+		withMargins: 2];
+
+  directoryEntry = [[TableEntry new] autorelease];
+  [directoryEntry setStringValue: @" "];
+  [directoryEntry setAlignment: NSLeftTextAlignment];
+  [directoryEntry sizeToFit];
+  [resultsTable putView: directoryEntry
+		atRow: 2
+		column: 1
+		withMargins: 2];
+  //  
+
+  resultsBox = [[NSBox new] autorelease];
   [resultsBox setTitle: @"Results"];
   [resultsBox setTitlePosition: NSAtTop];
-  [resultsBox addSubview: resultsVbox];
-  [resultsVbox release];
+  [resultsBox addSubview: resultsTable];
   [resultsBox sizeToFit];
-  [resultsBox setAutoresizingMask: NSViewWidthSizable];
+  [resultsBox setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
 
   [vbox addView: resultsBox
 	withMinYMargin: 10];
-  [resultsBox release];
   
-  configureForm = [NSForm new];
+  configureForm = [[NSForm new] autorelease];
   [configureForm addEntry: @"Title:"];
   [configureForm addEntry: @"Prompt:"];
   [configureForm addEntry: @"Directory:"];
   [configureForm addEntry: @"File:"];
-  [configureForm setIntercellSpacing: NSMakeSize (0, 10) ];
+  [configureForm sizeToFit];
   [configureForm setAutoresizingMask: NSViewWidthSizable];
- 
-  packageButton = [NSButton new];
+
+  tmp_box = [[GSVbox new] autorelease];
+  [tmp_box setDefaultMinYMargin: 4];
+  [tmp_box setAutoresizingMask: NSViewMinXMargin | NSViewMaxXMargin];
+  
+  packageButton = [[NSButton new] autorelease];
   [packageButton setTitle: @"Treat File Packages as Directories"];
   [packageButton setButtonType: NSSwitchButton];
   [packageButton setBordered: NO];
   [packageButton sizeToFit];
-  ivbox = [GSVbox new];
-  [ivbox setDefaultMinYMargin: 10];
-  [ivbox addView: packageButton];
-  [packageButton release];
+  [packageButton setAutoresizingMask: NSViewMaxXMargin];
+  [tmp_box addView: packageButton];
 
-  accessoryViewButton = [NSButton new];
+  accessoryViewButton = [[NSButton new] autorelease];
   [accessoryViewButton setTitle: @"Add an Accessory View"];
   [accessoryViewButton setButtonType: NSSwitchButton];
   [accessoryViewButton setBordered: NO];
   [accessoryViewButton sizeToFit];
-  [ivbox addView: accessoryViewButton];
-  [accessoryViewButton release];
+  [accessoryViewButton setAutoresizingMask: NSViewMaxXMargin];
+  [tmp_box addView: accessoryViewButton];
 
-  [ivbox addView: configureForm];
-  [configureForm release];
-  [ivbox setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
+  ivbox = [[GSVbox new] autorelease];
+  [ivbox setDefaultMinYMargin: 8];
+  [ivbox addView: tmp_box
+	 enablingYResizing: NO];
+  [ivbox addView: configureForm 
+	 enablingYResizing: NO];
+  [ivbox setAutoresizingMask: NSViewWidthSizable|NSViewMinYMargin];
   
-  configureBox = [NSBox new];
+  configureBox = [[NSBox new] autorelease];
   [configureBox setTitle: @"Options"];
   [configureBox setTitlePosition: NSAtTop];
   [configureBox addSubview: ivbox];
-  [ivbox release];
   [configureBox sizeToFit];
-  [configureBox setAutoresizingMask: NSViewWidthSizable];
+  [configureBox setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
 
   [vbox addView: configureBox];
-  [configureBox release];
   [vbox setAutoresizingMask: (NSViewWidthSizable | NSViewMinYMargin)];
 
   [configureForm setNextKeyView: accessoryViewButton];
@@ -207,7 +235,6 @@
 			  defer: NO];
   
   [win setContentView: vbox];
-  [vbox release];
   [win setTitle: @"NSSavePanel Test"];
   
   [self restart];
@@ -274,7 +301,6 @@
 
   [directoryEntry setStringValue: [savePanel directory]];
   [filenameEntry setStringValue: [savePanel filename]];
-
 }
 -(NSBox *) accessoryView
 {
