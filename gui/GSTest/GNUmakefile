@@ -61,8 +61,8 @@ GSTest_HEADERS = \
         testProtocol.h 
 
 GSTest_OBJC_FILES = \
-        main.m 
-#ADDITIONAL_LDFLAGS += -lXmu
+        main.m \
+        MemoryPanel.m
 
 -include GNUmakefile.preamble
 
@@ -71,5 +71,3 @@ include $(GNUSTEP_MAKEFILES)/application.make
 include $(GNUSTEP_MAKEFILES)/bundle.make
 
 -include GNUmakefile.postamble
-
-
