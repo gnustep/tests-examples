@@ -1,5 +1,6 @@
 #import <Foundation/NSAutoreleasePool.h>
 #import <AppKit/AppKit.h>
+#import <AppKit/NSTextStorage.h>
 
 @interface buttonsController : NSObject
 {
@@ -27,6 +28,15 @@
 
   [theTextView setString:[NSString stringWithContentsOfFile:@"Readme.txt"]];
 
+  NSLog(@"deleteCharacters.");
+  [[theTextView textStorage] beginEditing];
+  [[theTextView textStorage] deleteCharactersInRange:NSMakeRange(100,500)];
+  [[theTextView textStorage] replaceCharactersInRange:NSMakeRange(0,3)
+					   withString:@"eek"];
+  [[theTextView textStorage] endEditing];
+  [theTextView didChangeText];
+  NSLog(@"deleteCharacters finished.");
+
   [win setContentView:theTextView];
   [win makeKeyAndOrderFront:nil];
   [win makeFirstResponder:theTextView];
@@ -39,6 +49,7 @@ main(int argc, char **argv, char** env)
 {
   id pool = [NSAutoreleasePool new];
   NSApplication *theApp;
+  NSAttributedString *attributedString;
 
 #if LIB_FOUNDATION_LIBRARY
   [NSProcessInfo initializeWithArguments:argv count:argc environment:env];
@@ -46,6 +57,8 @@ main(int argc, char **argv, char** env)
 #ifndef NX_CURRENT_COMPILER_RELEASE
     initialize_gnustep_backend();
 #endif
+  attributedString = [[NSAttributedString alloc] initWithString:@"Hey!"];
+  NSLog(@"%@", [attributedString string]);
 
   theApp = [NSApplication sharedApplication];
 	[theApp setDelegate: [buttonsController new]];
