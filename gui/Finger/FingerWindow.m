@@ -81,8 +81,7 @@
   [hbox addView: form];
 
   fingerButton = AUTORELEASE ([NSButton new]);
-  [fingerButton setImage: [NSImage imageNamed: @"GNUstep"]];
-  //  [fingerButton setImage: [NSImage imageNamed: @"Finger"]];
+  [fingerButton setImage: [NSImage imageNamed: @"finger"]];
   [fingerButton setTitle: @"Finger"];
   [fingerButton setImagePosition: NSImageAbove];
   [fingerButton setAlignment: NSCenterTextAlignment];
@@ -97,8 +96,7 @@
   [fingerButton setAction: @selector (startFinger:)];
 
   pingButton = AUTORELEASE ([NSButton new]);
-  [pingButton setImage: [NSImage imageNamed: @"GNUstep"]];
-  //  [pingButton setImage: [NSImage imageNamed: @"Ping"]];
+  [pingButton setImage: [NSImage imageNamed: @"ping"]];
   [pingButton setTitle: @"Ping"];
   [pingButton setImagePosition: NSImageAbove];
   [pingButton setAlignment: NSCenterTextAlignment];
@@ -113,8 +111,7 @@
   [pingButton setAction: @selector (startPing:)];
 
   traceButton = AUTORELEASE ([NSButton new]);
-  [traceButton setImage: [NSImage imageNamed: @"GNUstep"]];
-  //  [traceButton setImage: [NSImage imageNamed: @"Traceroute"]];
+  [traceButton setImage: [NSImage imageNamed: @"traceroute"]];
   [traceButton setTitle: @"Trace"];
   [traceButton setImagePosition: NSImageAbove];
   [traceButton setAlignment: NSCenterTextAlignment];
@@ -129,8 +126,7 @@
   [traceButton setAction: @selector (startTraceroute:)];
 
   stopButton = AUTORELEASE ([NSButton new]);
-  [stopButton setImage: [NSImage imageNamed: @"GNUstep"]];
-  //  [stopButton setImage: [NSImage imageNamed: @"Stop"]];
+  [stopButton setImage: [NSImage imageNamed: @"stop_button"]];
   [stopButton setTitle: @"Stop"];
   [stopButton setImagePosition: NSImageAbove];
   [stopButton setAlignment: NSCenterTextAlignment];
