@@ -84,10 +84,9 @@ unsigned int style = NSTitledWindowMask | NSClosableWindowMask
 	string = [NSString stringWithContentsOfFile:[[[NSBundle mainBundle] 
 			  bundlePath] stringByAppendingString:@"/Resources/Readme.txt"]];
 	[textView setString:string];
-	// Use the font manager
-	[textView setUsesFontPanel: YES];
 	[scrollView setDocumentView:textView];
 	[[window contentView] addSubview: scrollView];
+	[window setDelegate: document];
 
 	[window setTitle:@"Edit"];
 	[window display];
