@@ -236,7 +236,6 @@ int main (void)
    // 
    [app setMainMenu: mainMenu];
    [app setWindowsMenu: windowsMenu];
-   [mainMenu display];
    appController = [Controller new];
    [app setDelegate: appController];
 
