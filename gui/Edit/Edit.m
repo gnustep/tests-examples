@@ -38,14 +38,14 @@ id pool = [NSAutoreleasePool new];
 NSApplication *theApp;
 
 #if LIB_FOUNDATION_LIBRARY
-  	[NSProcessInfo initializeWithArguments:argv count:argc environment:env];
+  	[NSProcessInfo initializeWithArguments: argv count: argc environment: env];
 #endif
 #ifndef NX_CURRENT_COMPILER_RELEASE
   	initialize_gnustep_backend();
 #endif
 
 	theApp = [NSApplication sharedApplication];
-	[theApp setDelegate:[[Controller alloc] init]];
+	[theApp setDelegate: [[Controller alloc] init]];
 	createMenu();									// create a generic menu
 	[theApp run];
 
@@ -61,86 +61,204 @@ NSApplication *theApp;
 
 void createMenu()
 {
-NSMenu* menu;
-NSMenu* info;
-NSMenu* file;
-NSMenu* edit;
-NSMenu* util;
-NSMenu* services;
-NSMenu* windows;
-SEL action = @selector(method:);
+  NSMenu* menu;
+  NSMenu* info;
+  NSMenu* file;
+  NSMenu* edit;
+  NSMenu* util;
+  NSMenu* services;
+  NSMenu* windows;
+  SEL action = @selector(method:);
 
-	menu = [[NSMenu alloc] initWithTitle:@"Edit"];		// Create the app menu
-	[menu addItemWithTitle:@"Info" action:action keyEquivalent:@""];
-	[menu addItemWithTitle:@"File" action:action keyEquivalent:@""];
-	[menu addItemWithTitle:@"Edit" action:action keyEquivalent:@""];
-	[menu addItemWithTitle:@"Format" action:action keyEquivalent:@""];
-	[menu addItemWithTitle:@"Utilities" action:action keyEquivalent:@""];
-	[menu addItemWithTitle:@"Windows" action:action keyEquivalent:@""];
-	[menu addItemWithTitle:@"Print" action:action keyEquivalent:@"p"];
-	[menu addItemWithTitle:@"Services" action:action keyEquivalent:@""];
-	[menu addItemWithTitle:@"Hide" action:@selector(hide:) keyEquivalent:@"h"];
-	[menu addItemWithTitle:@"Quit" action:@selector(terminate:)
-		  keyEquivalent:@"q"];
+  /*
+   *	Create the app menu
+   */
+  menu = [[NSMenu alloc] initWithTitle: @"Edit"];
 
-	info = [NSMenu new];								// Create info submenu
-	[menu setSubmenu:info forItem:[menu itemWithTitle:@"Info"]];
-	[info addItemWithTitle:@"Info Panel..." action:action keyEquivalent:@""];
-	[info addItemWithTitle:@"Preferences..." action:action keyEquivalent:@""];
-	[info addItemWithTitle:@"Help" action:action keyEquivalent:@"?"];
+  [menu addItemWithTitle: @"Info"
+		  action: action
+	   keyEquivalent: @""];
 
-	file = [NSMenu new];								// Create file submenu
-	[file addItemWithTitle:@"Open..." action:action keyEquivalent:@"o"];
-	[file addItemWithTitle:@"New Application" action:action 
-		  keyEquivalent:@"n"];
-	[file addItemWithTitle:@"New Module" action:action keyEquivalent:@""];
-	[file addItemWithTitle:@"Save" action:action keyEquivalent:@"s"];
-	[file addItemWithTitle:@"Save As..." action:action keyEquivalent:@"S"];
-	[file addItemWithTitle:@"Save All" action:action keyEquivalent:@""];
-	[file addItemWithTitle:@"Revert to Saved" action:action 
-		  keyEquivalent:@"u"];
-	[file addItemWithTitle:@"Test Interface" action:action keyEquivalent:@"O"];
-	[file addItemWithTitle:@"Close" action:action keyEquivalent:@""];
-	[menu setSubmenu:file forItem:[menu itemWithTitle:@"File"]];
+  [menu addItemWithTitle: @"File"
+		  action: action
+	   keyEquivalent: @""];
 
-	edit = [NSMenu new];								// Create edit submenu
-	[edit addItemWithTitle:@"Cut" action:action keyEquivalent:@"x"];
-	[edit addItemWithTitle:@"Copy" action:action keyEquivalent:@"c"];
-	[edit addItemWithTitle:@"Paste" action:action keyEquivalent:@"v"];
-	[edit addItemWithTitle:@"Delete" action:action keyEquivalent:@""];
-	[edit addItemWithTitle:@"Undelete" action:NULL keyEquivalent:@""];
-	[edit addItemWithTitle:@"Select All" action:action keyEquivalent:@"a"];
-	[menu setSubmenu:edit forItem:[menu itemWithTitle:@"Edit"]];
+  [menu addItemWithTitle: @"Edit"
+		  action: action
+	   keyEquivalent: @""];
 
-	util = [NSMenu new];								// Create util submenu
-	[util addItemWithTitle:@"Inspector" action:@selector(showInspectorPanel:)
-		   keyEquivalent:@""];
-	[util addItemWithTitle:@"Palettes" action:@selector(showPalettePanel:) 
-		   keyEquivalent:@""];
-	[util addItemWithTitle:@"Load Palette" action:action keyEquivalent:@""];
-	[menu setSubmenu:util forItem:[menu itemWithTitle:@"Utilities"]];
+  [menu addItemWithTitle: @"Format"
+		  action: action
+	   keyEquivalent: @""];
 
-	windows = [NSMenu new];								// Create windows sub
-	[windows addItemWithTitle:@"Arrange"
-			   action:@selector(arrangeInFront:)
-		    keyEquivalent:@""];
-	[windows addItemWithTitle:@"Miniaturize"
-			   action:@selector(performMiniaturize:)
-		    keyEquivalent:@"m"];
-	[windows addItemWithTitle:@"Close"
-			   action:@selector(performClose:)
-		    keyEquivalent:@"w"];
-	[menu setSubmenu:windows forItem:[menu itemWithTitle:@"Windows"]];
+  [menu addItemWithTitle: @"Utilities"
+		  action: action
+	   keyEquivalent: @""];
 
-	services = [NSMenu new];							// Create svcs submenu
-	[menu setSubmenu:services forItem:[menu itemWithTitle:@"Services"]];
+  [menu addItemWithTitle: @"Windows"
+		  action: action
+	   keyEquivalent: @""];
 
-	[[NSApplication sharedApplication] setMainMenu:menu];	// make menu the
-															// app's main menu	
+  [menu addItemWithTitle: @"Print"
+		  action: action
+	   keyEquivalent: @"p"];
 
-	[[NSApplication sharedApplication] setServicesMenu: services];
+  [menu addItemWithTitle: @"Services"
+		  action: action
+	   keyEquivalent: @""];
 
-	NSLog (@"start displaying the menu...");
-	[menu update];
-	[menu display];
+  [menu addItemWithTitle: @"Hide"
+		  action: @selector(hide:)
+	   keyEquivalent: @"h"];
+
+  [menu addItemWithTitle: @"Quit"
+		  action: @selector(terminate:)
+	   keyEquivalent: @"q"];
+
+  /*
+   * Create the info submenu
+   */
+  info = [NSMenu new];
+  [menu setSubmenu: info
+	   forItem: [menu itemWithTitle: @"Info"]];
+
+  [info addItemWithTitle: @"Info Panel..."
+		  action: action
+	   keyEquivalent: @""];
+
+  [info addItemWithTitle: @"Preferences..."
+		  action: action
+	   keyEquivalent: @""];
+
+  [info addItemWithTitle: @"Help"
+		  action: action
+	   keyEquivalent: @"?"];
+
+  /*
+   * Create the file submenu
+   */
+  file = [NSMenu new];
+  [menu setSubmenu: file
+	   forItem: [menu itemWithTitle: @"File"]];
+
+  [file addItemWithTitle: @"Open..."
+		  action: action
+	   keyEquivalent: @"o"];
+
+  [file addItemWithTitle: @"New Application"
+		  action: action 
+	   keyEquivalent: @"n"];
+
+  [file addItemWithTitle: @"New Module"
+		  action: action
+	   keyEquivalent: @""];
+
+  [file addItemWithTitle: @"Save"
+		  action: action
+	   keyEquivalent: @"s"];
+
+  [file addItemWithTitle: @"Save As..."
+		  action: action
+	   keyEquivalent: @"S"];
+
+  [file addItemWithTitle: @"Save All"
+		  action: action
+	   keyEquivalent: @""];
+
+  [file addItemWithTitle: @"Revert to Saved"
+		  action: action 
+	   keyEquivalent: @"u"];
+
+  [file addItemWithTitle: @"Test Interface"
+		  action: action
+	   keyEquivalent: @"O"];
+
+  [file addItemWithTitle: @"Close"
+		  action: action
+	   keyEquivalent: @""];
+
+
+  /*
+   * Create the edit submenu
+   */
+  edit = [NSMenu new];
+  [menu setSubmenu: edit
+	   forItem: [menu itemWithTitle: @"Edit"]];
+
+  [edit addItemWithTitle: @"Cut"
+		  action: action
+	   keyEquivalent: @"x"];
+
+  [edit addItemWithTitle: @"Copy"
+		  action: @selector(copy:)
+	   keyEquivalent: @"c"];
+
+  [edit addItemWithTitle: @"Paste"
+		  action: @selector(paste:)
+	   keyEquivalent: @"v"];
+
+  [edit addItemWithTitle: @"Delete"
+		  action: action
+	   keyEquivalent: @""];
+
+  [edit addItemWithTitle: @"Undelete"
+		  action: NULL
+	   keyEquivalent: @""];
+
+  [edit addItemWithTitle: @"Select All"
+		  action: action
+	   keyEquivalent: @"a"];
+
+  /*
+   * Create the edit submenu
+   */
+  util = [NSMenu new];
+  [menu setSubmenu: util
+	   forItem: [menu itemWithTitle: @"Utilities"]];
+
+  [util addItemWithTitle: @"Inspector"
+		  action: @selector(showInspectorPanel:)
+	   keyEquivalent: @""];
+
+  [util addItemWithTitle: @"Palettes"
+		  action: @selector(showPalettePanel:) 
+	   keyEquivalent: @""];
+
+  [util addItemWithTitle: @"Load Palette"
+		  action: action
+	   keyEquivalent: @""];
+
+  /*
+   * Create the windows submenu
+   */
+  windows = [NSMenu new];
+  [menu setSubmenu: windows
+	   forItem: [menu itemWithTitle: @"Windows"]];
+
+  [windows addItemWithTitle: @"Arrange"
+		     action: @selector(arrangeInFront:)
+	      keyEquivalent: @""];
+
+  [windows addItemWithTitle: @"Miniaturize"
+		     action: @selector(performMiniaturize:)
+	      keyEquivalent: @"m"];
+
+  [windows addItemWithTitle: @"Close"
+		     action: @selector(performClose:)
+	      keyEquivalent: @"w"];
+
+  /*
+   * Create the windows submenu
+   */
+  services = [NSMenu new];
+  [menu setSubmenu: services
+	   forItem: [menu itemWithTitle: @"Services"]];
+
+  [[NSApplication sharedApplication] setMainMenu: menu];
+
+  [[NSApplication sharedApplication] setServicesMenu: services];
+
+  NSLog (@"start displaying the menu...");
+  [menu update];
+  [menu display];
 }
