@@ -24,6 +24,7 @@
 #include <AppKit/AppKit.h>
 #include "GSTestProtocol.h"
 #include "testList.h"
+#include "MemoryPanel.h"
 
 // If you want to add a test, please refer to testList.h 
 
@@ -194,6 +195,7 @@ main (void)
    [infoMenu addItemWithTitle: @"Info Panel..." 
 	     action: @selector (runInfoPanel:) 
 	     keyEquivalent: @""];
+   [infoMenu addMemoryPanelSubmenu];
    [infoMenu addItemWithTitle: @"Help..." 
 	     action: @selector (orderFrontHelpPanel:)
 	     keyEquivalent: @"?"];
