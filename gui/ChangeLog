@@ -1,3 +1,7 @@
+Wed Jul  4 18:32:22 2001  Nicola Pero  <nicola@brainstorm.co.uk>
+
+	* Ink/Document.m ([Document -dealloc]): Call super dealloc.
+
 2001-06-19  Gregory Casamento <greg_casamento@yahoo.com>
 
 	* Added menu item to allow Ink to bring up the NSSpellChecker
