@@ -78,6 +78,7 @@ popupbuttons_RESOURCE_FILES = animations.tiff appearance.tiff configs.tiff dock.
 fontpanel_OBJC_FILES = fontpanel.m
 matrix_OBJC_FILES = matrix.m
 menu_OBJC_FILES = menu.m
+menu_RESOURCE_FILES = Smiley.tiff
 nsbox_OBJC_FILES = nsbox.m
 nsbrowser_OBJC_FILES = nsbrowser.m
 nsbrowsercell_OBJC_FILES = nsbrowsercell.m
