@@ -112,6 +112,8 @@
   button = [NSButton new];
   [button setTitle: @"Start Save Panel"];
   [button sizeToFit];
+  [button setFrameSize: NSMakeSize ([button frame].size.width + 10, 
+				    [button frame].size.height + 10)];
   [button setAutoresizingMask: NSViewMinXMargin];
   [button setTarget: self];
   [button setAction: @selector (startSavePanel:)];
@@ -143,7 +145,8 @@
   [resultsBox sizeToFit];
   [resultsBox setAutoresizingMask: NSViewWidthSizable];
 
-  [vbox addView: resultsBox];
+  [vbox addView: resultsBox
+	withMinYMargin: 10];
   [resultsBox release];
   
   configureForm = [NSForm new];
