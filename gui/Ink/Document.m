@@ -48,6 +48,26 @@
   RELEASE(pi);
 }
 
+- (NSFileWrapper *)fileWrapperRepresentationOfType:(NSString *)type
+{
+  if ([type isEqualToString:@"rtfd"])
+    {
+      NSAttributedString *attr;
+
+      if (tv != nil)
+	attr = [tv textStorage];
+      else
+	attr = ts;
+
+      return [attr RTFDFileWrapperFromRange: NSMakeRange(0, [attr length]) 
+		   documentAttributes: [[self printInfo] dictionary]]; 
+    }
+  else
+    {
+      return [super fileWrapperRepresentationOfType: type];
+    }
+}
+
 - (NSData *)dataRepresentationOfType:(NSString *)aType 
 {
   NSAttributedString *attr;
@@ -62,6 +82,11 @@
       return [attr RTFFromRange: NSMakeRange(0, [attr length]) documentAttributes: 
 		       [[self printInfo] dictionary]]; 
     }
+  else if ([aType isEqualToString:@"rtfd"])
+    {
+      return [attr RTFDFromRange: NSMakeRange(0, [attr length]) documentAttributes: 
+		       [[self printInfo] dictionary]]; 
+    }
   else if ([aType isEqualToString:@"text"])
     {
       return [[attr string] dataUsingEncoding: [NSString defaultCStringEncoding]]; 
@@ -73,6 +98,31 @@
     }
 }
 
+- (BOOL)loadFileWrapperRepresentation:(NSFileWrapper *)wrapper 
+			       ofType:(NSString *)type
+{
+  if ([type isEqualToString:@"rtfd"])
+    {
+      NSAttributedString *attr;
+  
+      attr = [[NSAttributedString alloc] initWithRTFDFileWrapper: wrapper 
+					 documentAttributes: NULL];
+
+      if (tv != nil)
+	[[tv textStorage] setAttributedString: attr];
+      else 
+	[ts setAttributedString: attr];
+
+      RELEASE(attr);
+      return YES;
+    }
+  else
+    {
+      return [super loadFileWrapperRepresentation: wrapper 
+		    ofType: type];
+    }
+}
+
 - (BOOL)loadDataRepresentation:(NSData *)data ofType:(NSString *)aType 
 {
   NSAttributedString *attr;
@@ -80,6 +130,11 @@
   if ([aType isEqualToString:@"rtf"])
     {
       attr = [[NSAttributedString alloc] initWithRTF: data 
+					 documentAttributes: NULL];
+    }
+  else if ([aType isEqualToString:@"rtfd"])
+    {
+      attr = [[NSAttributedString alloc] initWithRTFD: data 
 					 documentAttributes: NULL];
     }
   else if ([aType isEqualToString:@"text"])
