@@ -1,3 +1,16 @@
+Thu Apr 11 22:59:34 2002  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* NSSavePanel-test/NSSavePanel-test.m ([NSSavePanelTest -init]): Updated 
+	for newer gnustep-gui: no longer adjust manually button size, 
+	the new gnustep-gui gets them right automatically.
+	* StringDrawing-test/StringDrawing-test.m ([StringDrawingTest
+	-init]): Idem.
+	* NSWindowStyleMask-test/NSWindowStyleMask-test.m
+	([NSWindowStyleMaskTest -init]): Idem.
+	* EncodingDecoding-test/EncodingDecoding-test.m
+	([EncodingDecodingTest -init]): Idem.
+	* main.m: Version 1.0.	
+
 2002-03-22  Pierre-Yves Rivaille <pyrivail@ens-lyon.fr>
 
 	* NSTableView-test/NSTableView-test.m : 
