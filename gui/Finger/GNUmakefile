@@ -40,7 +40,14 @@ Finger_RESOURCE_FILES = \
   finger.tiff \
   traceroute.tiff \
   ping.tiff \
-  stop_button.tiff 
+  stop.tiff \
+  whois.tiff \
+  finger32.tiff \
+  traceroute32.tiff \
+  ping32.tiff \
+  stop32.tiff \
+  whois32.tiff
+
 Finger_APPLICATION_ICON = finger.tiff
 
 include $(GNUSTEP_MAKEFILES)/application.make
