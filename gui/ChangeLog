@@ -1,3 +1,7 @@
+1999-08-22  Gerrit van Dyk <gerritvd@decimax.com>
+
+	* nsprogressindicator.m: Added progressIndicator test
+
 1999-08-19  Michael Hanni  <mhanni@sprintmail.com>
 
 	* gstextnetwork.m: some changes.

@@ -55,6 +55,7 @@ TEST_APP_NAME = \
 		nscursor \
 		nsimage \
 		nsimagecell \
+		nsprogressindicator \
 		nsscroller \
 		nstabview \
 		scrollview \
@@ -80,6 +81,7 @@ nsbrowsercell_OBJC_FILES = nsbrowsercell.m
 nscursor_OBJC_FILES = nscursor.m ColorView.m
 nsimage_OBJC_FILES = nsimage.m ImageView.m
 nsimagecell_OBJC_FILES = nsimagecell.m
+nsprogressindicator_OBJC_FILES = nsprogressindicator.m
 nsscroller_OBJC_FILES = nsscroller.m
 gstable_OBJC_FILES = gstable.m
 gstextnetwork_OBJC_FILES = gstextnetwork.m
