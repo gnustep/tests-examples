@@ -12,6 +12,7 @@
              NSHumanReadableName = "RTF Document";
              NSUnixExtensions = ("rtf");
              NSDOSExtensions = ("rtf");
+	     NSMIMETypes = ("text/rtf");
 	     NSIcon = FileIcon_rtf_Tile;
              NSRole = Editor;
              NSDocumentClass = Document;
@@ -30,6 +31,7 @@
              NSHumanReadableName = "Text Document";
              NSUnixExtensions = ("txt");
              NSDOSExtensions = ("txt");
+	     NSMIMETypes = ("text/plain");
              NSRole = Editor;
              NSDocumentClass = Document;
         }
