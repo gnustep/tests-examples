@@ -95,6 +95,7 @@
 				  prototype: cell
 				  numberOfRows: 7
 				  numberOfColumns: 1];   
+  [cell release];
   
   [borderMatrix setIntercellSpacing: NSMakeSize (0, 4) ];
   [borderMatrix setTarget: self];
