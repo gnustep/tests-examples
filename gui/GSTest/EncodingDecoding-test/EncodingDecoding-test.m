@@ -201,21 +201,35 @@ willDisplayCell: (id)cell
   
   if (result == NSOKButton)
     {
-      if([NSArchiver archiveRootObject: w
-		     toFile: [s filename]] == NO)
+      BOOL result = NO;
+      
+      NS_DURING
 	{
-	  NSRunCriticalAlertPanel (@"Error", 
-				   @"Error encoding to file %@", 
-				   @"OK", nil, nil, 
-				   [s filename]);
+	  result = [NSArchiver archiveRootObject: w
+			       toFile: [s filename]];
 	}
+      NS_HANDLER
+	{
+	  // TODO: Rewrite to show exception description
+	  result = NO;
+	}
+      NS_ENDHANDLER
+
+	if (result == NO)
+	  {
+	    NSRunCriticalAlertPanel (@"Error", 
+				     @"Error encoding to file %@: %@", 
+				     @"OK", nil, nil, 
+				     [s filename]);
+	  }
     }
 }
 
+  
 -(void)decode: (id)sender
 {
   NSOpenPanel *o;
-  id w;
+  id w = nil;
   int result;
   
   o = [NSOpenPanel openPanel];
@@ -227,11 +241,23 @@ willDisplayCell: (id)cell
       int count = [f count];
       int i;
       BOOL error_panels = YES;
-      
+      NSString *file;
+
       for (i = 0; i < count; i++) 
 	{
-	  w = [NSUnarchiver unarchiveObjectWithFile: [f objectAtIndex: i]];
-	  if (!w)
+	  file = [f objectAtIndex: i];
+
+	  NS_DURING
+	    {
+	      w = [NSUnarchiver unarchiveObjectWithFile: file];
+	    }
+	  NS_HANDLER
+	    {
+	      w = nil;
+	    }
+	  NS_ENDHANDLER
+
+          if (w == nil)
 	    {
 	      if (error_panels)
 		{
