@@ -27,6 +27,9 @@
 #import "Controller.h"
 #import "TrivialTextView.h"
 
+#define SMALL_FONT_SIZE 10
+#define BIG_FONT_SIZE 12
+
 @interface FingerWindow : NSWindow
 {
   NSButton *stopButton;
@@ -39,6 +42,7 @@
 -(void)resetResults: (id)sender;
 -(void)saveResults: (id)sender;
 -(void)startFinger: (id)sender;
+-(void)startWhois: (id)sender;
 -(void)startPing: (id)sender;
 -(void)startTraceroute: (id)sender;
 -(void)startTask: (NSString *)fullBinaryPath
