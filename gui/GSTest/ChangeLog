@@ -1,3 +1,8 @@
+Sat Feb 27 01:54:10 2002  Gregory Casamento <greg_casamento@yahoo.com>
+
+	* NSOutlineView-test/NSOutlineView-test.m:  Added code to test
+	indentation in NSOutlineView.
+	
 Sat Feb 23 13:08:47 2002  Gregory Casamento <greg_casamento@yahoo.com>
 
 	* NSOutlineView-test/NSOutlineView-test.m:  Further improvements

@@ -102,6 +102,8 @@ NSString *test[20] =
   [outlineView addTableColumn: testColumn];
   [outlineView setOutlineTableColumn: keyColumn];
   [outlineView setDrawsGrid: NO];
+  [outlineView setIndentationPerLevel: 10];
+  [outlineView setAutoresizesOutlineColumn: YES];
 
   /* Now add some more columns */
   for (i = 0; i < 5; i++)
@@ -169,7 +171,7 @@ NSString *test[20] =
 	    child: (int)index
 	   ofItem: (id)item
 {
-  NSLog(@"child: %d ofItem: %@", index, item);
+  //  NSLog(@"child: %d ofItem: %@", index, item);
   if([item isEqual: @"NSObject"])
     {
       switch(index)
@@ -213,7 +215,7 @@ NSString *test[20] =
 - (int)        outlineView: (NSOutlineView *)outlineView 
     numberOfChildrenOfItem: (id)item
 {
-  NSLog(@"numberOfChildren:....");
+  //  NSLog(@"numberOfChildren:....");
   if(item == nil)
     return 1;
   else
@@ -228,7 +230,7 @@ NSString *test[20] =
 		    byItem: (id)item
 {
   NSString *value = nil;
-  NSLog(@"item = %@", item);
+  //  NSLog(@"item = %@", item);
   if([item isEqual: @"NSObject"])
     {
       if([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
@@ -315,7 +317,7 @@ NSString *test[20] =
 	}
     }
   
-  NSLog(@"value = %@",value);
+  //  NSLog(@"value = %@",value);
   
   return value;
 }
