@@ -45,6 +45,8 @@
   tabNum++;
 
   view = [[NSView alloc] initWithFrame:[tabView contentRect]];
+  [view setAutoresizingMask: (NSViewWidthSizable
+                               | NSViewHeightSizable)];
 
   label = [[NSTextField alloc] initWithFrame:[view frame]];
   [label setEditable: NO];
@@ -90,13 +92,24 @@
 
   tabNum = 0;
 
-  window = [[NSWindow alloc] init];
+  window = [[NSWindow alloc] initWithContentRect: winRect
+                          styleMask: (NSTitledWindowMask
+                                      | NSClosableWindowMask
+                                      | NSMiniaturizableWindowMask
+                                      | NSResizableWindowMask)
+                          backing: NSBackingStoreBuffered
+                          defer: NO];
 
   tabView = [[NSTabView alloc] initWithFrame: tabViewRect];
   [tabView setDelegate: [myTabViewDelegate new]];
+  [tabView setAutoresizingMask: (NSViewWidthSizable
+                               | NSViewHeightSizable)];
+  [tabView setAutoresizesSubviews: YES];
   [[window contentView] addSubview: tabView];
 
   view = [[NSView alloc] initWithFrame:[tabView contentRect]];
+  [view setAutoresizingMask: (NSViewWidthSizable
+                               | NSViewHeightSizable)];
 
   label = [[NSTextField alloc] initWithFrame:[view frame]];
   [label setEditable: NO];
@@ -116,7 +129,6 @@
   [tabView addTabViewItem: item];
 
   [window setTitle:@"NSTabView"];
-  [window setFrame:winRect display:YES];
   [window orderFrontRegardless];
 
   [[NSApp mainMenu] addItemWithTitle: @"Add tab"
