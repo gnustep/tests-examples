@@ -1,7 +1,7 @@
 Tue Feb  1 23:21:04 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* windows.m: Put the text key view loop in natural 
-	order.
+	order.  (Bug reported by Jory van Zessen).
 	
 Mon Jan 31 01:03:16 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
