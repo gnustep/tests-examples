@@ -65,6 +65,8 @@ unsigned int style = NSTitledWindowMask | NSClosableWindowMask
 								defer:NO];
 
         [window setRepresentedFilename: @"Edit"];
+        [window setFrameUsingName: @"Edit"];
+        [window setFrameAutosaveName: @"Edit"];
         [window setDocumentEdited: NO];
 
 	document = [[Document new] initWithPath:nil encoding:UnknownStringEncoding 
