@@ -1,3 +1,7 @@
+Sun Jan 28 19:37:39 2001  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* main.m: Updated version to 0.5; keep track of date.
+
 Sun Jan 28 19:14:45 2001  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* GNUmakefile, testList.h (testList): Added CoordinateCheck-test.
