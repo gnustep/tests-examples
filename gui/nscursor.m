@@ -47,8 +47,8 @@ NSButton *b;
 NSRect bf = {{10, 120}, {150, 100}};
 NSRect wf0 = {{150, 150}, {300, 300}};
 NSColor *green;
-// NSCursor *cur;
-//  NSCursor *arrow, *beam;
+NSCursor *cur;
+NSCursor *arrow, *beam;
 ColorView *cv0;
 NSRect cvf0 = {{10, 120}, {150, 100}};
 //  NSImage *image;
@@ -71,19 +71,19 @@ NSRect cvf0 = {{10, 120}, {150, 100}};
 	
 //  image = [NSImage imageNamed: @"common_SwitchOn"];
 
-#if 0
+//#if 0
 // Cursor for window
-//  cur = [NSCursor IBeamCursor];
-//  [cur set];
+  cur = [NSCursor IBeamCursor];
+  [cur set];
 
   // Cursor for color view using tracking rectangle
-//  arrow = [NSCursor arrowCursor];
-//  [arrow setOnMouseEntered: YES];
-//  beam = [NSCursor IBeamCursor];
-//  [beam setOnMouseExited: YES];
-//  [v addTrackingRect: cvf0 owner: arrow userData: NULL assumeInside: YES];
-//  [v addTrackingRect: cvf0 owner: beam userData: NULL assumeInside: YES];
-#endif
+  arrow = [NSCursor arrowCursor];
+  [arrow setOnMouseEntered: YES];
+  beam = [NSCursor IBeamCursor];
+  [beam setOnMouseExited: YES];
+  [v addTrackingRect: cvf0 owner: arrow userData: NULL assumeInside: YES];
+  [v addTrackingRect: cvf0 owner: beam userData: NULL assumeInside: YES];
+//#endif
 
 	[win setFrame:wf0 display:YES];
 	[win setTitle:@"GNUstep Cursor Management"];

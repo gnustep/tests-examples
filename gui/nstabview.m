@@ -97,7 +97,7 @@ id label;
 	window = [[NSWindow alloc] init];
 
 	tabView = [[NSTabView alloc] initWithFrame:tabViewRect];
-	[tabView setTabViewType:NSBottomTabsBezelBorder];
+//	[tabView setTabViewType:NSBottomTabsBezelBorder];
 	[tabView setDelegate:[myTabViewDelegate new]];
 	[[window contentView] addSubview:tabView];
 
