@@ -155,8 +155,8 @@
   unsigned int style = NSTitledWindowMask | NSClosableWindowMask | 
       NSMiniaturizableWindowMask | NSResizableWindowMask;
   
-  // This is expected to be retained, as it would normaly come from a nib file,
-  // where the owner would retain it.
+  // This is expected to be retained, as it would normaly come from a
+  // nib file, where the owner would retain it.
   window = [[NSWindow alloc] initWithContentRect: winRect
 			     styleMask: style
 			     backing: NSBackingStoreRetained
@@ -172,16 +172,21 @@
   // Build up the text network
   textRect = [[scrollView contentView] frame];
   textView = [[NSTextView alloc] initWithFrame: textRect];
+
   // off white
   backColor = [NSColor colorWithCalibratedWhite: 0.85 alpha: 1.0];
   [textView setBackgroundColor: backColor];
   [textView setRichText: YES];
   [textView setUsesFontPanel: YES];
   [textView setDelegate: self];
+  [textView setHorizontallyResizable: NO];
   [textView setVerticallyResizable: YES];
-  [textView setMinSize: NSMakeSize(0,0)];
-  [textView setMaxSize: NSMakeSize(1E7,1E7)];
+  [textView setMinSize: NSMakeSize (0, 0)];
+  [textView setMaxSize: NSMakeSize (1E7, 1E7)];
   [textView setAutoresizingMask: NSViewHeightSizable | NSViewWidthSizable];
+  [[textView textContainer] setContainerSize: NSMakeSize (textRect.size.width,
+							  1e7)];
+  [[textView textContainer] setWidthTracksTextView: YES];
   // Store the text view in an ivar
   ASSIGN(tv, textView);
 
