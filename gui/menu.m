@@ -53,6 +53,7 @@ main(int argc, char **argv, char** env)
   NSMenu* linkMenu;
   NSMenu* findMenu;
   SEL action = @selector(method:);
+  NSMenuItem* menuItem;
 
 #if LIB_FOUNDATION_LIBRARY
   [NSProcessInfo initializeWithArguments:argv count:argc environment:env];
@@ -65,6 +66,11 @@ main(int argc, char **argv, char** env)
   theApp = [NSApplication sharedApplication];
   [theApp setDelegate:[MyObject new]];
 
+  menuItem = [NSMenuItem new];
+  [menuItem setTitle:@"Eepz"];
+  [menuItem setAction:nil];
+  [menuItem setKeyEquivalent:@""];
+
   menu = [NSMenu new];
   [menu addItemWithTitle:@"Info" action:action keyEquivalent:@""];
   [menu addItemWithTitle:@"File" action:action keyEquivalent:@""];
@@ -75,6 +81,7 @@ main(int argc, char **argv, char** env)
   [menu addItemWithTitle:@"Print" action:nil keyEquivalent:@"p"];
   [menu addItemWithTitle:@"Services" action:action keyEquivalent:@""];
   [menu addItemWithTitle:@"Hide" action:action keyEquivalent:@"h"];
+  [menu insertItem:menuItem atIndex:[[menu itemArray] count]];
   [menu addItemWithTitle:@"Quit"
 	action:@selector(terminate:)
 	keyEquivalent:@"q"];

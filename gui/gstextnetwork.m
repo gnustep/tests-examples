@@ -50,6 +50,9 @@ main(int argc, char **argv, char** env)
   id pool = [NSAutoreleasePool new];
   NSApplication *theApp;
   NSAttributedString *attributedString;
+  NSString *funString = @"SomethingNothing";
+  NSScanner *scanner;
+  unsigned int sL;
 
 #if LIB_FOUNDATION_LIBRARY
   [NSProcessInfo initializeWithArguments:argv count:argc environment:env];
@@ -57,6 +60,13 @@ main(int argc, char **argv, char** env)
 #ifndef NX_CURRENT_COMPILER_RELEASE
     initialize_gnustep_backend();
 #endif
+
+  scanner = [[NSScanner alloc] initWithString:funString];
+  [scanner scanUpToString:[NSText newlineString] intoString:NULL];
+  sL = [scanner scanLocation];
+
+  NSLog(@"%d", sL + 2);
+
   attributedString = [[NSAttributedString alloc] initWithString:@"Hey!"];
   NSLog(@"%@", [attributedString string]);
 

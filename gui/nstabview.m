@@ -31,6 +31,46 @@
 
 #include "GSImageTabViewItem.h"
 
+@interface myTabViewDelegate : NSObject
+{
+}
+- (BOOL)tabView:(NSTabView *)tabView shouldSelectTabViewItem:(NSTabViewItem *)tabViewItem;
+- (void)tabView:(NSTabView *)tabView willSelectTabViewItem:(NSTabViewItem *)tabViewItem;
+- (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem;
+- (void)tabViewDidChangeNumberOfTabViewItems:(NSTabView *)TabView;
+@end
+
+@implementation myTabViewDelegate
+- (BOOL)tabView:(NSTabView *)tabView shouldSelectTabViewItem:(NSTabViewItem *)tabViewItem
+{
+  NSLog(@"shouldSelectTabViewItem: %@", [tabViewItem label]);
+
+  /*
+   * This is a test to see if the delegate is doing its job.
+   */
+
+  if ([[tabViewItem label] isEqual:@"Natalie"])
+    return NO;
+
+  return YES;
+}
+
+- (void)tabView:(NSTabView *)tabView willSelectTabViewItem:(NSTabViewItem *)tabViewItem
+{
+  NSLog(@"willSelectTabViewItem: %@", [tabViewItem label]);
+}
+
+- (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem
+{
+  NSLog(@"didSelectTabViewItem: %@", [tabViewItem label]);
+}
+
+- (void)tabViewDidChangeNumberOfTabViewItems:(NSTabView *)TabView
+{
+  NSLog(@"tabViewDidChangeNumberOfTabViewItems: %d", [TabView numberOfTabViewItems]);
+}
+@end
+
 int
 main(int argc, char **argv, char** env)
 {
@@ -57,6 +97,7 @@ id label;
 	window = [[NSWindow alloc] init];
 
 	tabView = [[NSTabView alloc] initWithFrame:tabViewRect];
+	[tabView setDelegate:[myTabViewDelegate new]];
 	[[window contentView] addSubview:tabView];
 
 	aView = [[NSView alloc] initWithFrame:[tabView contentRect]];
