@@ -54,7 +54,7 @@
 // 
 
 // Number of tests in the list
-#define TEST_NUMBER 16
+#define TEST_NUMBER 17
 struct 
 {
   NSString *menuName;      // Name shown on the menu
@@ -76,6 +76,7 @@ testList[TEST_NUMBER] =
   {@"NSSecureTextField", @"NSSecureTextField-test"},
   {@"NSSlider", @"NSSlider-test"},
   {@"NSSplitView", @"NSSplitView-test"},
+  {@"NSTextView", @"NSTextView-test"},
   {@"NSTableView", @"NSTableView-test"},
   {@"NSWindowStyleMask", @"NSWindowStyleMask-test"},
   {@"StringDrawing", @"StringDrawing-test"}
