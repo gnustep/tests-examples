@@ -1,3 +1,21 @@
+Fri Jan 14 06:55:29 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* EncodingDecoding-test/EncodingDecoding-test.m ([-init]): Set
+ 	autoresizing mask of the browser; removed border in excess.
+	* NSBox-test/NSBox-test.m ([-init]): Set vertical intercell
+ 	spacing of set boxes to 4; added boxes to group options; centered 
+	option matrixes inside boxes.
+	* NSColorList-test/NSColorList-test.m ([-init]): Set autoresizing
+ 	mask of the browser.  ([-showColorList:]): Added border around
+ 	vbox showing color list.
+	* NSForm-test/NSForm-test.m ([-init]): Added missing autoreleases;
+	added size to fit of NSForms.
+	* NSSavePanel-test/NSSavePanel-test.m ([-init]): Better sizing of
+ 	button and options form; added subvbox to center left-aligned
+ 	group of buttons; rewritten result output presentation.
+	* NSSlider-test/NSSlider-test.m ([-init]): Changed alignment,
+ 	disposition of things.
+	
 Sat Jan  8 23:33:21 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* main.m: ([Controller -init]): Added missing retain.
