@@ -66,6 +66,8 @@ void createMenu()
   NSMenu* info;
   NSMenu* file;
   NSMenu* format;
+  NSMenu* base;
+  NSMenu* text;
   NSMenu* edit;
   NSMenu* util;
   NSMenu* services;
@@ -91,6 +93,10 @@ void createMenu()
 	   keyEquivalent: @""];
 
   [menu addItemWithTitle: @"Format"
+		  action: action
+	   keyEquivalent: @""];
+
+  [menu addItemWithTitle: @"Text"
 		  action: action
 	   keyEquivalent: @""];
 
@@ -126,7 +132,7 @@ void createMenu()
 	   forItem: [menu itemWithTitle: @"Info"]];
 
   [info addItemWithTitle: @"Info Panel..."
-		  action: action
+	          action: @selector(orderFrontStandardInfoPanel:)
 	   keyEquivalent: @""];
 
   [info addItemWithTitle: @"Preferences..."
@@ -157,15 +163,15 @@ void createMenu()
 	   keyEquivalent: @""];
 
   [file addItemWithTitle: @"Save"
-		  action: action
+	          action: @selector(saveTo:)
 	   keyEquivalent: @"s"];
 
   [file addItemWithTitle: @"Save As..."
-		  action: action
+	          action: @selector(saveAs:)
 	   keyEquivalent: @"S"];
 
   [file addItemWithTitle: @"Save All"
-		  action: action
+	action: @selector(saveAll:)
 	   keyEquivalent: @""];
 
   [file addItemWithTitle: @"Revert to Saved"
@@ -189,11 +195,11 @@ void createMenu()
 	   forItem: [menu itemWithTitle: @"Edit"]];
 
   [edit addItemWithTitle: @"Cut"
-		  action: action
+	          action: @selector(cut:)
 	   keyEquivalent: @"x"];
 
   [edit addItemWithTitle: @"Copy"
-		  action: @selector(copy:)
+	          action: @selector(copy:)
 	   keyEquivalent: @"c"];
 
   [edit addItemWithTitle: @"Paste"
@@ -201,7 +207,7 @@ void createMenu()
 	   keyEquivalent: @"v"];
 
   [edit addItemWithTitle: @"Delete"
-		  action: action
+   	          action: @selector(delete:)
 	   keyEquivalent: @""];
 
   [edit addItemWithTitle: @"Undelete"
@@ -209,7 +215,7 @@ void createMenu()
 	   keyEquivalent: @""];
 
   [edit addItemWithTitle: @"Select All"
-		  action: action
+  	          action: @selector(selectAll:)
 	   keyEquivalent: @"a"];
 
   /*
@@ -218,6 +224,42 @@ void createMenu()
   format = [[NSFontManager sharedFontManager] fontMenu: YES];
   [menu setSubmenu: format
 	   forItem: [menu itemWithTitle: @"Format"]];
+
+  [format addItemWithTitle: @"Underline"
+  	          action: @selector(underline:)
+	   keyEquivalent: @""];
+  [format addItemWithTitle: @"Baseline"
+  	          action: NULL
+	   keyEquivalent: @""];
+  base = [NSMenu new];
+  [format setSubmenu: base
+	   forItem: [format itemWithTitle: @"Baseline"]];
+  [base addItemWithTitle: @"Superscript"
+  	          action: @selector(superscript:)
+	   keyEquivalent: @""];
+  [base addItemWithTitle: @"Subscript"
+  	          action: @selector(subscript:)
+	   keyEquivalent: @""];
+  [base addItemWithTitle: @"Unscript"
+  	          action: @selector(unscript:)
+	   keyEquivalent: @""];
+
+  /*
+   * Create the text submenu
+   */
+  text = [NSMenu new];
+  [menu setSubmenu: text
+	   forItem: [menu itemWithTitle: @"Text"]];
+
+  [text addItemWithTitle: @"Align Left"
+		  action: @selector(alignLeft:)
+	   keyEquivalent: @"{"];
+  [text addItemWithTitle: @"Center"
+		  action: @selector(alignCenter:)
+	   keyEquivalent: @"-"];
+  [text addItemWithTitle: @"Align Right"
+		  action: @selector(alignRight:)
+	   keyEquivalent: @"}"];
 
   /*
    * Create the edit submenu
