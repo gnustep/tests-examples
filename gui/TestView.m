@@ -31,6 +31,35 @@
 #include "TestView.h"
 #include <config.h>
 
+@interface	FlippedView : NSView
+@end
+
+@implementation	FlippedView
+- (BOOL) isFlipped
+{
+  return YES;
+}
+- (void)drawRect:(NSRect)rect
+{
+  [[NSColor redColor] set];
+  NSRectFill([self bounds]);
+}
+@end
+
+@interface	UnflippedView : NSView
+@end
+
+@implementation	UnflippedView
+- (BOOL) isFlipped
+{
+  return NO;
+}
+- (void)drawRect:(NSRect)rect
+{
+  [[NSColor greenColor] set];
+  NSRectFill([self bounds]);
+}
+@end
 
 @implementation TestView
 
@@ -44,6 +73,7 @@
 
 - (void)drawRect:(NSRect)rect
 {
+  static BOOL beenHere = NO;
   NSFont *f;
   float width, height;
   NSColor *c = [NSColor greenColor];
@@ -51,15 +81,26 @@
   NSColor *y = [NSColor yellowColor];
   NSColor *mg = [NSColor magentaColor];
   NSColor *orange = [NSColor orangeColor];
+  static NSView	*fv;
+  static NSView	*uv;
 
   NSDebugLog(@"Painting TestView %f %f %f %f\n", bounds.origin.x,
 	     bounds.origin.y,
 	     bounds.size.width, bounds.size.height);
 
+  NSRectClip(rect);
   [orange set];
   NSRectFill([self bounds]);
  NSDrawGroove(NSMakeRect (10, 10, 100, 200), NSMakeRect (10, 10, 100, 200));
 
+  if (beenHere == NO)
+    {
+      beenHere = YES;
+      fv = [[FlippedView alloc] initWithFrame: NSMakeRect(15,15,20,20)];
+      [self addSubview: fv];
+      uv = [[UnflippedView alloc] initWithFrame: NSMakeRect(45,15,20,20)];
+      [self addSubview: uv];
+    }
 #if 0
   {
     NSRect superBounds = [[self superview] bounds];
@@ -144,6 +185,7 @@
   PSstroke();
 #endif
 
+  PSinitclip();
 }
 
 - (void)mouseDown:(NSEvent *)theEvent
