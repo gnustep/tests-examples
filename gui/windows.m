@@ -162,6 +162,15 @@ main(int argc, char **argv, char** env)
   [w1 orderFront:nil];
   [w2 orderFront:nil];
 
+  {
+    NSMenu	*menu = [NSMenu new];
+
+    [menu addItemWithTitle: @"Quit"
+		    action: @selector(terminate:)
+	     keyEquivalent: @"q"];
+    [NSApp setMainMenu: menu];
+  }
+
   [theApp run];
 
   [w0 release];

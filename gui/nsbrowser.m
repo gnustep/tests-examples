@@ -188,16 +188,16 @@ fprintf(stderr, " source Path: %s ", [s cString]);
 int
 main(int argc, char **argv, char** env)
 {
-NSApplication *theApp;
-NSWindow *window;
-NSBrowser *browser;
-NSRect winRect = {{100, 100}, {600, 600}};
-NSRect browserRect = {{20, 20}, {500, 335}};
-id pool = [NSAutoreleasePool new];
-PassiveBrowserDelegate *pbd = [PassiveBrowserDelegate new];
-ActiveBrowserDelegate *abd = [ActiveBrowserDelegate new];
-unsigned int style = NSTitledWindowMask | NSClosableWindowMask				
-					| NSMiniaturizableWindowMask | NSResizableWindowMask;
+  NSApplication *theApp;
+  NSWindow *window;
+  NSBrowser *browser;
+  NSRect winRect = {{100, 100}, {600, 600}};
+  NSRect browserRect = {{20, 20}, {500, 335}};
+  id pool = [NSAutoreleasePool new];
+  PassiveBrowserDelegate *pbd = [PassiveBrowserDelegate new];
+  ActiveBrowserDelegate *abd = [ActiveBrowserDelegate new];
+  unsigned int style = NSTitledWindowMask | NSClosableWindowMask
+    | NSMiniaturizableWindowMask | NSResizableWindowMask;
 
 #if LIB_FOUNDATION_LIBRARY
   [NSProcessInfo initializeWithArguments:argv count:argc environment:env];
@@ -207,27 +207,36 @@ unsigned int style = NSTitledWindowMask | NSClosableWindowMask
   initialize_gnustep_backend();
 #endif
 
-	theApp = [NSApplication sharedApplication];
+  theApp = [NSApplication sharedApplication];
 	
-	window = [[NSWindow alloc] initWithContentRect:winRect
-								styleMask:style
-								backing:NSBackingStoreRetained
-								defer:NO];
+  window = [[NSWindow alloc] initWithContentRect:winRect
+					styleMask:style
+				      backing:NSBackingStoreRetained
+						    defer:NO];
 	
-	browser = [[NSBrowser alloc] initWithFrame: browserRect];
-	[browser setTitle: @"Column 0" ofColumn: 0];
-	[browser setDelegate: abd];
-	[browser setMaxVisibleColumns: 3];
-	[browser setAllowsMultipleSelection:NO];
+  browser = [[NSBrowser alloc] initWithFrame: browserRect];
+  [browser setTitle: @"Column 0" ofColumn: 0];
+  [browser setDelegate: abd];
+  [browser setMaxVisibleColumns: 3];
+  [browser setAllowsMultipleSelection:NO];
+  
+  [[window contentView] addSubview: browser];
 	
-	[[window contentView] addSubview: browser];
+  [window setTitle:@"NSBrowser"];
+  [window display];
+  [window orderFront:nil];
 	
-	[window setTitle:@"NSBrowser"];
-	[window display];
-	[window orderFront:nil];
-	
-	[theApp run];
-	[pool release];
+  {
+    NSMenu	*menu = [NSMenu new];
 
-	return 0;
+    [menu addItemWithTitle: @"Quit"
+		    action: @selector(terminate:)
+	     keyEquivalent: @"q"];
+    [NSApp setMainMenu: menu];
+  }
+
+  [theApp run];
+  [pool release];
+
+  return 0;
 }

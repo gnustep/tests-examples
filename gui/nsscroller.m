@@ -34,7 +34,7 @@
 
 @implementation MyObject
 
-- (void)scrollerAction:(id)sender
+- (void)scrollerAction: (id)sender
 {
 //	NSLog (@"scroller value = %f", [sender floatValue]);
 }
@@ -44,97 +44,106 @@
 int
 main(int argc, char **argv, char** env)
 {
-NSApplication *theApp;
-NSWindow *window;
-NSRect winRect = {{100, 400}, {300, 200}};
-NSRect wf0 = {{0, 0}, {300, 300}};
-NSView *v;
-NSScroller *s0, *s1, *s2, *s3, *s4, *s5;
-NSRect sf0 = {{10, 10}, {150, 20}};
-NSRect sf1 = {{10, 40}, {150, 20}};
-NSRect sf2 = {{10, 70}, {150, 20}};
-NSRect sf3 = {{10, 100}, {20, 150}};
-NSRect sf4 = {{40, 100}, {20, 150}};
-NSRect sf5 = {{70, 100}, {20, 150}};
-id object;
-id pool;
-unsigned int style = NSTitledWindowMask | NSClosableWindowMask				
-					| NSMiniaturizableWindowMask | NSResizableWindowMask;
+  NSApplication *theApp;
+  NSWindow *window;
+  NSRect winRect = {{100, 400}, {300, 200}};
+  NSRect wf0 = {{0, 0}, {300, 300}};
+  NSView *v;
+  NSScroller *s0, *s1, *s2, *s3, *s4, *s5;
+  NSRect sf0 = {{10, 10}, {150, 20}};
+  NSRect sf1 = {{10, 40}, {150, 20}};
+  NSRect sf2 = {{10, 70}, {150, 20}};
+  NSRect sf3 = {{10, 100}, {20, 150}};
+  NSRect sf4 = {{40, 100}, {20, 150}};
+  NSRect sf5 = {{70, 100}, {20, 150}};
+  id object;
+  id pool;
+  unsigned int style = NSTitledWindowMask | NSClosableWindowMask
+		    | NSMiniaturizableWindowMask | NSResizableWindowMask;
 
 #if LIB_FOUNDATION_LIBRARY
-	[NSProcessInfo initializeWithArguments:argv count:argc environment:env];
+  [NSProcessInfo initializeWithArguments: argv count: argc environment: env];
 #endif
 
-	pool = [NSAutoreleasePool new];
+  pool = [NSAutoreleasePool new];
 
 #ifndef NX_CURRENT_COMPILER_RELEASE
-	initialize_gnustep_backend();
+  initialize_gnustep_backend();
 #endif
 
-	theApp = [NSApplication sharedApplication];
-	object = [[MyObject new] autorelease];
+  theApp = [NSApplication sharedApplication];
+  object = [[MyObject new] autorelease];
 
 #if 0
-  window = [[NSWindow alloc] initWithContentRect:winRect
-							 styleMask:style
-							 backing:NSBackingStoreNonretained
-							 defer:NO];
+  window = [[NSWindow alloc] initWithContentRect: winRect
+				       styleMask: style
+					 backing: NSBackingStoreNonretained
+					   defer: NO];
 #else
-	window = [[NSWindow alloc] init];
+  window = [[NSWindow alloc] init];
 #endif
 
-	v = [window contentView];
+  v = [window contentView];
 	
-	s0 = [[NSScroller alloc] initWithFrame: sf0];
-	[s0 setArrowsPosition: NSScrollerArrowsMaxEnd];
-	[s0 setEnabled:YES];
-	[s0 setTarget:object];
-	[s0 setAction:@selector(scrollerAction:)];
-	[v addSubview: s0];
+  s0 = [[NSScroller alloc] initWithFrame: sf0];
+  [s0 setArrowsPosition: NSScrollerArrowsMaxEnd];
+  [s0 setEnabled: YES];
+  [s0 setTarget: object];
+  [s0 setAction: @selector(scrollerAction:)];
+  [v addSubview: s0];
 	
-	s1 = [[NSScroller alloc] initWithFrame: sf1];
-	[s1 setArrowsPosition: NSScrollerArrowsMinEnd];
-	[s1 setEnabled:YES];
-	[s1 setTarget:object];
-	[s1 setAction:@selector(scrollerAction:)];
-	[v addSubview: s1];
+  s1 = [[NSScroller alloc] initWithFrame: sf1];
+  [s1 setArrowsPosition: NSScrollerArrowsMinEnd];
+  [s1 setEnabled: YES];
+  [s1 setTarget: object];
+  [s1 setAction: @selector(scrollerAction:)];
+  [v addSubview: s1];
 	
-	s2 = [[NSScroller alloc] initWithFrame: sf2];
-	[s2 setArrowsPosition: NSScrollerArrowsNone];
-	[s2 setEnabled:YES];
-	[s2 setTarget:object];
-	[s2 setAction:@selector(scrollerAction:)];
-	[v addSubview: s2];
+  s2 = [[NSScroller alloc] initWithFrame: sf2];
+  [s2 setArrowsPosition: NSScrollerArrowsNone];
+  [s2 setEnabled: YES];
+  [s2 setTarget: object];
+  [s2 setAction: @selector(scrollerAction:)];
+  [v addSubview: s2];
 	
-	s3 = [[NSScroller alloc] initWithFrame: sf3];
-	[s3 setArrowsPosition: NSScrollerArrowsMaxEnd];
-	[s3 setEnabled:YES];
-	[s3 setFloatValue:0.5 knobProportion:0.4];
-	[s3 setTarget:object];
-	[s3 setAction:@selector(scrollerAction:)];
-	[v addSubview: s3];
+  s3 = [[NSScroller alloc] initWithFrame: sf3];
+  [s3 setArrowsPosition: NSScrollerArrowsMaxEnd];
+  [s3 setEnabled: YES];
+  [s3 setFloatValue: 0.5 knobProportion: 0.4];
+  [s3 setTarget: object];
+  [s3 setAction: @selector(scrollerAction:)];
+  [v addSubview: s3];
 	
-	s4 = [[NSScroller alloc] initWithFrame: sf4];
-	[s4 setArrowsPosition: NSScrollerArrowsMinEnd];
-	[s4 setEnabled:YES];
-	[s4 setTarget:object];
-	[s4 setAction:@selector(scrollerAction:)];
-	[v addSubview: s4];
+  s4 = [[NSScroller alloc] initWithFrame: sf4];
+  [s4 setArrowsPosition: NSScrollerArrowsMinEnd];
+  [s4 setEnabled: YES];
+  [s4 setTarget: object];
+  [s4 setAction: @selector(scrollerAction:)];
+  [v addSubview: s4];
 	
-	s5 = [[NSScroller alloc] initWithFrame: sf5];
-	[s5 setArrowsPosition: NSScrollerArrowsNone];
-	[s5 setEnabled:YES];
-	[s5 setTarget:object];
-	[s5 setAction:@selector(scrollerAction:)];
-	[v addSubview: s5];
+  s5 = [[NSScroller alloc] initWithFrame: sf5];
+  [s5 setArrowsPosition: NSScrollerArrowsNone];
+  [s5 setEnabled: YES];
+  [s5 setTarget: object];
+  [s5 setAction: @selector(scrollerAction:)];
+  [v addSubview: s5];
 	
-	[window setFrame: wf0 display: YES];
-	[window setTitle:@"GNUstep NSScroller"];
-	[window orderFront:nil];
+  [window setFrame: wf0 display: YES];
+  [window setTitle: @"GNUstep NSScroller"];
+  [window orderFront: nil];
 	
-	[theApp run];
+  {
+    NSMenu	*menu = [NSMenu new];
+
+    [menu addItemWithTitle: @"Quit"
+		    action: @selector(terminate:)
+	     keyEquivalent: @"q"];
+    [NSApp setMainMenu: menu];
+  }
+
+  [theApp run];
+      
+  [pool release];
 	
-	[pool release];
-	
-	return 0;
+  return 0;
 }

@@ -30,24 +30,24 @@
 
 @interface MyObject : NSObject
 {
-	NSMatrix* matrix;
+  NSMatrix* matrix;
 }
 @end
 
 @implementation MyObject
 - (void)setMatrix:(NSMatrix*)anObject
 {
-	matrix = anObject;
+  matrix = anObject;
 }
 
 - (void)setMatrixMode:sender
 {
-	[matrix setMode:[[sender selectedCell] tag]];
+  [matrix setMode:[[sender selectedCell] tag]];
 }
 
 - (void)setSelectionByRect:sender
 {
-	[matrix setSelectionByRect:[sender state]];
+  [matrix setSelectionByRect:[sender state]];
 }
 @end
 

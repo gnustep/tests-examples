@@ -227,6 +227,15 @@ main(int argc, char** argv, char** env)
 
   theApp = [NSApplication sharedApplication];
   [theApp setDelegate: [Controller new]];
+  {
+    NSMenu	*menu = [NSMenu new];
+
+    [menu addItemWithTitle: @"Quit"
+		    action: @selector(terminate:)
+	     keyEquivalent: @"q"];
+    [NSApp setMainMenu: menu];
+  }
+
   [theApp run];
 
   [pool release];

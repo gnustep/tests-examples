@@ -162,6 +162,15 @@ for rent."]];
 	[window setFrame:winRect display:YES];
 	[window orderFront:nil];
 	
+  {
+    NSMenu	*menu = [NSMenu new];
+
+    [menu addItemWithTitle: @"Quit"
+		    action: @selector(terminate:)
+	     keyEquivalent: @"q"];
+    [NSApp setMainMenu: menu];
+  }
+
 	[theApp run];
 	[pool release];
 

@@ -14,6 +14,15 @@ main(int argc, char **argv, char** env)
   
   app = [NSApplication sharedApplication];
 
+  {
+    NSMenu	*menu = [NSMenu new];
+
+    [menu addItemWithTitle: @"Quit"
+		    action: @selector(terminate:)
+	     keyEquivalent: @"q"];
+    [NSApp setMainMenu: menu];
+  }
+
   [[NSFontManager sharedFontManager] orderFrontFontPanel:nil];
 
   [app run];
