@@ -22,13 +22,7 @@
 #  If not, write to the Free Software Foundation,
 #  59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
-GNUSTEP_INSTALLATION_DIR = $(GNUSTEP_SYSTEM_ROOT)
-
-GNUSTEP_MAKEFILES = $(GNUSTEP_SYSTEM_ROOT)/Makefiles
-
 include $(GNUSTEP_MAKEFILES)/common.make
-
-include ../Version
 
 # The applications to be compiled
 TEST_APP_NAME = \
@@ -116,8 +110,6 @@ windows_OBJC_FILES = windows.m TestView.m
 
 
 -include GNUmakefile.preamble
-
--include GNUmakefile.local
 
 include $(GNUSTEP_MAKEFILES)/test-application.make
 include $(GNUSTEP_MAKEFILES)/aggregate.make

@@ -26,17 +26,7 @@
 #  If not, write to the Free Software Foundation,
 #  59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
-ifeq ($(GNUSTEP_SYSTEM_ROOT),)
-  GNUSTEP_SYSTEM_ROOT = $(TOPLEV)
-endif
-
-GNUSTEP_INSTALLATION_DIR = $(GNUSTEP_SYSTEM_ROOT)
-
-GNUSTEP_MAKEFILES = $(GNUSTEP_SYSTEM_ROOT)/Makefiles
-
 include $(GNUSTEP_MAKEFILES)/common.make
-
-include ../../Version
 
 # The application to be compiled
 TEST_APP_NAME = Edit
@@ -48,8 +38,6 @@ Edit_OBJC_FILES = Edit.m Controller.m Document.m
 Edit_RESOURCE_FILES = text.tiff Readme.txt Readme.rtf
 
 -include GNUmakefile.preamble
-
--include ../GNUmakefile.local
 
 include $(GNUSTEP_MAKEFILES)/test-application.make
 
