@@ -1,3 +1,7 @@
+1999-10-18  Lyndon Tremblay  <humasect@coolmail.com>
+
+	* nstextfields.m: Added to test NSTextField, NSSecureTextField.
+
 Tue Oct 12  1999  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* Calculator: Added icon by Andrew Lindesay; reduced button
