@@ -70,6 +70,15 @@ main(int argc, char **argv, char** env)
     [win setTitle:@"GNUstep GUI X/RAW Image View"];
     [win orderFront:nil];
 
+  {
+    NSMenu	*menu = [NSMenu new];
+
+    [menu addItemWithTitle: @"Quit"
+		    action: @selector(terminate:)
+	     keyEquivalent: @"q"];
+    [NSApp setMainMenu: menu];
+  }
+
     NSLog(@"Run application\n");
     [theApp run];
 
