@@ -195,50 +195,52 @@ setup_box (NSString *command, NSTextField *field, int tag, id target)
 }
 -(void) changePreference: (id)sender
 {
-  NSSavePanel *savePanel;
+  NSOpenPanel *openPanel;
   NSString    *file;
   int result;
 
-  savePanel = [NSSavePanel savePanel];
+  openPanel = [NSOpenPanel openPanel];
   
-  [savePanel setTitle: @"Choose Command"];
+  [openPanel setTitle: @"Choose Command"];
+  [openPanel setAllowsMultipleSelection: NO];
 
   switch ([sender tag]) 
     {
     case PING_TAG: 
-      [savePanel setPrompt: @"Ping Command:"];
+      [openPanel setPrompt: @"Ping Command:"];
       file = [pingCommand stringValue];
       break;
     case FINGER_TAG:
-      [savePanel setPrompt: @"Finger Command:"];
+      [openPanel setPrompt: @"Finger Command:"];
       file = [fingerCommand stringValue];
       break;
     case TRACEROUTE_TAG:
-      [savePanel setPrompt: @"Traceroute Command:"];
+      [openPanel setPrompt: @"Traceroute Command:"];
       file = [tracerouteCommand stringValue];
       break;
     default:
       return;
     }
 
-  [savePanel setDelegate: self];
+  [openPanel setDelegate: self];
 
-  result = [savePanel 
+  result = [openPanel 
 	     runModalForDirectory: [file stringByDeletingLastPathComponent]
-	     file: [file lastPathComponent]];
+	     file: [file lastPathComponent]
+	     types: nil];
 
   if (result == NSOKButton)
     {
       switch ([sender tag])
 	{
 	case PING_TAG: 
-	  [pingCommand setStringValue: [savePanel filename]];
+	  [pingCommand setStringValue: [openPanel filename]];
 	  break;
 	case FINGER_TAG:
-	  [fingerCommand setStringValue: [savePanel filename]];
+	  [fingerCommand setStringValue: [openPanel filename]];
 	  break;
 	case TRACEROUTE_TAG:
-	  [tracerouteCommand setStringValue: [savePanel filename]];
+	  [tracerouteCommand setStringValue: [openPanel filename]];
 	  break;
 	}
       [self set: self];
