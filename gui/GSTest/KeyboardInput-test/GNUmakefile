@@ -28,7 +28,7 @@ OBJCFLAGS += -Wall
 # We are creating a bundle
 #
 BUNDLE_NAME = KeyboardInput-test
-KeyboardInput-test_OBJC_FILES = KeyboardInput-test.m
+KeyboardInput-test_OBJC_FILES = KeyboardInput-test.m ConvertKeys.m
 KeyboardInput-test_PRINCIPAL_CLASS = KeyboardInputTest
 
 -include GNUmakefile.preamble
