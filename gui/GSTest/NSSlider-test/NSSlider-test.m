@@ -185,7 +185,7 @@
   hSlider = [[NSSlider alloc] initWithFrame: NSMakeRect (0, 0, 200, 14)];
   //  [hSlider setFrame: NSMakeRect (0, 0, 200, [hSlider knobThickness])];
   [hSlider setAutoresizingMask: (NSViewWidthSizable)];
-  //[hSlider setTitle: @"Number"];
+  [hSlider setTitle: @"Slider Title"];
   [hSlider setMinValue: 0];
   [hSlider setMaxValue: 1000];
   [hSlider setFloatValue: 500];
@@ -196,7 +196,7 @@
   vSlider = [[NSSlider alloc] initWithFrame: NSMakeRect (0, 0, 14, 200)];
   //  [vSlider setFrame: NSMakeRect (0, 0, [vSlider knobThickness], 200)];
   [vSlider setAutoresizingMask: (NSViewHeightSizable)];
-  //[vSlider setTitle: @"Number"];
+  //  [vSlider setTitle: @"Number"];
   [vSlider setMinValue: 0];
   [vSlider setMaxValue: 1000];
   [vSlider setFloatValue: 500];
