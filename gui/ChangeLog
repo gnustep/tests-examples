@@ -1,3 +1,8 @@
+Tue Oct 12  1999  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* Calculator: Added icon by Andrew Lindesay; reduced button
+ 	spacing (suggestion by Andrew Lindesay); added key equivalents.
+
 1999-10-07    <fedor@gnu.org>
 
 	* Calculator: New test from Nicola Pero <n.pero@mi.flashnet.it>
