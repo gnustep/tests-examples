@@ -13,24 +13,11 @@
 
 - (NSSize)sizeOfLabel:(BOOL)shouldTruncateLabel;
 {
-  NSSize rSize;
-  NSSize iSize;
+  NSSize rSize = [super sizeOfLabel: shouldTruncateLabel];
+  NSSize iSize = [[self image] size];
 
-  rSize.height = 12;
-
-  iSize = [[self image] size];
-
-  iSize.width += 2;
-
-  if (shouldTruncateLabel) {
-    // what is the algo to truncate?
-    rSize.width = iSize.width + [[item_tabview font] widthOfString:item_label];
-    return rSize;
-  } else {
-    rSize.width = iSize.width + [[item_tabview font] widthOfString:item_label];
-    return rSize;  
-  }
-  return NSZeroSize;
+  return NSMakeSize(rSize.width + iSize.width + 2, 
+		    MAX(rSize.height, iSize.height));
 }
 
 - (void)drawLabel:(BOOL)shouldTruncateLabel
@@ -40,18 +27,18 @@
   NSRect lRect;
   NSRect fRect;
 
-  item_rect = tabRect;
+  _rect = tabRect;
  
   DPSgsave(ctxt); 
 
   fRect = tabRect;
   
-  if (item_state == NSSelectedTab) {
+  if (_state == NSSelectedTab) {
     fRect.origin.y -= 1;
     fRect.size.height += 1;
     [[NSColor lightGrayColor] set];
     NSRectFill(fRect);
-  } else if (item_state == NSBackgroundTab) {
+  } else if (_state == NSBackgroundTab) {
     [[NSColor lightGrayColor] set];
     NSRectFill(fRect);
   } else {
@@ -61,16 +48,17 @@
  
   lRect = tabRect;
   lRect.origin.y += 3;
-  [[item_tabview font] set];
+  [[_tabview font] set];
 
-  [[self image] compositeToPoint:NSMakePoint(lRect.origin.x,
-    lRect.origin.y) operation: NSCompositeCopy];
+  [[self image] compositeToPoint: NSMakePoint(lRect.origin.x,
+					      lRect.origin.y) 
+		operation: NSCompositeSourceOver];
 
   lRect.origin.x += [[self image] size].width + 2;
   
   DPSsetgray(ctxt, 0);
   DPSmoveto(ctxt, lRect.origin.x, lRect.origin.y);
-  DPSshow(ctxt, [item_label cString]);
+  DPSshow(ctxt, [_label cString]);
 
   DPSgrestore(ctxt);  
 }
