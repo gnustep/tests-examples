@@ -1,0 +1,9 @@
+This test is for library developers -- library debugging purposes. 
+It is to be used by writing a simple test with the window you want 
+to test, and then encode/decode it with this test. 
+If you encode/decode a generic window, you are likely to get 
+a crash.  This does not mean necessarily that the library 
+is buggy or the code for this test is buggy.  This test 
+is *not* meant to manage a generic window: to make some use 
+of it, you should write your own window to test! 
+
