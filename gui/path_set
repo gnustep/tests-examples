@@ -1,0 +1,9 @@
+#!/bin/bash
+
+ld_base=/ps0/fedor/src/objc/gstep
+ld_post=shared_debug_obj/sparc/solaris2.6/gnu-gnu-gnu-xgps
+
+LD_LIBRARY_PATH=$ld_base/base/src/$ld_post:$ld_base/extensions/extensions/$ld_post:$ld_base/gui/Source/$ld_post:$ld_base/gui/Model/$ld_post:$ld_base/xgps/Source/$ld_post:/usr/openwin/lib
+export LD_LIBRARY_PATH
+
+printenv LD_LIBRARY_PATH
