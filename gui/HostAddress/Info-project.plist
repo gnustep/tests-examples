@@ -1,0 +1,12 @@
+{
+    ApplicationDescription = "NSHost example";
+    ApplicationIcon = "";
+    ApplicationName = HostAddress;
+    ApplicationRelease = "0.2";
+    Authors = ("Philippe C.D. Robert <phr@projectcenter.ch>");
+    Copyright = "Copyright (C) 2000-2001 by Philippe C.D. Robert";
+    CopyrightDescription = "Released under the GNU GPL";
+    FullVersionID = "0.2";
+    NOTE = "Automatically generated!";
+    URL = "http://www.nice.ch/~phip/softcorner.html";
+}
