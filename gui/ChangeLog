@@ -1,3 +1,10 @@
+Sun Feb 13 01:11:31 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* CurrencyConverter/CurrencyConverter.m ([-init]): Use AUTORELEASE
+	instead of -autorelease.  ([-dealloc]): Use RELEASE instead of
+	-release. (main): AUTORELEASE the created menus.
+	* Calculator/main.m (main): AUTORELEASE the created menus.
+
 Thu Feb 10 09:55:00 2000  Richard Frith-Macdonald <richard@brainstorm.co.uk>
 
 	* nsscroller.m: ([MyObject -scrollerAction:]) Move the knob when the
