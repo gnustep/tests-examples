@@ -151,7 +151,8 @@ void createMenu()
 	   forItem: [menu itemWithTitle: @"File"]];
 
   [file addItemWithTitle: @"Open..."
-		  action: action
+		  action: @selector(openDocument:)
+//		  action: @selector(open:)
 	   keyEquivalent: @"o"];
 
   [file addItemWithTitle: @"New Application"
@@ -243,6 +244,12 @@ void createMenu()
   [base addItemWithTitle: @"Unscript"
   	          action: @selector(unscript:)
 	   keyEquivalent: @""];
+  [format addItemWithTitle: @"Copy Font" 
+	  action: @selector(copyFont:)
+	  keyEquivalent: @"3"];
+  [format addItemWithTitle: @"Paste Font" 
+	  action: @selector(pasteFont:) 
+	  keyEquivalent: @"4"];
 
   /*
    * Create the text submenu
@@ -260,6 +267,15 @@ void createMenu()
   [text addItemWithTitle: @"Align Right"
 		  action: @selector(alignRight:)
 	   keyEquivalent: @"}"];
+  [text addItemWithTitle: @"Show Ruler" 
+	action: @selector(toggleRuler:) 
+	keyEquivalent: @""];
+  [text addItemWithTitle: @"Copy Ruler" 
+	action: @selector(copyRuler:) 
+	keyEquivalent: @"1"];
+  [text addItemWithTitle: @"Paste Ruler" 
+	action: @selector(pasteRuler:) 
+	keyEquivalent: @"2"];
 
   /*
    * Create the edit submenu

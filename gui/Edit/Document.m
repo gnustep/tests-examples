@@ -89,6 +89,10 @@ Document *document = [[self allocWithZone:zone] initWithPath:nil
     return (delegate && [delegate isKindOfClass:[Document class]]) ? delegate : nil;
 }
 
++ (Document *)documentForPath:(NSString *)path {
+    return nil;
+}
+
 + (BOOL)openDocumentWithPath:(NSString *)filename encoding:(int)encoding {
     Document *document = [self documentForPath:filename];
     if (!document) {

@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import <AppKit/AppKit.h>
+#include <AppKit/NSDocument.h>
 
 @class NSTextView;
 @class NSTextStorage;
@@ -18,7 +19,7 @@ extern const int *SupportedEncodings (void);
 /* Set up an encoding popup with the specified parameters. If the popup contains 1 item, it's also initialized with the supported encodings. */
 extern void SetUpEncodingPopupButton(NSPopUpButton *popup, int selectedEncoding, BOOL includeDefaultItem);
 
-@interface Document : NSObject {
+@interface Document : NSDocument {
     NSTextStorage *textStorage;
     NSString *documentName;		/* If nil, never saved */
     NSScrollView *scrollView;		/* ScrollView containing document */

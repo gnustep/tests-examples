@@ -1,6 +1,8 @@
 #import <Foundation/Foundation.h>
+#import <AppKit/AppKit.h>
+#include <AppKit/NSDocumentController.h>
 
-@interface Controller : NSObject {
+@interface Controller : NSDocumentController {
     id infoPanel;
 }
 

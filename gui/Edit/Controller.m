@@ -81,9 +81,15 @@ unsigned int style = NSTitledWindowMask | NSClosableWindowMask
 	backColor = [NSColor colorWithCalibratedWhite:0.85 alpha:1.0]; // off white
 	[textView setBackgroundColor:backColor];					
 //	[textView setBackgroundColor:[NSColor whiteColor]];					
+/*
 	string = [NSString stringWithContentsOfFile:[[[NSBundle mainBundle] 
 			  bundlePath] stringByAppendingString:@"/Resources/Readme.txt"]];
 	[textView setString:string];
+*/
+	string = [[[NSBundle mainBundle] 
+		      bundlePath] stringByAppendingString:@"/Resources/Readme.rtf"];
+
+	[textView readRTFDFromFile:string];
 	[scrollView setDocumentView:textView];
 	[[window contentView] addSubview: scrollView];
 	[window setDelegate: document];
