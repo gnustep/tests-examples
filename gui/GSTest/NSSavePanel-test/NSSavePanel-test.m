@@ -42,6 +42,7 @@
   [self setAutoresizingMask: NSViewWidthSizable];
   return self;
 }
+@end
 
 @interface NSSavePanelTest: NSObject <GSTest>
 {
