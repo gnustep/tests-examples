@@ -1,3 +1,7 @@
+Sat Jan 26 17:46:03 CET 2002 Philippe C.D. Robert <phr@3dkit.org>
+
+        * Updated the ProjectCenter file
+
 Tue Jan  8 16:18:25 2002  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* main.m (createMenu): Explicitly call setWindowsMenu: as required
