@@ -1,3 +1,8 @@
+Tue Sep  5 00:55:55 2000  Nicola Pero  <nicola@brainstorm.co.uk>
+
+	* EncodingDecoding-test/EncodingDecoding-test.m ([-openWindow:]):
+	RETAIN decoded window.
+
 Sun Sep  3 21:28:46 2000  Nicola Pero  <nicola@brainstorm.co.uk>
 
 	* NSSlider-test/NSSlider-test.m ([NSSliderTest -init]): Set title 
