@@ -1,3 +1,23 @@
+2003-07-26  Fred Kiefer <FredKiefer@gmx.de>
+
+	* Old/GNUmakefile
+	Added some more of the old examples.
+	* Old/matrix.m
+	* Old/nscombobox.m
+	* Old/nsimage.m
+	* Old/nsimagecell.m
+	* Old/nsprogressindicator.m
+	* Old/nsscroller.m
+	* Old/nstabview.m
+	* Old/popupbuttons.m
+	* Old/ImageView.h
+	* Old/ImageView.m
+	* Old/TestView.h
+	* Old/TestView.m
+	* Old/ColorView.h
+	* Old/ColorView.m
+	Made examples working again.
+
 2003-04-24  Adam Fedor  <fedor@gnu.org>
 
 	* Calculator/CalculatorInfo.plist: Add NSIcon (patch from
