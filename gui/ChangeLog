@@ -1,3 +1,14 @@
+Thu Nov 25 05:26:29 1999  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	New little demo app showing text fields working.
+	* CurrencyConverter: New directory.
+	* CurrencyConverter/GNUmakefile: New file.
+	* CurrencyConverter/CurrencyConverter.m: New file.
+	* CurrencyConverter/CurrencyConverter.h: New file.
+
+	* Calculator/GNUmakefile.postamble: Removed file, so that
+ 	Calculator.app remains in its directory after compile.
+	
 1999-11-22  Richard frith-Macdonald <richard@brainstorm.co.uk>
 
 	* GNUstepInstaller.m; Use [-orderFrontRegardless] before app is active.
