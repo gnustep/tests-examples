@@ -1,0 +1,11 @@
+Fri May 17 16:16:30 2002  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* FractalView.h: Intial checkin. 
+	* FractalView.m: Idem.
+	* FractalWindow.h: Idem.
+	* FractalWindow.m: Idem.
+	* Controller.h: Idem.
+	* Controller.m: Idem.
+	* main.m: Idem.
+	* GNUmakefile: Idem.
+	* GFractalInfo.plist: Idem.

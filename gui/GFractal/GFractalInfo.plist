@@ -1,0 +1,10 @@
+{
+  ApplicationName = "GFractal";
+  ApplicationDescription = "A GNUstep Fractal Viewer";
+  ApplicationRelease = "Fractal 0.1";
+  FullVersionID = "0.1, May 2002";
+  Authors = ("Marko Riedel <mriedel@neuearbeit.de>");
+  Copyright = "Copyright (C) 2002 Free Software Foundation, Inc.";
+  CopyrightDescription = "Released under the GNU General Public License 2.0";
+}
+
