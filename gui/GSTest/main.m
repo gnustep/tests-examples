@@ -221,6 +221,10 @@ main (void)
 			keyEquivalent:@""];
    windowsMenu = [NSMenu new];
    [mainMenu setSubmenu: windowsMenu forItem: menuItem];
+   // Hide MenuItem
+   [mainMenu addItemWithTitle: @"Hide" 
+	     action: @selector (hide:)
+	     keyEquivalent: @"h"];	
    // Quit MenuItem
    [mainMenu addItemWithTitle: @"Quit" 
 	     action: @selector (terminate:)
