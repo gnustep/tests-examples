@@ -5,13 +5,14 @@
   Authors = ("Fred Kiefer <fredkiefer@gmx.de>");
   Copyright = "Copyright (c) 2000 Fred Kiefer <fredkiefer@gmx.de>";
   CopyrightDescription = "This program is released under the GNU General Public License"; 
+  NSIcon = Ink_app;
   NSTypes = (
         {
              NSName = "rtf";
              NSHumanReadableName = "RTF Document";
              NSUnixExtensions = ("rtf");
              NSDOSExtensions = ("rtf");
-	     NSIcon = FileIcon_rtf_Tile.jpg;
+	     NSIcon = FileIcon_rtf_Tile;
              NSRole = Editor;
              NSDocumentClass = Document;
         },

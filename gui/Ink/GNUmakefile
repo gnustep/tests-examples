@@ -27,7 +27,7 @@ OBJCFLAGS += -Wall
 
 APP_NAME = Ink
 
-Ink_RESOURCE_FILES = Ink_app_Tile.jpg Readme.rtf
+Ink_RESOURCE_FILES = Ink_app.tiff Ink_app_Tile.jpg Readme.rtf
 
 Ink_HEADERS = 
 

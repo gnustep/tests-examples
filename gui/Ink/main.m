@@ -53,11 +53,6 @@
   NSMenu *print;
   NSMenu *services;
   NSMenu *windows;
-  NSImage *image;
-
-  // Set the icon
-  image = [NSImage imageNamed: @"Ink_app_Tile"];
-  [NSApp setApplicationIconImage: image];
 
   //	Create the app menu
   menu = [NSMenu new];
