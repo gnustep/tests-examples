@@ -22,10 +22,11 @@
 
 - (void)setupInitialTextViewSharedState 
 {
-NSText *textView = [self firstTextView];
+  NSText *textView = [self firstTextView];
     
-//    [textView setUsesFontPanel:YES];
-    [textView setDelegate:self];
+  [textView setUsesFontPanel:YES];
+  [textView setDelegate:self];
+  [textView setRichText: YES];
 //    [self setRichText:[[Preferences objectForKey:RichText] boolValue]];
 //    [self setHyphenationFactor:0.0];
 }
@@ -255,14 +256,23 @@ static NSView *encodingAccessory = nil;
 
 - (void)save:(id)sender 
 {
-    (void)[self saveDocument:NO];
+  (void)[self saveDocument:NO];
+}
+
+- (BOOL)saveDocument:(BOOL)showSavePanel
+{
+  NSLog(@"Save called!");
+  [[self firstTextView] writeRTFDToFile: @"test.rtf" atomically: NO];
+  return YES;
 }
 
 /* Window delegation messages */
 
 - (BOOL)windowShouldClose:(id)sender 
 {
-    return [self canCloseDocument];
+
+    //return [self canCloseDocument];
+    return YES;
 }
 
 - (void)windowWillClose:(NSNotification *)notification 
@@ -276,10 +286,10 @@ static NSView *encodingAccessory = nil;
 
 - (void)textDidChange:(NSNotification *)textObject 
 {
+  //[self saveDocument: NO];
     if (!isDocumentEdited) {
         [self setDocumentEdited:YES];
     }
 }
 
 @end
-
