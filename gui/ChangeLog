@@ -1,3 +1,9 @@
+Fri Jul  6 18:04:47 2001  Nicola Pero  <nicola@brainstorm.co.uk>
+
+	* Ink/Document.m ([-dataRepresentationOfType:]): If type is nil,
+	use text as a default rather than crashing (suggestion by Ian
+	Mondragon <copal@dragonhelix.org>).
+
 Wed Jul  4 18:32:22 2001  Nicola Pero  <nicola@brainstorm.co.uk>
 
 	* Ink/Document.m ([Document -dealloc]): Call super dealloc.
