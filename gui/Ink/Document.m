@@ -257,9 +257,12 @@
   RELEASE(textView);
   [window setContentView: scrollView];
   RELEASE(scrollView);
+
   // Make the Document the delegate of the window
   [window setDelegate: self];
 
+  // Make the text view the first responder
+  [window makeFirstResponder: textView];
   [window display];
   [window orderFront: nil];
 
