@@ -1,3 +1,10 @@
+Thu Apr 11 23:04:35 2002  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* PreferencesController.m ([PreferencesController -init]): Updated
+	for newer gnustep-gui - no need to fixup button size computer
+	by the library.
+	* FingerWindow.m ([FingerWindow -init]): Idem.
+	
 Tue Jan  8 16:14:46 2002  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* main.m (main): Set the windows menu.
