@@ -28,6 +28,7 @@ OBJCFLAGS += -Wall
 # Each test is a bundle subproject, in its own dir
 #
 SUBPROJECTS = \
+  EncodingDecoding-test \
   GSHbox-test \
   KeyboardInput-test \
   NSBox-test \
