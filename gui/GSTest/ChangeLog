@@ -1,3 +1,8 @@
+Thu Jul 20 01:53:27 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* NSWindowStyleMask: New test.
+	* testList.h (testList): Added test.
+
 Tue Jul 18 17:46:12 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* KeyboardInput-test/KeyboardInput-test.m ([-init]): Fixed min
