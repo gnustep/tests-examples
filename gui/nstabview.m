@@ -58,6 +58,14 @@ id pool = [NSAutoreleasePool new];
         item = [[NSTabViewItem alloc] initWithIdentifier:@"Urph"];
         [item setLabel:@"Natalie"];
         [tabView addTabViewItem:item];
+
+        item = [[NSTabViewItem alloc] initWithIdentifier:@"Urph2"];
+        [item setLabel:@"Natalia Conquistadori"];
+        [tabView addTabViewItem:item];
+
+        item = [[NSTabViewItem alloc] initWithIdentifier:@"Urph3"];
+        [item setLabel:@"Me"];
+        [tabView addTabViewItem:item];
 	
 	[window setTitle:@"NSTabView"];
 	[window setFrame:winRect display:YES];
