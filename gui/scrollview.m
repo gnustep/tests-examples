@@ -150,8 +150,8 @@ main(int argc, char **argv, char** env)
   [[window contentView] addSubview:zoomMatrix];
 
   [window setFrame:winRect display:YES];
+  [window center];
   [window makeKeyAndOrderFront:nil];
-  [window orderFront:nil];
 
   [theApp run];
   [pool release];

@@ -29,6 +29,10 @@
 #import <AppKit/AppKit.h>
 #import <AppKit/NSTabView.h>
 
+#include "TestView.h"
+#include "ColorView.h"
+
+
 int
 main(int argc, char **argv, char** env)
 {
@@ -39,6 +43,8 @@ NSTabViewItem *item;
 NSRect winRect = {{100, 100}, {300, 300}};
 NSRect tabViewRect = {{10, 10}, {280, 280}};
 id pool = [NSAutoreleasePool new];
+id aView;
+id label;
 
 #if LIB_FOUNDATION_LIBRARY
 	[NSProcessInfo initializeWithArguments:argv count:argc environment:env];
@@ -55,17 +61,61 @@ id pool = [NSAutoreleasePool new];
 	tabView = [[NSTabView alloc] initWithFrame:tabViewRect];
 	[[window contentView] addSubview:tabView];
 
+	aView = [[NSView alloc] initWithFrame:[tabView contentRect]];
+  label = [[NSTextField alloc] initWithFrame:[aView frame]];
+  [label setEditable:NO];
+  [label setSelectable:NO];
+  [label setBezeled:NO];
+  [label setBordered:NO];
+  [label setBackgroundColor:[NSColor blueColor]];
+  [label setAlignment:NSCenterTextAlignment];
+  [label setStringValue:[NSString stringWithCString:"Natalie is a
+beautiful name... no?"]];
+	[aView addSubview:label];
+	[label release];
+
         item = [[NSTabViewItem alloc] initWithIdentifier:@"Urph"];
         [item setLabel:@"Natalie"];
+	[item setView:aView];
         [tabView addTabViewItem:item];
+	[aView release];
+
+	aView = [[NSView alloc] initWithFrame:[tabView contentRect]];
+  label = [[NSTextField alloc] initWithFrame:[aView frame]];
+  [label setEditable:NO];
+  [label setSelectable:NO];
+  [label setBezeled:NO];
+  [label setBordered:NO];
+  [label setBackgroundColor:[NSColor redColor]];
+  [label setAlignment:NSCenterTextAlignment];
+  [label setStringValue:[NSString stringWithCString:"This one sounds dangerous... hehe"]];
+	[aView addSubview:label];
+	[label release];
 
         item = [[NSTabViewItem alloc] initWithIdentifier:@"Urph2"];
         [item setLabel:@"Natalia Conquistadori"];
+	[item setView:aView];
         [tabView addTabViewItem:item];
+	[aView release];
+
+	aView = [[NSView alloc] initWithFrame:[tabView contentRect]];
+  label = [[NSTextField alloc] initWithFrame:[aView frame]];
+  [label setEditable:NO];
+  [label setSelectable:NO];
+  [label setBezeled:NO];
+  [label setBordered:NO];
+  [label setBackgroundColor:[NSColor greenColor]];
+  [label setAlignment:NSCenterTextAlignment];
+  [label setStringValue:[NSString stringWithCString:"GNUstep hacker
+for rent."]];
+	[aView addSubview:label];
+	[label release];
 
         item = [[NSTabViewItem alloc] initWithIdentifier:@"Urph3"];
         [item setLabel:@"Me"];
+	[item setView:aView];
         [tabView addTabViewItem:item];
+	[aView release];
 	
 	[window setTitle:@"NSTabView"];
 	[window setFrame:winRect display:YES];
