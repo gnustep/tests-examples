@@ -86,7 +86,7 @@
 	theFrame.size.width, theFrame.size.height,
 	theBounds.origin.x, theBounds.origin.y,
 	theBounds.size.width, theBounds.size.height);
-  [self addCursorRect:bounds cursor: the_cursor];
+  [self addCursorRect: theBounds cursor: the_cursor];
 }
 
 @end

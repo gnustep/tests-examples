@@ -1,3 +1,7 @@
+2000-01-14  Adam Fedor  <fedor@gnu.org>
+
+	* TestView.m, ColocView.m: Fixes for changes in ivars.
+
 Thu Jan 13 11:59:41 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* CurrencyConverter/CurrencyConverter.m ([CurrencyConverter -init]): 

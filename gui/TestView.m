@@ -83,9 +83,7 @@
   static NSView	*fv;
   static NSView	*uv;
 
-  NSDebugLog(@"Painting TestView %f %f %f %f\n", bounds.origin.x,
-	     bounds.origin.y,
-	     bounds.size.width, bounds.size.height);
+  NSDebugLog(@"Painting TestView %@\n", NSStringFromRect([self bounds]));
 
   NSRectClip(rect);
   [orange set];
