@@ -30,16 +30,21 @@
 #import <AppKit/AppKit.h>
 #include "TestView.h"
 
-//
-// my main for the test app
-//
-int
-main(int argc, char **argv, char** env)
+@interface windowsController : NSObject
 {
-  NSApplication *theApp;
+  id textField;
+  id textField1;
+}
+
+@end
+
+@implementation windowsController
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
   NSWindow *w0, *w1, *w2;
-  NSRect wf0 = {{0, 0}, {500, 500}};
-  NSRect wf2 = {{0, 0}, {300, 500}};
+  NSRect wf0 = {{250, 400}, {500, 500}};
+  NSRect wf1 = {{500, 100}, {500, 500}};
+  NSRect wf2 = {{50, 50}, {300, 500}};
   TestView *v;
   NSView *v1, *v2;
   NSButton *mpush, *ponpoff, *toggle, *swtch, *radio, *mchange, *onoff;
@@ -58,17 +63,6 @@ main(int argc, char **argv, char** env)
   NSRect tf1 = {{25, 100}, {200, 50}};
   NSRect tf2 = {{25, 175}, {200, 50}};
   NSRect tf3 = {{25, 250}, {200, 50}};
-  CREATE_AUTORELEASE_POOL(pool);
-
-#if LIB_FOUNDATION_LIBRARY
-  [NSProcessInfo initializeWithArguments:argv count:argc environment:env];
-#endif
-
-#ifndef NX_CURRENT_COMPILER_RELEASE
-    initialize_gnustep_backend();
-#endif
-
-  theApp = RETAIN([NSApplication sharedApplication]);
 
   //
   // Windows
@@ -129,7 +123,7 @@ main(int argc, char **argv, char** env)
   [v1 addSubview: mchange];
   [v1 addSubview: onoff];
 
-  [w1 setFrame: wf0 display: YES];
+  [w1 setFrame: wf1 display: YES];
 
   w2 = [[NSWindow alloc] init];
   [w2 setTitle: @"Third Window"];
@@ -157,10 +151,6 @@ main(int argc, char **argv, char** env)
 
   [w2 setFrame: wf2 display: YES];
 
-  [w0 orderFrontRegardless];
-  [w1 orderFrontRegardless];
-  [w2 orderFrontRegardless];
-
   {
     NSMenu	*menu = [NSMenu new];
 
@@ -170,13 +160,34 @@ main(int argc, char **argv, char** env)
     [NSApp setMainMenu: menu];
   }
 
-  RELEASE(pool);
-  {
-    CREATE_AUTORELEASE_POOL(pool);
-    AUTORELEASE(theApp);
-    [theApp run];
-    RELEASE(pool);
-  }
+  [w0 orderFrontRegardless];
+  [w1 orderFrontRegardless];
+  [w2 orderFrontRegardless];
+
+}
+
+
+//
+// my main for the test app
+//
+int
+main(int argc, char **argv, char** env)
+{
+  id pool = [NSAutoreleasePool new];
+  NSApplication *theApp;
+
+#if LIB_FOUNDATION_LIBRARY
+  [NSProcessInfo initializeWithArguments:argv count:argc environment:env];
+#endif
+#ifndef NX_CURRENT_COMPILER_RELEASE
+    initialize_gnustep_backend();
+#endif
+
+  theApp = [NSApplication sharedApplication];
+  [theApp setDelegate: [windowsController new]];
+  [theApp run];
+
+  [pool release];
 
   return 0;
 }
