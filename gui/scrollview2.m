@@ -32,6 +32,7 @@
 @interface Controller : NSObject
 {
   NSMatrix* matrix;
+  NSScrollView* scrollView;
 }
 
 @end
@@ -71,7 +72,7 @@ id cell;
   [matrix addRow];
   [self setButtonTitles];
   [matrix sizeToCells];
-  [matrix setNeedsDisplay: YES];
+  [scrollView setNeedsDisplay: YES];
 }
 
 - (void) addColumn: sender
@@ -79,15 +80,16 @@ id cell;
   [matrix addColumn];
   [self setButtonTitles];
   [matrix sizeToCells];
-  [matrix setNeedsDisplay: YES];
+  [scrollView setNeedsDisplay: YES];
 }
 
 - (void) removeRow: sender
 {
   if ([matrix selectedRow] >= 0)
     {
-      [matrix setNeedsDisplay: YES];
+      [scrollView setNeedsDisplay: YES];
       [matrix removeRow: [matrix selectedRow]];
+      [self setButtonTitles];
       [matrix sizeToCells];
     }
 }
@@ -97,9 +99,11 @@ id cell;
   if ([matrix selectedColumn] >= 0)
     {
       [matrix removeColumn: [matrix selectedColumn]];
-      [matrix setNeedsDisplay: YES];
+      [scrollView setNeedsDisplay: YES];
+      [self setButtonTitles];
       [matrix sizeToCells];
     }
+
 }
 
 - (void) setMatrixMode: sender
@@ -120,7 +124,6 @@ id cell;
 - (void) applicationDidFinishLaunching: (NSNotification *)aNotification
 {
   NSWindow* window;
-  NSScrollView* scrollView;
   Controller* controller = self;
   NSMatrix* newMatrix;
   NSMatrix* selectionMatrix;
