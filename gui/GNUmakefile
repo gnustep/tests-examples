@@ -39,7 +39,6 @@ include ../Version
 
 # The applications to be compiled
 TEST_APP_NAME = \
-TestApp \
 		GNUstepInstaller \
 		alertpanel \
 		buttons \
