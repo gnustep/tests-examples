@@ -1,3 +1,8 @@
+2000-04-18  Adam Fedor  <fedor@gnu.org>
+
+	* ImageView.m (-initWithFile:): Return nil if image
+	not loaded.
+
 2000-04-17  Fred Kiefer <FredKiefer@gmx.de>
 	* Edit/Controller.m: Removed RTF setting, now become window delegate
 	* Edit/Edit.m: Added entries in menu for additional format test

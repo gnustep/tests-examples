@@ -61,6 +61,8 @@ main(int argc, char **argv, char** env)
 
     theApp = [NSApplication sharedApplication];
     v = [[ImageView alloc] initWithFile: [args objectAtIndex:1]];
+    if (v == nil)
+      return 0;
     wf0.size = [v imageSize];
 
     NSLog(@"Create a window\n");
