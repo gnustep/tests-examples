@@ -138,7 +138,7 @@ write_image (NSImage *image)
     }
   [mwin orderFront: sender];
 
-  wf0 = NSMakeRect((200.0*random()/RAND_MAX),(200.0*random()/RAND_MAX),100,100);
+  wf0 = NSMakeRect((200.0*rand()/RAND_MAX),(200.0*rand()/RAND_MAX),100,100);
   NSLog(@"Lock on %@ in rect %@", mview, NSStringFromRect(wf0));
   [mview lockFocus];
   PSsetgray(0);

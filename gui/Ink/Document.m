@@ -242,6 +242,7 @@
 
   [textView setBackgroundColor: [NSColor whiteColor]];
   [textView setRichText: YES];
+  [textView setImportsGraphics: YES];
   [textView setUsesFontPanel: YES];
   [textView setDelegate: self];
   [textView setHorizontallyResizable: NO];
@@ -259,6 +260,7 @@
   [scrollView setDocumentView: textView];
   RELEASE(textView);
   [scrollView setHasHorizontalRuler: YES];
+  [scrollView setHasVerticalRuler: YES];
   [window setContentView: scrollView];
   RELEASE(scrollView);
 

@@ -1,3 +1,12 @@
+2004-09-28  Fred Kiefer <FredKiefer@gmx.de>
+
+	* Classes/NSImage/nsimage.m: Use rand() instead of random() as
+	this is more portable.
+	* Ink/Document.m ([Document -makeWindow]): Set text view to import
+	graphics and added vertical ruler.
+	* Old/nscombobox.m: Added one more combobox in window.
+	
+	
 2004-09-28  Adam Fedor  <fedor@gnu.org>
 
 	* Classes/NSPanelTest/NSPanelTest.m: Make NSPanelTest an application 

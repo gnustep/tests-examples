@@ -45,11 +45,10 @@ main(int argc, char **argv, char** env)
   NSComboBox	*sourceCombo,*staticCombo;
   NSMenu	*menu;
   MyObject	*trigger;
-  NSRect winRect = {{100, 100}, {300, 150}};
+  NSRect winRect = {{100, 100}, {300, 200}};
   NSRect sourceComboRect = {{40,60},{150,20}};
   NSRect staticComboRect = {{40,90},{200,20}};
   NSAutoreleasePool* pool;
-  id target;
 
 #if LIB_FOUNDATION_LIBRARY
   [NSProcessInfo initializeWithArguments:argv count:argc environment:env];
@@ -71,8 +70,6 @@ main(int argc, char **argv, char** env)
 
   [window setFrame:winRect display:YES];
 
-  target = [[MyObject new] autorelease];
-
   sourceCombo = [[[NSComboBox alloc] initWithFrame:sourceComboRect]
 		   autorelease];
   staticCombo = [[[NSComboBox alloc] initWithFrame:staticComboRect]
@@ -82,6 +79,18 @@ main(int argc, char **argv, char** env)
   trigger = [[MyObject alloc] initWithSourceCombo:sourceCombo
 			      staticCombo:staticCombo];
 
+  {
+    NSComboBox *extr;
+
+    extr = [[NSComboBox alloc] 
+	       initWithFrame: NSMakeRect(40, 120, 125, 20)];
+    
+    [extr addItemsWithObjectValues:
+	      [NSArray arrayWithObjects: @"un", @"deux", @"trois", @"quatre", nil]];
+    
+    [[window contentView] addSubview: extr];
+    RELEASE(extr);
+  }
   menu = [NSMenu new];
   [menu addItemWithTitle:@"Quit the Test" action: @selector(terminate:)
 	keyEquivalent: @"q"];
