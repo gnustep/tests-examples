@@ -1,0 +1,6 @@
+*.app
+*.bundle
+*.debug
+*.profile
+*obj
+.gdbinit
