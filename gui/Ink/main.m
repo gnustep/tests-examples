@@ -32,7 +32,7 @@
 
 - (BOOL)application:(NSApplication *)application openFile:(NSString *)fileName;
 - (void) applicationWillFinishLaunching: (NSNotification *)not;
-- (void) applicationDidFinishLaunching: (NSNotification *)not;
+//- (void) applicationDidFinishLaunching: (NSNotification *)not;
 @end
 
 @implementation MyDelegate : NSObject 

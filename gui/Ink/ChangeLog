@@ -1,3 +1,9 @@
+2003-04-24  Adam Fedor  <fedor@gnu.org>
+
+	* InkInfo.plist: Add new Icon images
+	* GNUmakefile: Install new images.
+	(Icons and patches from Rob Burns <rburns@softhome.net>).
+
 2003-04-09  Adam Fedor  <fedor@gnu.org>
 
 	* main.m: In application delegate implement ([application:openFile:])

@@ -13,7 +13,7 @@
              NSUnixExtensions = ("rtf");
              NSDOSExtensions = ("rtf");
 	     NSMIMETypes = ("text/rtf");
-	     NSIcon = FileIcon_rtf_Tile;
+	     NSIcon = FileIcon_rtf;
              NSRole = Editor;
              NSDocumentClass = Document;
         },
@@ -22,7 +22,7 @@
              NSHumanReadableName = "RTFD Document";
              NSUnixExtensions = ("rtfd");
              NSDOSExtensions = ("rtfd");
-	     NSIcon = FileIcon_rtf_Tile;
+	     NSIcon = FileIcon_rtf;
              NSRole = Editor;
              NSDocumentClass = Document;
         },
@@ -32,6 +32,7 @@
              NSUnixExtensions = ("txt");
              NSDOSExtensions = ("txt");
 	     NSMIMETypes = ("text/plain");
+             NSIcon = FileIcon_txt;
              NSRole = Editor;
              NSDocumentClass = Document;
         }
