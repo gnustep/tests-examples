@@ -28,7 +28,6 @@
 
 #import <AppKit/AppKit.h>
 #include "TestView.h"
-#include "gnustep/xgps/gpsops.h"
 #include <config.h>
 
 extern void XRlineto(float x, float y);
