@@ -2,6 +2,7 @@
 
 	* NSTableView-test/NSTableView-test.m : 
 	Modified to use drag'n'drop.
+	keys, values and test are now declared as static.
 	* NSOutlineView-test/NSOutlineView-test.m 
 	Modified to use drag'n'drop.
 	

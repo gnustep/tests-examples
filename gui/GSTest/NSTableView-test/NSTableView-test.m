@@ -25,12 +25,12 @@
 #include <AppKit/GSVbox.h>
 #include "../GSTestProtocol.h"
 
-NSString *NSTableViewTestPboardType = @"NSTableViewTestPboardType";
+static NSString *NSTableViewTestPboardType = @"NSTableViewTestPboardType";
 
 static NSArray *draggedRows;
 
 // Something to show in the table
-NSString *keys[20] = 
+static NSString *keys[20] = 
 { 
   @"From",
   @"Reply-To",
@@ -53,7 +53,7 @@ NSString *keys[20] =
   @"More (I)",
   @"More (J)"
 }; 
-NSString *values[20] = 
+static NSString *values[20] = 
 { 
   @"Nicola Pero <n.pero@mi.flashnet.it>",
   @"Nicola Pero <n.pero@mi.flashnet.it>",
@@ -76,7 +76,7 @@ NSString *values[20] =
   @"Info (I)",
   @"Info (J)"
 };
-NSString *test[20] = 
+static NSString *test[20] = 
 { 
   @"Other info (1)",
   @"Other info (2)",
