@@ -25,6 +25,12 @@
 
 @implementation MyView
 
+-(void) dealloc
+{
+  RELEASE(comp);
+  [super dealloc];
+}
+
 - (NSImage *) compositeImage
 {
   NSRect frame;

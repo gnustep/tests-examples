@@ -235,6 +235,14 @@ static NSString *test[20] =
   return self;
 }
 
+-(void) dealloc
+{
+  RELEASE(win);
+  RELEASE(keysArray);
+  RELEASE(valuesArray);
+  RELEASE(testArray);
+  [super dealloc];
+}
 -(void) restart
 {
   [[self class] new];
@@ -250,7 +258,7 @@ static NSString *test[20] =
  objectValueForTableColumn: (NSTableColumn *)aTableColumn 
 		       row:(int)rowIndex
 {
-  if (rowIndex < 0 || rowIndex >= [keysArray count])
+  if (rowIndex < 0 || rowIndex >= (int)[keysArray count])
     {
       NSLog (@"BUG: We were asked for rowIndex: %d", rowIndex);
       return nil;
@@ -288,7 +296,7 @@ static NSString *test[20] =
       toPasteboard: (NSPasteboard *) pboard
 {
   NSMutableArray *propertyList;
-  int i;
+  unsigned int i;
 
   draggedRows = RETAIN(rows);
   propertyList = [[NSMutableArray alloc] initWithCapacity: 
