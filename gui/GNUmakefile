@@ -50,6 +50,7 @@ TEST_APP_NAME = \
 		nsbrowsercell \
 		nscursor \
 		nsimage \
+		nsimagecell \
 		nsscroller \
 		scrollview \
 		scrollview2 \
@@ -69,6 +70,7 @@ nsbrowser_OBJC_FILES = nsbrowser.m
 nsbrowsercell_OBJC_FILES = nsbrowsercell.m
 nscursor_OBJC_FILES = nscursor.m ColorView.m
 nsimage_OBJC_FILES = nsimage.m ImageView.m
+nsimagecell_OBJC_FILES = nsimagecell.m
 nsscroller_OBJC_FILES = nsscroller.m
 scrollview2_OBJC_FILES = scrollview2.m
 scrollview_OBJC_FILES = scrollview.m TestView.m
