@@ -25,34 +25,16 @@
 #include "CalcBrain.h"
 #include "CalcFace.h"
 
-@interface CalcController: NSObject
-{
-}
--(BOOL) windowShouldClose: (NSWindow *)win;
-@end
-
-@implementation CalcController
-{
-}
--(BOOL) windowShouldClose: (NSWindow *)win
-{
-  [[NSApplication sharedApplication] terminate: nil];
-  return YES;
-}
-@end
-
-int 
-main (void)
+int main (void)
 { 
   CalcBrain *brain;
   CalcFace *face;
-  CalcController *faceController;
   NSAutoreleasePool *pool;
   NSApplication *app;
   NSMenu *mainMenu;
   NSMenu *menu;
   NSMenuItem *menuItem;
-  
+
   pool = [NSAutoreleasePool new];
   initialize_gnustep_backend ();
   app = [NSApplication sharedApplication];
@@ -61,7 +43,7 @@ main (void)
   mainMenu = AUTORELEASE ([NSMenu new]);
   // Info
   [mainMenu addItemWithTitle: @"Info..." 
-	    action: @selector (runInfoPanel:) 
+	    action: @selector (orderFrontStandardInfoPanel:) 
 	    keyEquivalent: @""];
   // Edit SubMenu
   menuItem = [mainMenu addItemWithTitle: @"Edit" 	
@@ -99,8 +81,6 @@ main (void)
   face = [CalcFace new]; 
   [brain setFace: face];
   [face setBrain: brain];
-  faceController = [CalcController new];
-  [face setDelegate: faceController];
   [app setDelegate: face];
   
   [app run];
