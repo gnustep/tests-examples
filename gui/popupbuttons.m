@@ -64,10 +64,20 @@
 {
   NSString *title = [sender titleOfSelectedItem];
 
-  NSLog (@"title value = %@", title);
+  NSLog (@"title value = %@, indexOfSelectedItem: %d, titleIndexOfSelectedItem: %d numItems: %d",
+title,
+[sender indexOfSelectedItem],
+[sender indexOfItem:[sender selectedItem]],
+[sender numberOfItems]);
 
   if ([title isEqualToString:@"Devices"])
     [[win contentView] addSubview:anotherView1];    
+  else if ([title isEqualToString:@"Shag"])
+    {
+      [sender removeAllItems];
+      [sender addItemWithTitle:@"Devices"];
+      [sender addItemWithTitle:@"Network"];
+    }
   else
     [[win contentView] addSubview:anotherView2];    
 }

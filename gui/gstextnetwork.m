@@ -6,6 +6,7 @@
 {
   NSWindow *win;
   NSTextView *theTextView;
+  NSScrollView *theScrollView;
 }
 
 @end
@@ -16,6 +17,7 @@
   NSRect wf = {{100, 100}, {400, 400}};
   NSRect f = {{10, 10}, {380, 200}};
   NSPopUpButton *pushb;
+  NSView *aView;
   unsigned int style = NSTitledWindowMask | NSClosableWindowMask
 		      | NSMiniaturizableWindowMask | NSResizableWindowMask;
 
@@ -24,22 +26,35 @@
 				      backing:NSBackingStoreRetained
 					defer:NO];
 
-  theTextView = [[NSTextView alloc] initWithFrame:[[win contentView] frame]];
+  theScrollView = [[NSScrollView alloc] initWithFrame:[[win contentView] frame]];
+
+  [theScrollView setBorderType:NSNoBorder];
+  [theScrollView setHasVerticalScroller:YES];
+  [theScrollView setHasHorizontalScroller:NO];
+  [theScrollView setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+
+  theTextView = [[NSTextView alloc]
+initWithFrame:NSMakeRect(20,20,[theScrollView contentSize].width-50,
+[theScrollView contentSize].height-20)];
+  [theTextView setMinSize:NSMakeSize(0.0, [theScrollView
+contentSize].height)];
+  [theTextView setMaxSize:NSMakeSize(1e7, 1e7)];
+  [theTextView setVerticallyResizable:YES];
+  [theTextView setHorizontallyResizable:NO];
+  [theTextView setAutoresizingMask: NSViewWidthSizable];
+  [theTextView setBackgroundColor:[NSColor whiteColor]];
+
+//  [[theTextView textContainer]
+//    setContainerSize:NSMakeSize([theScrollView contentSize].width, 1e7)];
+//  [[theTextView textContainer] setWidthTracksTextView:YES];
 
   [theTextView setString:[NSString stringWithContentsOfFile:@"Readme.txt"]];
 
-  NSLog(@"deleteCharacters.");
-  [[theTextView textStorage] beginEditing];
-  [[theTextView textStorage] deleteCharactersInRange:NSMakeRange(100,500)];
-  [[theTextView textStorage] replaceCharactersInRange:NSMakeRange(0,3)
-					   withString:@"eek"];
-  [[theTextView textStorage] endEditing];
-  [theTextView didChangeText];
-  NSLog(@"deleteCharacters finished.");
-
-  [win setContentView:theTextView];
+  [theScrollView setDocumentView:theTextView];
+  [win setContentView:theScrollView];
   [win makeKeyAndOrderFront:nil];
   [win makeFirstResponder:theTextView];
+  [win display];
 }
 
 @end

@@ -1,3 +1,10 @@
+1999-08-19  Michael Hanni  <mhanni@sprintmail.com>
+
+	* gstextnetwork.m: some changes.
+	* popupbuttons.m: a few changes to help debug problems other
+	people have reported.
+	* menu.m: moved some stuff around to better allow ui testing.
+
 1999-07-30  Michael Hanni  <mhanni@sprintmail.com>
 
 	* Several images for new popup in popupbuttons.app:

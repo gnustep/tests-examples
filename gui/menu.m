@@ -72,7 +72,6 @@ main(int argc, char **argv, char** env)
   [menuItem setKeyEquivalent:@""];
 
   menu = [NSMenu new];
-  [menu addItemWithTitle:@"Info" action:action keyEquivalent:@""];
   [menu addItemWithTitle:@"File" action:action keyEquivalent:@""];
   [menu addItemWithTitle:@"Edit" action:action keyEquivalent:@""];
   [menu addItemWithTitle:@"Format" action:action keyEquivalent:@""];
@@ -82,6 +81,7 @@ main(int argc, char **argv, char** env)
   [menu addItemWithTitle:@"Services" action:action keyEquivalent:@""];
   [menu addItemWithTitle:@"Hide" action:action keyEquivalent:@"h"];
   [menu insertItem:menuItem atIndex:[[menu itemArray] count]];
+  [menu addItemWithTitle:@"Info" action:action keyEquivalent:@""];
   [menu addItemWithTitle:@"Quit"
 	action:@selector(terminate:)
 	keyEquivalent:@"q"];

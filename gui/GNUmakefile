@@ -44,6 +44,7 @@ TEST_APP_NAME = \
 		buttons \
 		popupbuttons \
 		fontpanel \
+		gstable \
 		gstextnetwork \
 		matrix \
 		menu \
@@ -80,6 +81,7 @@ nscursor_OBJC_FILES = nscursor.m ColorView.m
 nsimage_OBJC_FILES = nsimage.m ImageView.m
 nsimagecell_OBJC_FILES = nsimagecell.m
 nsscroller_OBJC_FILES = nsscroller.m
+gstable_OBJC_FILES = gstable.m
 gstextnetwork_OBJC_FILES = gstextnetwork.m
 gstextnetwork_RESOURCE_FILES = ./Edit/Readme.txt
 nstabview_OBJC_FILES = nstabview.m GSImageTabViewItem.m
