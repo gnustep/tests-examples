@@ -30,7 +30,9 @@
 -(void) dealloc
 {
   if (task && [task isRunning])
-    [task terminate];
+    {
+      [task terminate];
+    }
   TEST_RELEASE (task);
   TEST_RELEASE (pipe[0]);
   TEST_RELEASE (pipe[1]);
@@ -44,10 +46,25 @@
   NSButton* fingerButton;
   NSButton* pingButton;
   NSButton* traceButton;
+  NSButton* whoisButton;
   NSScrollView* scroll;
   NSRect winFrame;
   float f = 0;
   NSSize bs;
+  BOOL bigButtons;
+  NSFont *font;
+  
+  if ([[[NSUserDefaults standardUserDefaults] stringForKey: @"ButtonSize"]
+	isEqualToString: @"Small"])
+    {
+      font = [NSFont systemFontOfSize: SMALL_FONT_SIZE];
+      bigButtons = NO;
+    }
+  else
+    {
+      font = [NSFont systemFontOfSize: BIG_FONT_SIZE];
+      bigButtons = YES;
+    }
   
   vbox = AUTORELEASE ([GSVbox new]);
   [vbox setBorder: 5];
@@ -80,54 +97,125 @@
 
   [hbox addView: form];
 
+  whoisButton = AUTORELEASE ([NSButton new]);
+  if (bigButtons) 
+    {
+      [whoisButton setImage: [NSImage imageNamed: @"whois"]];
+    }
+  else
+    {
+      [whoisButton setImage: [NSImage imageNamed: @"whois32"]];
+    }
+  [whoisButton setTitle: @"Whois"];
+  //  
+  [whoisButton setImagePosition: NSImageAbove];
+  [whoisButton setAlignment: NSCenterTextAlignment];
+  [whoisButton sizeToFit];
+  bs = [whoisButton frame].size;
+  if (bs.width > f)
+    {
+      f = bs.width;
+    }
+  if (bs.height > f)
+    {
+      f = bs.height;
+    }
+  [whoisButton setAutoresizingMask: NSViewNotSizable];
+  [whoisButton setTarget: self];
+  [whoisButton setAction: @selector (startWhois:)];
+
   fingerButton = AUTORELEASE ([NSButton new]);
-  [fingerButton setImage: [NSImage imageNamed: @"finger"]];
+  if (bigButtons)
+    {
+      [fingerButton setImage: [NSImage imageNamed: @"finger"]];
+    }
+  else
+    {
+      [fingerButton setImage: [NSImage imageNamed: @"finger32"]];
+    }
   [fingerButton setTitle: @"Finger"];
+  [fingerButton setFont: font]; 
   [fingerButton setImagePosition: NSImageAbove];
   [fingerButton setAlignment: NSCenterTextAlignment];
   [fingerButton sizeToFit];
   bs = [fingerButton frame].size;
   if (bs.width > f)
-    f = bs.width;
+    {
+      f = bs.width;
+    }
   if (bs.height > f)
-    f = bs.height;
+    {
+      f = bs.height;
+    }
   [fingerButton setAutoresizingMask: NSViewNotSizable];
   [fingerButton setTarget: self];
   [fingerButton setAction: @selector (startFinger:)];
 
   pingButton = AUTORELEASE ([NSButton new]);
-  [pingButton setImage: [NSImage imageNamed: @"ping"]];
+  if (bigButtons)
+    {
+      [pingButton setImage: [NSImage imageNamed: @"ping"]];
+    }
+  else
+    {
+      [pingButton setImage: [NSImage imageNamed: @"ping32"]];
+    }
   [pingButton setTitle: @"Ping"];
+  [pingButton setFont: font]; 
   [pingButton setImagePosition: NSImageAbove];
   [pingButton setAlignment: NSCenterTextAlignment];
   [pingButton sizeToFit];
   bs = [pingButton frame].size;
   if (bs.width > f)
-    f = bs.width;
+    {
+      f = bs.width;
+    }
   if (bs.height > f)
-    f = bs.height;
+    {
+      f = bs.height;
+    }
   [pingButton setAutoresizingMask: NSViewNotSizable];
   [pingButton setTarget: self];
   [pingButton setAction: @selector (startPing:)];
 
   traceButton = AUTORELEASE ([NSButton new]);
-  [traceButton setImage: [NSImage imageNamed: @"traceroute"]];
+  if (bigButtons)
+    {
+      [traceButton setImage: [NSImage imageNamed: @"traceroute"]];
+    }
+  else  
+    {
+      [traceButton setImage: [NSImage imageNamed: @"traceroute32"]];
+    }
   [traceButton setTitle: @"Trace"];
+  [traceButton setFont: font]; 
   [traceButton setImagePosition: NSImageAbove];
   [traceButton setAlignment: NSCenterTextAlignment];
   [traceButton sizeToFit];
   bs = [traceButton frame].size;
   if (bs.width > f)
-    f = bs.width;
+    {
+      f = bs.width;
+    }
   if (bs.height > f)
-    f = bs.height;
+    {
+      f = bs.height;
+    }
   [traceButton setAutoresizingMask: NSViewNotSizable];
   [traceButton setTarget: self];
   [traceButton setAction: @selector (startTraceroute:)];
 
   stopButton = AUTORELEASE ([NSButton new]);
-  [stopButton setImage: [NSImage imageNamed: @"stop_button"]];
+  if (bigButtons)
+    {
+      [stopButton setImage: [NSImage imageNamed: @"stop"]];
+    }
+  else
+    {
+      [stopButton setImage: [NSImage imageNamed: @"stop32"]];
+    }
   [stopButton setTitle: @"Stop"];
+  [stopButton setFont: font]; 
   [stopButton setImagePosition: NSImageAbove];
   [stopButton setAlignment: NSCenterTextAlignment];
   [stopButton sizeToFit];
@@ -136,9 +224,13 @@
 			    [stopButton frame].size.height + 4)];
   bs = [stopButton frame].size;
   if (bs.width > f)
-    f = bs.width;
+    {
+      f = bs.width;
+    }
   if (bs.height > f)
-    f = bs.height;
+    {
+      f = bs.height;
+    }
   [stopButton setAutoresizingMask: NSViewNotSizable];
   [stopButton setTarget: self];
   [stopButton setAction: @selector (stopTask:)];
@@ -147,11 +239,13 @@
   /* Make all the buttons of the same square size */
   bs = NSMakeSize (f, f);
   [fingerButton setFrameSize: bs];
+  [whoisButton setFrameSize: bs];
   [pingButton setFrameSize: bs];
   [traceButton setFrameSize: bs];
   [stopButton setFrameSize: bs];  
   
   [hbox addView: fingerButton enablingXResizing: NO withMinXMargin: 12];
+  [hbox addView: whoisButton enablingXResizing: NO];
   [hbox addView: pingButton enablingXResizing: NO];
   [hbox addView: traceButton enablingXResizing: NO];
   [hbox addView: stopButton enablingXResizing: NO];
@@ -200,6 +294,20 @@
     argument = [username stringByAppendingString: hostname];
   else
     argument = hostname;
+
+  [self startTask: command
+	withArgument: argument];
+}
+
+-(void)startWhois: (id)sender
+{
+  NSString *command;
+  NSString *argument;
+
+  command = [[NSUserDefaults standardUserDefaults] stringForKey: 
+						     @"WhoisCommand"];
+
+  argument = [[form cellAtIndex: 1] stringValue];
 
   [self startTask: command
 	withArgument: argument];
