@@ -1,3 +1,8 @@
+Thu Feb  3 01:23:59 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* main.m (main): Added "..." to Info Panel, Help and 
+	Test Not In The List menu items.
+	
 Mon Jan 31 22:31:09 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* NSSlider-test/NSSlider-test.m ([NSSliderTest -init]): Fixed 
