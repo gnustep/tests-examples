@@ -104,6 +104,7 @@ NSString *test[20] =
   [outlineView setDrawsGrid: NO];
   [outlineView setIndentationPerLevel: 10];
   [outlineView setAutoresizesOutlineColumn: YES];
+  [outlineView setIndentationMarkerFollowsCell: YES];
 
   /* Now add some more columns */
   for (i = 0; i < 5; i++)
@@ -192,6 +193,26 @@ NSString *test[20] =
 	  break;
 	}
     }
+  if([item isEqual: @"NSPanel"])
+    {
+      switch(index)
+	{
+	case 1:
+	  return @"class1";
+	  break;
+	case 2:
+	  return @"class2";
+	  break;
+	case 3:
+	  return @"class3";
+	  break;
+	case 4:
+	  return @"class4";
+	  break;
+	default:
+	  break;
+	}
+    }
   else
     if(item == nil)
       {
@@ -208,6 +229,8 @@ NSString *test[20] =
   NSLog(@"isItemExpandable:....");
   if([item isEqual: @"NSObject"])
     return YES;
+  if([item isEqual: @"NSPanel"])
+    return YES;
 
   return NO;
 }
@@ -220,6 +243,9 @@ NSString *test[20] =
     return 1;
   else
     if([item isEqual: @"NSObject"])
+      return 4;
+  else
+    if([item isEqual: @"NSPanel"])
       return 4;
 
   return 0;
@@ -317,8 +343,27 @@ NSString *test[20] =
 	}
     }
   
-  //  NSLog(@"value = %@",value);
-  
+  if([item isEqual: @"class1"] ||
+     [item isEqual: @"class2"] ||
+     [item isEqual: @"class3"] ||
+     [item isEqual: @"class4"])
+    {
+      if([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
+	{
+	  value = item;
+	}
+      else
+      if([[[tableColumn headerCell] stringValue] isEqual: @"outlets"])
+	{
+	  value = @"2";
+	}
+      else
+      if([[[tableColumn headerCell] stringValue] isEqual: @"actions"])
+	{
+	  value = @"3";
+	}
+    }
+
   return value;
 }
 
