@@ -148,7 +148,6 @@
   NSWindow *window;
   NSScrollView* scrollView;
   NSTextView* textView;
-  NSColor* backColor;
   NSRect scrollViewRect = {{0, 0}, {470, 400}};
   NSRect winRect = {{100, 100}, {470, 400}};
   NSRect textRect;
@@ -173,9 +172,7 @@
   textRect = [[scrollView contentView] frame];
   textView = [[NSTextView alloc] initWithFrame: textRect];
 
-  // off white
-  backColor = [NSColor colorWithCalibratedWhite: 0.85 alpha: 1.0];
-  [textView setBackgroundColor: backColor];
+  [textView setBackgroundColor: [NSColor whiteColor]];
   [textView setRichText: YES];
   [textView setUsesFontPanel: YES];
   [textView setDelegate: self];
@@ -196,7 +193,7 @@
   RELEASE(scrollView);
   // Make the Document the delegate of the window
   [window setDelegate: self];
-  
+
   [window display];
   [window orderFront: nil];
 
