@@ -12,7 +12,7 @@
    modify it under the terms of the GNU Library General Public
    License as published by the Free Software Foundation; either
    version 2 of the License, or (at your option) any later version.
-   
+n   
    This library is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
@@ -31,9 +31,13 @@
 @end
 
 @implementation MyObject
-- (void)method:menuCell
+- (void)method:menuItem
 {
-  NSLog (@"method invoked from cell with title '%@'", [menuCell title]);
+  NSLog (@"method invoked from cell with title '%@'", [menuItem title]);
+}
+- (void)eepzact:menuItem
+{
+  [menuItem setState: [menuItem state] ? NSOffState : NSOnState];
 }
 @end
 
@@ -53,6 +57,7 @@ main(int argc, char **argv, char** env)
   NSMenu* linkMenu;
   NSMenu* findMenu;
   SEL action = @selector(method:);
+  SEL doEepz = @selector(eepzact:);
   NSMenuItem* menuItem;
 
 #if LIB_FOUNDATION_LIBRARY
@@ -66,12 +71,15 @@ main(int argc, char **argv, char** env)
   theApp = [NSApplication sharedApplication];
   [theApp setDelegate:[MyObject new]];
 
-  menuItem = [NSMenuItem new];
-  [menuItem setTitle:@"Eepz"];
-  [menuItem setAction:nil];
-  [menuItem setKeyEquivalent:@""];
+  menuItem = [[NSMenuItem alloc] initWithTitle: @"Eepz"
+				 action: doEepz
+				 keyEquivalent: @"z"];
+  [menuItem setState: NSOffState];
 
   menu = [NSMenu new];
+
+  [menu setMenuChangedMessagesEnabled: NO];
+
   [menu addItemWithTitle:@"File" action:action keyEquivalent:@""];
   [menu addItemWithTitle:@"Edit" action:action keyEquivalent:@""];
   [menu addItemWithTitle:@"Format" action:action keyEquivalent:@""];
@@ -85,6 +93,8 @@ main(int argc, char **argv, char** env)
   [menu addItemWithTitle:@"Quit"
 	action:@selector(terminate:)
 	keyEquivalent:@"q"];
+
+  [menu setMenuChangedMessagesEnabled: YES];
 
   infoMenu = [NSMenu new];
   [menu setSubmenu:infoMenu forItem:[menu itemWithTitle:@"Info"]];
@@ -142,6 +152,10 @@ main(int argc, char **argv, char** env)
   [findMenu addItemWithTitle:@"Jump to Selection" action:action keyEquivalent:@"j"];
   [findMenu addItemWithTitle:@"Line Range..." action:action keyEquivalent:@"l"];
   [editMenu setSubmenu:findMenu forItem:[editMenu itemWithTitle:@"Find"]];
+
+  [[menu itemWithTitle: @"Format"] setImage: [NSImage imageNamed: @"Smiley"]];
+  [[menu itemWithTitle: @"Format"] setTitle: @"Smile for me..."];
+  [menu itemChanged: [menu itemWithTitle: @"Smile for me..."]];
 
   [theApp setMainMenu:menu];
 

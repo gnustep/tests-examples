@@ -1,3 +1,9 @@
+1999-11-16  David Lazaro Saz  <khelekir@encomix.es>
+
+	* GNUmakefile (menu_RESOURCE_FILES): Added the Smiley.tiff file as a
+	resource to demonstrate one of the new capabilites of the new NSMenu
+	additions.
+
 1999-10-18  Lyndon Tremblay  <humasect@coolmail.com>
 
 	* nstextfields.m: Added to test NSTextField, NSSecureTextField.
