@@ -33,6 +33,7 @@ SUBPROJECTS = \
   NSBox-test \
   NSColorWell-test \
   NSForm-test \
+  NSSavePanel-test \
   NSScrollView-test \
   NSSlider-test \
   NSSplitView-test 
