@@ -93,6 +93,10 @@
   pushb = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(200,375,80,20)];
   [pushb addItemWithTitle:@"Devices"];
   [pushb addItemWithTitle:@"Network"];
+  [pushb addItemWithTitle:@"Printers"];
+  [pushb addItemWithTitle:@"Austin"];
+  [pushb addItemWithTitle:@"Powers"];
+  [pushb addItemWithTitle:@"Shag"];
   [pushb setTarget:self];
   [pushb setAction:@selector(buttonSwitchView:)];
   [[win contentView] addSubview:pushb];
