@@ -138,7 +138,7 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
   NSWindow *window;
-  NSTabViewItem *item;
+  GSImageTabViewItem *item;
   NSRect winRect = {{100, 100}, {300, 300}};
   NSRect tabViewRect = {{10, 10}, {280, 280}};
   NSView *view;
@@ -179,9 +179,10 @@
 
   [view addSubview: label];
 
-  item = [[NSTabViewItem alloc] initWithIdentifier: @"Urph"];
+  item = [[GSImageTabViewItem alloc] initWithIdentifier:@"Urph"];
+  [item setImage: [NSImage imageNamed:@"Smiley"]];
   [item setLabel: @"Natalie"];
-  [item setView:view];
+  [item setView:  view];
   
   [tabView addTabViewItem: item];
 
