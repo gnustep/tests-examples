@@ -1,3 +1,8 @@
+Thu Feb 10 01:29:48 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* nsscroller.m ([MyObject -scrollerAction:]): Print some 
+	useful information.
+
 Mon Feb  7 12:25:24 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* scrollview2.m ([-addColumn:]), ([-addRow:]): Mark the scrollview
