@@ -71,6 +71,7 @@
   [vButton setTarget: self];
   [vButton setAction: @selector (vContinuousChanged:)];
   [vButton setState: NO];
+  [vButton setAutoresizingMask: NSViewMaxXMargin];
   
   vLabel = [NSTextField new];
   [vLabel setEditable: NO];
@@ -94,15 +95,16 @@
   [vLabel release];
   [vLabelBox addView: vNumber];
   [vNumber release];
-  [vLabelBox setAutoresizingMask: NSViewWidthSizable];
+  [vLabelBox setAutoresizingMask: NSViewMaxXMargin];
   
   vSliderVbox = [GSVbox new];
-  [vSliderVbox setDefaultMinYMargin: 10];
+  [vSliderVbox setDefaultMinYMargin: 5];
   [vSliderVbox addView: vButton];
   [vButton release];
   [vSliderVbox addView: vLabelBox];
   [vLabelBox release];
-  [vSliderVbox setAutoresizingMask: NSViewWidthSizable];
+  [vSliderVbox setAutoresizingMask: (NSViewMinXMargin | NSViewMaxXMargin 
+				     | NSViewMinYMargin)];
 
   vSliderBox = [NSBox new];
   [vSliderBox setTitle: @"Vertical Slider"];
@@ -111,7 +113,7 @@
   [vSliderBox addSubview: vSliderVbox];
   [vSliderVbox release];
   [vSliderBox sizeToFit];
-  [vSliderBox setAutoresizingMask: (NSViewWidthSizable)];
+  [vSliderBox setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
   
   // Horizontal Slider Box
   hButton = [NSButton new];
@@ -123,6 +125,7 @@
   [hButton setTarget: self];
   [hButton setAction: @selector (hContinuousChanged:)];
   [hButton setState: NO];
+  [hButton setAutoresizingMask: NSViewMaxXMargin];
   
   hLabel = [NSTextField new];
   [hLabel setEditable: NO];
@@ -146,15 +149,16 @@
   [hLabel release];
   [hLabelBox addView: hNumber];
   [hNumber release];
-  [hLabelBox setAutoresizingMask: NSViewWidthSizable];
+  [hLabelBox setAutoresizingMask: NSViewMaxXMargin];
 
   hSliderVbox = [GSVbox new];
-  [hSliderVbox setDefaultMinYMargin: 10];
+  [hSliderVbox setDefaultMinYMargin: 5];
   [hSliderVbox addView: hButton];
   [hButton release];
   [hSliderVbox addView: hLabelBox];
   [hLabelBox release];  
-  [hSliderVbox setAutoresizingMask: NSViewWidthSizable];
+  [hSliderVbox setAutoresizingMask: (NSViewMinXMargin | NSViewMaxXMargin 
+				     | NSViewMinYMargin)];
 
   hSliderBox = [NSBox new];
   [hSliderBox setTitle: @"Horizontal Slider"];
@@ -163,20 +167,19 @@
   [hSliderBox addSubview: hSliderVbox];
   [hSliderVbox release];
   [hSliderBox sizeToFit];
-  [hSliderBox setAutoresizingMask: (NSViewMinYMargin  
-				    | NSViewWidthSizable)];
+  [hSliderBox setAutoresizingMask: (NSViewHeightSizable | NSViewWidthSizable)];
   
   vboxOne = [GSVbox new];
   [vboxOne setDefaultMinYMargin: 10];
   [vboxOne addView: hSliderBox];
   [hSliderBox release];
-  [vboxOne addView: vSliderBox
-	   enablingYResizing: NO];
+  [vboxOne addView: vSliderBox];
   [vSliderBox release];
   [vboxOne setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
   
   // The sliders themselves
-  hSlider = [[NSSlider alloc] initWithFrame: NSMakeRect (0, 0, 200, 15)];
+  hSlider = [[NSSlider alloc] initWithFrame: NSMakeRect (0, 0, 200, 14)];
+  //  [hSlider setFrame: NSMakeRect (0, 0, 200, [hSlider knobThickness])];
   [hSlider setAutoresizingMask: (NSViewWidthSizable)];
   //[hSlider setTitle: @"Number"];
   [hSlider setMinValue: 0];
@@ -186,7 +189,8 @@
   [hSlider setTarget: hNumber];
   [hSlider setContinuous: NO];
   
-  vSlider = [[NSSlider alloc] initWithFrame: NSMakeRect (0, 0, 15, 200)];
+  vSlider = [[NSSlider alloc] initWithFrame: NSMakeRect (0, 0, 14, 200)];
+  //  [vSlider setFrame: NSMakeRect (0, 0, [vSlider knobThickness], 200)];
   [vSlider setAutoresizingMask: (NSViewHeightSizable)];
   //[vSlider setTitle: @"Number"];
   [vSlider setMinValue: 0];
