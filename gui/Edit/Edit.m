@@ -74,7 +74,8 @@ void createMenu()
   /*
    *	Create the app menu
    */
-  menu = [[NSMenu alloc] initWithTitle: @"Edit"];
+  //menu = [[NSMenu alloc] initWithTitle: @"Edit"];
+  menu = [NSMenu new];
 
   [menu addItemWithTitle: @"Info"
 		  action: action
