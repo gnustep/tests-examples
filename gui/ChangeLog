@@ -1,3 +1,13 @@
+2001-06-16  Fred Kiefer <FredKiefer@gmx.de>
+
+	* Ink/InkInfo.plist
+	Added RTFD as supported extension.
+	* Ink/Document.m
+	[fileWrapperRepresentationOfType:] create RTFD files.
+	[dataRepresentationOfType:] create RTFD data.
+	[loadFileWrapperRepresentation:ofType:] load RTFD files.
+	[loadDataRepresentation:ofType:] load RTFD data.
+	
 Tue Jun 12 02:01:25 2001  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* Ink/main.m ([MyDelegate -applicationWillFinishLaunching:]):
