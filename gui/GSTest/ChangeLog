@@ -1,3 +1,8 @@
+2001-01-08  Fred Kiefer  <FredKiefer@gmx.de>
+
+	* NSColorWell-test/NSColorWell-test.m 
+	([NSColorWellTest -showColorList]) release the hboxes.
+
 Tue Dec 12 02:32:35 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* GSTest/GNUmakefile: Updated/Simplified.
