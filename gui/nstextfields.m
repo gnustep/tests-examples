@@ -81,6 +81,8 @@
   [i_secureTextField setStringValue:@"NSSecureTextField"];
   [[i_customWindow contentView] addSubview:i_secureTextField];
 
+  NSLog(@"editable: %i", [i_secureTextField isEditable]);
+  NSLog(@"selectable: %i", [i_secureTextField isSelectable]);
 
   [i_customWindow setTitle:@"NSTextField            NSSecureTextField"];
   [i_customWindow center];
