@@ -57,10 +57,6 @@ main(int argc, char **argv, char** env)
 
   pool = [NSAutoreleasePool new];
 
-#ifndef NX_CURRENT_COMPILER_RELEASE
-  initialize_gnustep_backend();
-#endif
-
   theApp = [NSApplication sharedApplication];
 
 #if 0

@@ -320,7 +320,8 @@ set_standard_properties (NSTextField *tf, NSTextAlignment align)
   [win setTitle:@"Keyboard Input Test"];
   [win setReleasedWhenClosed: NO];
   [win setContentView: v];
-  [win setMinSize: winFrame.size];
+  [win setMinSize: [NSWindow frameRectForContentRect: winFrame
+			     styleMask: [win styleMask]].size];
   [win setDelegate: self];
   [self restart];
   return self;

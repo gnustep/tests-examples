@@ -246,7 +246,8 @@
   [win setTitle: @"NSSlider Test"];
   [win setReleasedWhenClosed: NO];
   [win setContentView: table];
-  [win setMinSize: winFrame.size];
+  [win setMinSize: [NSWindow frameRectForContentRect: winFrame
+			     styleMask: [win styleMask]].size];
   [self restart];
   return self;
 }

@@ -80,7 +80,8 @@
   [win setReleasedWhenClosed: NO];
   [win setContentView: hbox];
   [hbox release];
-  [win setMinSize: winFrame.size];
+  [win setMinSize: [NSWindow frameRectForContentRect: winFrame
+			     styleMask: [win styleMask]].size];
   [self restart];
   return self;
 }

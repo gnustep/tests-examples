@@ -182,7 +182,6 @@ main (void)
    int i;
 
    pool = [NSAutoreleasePool new];
-   initialize_gnustep_backend ();
    app = [NSApplication sharedApplication];
    // Main Menu 
    mainMenu = AUTORELEASE ([[NSMenu alloc] initWithTitle: @"GNUstep Test"]);

@@ -72,10 +72,8 @@ main(int argc, char **argv, char** env)
 #if LIB_FOUNDATION_LIBRARY
   [NSProcessInfo initializeWithArguments:argv count:argc environment:env];
 #endif
-#ifndef NX_CURRENT_COMPILER_RELEASE
-    initialize_gnustep_backend();
-#endif
 
+  theApp = [NSApplication sharedApplication];
   scanner = [[NSScanner alloc] initWithString:funString];
   [scanner scanUpToString:[NSText newlineString] intoString:NULL];
   sL = [scanner scanLocation];
@@ -85,7 +83,6 @@ main(int argc, char **argv, char** env)
   attributedString = [[NSAttributedString alloc] initWithString:@"Hey!"];
   NSLog(@"%@", [attributedString string]);
 
-  theApp = [NSApplication sharedApplication];
   [theApp setDelegate: [buttonsController new]];
   {
     NSMenu	*menu = [NSMenu new];

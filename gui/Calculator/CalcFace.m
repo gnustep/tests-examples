@@ -34,6 +34,7 @@
   NSButton *buttons[18];
   NSTextField *display;
 }
+
 -(id)init
 {
   int i;
@@ -189,8 +190,7 @@
 
   // Window
   [self initWithContentRect: NSMakeRect (100, 100, 225, 111)
-	styleMask: (NSTitledWindowMask | NSMiniaturizableWindowMask 
-		    | NSClosableWindowMask)
+	styleMask: (NSTitledWindowMask | NSMiniaturizableWindowMask)
 	backing: NSBackingStoreBuffered
 	defer: NO];
 
@@ -209,10 +209,12 @@
 
   return self;
 }
+
 -(void) dealloc
 {
   [super dealloc];
 }
+
 -(void) setBrain: (CalcBrain *)aBrain
 {
   int i;
@@ -220,6 +222,7 @@
   for (i = 0; i < 18; i++)
     [buttons[i] setTarget: aBrain];
 }
+
 -(void) setDisplayedNumber: (double)aNumber 
 	     withSeparator: (BOOL)displayDecimalSeparator
 	  fractionalDigits: (int)fractionalDigits
@@ -236,34 +239,15 @@
   else // !displayDecimalSeparator
     [display setStringValue: [NSString stringWithFormat: @"%.0f", aNumber]];
 }
+
 -(void) setError
 {
   [display setStringValue: @"Error"];
 }
-- (void)applicationDidFinishLaunching: (NSNotification *)aNotification;
+
+- (void)applicationDidFinishLaunching: (NSNotification *)aNotification
 {
   [self orderFront: self];
-}
--(void) runInfoPanel: (id) sender
-{
-  NSMutableDictionary *d;
-
-  d = [[NSMutableDictionary new] autorelease];
-  [d setObject: @"Calculator" forKey: @"ApplicationName"];
-  [d setObject: @"A Little GNUstep GUI Demo" 
-     forKey: @"ApplicationDescription"];
-  [d setObject: @"Calculator 1.0" forKey: @"ApplicationRelease"];
-  [d setObject: @"1.0.1 Jan 2000" forKey: @"FullVersionID"];
-  [d setObject: [NSArray arrayWithObject: 
-			   @"Nicola Pero <n.pero@mi.flashnet.it>"]
-     forKey: @"Authors"];
-  //  [d setObject: @"See http://www.gnustep.org" forKey: @"URL"];
-  [d setObject: @"Copyright (C) 1999, 2000 Free Software Foundation, Inc."
-     forKey: @"Copyright"];
-  [d setObject: @"Released under the GNU General Public License 2.0"
-     forKey: @"CopyrightDescription"];
-  
-  [NSApp orderFrontStandardInfoPanelWithOptions:d];
 }
 @end
 

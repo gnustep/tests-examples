@@ -66,30 +66,6 @@
 
   win = [FingerWindow new];
   [win orderFront: self];
-  /* Theoretically win is going to be released when it is closed by
-     the user */
-}
-
--(void) runInfoPanel: (id) sender
-{
-  NSMutableDictionary *d;
-
-  d = AUTORELEASE ([NSMutableDictionary new]);
-  [d setObject: @"Finger" forKey: @"ApplicationName"];
-  [d setObject: @"A GNUstep Frontend to Finger, Ping, Traceroute" 
-     forKey: @"ApplicationDescription"];
-  [d setObject: NAME_WITH_SHORT_VERSION forKey: @"ApplicationRelease"];
-  [d setObject: FULL_VERSION forKey: @"FullVersionID"];
-  [d setObject: [NSArray arrayWithObject: 
-			   @"Nicola Pero <n.pero@mi.flashnet.it>"]
-     forKey: @"Authors"];
-  //  [d setObject: @"See http://www.gnustep.org" forKey: @"URL"];
-  [d setObject: @"Copyright (C) 2000 Free Software Foundation, Inc."
-     forKey: @"Copyright"];
-  [d setObject: @"Released under the GNU General Public License 2.0"
-     forKey: @"CopyrightDescription"];
-  
-  [NSApp orderFrontStandardInfoPanelWithOptions:d];
 }
 
 -(void) runPreferencesPanel: (id) sender

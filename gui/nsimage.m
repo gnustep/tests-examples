@@ -55,10 +55,6 @@ main(int argc, char **argv, char** env)
 
     args = [[NSProcessInfo processInfo] arguments];
 
-#ifndef NX_CURRENT_COMPILER_RELEASE
-    initialize_gnustep_backend();
-#endif
-
     theApp = [NSApplication sharedApplication];
     v = [[ImageView alloc] initWithFile: [args objectAtIndex:1]];
     if (v == nil)

@@ -28,9 +28,7 @@ Calculator_HEADERS = CalcBrain.h CalcFace.h
 Calculator_OBJC_FILES = main.m CalcBrain.m CalcFace.m
 Calculator_RESOURCE_FILES = Calculator.app.tiff
 
--include GNUmakefile.preamble
 -include ../GNUmakefile.local
 include $(GNUSTEP_MAKEFILES)/application.make
--include GNUmakefile.postamble
 
 
