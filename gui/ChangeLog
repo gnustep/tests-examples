@@ -1,3 +1,8 @@
+Sat Jan  6 20:01:07 2001  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* Ink/Document.m ([-makeWindow]): Set the text container size and
+	tracking of text view.
+
 2000-11-03  Fred Kiefer <FredKiefer@gmx.de>
 
 	* Ink/Ink_app.tiff:
