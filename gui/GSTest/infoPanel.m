@@ -24,6 +24,12 @@
 #include <AppKit/GSHbox.h>
 #include <AppKit/GSVbox.h>
 
+/*
+ *
+ * This class is unused at the moment; for the InfoPanel 
+ * we are using the standardInfoPanel provided by NSApplication
+ *
+ */
 
 // This simply shows some non-editable text
 @interface Label: NSTextField
