@@ -1,3 +1,9 @@
+2000-10-15  Fred Kiefer <FredKiefer@gmx.de>
+
+	* Ink/*
+	Added new application for testing the text classes and the
+	document framework.This should replace Edit!
+	
 2000-08-28  Adam Fedor  <fedor@gnu.org>
 
 	* */GNUmakefile: Make sure GNUSTEP_MAKEFILES points to the right place.
