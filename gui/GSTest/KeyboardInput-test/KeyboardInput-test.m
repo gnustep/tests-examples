@@ -25,6 +25,7 @@
 #include <AppKit/GSTable.h>
 #include <AppKit/GSVbox.h>
 #include "../GSTestProtocol.h"
+#include "ConvertKeys.h"
 
 static unsigned int modifiers[8] = 
 {
@@ -278,11 +279,17 @@ set_standard_properties (NSTextField *tf, NSTextAlignment align)
 {
   if (enabled)
     {
+      NSString *s;
+
       [modifiersList setModifiers: [theEvent modifierFlags]];
       [keyCodeField setIntValue: [theEvent keyCode]];
-      [charactersField setStringValue: [theEvent characters]];
-      [charactersIgnoringModifiersField 
-	setStringValue: [theEvent charactersIgnoringModifiers]];
+
+      s = convertCharactersToDisplayable ([theEvent characters]);
+      [charactersField setStringValue: s];
+
+      s = convertCharactersToDisplayable ([theEvent 
+					    charactersIgnoringModifiers]);
+      [charactersIgnoringModifiersField setStringValue: s];
     }
   else
     [super keyDown: theEvent];
