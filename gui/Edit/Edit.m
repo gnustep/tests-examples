@@ -65,6 +65,7 @@ void createMenu()
   NSMenu* menu;
   NSMenu* info;
   NSMenu* file;
+  NSMenu* format;
   NSMenu* edit;
   NSMenu* util;
   NSMenu* services;
@@ -210,6 +211,13 @@ void createMenu()
   [edit addItemWithTitle: @"Select All"
 		  action: action
 	   keyEquivalent: @"a"];
+
+  /*
+   * Create the format submenu
+   */
+  format = [[NSFontManager sharedFontManager] fontMenu: YES];
+  [menu setSubmenu: format
+	   forItem: [menu itemWithTitle: @"Format"]];
 
   /*
    * Create the edit submenu
