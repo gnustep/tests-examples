@@ -29,6 +29,7 @@ SUBPROJECTS =             \
 	Classes           \
 	CurrencyConverter \
 	Ink               \
+	ExampleService    \
 	GSTest
 
 include GNUmakefile.preamble

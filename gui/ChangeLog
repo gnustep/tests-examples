@@ -1,3 +1,8 @@
+2005-01-13 17:38  Alexander Malmberg  <alexander@malmberg.org>
+
+        * GNUmakefile (SUBPROJECTS): Add ExampleService. Partially fixes
+	bug #8161.
+
 2004-11-11  Adam Fedor  <fedor@gnu.org>
 
 	* Classes/NSImage/nsimage.m: Create menu before starting loop
