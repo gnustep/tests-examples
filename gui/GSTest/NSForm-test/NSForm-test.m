@@ -132,6 +132,7 @@
 			  backing: NSBackingStoreBuffered
 			  defer: YES];
   [win setTitle: @"NSForm Test"];
+  [win setReleasedWhenClosed: NO];
   [win setContentView: vbox];
 
   [self restart];

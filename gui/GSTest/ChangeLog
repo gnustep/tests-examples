@@ -1,3 +1,30 @@
+Thu Apr 13 18:31:08 2000  Nicola Pero  <nicola@brainstorm.co.uk>
+
+	* Composite-test/Composite-test.m ([-init]): Do not release the
+	window when closed.
+	* EncodingDecoding-test/EncodingDecoding-test.m
+	([EncodingDecodingTest -init]): Idem.
+	* GSHbox-test/GSHbox-test.m ([GSHboxTest -init]): Idem.
+	* KeyboardInput-test/KeyboardInput-test.m ([KeyboardInputTest
+	-dealloc]): Idem.
+	* NSBox-test/NSBox-test.m ([NSBoxTest -init]): Idem.
+	* NSColorList-test/NSColorList-test.m ([NSColorListTest -init]):
+	Idem.
+	* NSColorWell-test/NSColorWell-test.m ([NSColorWellTest -init]):
+	Idem.
+	* NSForm-test/NSForm-test.m ([NSFormTest -init]): Idem.
+	* NSSavePanel-test/NSSavePanel-test.m ([NSSavePanelTest -init]):
+	Idem.
+	* NSScrollView-test/NSScrollView-test.m ([NSScrollViewTest
+	-init]): Idem.
+	* NSSlider-test/NSSlider-test.m ([NSSliderTest -init]): Idem.
+	* NSSplitView-test/NSSplitView-test.m ([NSSplitViewTest -init]):
+	Idem.
+	* NSTableView-test/NSTableView-test.m ([NSTableViewTest -init]):
+	Idem.
+	* StringDrawing-test/StringDrawing-test.m ([StringDrawingTest
+	-init]): Idem.
+	
 Sat Mar 18 00:11:31 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* NSTableView-test: New test.

@@ -84,7 +84,7 @@
 				      | NSResizableWindowMask)
 			  backing: NSBackingStoreBuffered
 			  defer: YES];
-  
+  [win setReleasedWhenClosed: NO];  
   [win setContentView: split];
   [split release];
   [win setTitle: @"NSSplitView Test"];

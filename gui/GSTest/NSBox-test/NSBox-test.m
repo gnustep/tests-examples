@@ -195,6 +195,7 @@
 			  backing: NSBackingStoreBuffered
 			  defer: YES];
   [win setTitle:@"NSBox Test"];
+  [win setReleasedWhenClosed: NO];
   [win setContentView: hbox];
   [hbox release];
   [win setMinSize: winFrame.size];

@@ -318,6 +318,7 @@ set_standard_properties (NSTextField *tf, NSTextAlignment align)
 			  backing: NSBackingStoreBuffered
 			  defer: YES];
   [win setTitle:@"Keyboard Input Test"];
+  [win setReleasedWhenClosed: NO];
   [win setContentView: v];
   [win setMinSize: winFrame.size];
   [win setDelegate: self];

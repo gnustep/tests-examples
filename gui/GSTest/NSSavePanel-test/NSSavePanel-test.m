@@ -233,7 +233,7 @@
 				      | NSResizableWindowMask)
 			  backing: NSBackingStoreBuffered
 			  defer: NO];
-  
+  [win setReleasedWhenClosed: NO];  
   [win setContentView: vbox];
   [win setTitle: @"NSSavePanel Test"];
   

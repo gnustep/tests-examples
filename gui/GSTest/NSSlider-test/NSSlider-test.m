@@ -244,6 +244,7 @@
 			  backing: NSBackingStoreBuffered
 			  defer: YES];
   [win setTitle: @"NSSlider Test"];
+  [win setReleasedWhenClosed: NO];
   [win setContentView: table];
   [win setMinSize: winFrame.size];
   [self restart];

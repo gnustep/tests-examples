@@ -101,7 +101,7 @@
 				      | NSResizableWindowMask)
 			  backing: NSBackingStoreBuffered
 			  defer: NO];
-  
+  [win setReleasedWhenClosed: NO];  
   [win setContentView: externalBox];
   [externalBox release];
   [win setTitle: @"NSScrollView Test"];

@@ -147,7 +147,7 @@ willDisplayCell: (id)cell
 				      | NSResizableWindowMask)
 			  backing: NSBackingStoreBuffered
 			  defer: NO];
-  
+  [win setReleasedWhenClosed: NO];  
   [win setContentView: vbox];
   [vbox release];
   [win setTitle: @"NSColorList Test"];

@@ -198,6 +198,7 @@ NSString *test[20] =
 			  backing: NSBackingStoreBuffered
 			  defer: NO];
   
+  [win setReleasedWhenClosed: NO];
   [win setContentView: externalBox];
   RELEASE (externalBox);
   [win setTitle: @"NSTableView Test"];

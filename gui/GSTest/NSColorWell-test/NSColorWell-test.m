@@ -77,6 +77,7 @@
 			  backing: NSBackingStoreBuffered
 			  defer: YES];
   [win setTitle: @"NSColorWell Test"];
+  [win setReleasedWhenClosed: NO];
   [win setContentView: hbox];
   [hbox release];
   [win setMinSize: winFrame.size];

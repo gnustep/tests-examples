@@ -109,7 +109,7 @@
 				      | NSResizableWindowMask)
 			  backing: NSBackingStoreBuffered
 			  defer: NO];
-  
+  [win setReleasedWhenClosed: NO]; 
   [win setContentView: hbox];
   [hbox release];
   [win setTitle: @"GSHbox Test"];
