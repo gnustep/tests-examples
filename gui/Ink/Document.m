@@ -74,27 +74,37 @@
   NSAttributedString *attr;
 
   if (tv != nil)
-    attr = [tv textStorage];
-  else
-    attr = ts;
-
-  if ([aType isEqualToString:@"rtf"])
     {
-      return [attr RTFFromRange: NSMakeRange(0, [attr length]) documentAttributes: 
-		       [[self printInfo] dictionary]]; 
+      attr = [tv textStorage];
+    }
+  else
+    {
+      attr = ts;
+    }
+
+  if (aType == nil)
+    {
+      aType = @"text";
+    }
+
+  if ([aType isEqualToString: @"rtf"])
+    {
+      return [attr RTFFromRange: NSMakeRange (0, [attr length]) 
+		   documentAttributes: [[self printInfo] dictionary]]; 
     }
   else if ([aType isEqualToString:@"rtfd"])
     {
-      return [attr RTFDFromRange: NSMakeRange(0, [attr length]) documentAttributes: 
-		       [[self printInfo] dictionary]]; 
+      return [attr RTFDFromRange: NSMakeRange (0, [attr length]) 
+		   documentAttributes: [[self printInfo] dictionary]]; 
     }
   else if ([aType isEqualToString:@"text"])
     {
-      return [[attr string] dataUsingEncoding: [NSString defaultCStringEncoding]]; 
+      return [[attr string] dataUsingEncoding: 
+			      [NSString defaultCStringEncoding]]; 
     }
   else
     {
-      NSAssert(NO, ([NSString stringWithFormat: @"Unknown type %@", aType]));
+      NSAssert (NO, ([NSString stringWithFormat: @"Unknown type %@", aType]));
       return nil;
     }
 }
