@@ -200,22 +200,23 @@ willDisplayCell: (id)cell
       [text sizeToFit];
       [text setAutoresizingMask: (NSViewMinYMargin | NSViewMaxYMargin)];
       [hbox addView: text];
-      [text autorelease];
+      [text release];
 
       color = [[NSColorWell alloc] initWithFrame: NSMakeRect (0, 0, 50, 50)];
       [color setColor: [cl colorWithKey: name]];
       [color setAutoresizingMask: NSViewMinXMargin];
       [hbox addView: color];
-      [color autorelease];
+      [color release];
 
       [hbox setAutoresizingMask: NSViewWidthSizable];
       [vbox addView: hbox];
+      [hbox release];
     }
 
   scrollView = [[NSScrollView alloc] 
 		 initWithFrame: NSMakeRect (0, 0, 150, 300)];
   [scrollView setDocumentView: vbox];
-  [vbox autorelease];
+  [vbox release];
   [scrollView setHasHorizontalScroller: NO];
   [scrollView setHasVerticalScroller: YES];
   [scrollView setBorderType: NSBezelBorder];
