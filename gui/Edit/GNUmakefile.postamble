@@ -39,21 +39,7 @@
 # before-all::
 
 # Things to do after compiling
-after-all::
-									# remove app from parent dir if it exists
-									# and then move app to parent dir 
-	if [ -d ../Edit.app ]; then \
-		rm -rf ../Edit.app; \
-	fi								
-	if [ -d ./Edit.app ]; then \
-	    mv ./Edit.app ..; \
-	fi
-	if [ -d ../Edit.debug ]; then \
-		rm -rf ../Edit.debug; \
-	fi								
-	if [ -d ./Edit.debug ]; then \
-	    mv ./Edit.debug ..; \
-	fi
+# after-all::
 
 # Things to do before installing
 # before-install::
