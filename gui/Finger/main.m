@@ -116,6 +116,7 @@ main (void)
    [menu addItemWithTitle: @"Close"
 	 action: @selector(performClose:)
 	 keyEquivalent: @"w"];
+   [app setWindowsMenu: menu];
    
    // Hide MenuItem
    [mainMenu addItemWithTitle: @"Hide" 

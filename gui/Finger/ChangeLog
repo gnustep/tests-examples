@@ -1,3 +1,7 @@
+Tue Jan  8 16:14:46 2002  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* main.m (main): Set the windows menu.
+
 Tue Dec 18 15:25:02 2001  Nicola Pero  <nicola@brainstorm.co.uk>
 
 	* main.m (main): Removed unused variable i.
