@@ -1,3 +1,7 @@
+Fri Jan  7 02:20:43 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* scrollview2.m: Added code to test matrix double click.
+
 1999-11-30  Adam Fedor  <fedor@gnu.org>
 
 	* nsbrowser.m: Updated to show off new NSBrowser changes (patch
