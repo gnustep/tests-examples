@@ -29,11 +29,13 @@
 #import <AppKit/AppKit.h>
 #import <AppKit/NSTabView.h>
 
+#include "TestView.h"
 #include "GSImageTabViewItem.h"
 
 @interface myTabViewDelegate : NSObject
 {
   NSTabView *ourView;
+  NSMatrix *matrix;
 }
 - (BOOL)tabView:(NSTabView *)tabView shouldSelectTabViewItem:(NSTabViewItem *)tabViewItem;
 - (void)tabView:(NSTabView *)tabView willSelectTabViewItem:(NSTabViewItem *)tabViewItem;
@@ -85,6 +87,73 @@
 {
   [ourView selectPreviousTabViewItem:sender];  
 }
+
+- (void) setMatrix: (NSMatrix*)anObject
+{ 
+  matrix = anObject;
+}
+
+- (NSMatrix *) aMatrixToAddAsAView
+{
+  NSRect        matrixRect = {{10, 42}, {260, 228}};
+  NSMatrix      *theMatrix;
+  NSSize cellSize = {64, 75};
+  NSImageCell   *imageCell;
+  id            handler = self;
+  
+  imageCell = [[NSImageCell new] autorelease];
+  [imageCell setImageFrameStyle: NSImageFrameGrayBezel];
+  [imageCell setImageScaling: NSScaleNone];
+  [imageCell setImage: [NSImage imageNamed: @"NSRadioButton"]];
+  
+  theMatrix = [[[NSMatrix alloc] initWithFrame: matrixRect
+                                  mode: NSRadioModeMatrix
+                                  prototype: imageCell
+                                  numberOfRows: 3
+                                  numberOfColumns: 4]
+                                  autorelease];
+  [theMatrix setCellSize: cellSize];
+  
+  [self setMatrix: theMatrix];
+  
+  imageCell = [theMatrix cellAtRow: 0 column: 0];
+  [imageCell setImageAlignment: NSImageAlignTopLeft];
+
+  imageCell = [theMatrix cellAtRow: 0 column: 1];
+  [imageCell setImageAlignment: NSImageAlignTop];
+  
+  imageCell = [theMatrix cellAtRow: 0 column: 2];   
+  [imageCell setImageAlignment: NSImageAlignTopRight];
+
+  imageCell = [theMatrix cellAtRow: 0 column: 3];
+  [imageCell setImageScaling: NSScaleProportionally];
+
+  imageCell = [theMatrix cellAtRow: 1 column: 0];
+  [imageCell setImageAlignment: NSImageAlignLeft];
+  
+  imageCell = [theMatrix cellAtRow: 1 column: 1];
+  [imageCell setImageAlignment: NSImageAlignCenter];
+ 
+  imageCell = [theMatrix cellAtRow: 1 column: 2];
+  [imageCell setImageAlignment: NSImageAlignRight];
+  
+  imageCell = [theMatrix cellAtRow: 1 column: 3];
+  [imageCell setImageScaling: NSScaleToFit];
+  
+  imageCell = [theMatrix cellAtRow: 2 column: 0];
+  [imageCell setImageAlignment: NSImageAlignBottomLeft];
+
+  imageCell = [theMatrix cellAtRow: 2 column: 1];
+  [imageCell setImageAlignment: NSImageAlignBottom];
+  
+  imageCell = [theMatrix cellAtRow: 2 column: 2];
+  [imageCell setImageAlignment: NSImageAlignBottomRight];
+                                  
+  imageCell = [theMatrix cellAtRow: 2 column: 3];
+  [imageCell setImageScaling: NSScaleNone];
+
+  return theMatrix;
+}
 @end
 
 int
@@ -96,11 +165,13 @@ NSTabView *tabView;
 NSTabViewItem *item;
 NSRect winRect = {{100, 100}, {300, 300}};
 NSRect tabViewRect = {{10, 10}, {280, 280}};
+NSBox *slash;
 id pool = [NSAutoreleasePool new];
 id aView;
 id label;
 NSButton *button;
 id delegate = [myTabViewDelegate new];
+id scrollView;
 
 #if LIB_FOUNDATION_LIBRARY
 	[NSProcessInfo initializeWithArguments:argv count:argc environment:env];
@@ -132,7 +203,20 @@ id delegate = [myTabViewDelegate new];
 install."]];
 	[aView addSubview:label];
 	[label release];
+  slash = [[NSBox alloc] initWithFrame:NSMakeRect(10,37,260,2)];
+  [slash setTitlePosition: NSNoTitle];
+  [slash setBorderType: NSGrooveBorder];
+        [aView addSubview:slash];
+        [slash release];
+
   button = [[NSButton alloc] initWithFrame:NSMakeRect(10,10,72,22)];
+  [button setTitle: @"Previous..."];
+  [button setTarget:delegate];
+  [button setAction:@selector(buttonPrevious:)];
+  [button setEnabled:NO];
+	[aView addSubview:button];
+	[button release];
+  button = [[NSButton alloc] initWithFrame:NSMakeRect(85,10,72,22)];
   [button setTitle: @"Next..."];
   [button setTarget:delegate];
   [button setAction:@selector(buttonNext:)];
@@ -146,6 +230,9 @@ install."]];
 	[aView release];
 
 	aView = [[NSView alloc] initWithFrame:[tabView contentRect]];
+
+    [aView addSubview:[delegate aMatrixToAddAsAView]];
+/*
   label = [[NSTextField alloc] initWithFrame:[aView frame]];
   [label setEditable:NO];
   [label setSelectable:NO];
@@ -156,16 +243,23 @@ install."]];
   [label setStringValue:[NSString stringWithCString: "Previous, or Next?"]];
 	[aView addSubview:label];
 	[label release];
+*/
+  slash = [[NSBox alloc] initWithFrame:NSMakeRect(10,37,260,2)];
+  [slash setTitlePosition: NSNoTitle];
+  [slash setBorderType: NSGrooveBorder];
+        [aView addSubview:slash];
+        [slash release];
+
   button = [[NSButton alloc] initWithFrame:NSMakeRect(10,10,72,22)];
-  [button setTitle: @"Next..."];
-  [button setTarget:delegate];
-  [button setAction:@selector(buttonNext:)];
-	[aView addSubview:button];
-	[button release];
-  button = [[NSButton alloc] initWithFrame:NSMakeRect(85,10,72,22)];
   [button setTitle: @"Previous..."];
   [button setTarget:delegate];
   [button setAction:@selector(buttonPrevious:)];
+	[aView addSubview:button];
+	[button release];
+  button = [[NSButton alloc] initWithFrame:NSMakeRect(85,10,72,22)];
+  [button setTitle: @"Next..."];
+  [button setTarget:delegate];
+  [button setAction:@selector(buttonNext:)];
 	[aView addSubview:button];
 	[button release];
 
@@ -176,6 +270,15 @@ install."]];
 	[aView release];
 
 	aView = [[NSView alloc] initWithFrame:[tabView contentRect]];
+
+     	scrollView = [[NSScrollView alloc]
+initWithFrame:NSMakeRect(10,42,260,228)];
+	[scrollView setDocumentView:[[TestView alloc]
+		initWithFrame:NSMakeRect(0,0,500,700)]];
+	[scrollView setHasHorizontalScroller:YES];
+	[scrollView setHasVerticalScroller:YES];
+	[aView addSubview:scrollView];
+/*
   label = [[NSTextField alloc] initWithFrame:[aView frame]];
   [label setEditable:NO];
   [label setSelectable:NO];
@@ -187,10 +290,24 @@ install."]];
 Sorry. :-)"]];
 	[aView addSubview:label];
 	[label release];
+*/
+  slash = [[NSBox alloc] initWithFrame:NSMakeRect(10,37,260,2)];
+  [slash setTitlePosition: NSNoTitle];
+  [slash setBorderType: NSGrooveBorder];
+        [aView addSubview:slash];
+        [slash release];
+
   button = [[NSButton alloc] initWithFrame:NSMakeRect(10,10,72,22)];
   [button setTitle: @"Previous..."];
   [button setTarget:delegate];
   [button setAction:@selector(buttonPrevious:)];
+	[aView addSubview:button];
+	[button release];
+  button = [[NSButton alloc] initWithFrame:NSMakeRect(85,10,72,22)];
+  [button setTitle: @"Next..."];
+  [button setTarget:delegate];
+  [button setEnabled:NO];
+  [button setAction:@selector(buttonNext:)];
 	[aView addSubview:button];
 	[button release];
 
