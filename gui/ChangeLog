@@ -1,3 +1,8 @@
+Thu Jan 17 20:27:59 2002  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* Classes/NSProgressIndicator/: New.
+	* Classes/NSProgressIndicator/Threads: New.
+
 2001-12-09  Fred Kiefer <FredKiefer@gmx.de>
 
 	* Old/nsprogressindicator.m
