@@ -56,7 +56,7 @@
 {
   NSMutableDictionary *d;
 
-  d = [[NSMutableDictionary new] autorelease];
+  d = AUTORELEASE ([NSMutableDictionary new]);
   [d setObject: @"GSTest" forKey: @"ApplicationName"];
   [d setObject: @"GNUstep GUI Demo/Test Suite" 
      forKey: @"ApplicationDescription"];
@@ -185,12 +185,12 @@ main (void)
    initialize_gnustep_backend ();
    app = [NSApplication sharedApplication];
    // Main Menu 
-   mainMenu = [[NSMenu alloc] initWithTitle: @"GNUstep Test"];
+   mainMenu = AUTORELEASE ([[NSMenu alloc] initWithTitle: @"GNUstep Test"]);
    // Info SubMenu
    menuItem = [mainMenu addItemWithTitle: @"Info" 
 			action: NULL 
 			keyEquivalent: @""];
-   infoMenu = [NSMenu new];
+   infoMenu = AUTORELEASE ([NSMenu new]);
    [mainMenu setSubmenu: infoMenu forItem: menuItem];
    [infoMenu addItemWithTitle: @"Info Panel..." 
 	     action: @selector (runInfoPanel:) 
@@ -202,7 +202,7 @@ main (void)
    menuItem = [mainMenu addItemWithTitle:@"Tests" 
 			action: NULL 
 			keyEquivalent:@""];
-   testMenu = [NSMenu new];
+   testMenu = AUTORELEASE ([NSMenu new]);
    [mainMenu setSubmenu: testMenu forItem: menuItem];
    menuItem = [testMenu addItemWithTitle: @"Test Not in the List..." 
 			action: @selector (startUnlistedTest:)
@@ -219,7 +219,7 @@ main (void)
    menuItem = [mainMenu addItemWithTitle:@"Windows" 
 			action: NULL 
 			keyEquivalent:@""];
-   windowsMenu = [NSMenu new];
+   windowsMenu = AUTORELEASE ([NSMenu new]);
    [mainMenu setSubmenu: windowsMenu forItem: menuItem];
    // Hide MenuItem
    [mainMenu addItemWithTitle: @"Hide" 
@@ -236,7 +236,8 @@ main (void)
    appController = [Controller new];
    [app setDelegate: appController];
    [app run];
-   [pool release];
+   RELEASE (appController); 
+   RELEASE (pool);
    return 0;
 }
 
