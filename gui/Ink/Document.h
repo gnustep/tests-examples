@@ -22,12 +22,16 @@
    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 #include <Foundation/NSData.h>
+#include <Foundation/NSAttributedString.h>
 #include <AppKit/NSDocument.h>
 #include <AppKit/NSTextView.h>
+#include <AppKit/NSPrintInfo.h>
 
 @interface Document : NSDocument
 {
-    NSTextStorage *_ts;
+    NSMutableAttributedString *ts;
+    NSTextView *tv;
+    NSPrintInfo *pi;
 }
 
 @end
