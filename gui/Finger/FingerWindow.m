@@ -219,9 +219,6 @@
   [stopButton setImagePosition: NSImageAbove];
   [stopButton setAlignment: NSCenterTextAlignment];
   [stopButton sizeToFit];
-  [stopButton setFrameSize: 
-		NSMakeSize ([stopButton frame].size.width + 6, 
-			    [stopButton frame].size.height + 4)];
   bs = [stopButton frame].size;
   if (bs.width > f)
     {
