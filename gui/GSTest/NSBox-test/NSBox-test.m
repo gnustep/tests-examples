@@ -56,6 +56,7 @@
   NSButtonCell *cell;
   NSTextField *boxContents;
   NSRect winFrame;
+  NSBox *tmp_box;
 
   boxContents = [NSTextField new];
   [boxContents setDrawsBackground: YES];
@@ -95,7 +96,7 @@
 				  numberOfRows: 7
 				  numberOfColumns: 1];   
   
-  [borderMatrix setIntercellSpacing: NSMakeSize (0, 10) ];
+  [borderMatrix setIntercellSpacing: NSMakeSize (0, 4) ];
   [borderMatrix setTarget: self];
   [borderMatrix setAutosizesCells: NO];
   
@@ -116,10 +117,10 @@
   [cell setAction: @selector (setNSGrooveBorder:)];
   
   [borderMatrix selectCellAtRow: 3 column: 0];
-  [borderMatrix setAutoresizingMask: (NSViewMinYMargin | NSViewWidthSizable)];
+  [borderMatrix setAutoresizingMask: (NSViewMinXMargin | NSViewMaxXMargin)];
   [borderMatrix sizeToFit];
   
-  [titleMatrix setIntercellSpacing: NSMakeSize (0, 10) ];
+  [titleMatrix setIntercellSpacing: NSMakeSize (0, 4) ];
   [titleMatrix setTarget: self];
   cell = [titleMatrix cellAtRow: 0 column: 0];
   [cell setTitle: @"NSNoTitle"];
@@ -150,7 +151,7 @@
   [cell setAction: @selector (setNSBelowBottom:)];	
   
   [titleMatrix selectCellAtRow: 2 column: 0];
-  [titleMatrix setAutoresizingMask: (NSViewMinYMargin | NSViewWidthSizable)];
+  [titleMatrix setAutoresizingMask: (NSViewMinXMargin | NSViewMaxXMargin)];
   [titleMatrix sizeToFit];
   
   hbox = [GSHbox new];
@@ -158,10 +159,28 @@
   [hbox setBorder: 10];
   [hbox addView: box];
   [box release];
-  [hbox addView: borderMatrix];
+
+  tmp_box = [NSBox new];
+  [tmp_box setTitle: @"setBorderType:"];
+  [tmp_box setTitlePosition: NSAtTop];
+  [tmp_box setBorderType: NSGrooveBorder];
+  [tmp_box addSubview: borderMatrix];
   [borderMatrix release];
-  [hbox addView: titleMatrix];
+  [tmp_box sizeToFit];
+  [tmp_box setAutoresizingMask: (NSViewMinYMargin | NSViewWidthSizable)];
+  [hbox addView: tmp_box];
+  [tmp_box release];
+
+  tmp_box = [NSBox new];
+  [tmp_box setTitle: @"setTitlePosition:"];
+  [tmp_box setTitlePosition: NSAtTop];
+  [tmp_box setBorderType: NSGrooveBorder];
+  [tmp_box addSubview: titleMatrix];
   [titleMatrix release];
+  [tmp_box sizeToFit];
+  [tmp_box setAutoresizingMask: (NSViewMinYMargin | NSViewWidthSizable)];
+  [hbox addView: tmp_box];
+  [tmp_box release];
   [hbox setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
 
   winFrame.size = [hbox frame].size;
