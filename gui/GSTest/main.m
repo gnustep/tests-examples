@@ -31,7 +31,6 @@
 @interface Controller: NSObject
 {
   NSPanel *infoSharedPanel;
-  BOOL infoIsStarted;
   NSString *bundlesPath;
 }
 -(void) runInfoPanel: (id) sender;
@@ -50,24 +49,28 @@
 {
   [super init];
   infoSharedPanel = nil;
-  infoIsStarted = NO;
   // The test bundles are one directory up
-  bundlesPath = [[[NSBundle mainBundle] bundlePath] 
-		  stringByDeletingLastPathComponent];
+  bundlesPath = [[[[NSBundle mainBundle] bundlePath] 
+		   stringByDeletingLastPathComponent] retain];
   return self;
 }
 
 -(void) runInfoPanel: (id) sender
 {
-  if (!infoIsStarted)
-    {
-      infoIsStarted = YES;
-      infoSharedPanel = [infoPanel new];
-    }
+  if (!infoSharedPanel)
+    infoSharedPanel = [infoPanel new];
+
   [infoSharedPanel orderFront: nil];
   [[NSApplication sharedApplication] addWindowsItem: infoSharedPanel
 				     title: @"Info Panel"
 				     filename: NO];
+}
+
+-(void) dealloc
+{
+  TEST_RELEASE(infoSharedPanel);
+  RELEASE(bundlesPath);
+  [super dealloc];
 }
 
 -(void) restartTest: (id) testObject
@@ -135,19 +138,24 @@
 }
 -(void) startUnlistedTest: (id) sender
 {
-  NSSavePanel *savePanel;
+  NSOpenPanel *openPanel;
+  int result;
 
-  // TODO: Use an OpenPanel and require extension 'bundle'
-  // as soon as OpenPanel works.
-  savePanel = [NSSavePanel savePanel];
-  [savePanel setTitle: @"Select Bundle"];
-  [savePanel setPrompt: @"Bundle:"];
-  [savePanel setTreatsFilePackagesAsDirectories: NO];
-  if ([savePanel runModal] == NSOKButton)
+  openPanel = [NSOpenPanel openPanel];
+  [openPanel setTitle: @"Select Bundle"];
+  [openPanel setPrompt: @"Bundle:"];
+  [openPanel setTreatsFilePackagesAsDirectories: NO];
+  result = [openPanel runModalForDirectory: nil
+		      file: nil
+		      types: [NSArray arrayWithObject: @"bundle"]];
+  if (result == NSOKButton)
     {
-      if ([savePanel filename])
+      NSEnumerator *e = [[openPanel filenames] objectEnumerator];
+      NSString *file;
+      
+      while ((file = (NSString *)[e nextObject]))
 	{
-	    [self loadAndStartTestWithBundlePath: [savePanel filename]];
+	  [self loadAndStartTestWithBundlePath: file];
 	}
     }
 }
