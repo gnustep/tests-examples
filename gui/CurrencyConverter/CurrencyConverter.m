@@ -71,6 +71,7 @@ static NSString* fieldString[3] = {
   NSButton* convertButton;
   NSRect winFrame;
   int i;
+  NSSize size;
 
   self = [super init];
 
@@ -93,7 +94,7 @@ static NSString* fieldString[3] = {
   [label setDrawsBackground: NO];
   [label setStringValue: fieldString[0]];
   [label sizeToFit];
-  [label setAutoresizingMask: NSViewNotSizable];
+  [label setAutoresizingMask: NSViewHeightSizable];
   [hbox addView: label
 	enablingXResizing: NO];
   
@@ -103,7 +104,12 @@ static NSString* fieldString[3] = {
   [field[0] setBezeled: YES];
   [field[0] setBackgroundColor: [NSColor controlBackgroundColor]];
   [field[0] setDrawsBackground: YES];
-  [field[0] setFrameSize: NSMakeSize (100, 20)];
+  // Use automatic height
+  [field[0] sizeToFit];
+  // But set width to 100
+  size = [field[0] frame].size;
+  size.width = 100;
+  [field[0] setFrameSize: size];
   [field[0] setAutoresizingMask: NSViewWidthSizable];
   // Saying nothing means enablingXResizing: YES
   [hbox addView: field[0]];
@@ -126,6 +132,8 @@ static NSString* fieldString[3] = {
   // The two editable fields
   for (i = 1; i < 3; i++)
     {
+      // We are doing it the hard way, without NSForm, to show how to do
+      // more generally to pack things and objects
       hbox = [[GSHbox new] autorelease];
       [hbox setDefaultMinXMargin: 10];
 
@@ -135,7 +143,7 @@ static NSString* fieldString[3] = {
       [label setDrawsBackground: NO];
       [label setStringValue: fieldString[i]];
       [label sizeToFit];
-      [label setAutoresizingMask: NSViewNotSizable];
+      [label setAutoresizingMask: NSViewHeightSizable];
       [hbox addView: label
 	    enablingXResizing: NO];
 
@@ -143,7 +151,12 @@ static NSString* fieldString[3] = {
       [field[i] setEditable: YES];
       [field[i] setBezeled: YES];
       [field[i] setDrawsBackground: YES];
-      [field[i] setFrameSize: NSMakeSize (100, 20)];
+      // Use automatic height
+      [field[i] sizeToFit];
+      // But set width to 100
+      size = [field[i] frame].size;
+      size.width = 100;
+      [field[i] setFrameSize: size];
       [field[i] setAutoresizingMask: NSViewWidthSizable];
       [hbox addView: field[i]];
 
@@ -171,7 +184,8 @@ static NSString* fieldString[3] = {
   winFrame.size = [windowVbox frame].size;
   winFrame.origin = NSMakePoint (100, 100);
 
-  // Now we can make the window of the exact size 
+  // Now we can make the window of the exact size  
+  // NB: Note that we do not autorelease the window
   window = [[NSWindow alloc] 
 	     initWithContentRect: winFrame
 	     styleMask: (NSTitledWindowMask | NSClosableWindowMask 
@@ -188,6 +202,7 @@ static NSString* fieldString[3] = {
 }
 - (void)dealloc
 {
+  // Releasing the window releases all its views in cascade
   [window release];
   [super dealloc];
 }
@@ -227,12 +242,12 @@ main (void)
    CurrencyConverter *converter;
    int i;
 
-   // We need to explicitly create this object only in the main function,   
-   // while while the app is running, the gui library creates these objects 
+   // We need to explicitly create this object only in the main function;     
+   // instead, while the app is running, the gui library creates these objects
    // automatically for us.
    pool = [NSAutoreleasePool new];
 
-   // Initialize the gnustep backend. 
+   // Initialize the gnustep backend.
    // The need for this command should be the biggest difference 
    // with other OpenStep platforms.
    initialize_gnustep_backend ();
