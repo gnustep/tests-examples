@@ -1,3 +1,8 @@
+2002-04-03  Fred Kiefer <FredKiefer@gmx.de>
+
+	* Document.m
+	Added a horizontal ruler view in [makeWindow].
+	
 Wed Feb 20 19:25:20 2002  Nicola Pero  <nicola@brainstorm.co.uk>
 
 	Removed the memory panel, now available in the gui library
