@@ -39,6 +39,7 @@ include ../Version
 
 # The applications to be compiled
 TEST_APP_NAME = \
+		nstextfields \
 		GNUstepInstaller \
 		alertpanel \
 		buttons \
@@ -67,6 +68,7 @@ SUBPROJECTS = Calculator Edit
 
 # The Objective-C source files to be compiled
 TestApp_OBJC_FILES = TestApp.m 
+nstextfields_OBJC_FILES = nstextfields.m
 GNUstepInstaller_OBJC_FILES = GNUstepInstaller.m GSImageTabViewItem.m TestView.m ColorView.m
 GNUstepInstaller_RESOURCE_FILES = Smiley.tiff
 alertpanel_OBJC_FILES = alertpanel.m
