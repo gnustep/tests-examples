@@ -3,7 +3,7 @@ Thu Dec  9 20:47:06 1999  Nicola Pero  <n.pero@mi.flashnet.it>
 	New test NSSavePanel-test.
 	* NSSavePanel-test: New directory.
 	* NSSavePanel-test/GNUmakefile: New file.
-	* NSSavePanel-test/NSSavePanel-test.m: New directory.
+	* NSSavePanel-test/NSSavePanel-test.m: New file.
 	* testList.h: Added test to the list.
 	* GNUmakefile: idem.
 	
