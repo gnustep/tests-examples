@@ -200,4 +200,141 @@
   return window;
 }
 
+- (void)insertFile: (id)sender
+{
+  static NSString  *lastDir = nil;  
+  static NSView    *accView = nil;
+  static NSButton  *asIconButton;
+  
+  NSTextAttachment *attachment;
+  NSFileWrapper    *wrapper;
+  NSOpenPanel      *panel;
+  int               ret;
+  id                object = nil;
+  NSString         *ext;
+  NSString         *filename;
+  
+  NSEnumerator     *enumerator;
+  NSString         *type;
+  BOOL              isImage = NO;
+  
+  if (accView == nil)
+    {
+      accView = [[NSView alloc] initWithFrame: 
+				  NSMakeRect (0.0, 0.0, 100.0, 24.0)];
+      asIconButton = [[NSButton alloc] initWithFrame:
+					 NSMakeRect (0.0, 0.0, 100.0, 24.0)];
+      [asIconButton setButtonType: NSSwitchButton];
+      [asIconButton setTitle: @"Insert as icon"];
+      /* tooltips are not implemented, but this is for the future ... */
+      [asIconButton setToolTip: @"Insert file type icon instead of file contents"];
+
+      [accView addSubview: asIconButton];
+    }
+
+  if (lastDir == nil)
+    {
+      ASSIGN (lastDir, NSHomeDirectory ());
+    }
+  
+  panel = [NSOpenPanel openPanel];
+  
+  [panel setAccessoryView: accView];
+  [panel setAllowsMultipleSelection: NO];
+  ret = [panel runModalForDirectory: lastDir   file: nil   types: nil];
+  
+  ASSIGN (lastDir, [panel directory]);
+  
+  if (ret == NSOKButton) 
+    {
+      filename = [panel filename];
+      
+      ext = [filename pathExtension];
+      
+      if ([asIconButton state] != NSOnState)
+        {
+	  if (ext == nil  
+	      ||  [ext isEqualToString: @""]	 
+	      || [ext isEqualToString: @"txt"] 
+	      || [ext isEqualToString: @"text"])
+            {
+	      object = [NSString stringWithContentsOfFile: filename];
+            }
+	  else if ([ext isEqualToString: @"rtf"])
+            {
+	      NSData *data = [NSData dataWithContentsOfFile: filename];
+	      
+	      object = [[NSAttributedString alloc] initWithRTF: data
+						   documentAttributes: NULL];
+	      AUTORELEASE (object);
+            }
+	  else if ([ext isEqualToString: @"rtfd"])
+            {
+	      NSData *data = [NSData dataWithContentsOfFile: filename];
+	      
+	      object = [[NSAttributedString alloc] initWithRTFD: data
+						   documentAttributes: NULL];
+	      AUTORELEASE (object);
+            }
+        }
+      
+      if (object == nil)
+        {
+	  wrapper = [[NSFileWrapper alloc] initWithPath: filename];
+	  AUTORELEASE (wrapper);
+
+	  /* Insert image contents */
+	  if ([asIconButton state] != NSOnState)
+            {    
+	      enumerator = [[NSImage imageFileTypes] objectEnumerator];
+	      
+	      while ((type = [enumerator nextObject]) != nil)
+                {
+		  if ([ext isEqualToString: type])
+                    {
+		      isImage = YES;
+		      break;
+                    }
+                }
+	      
+	      if (isImage)
+                {
+		  NSImage *image;
+		  
+		  image = [[NSImage alloc] initWithContentsOfFile: filename];
+		  AUTORELEASE (image);
+		  [wrapper setIcon: image];
+                }
+            }
+	  
+	  attachment = [[NSTextAttachment alloc] initWithFileWrapper: 
+						   wrapper];
+	  AUTORELEASE (attachment);
+	  object = [NSAttributedString attributedStringWithAttachment: 
+					 attachment];
+        }
+      
+      if (object != nil)
+        {
+	  [tv insertText: object];
+        }
+    }
+}
+
+-        (void)textView: (NSTextView *)aTextView
+    doubleClickedOnCell: (id <NSTextAttachmentCell>)attachmentCell
+                 inRect: (NSRect)cellFrame
+                atIndex: (unsigned)charIndex
+{
+  NSTextAttachment *attachment;
+  NSFileWrapper    *filewrapper;
+  
+  attachment  = [attachmentCell attachment];
+  filewrapper = [attachment fileWrapper];
+  
+  NSLog(@"Opening file '%@'", [filewrapper filename]);
+  
+  /* openFile:fromImage:at:inView: */
+  [[NSWorkspace sharedWorkspace] openFile: [filewrapper filename]];
+}
 @end
