@@ -2,21 +2,14 @@
 Welcome to the GNUstep Testing directory.
 
 In this directory there is a full collection of tests for the GNUstep
-GUI libraries.  Some tests are very old, other are newer; some are 
-up-to-date, other are not.
+GUI libraries.  
 
-Important Note: the currently maintained and supported examples are:
-
-GSTest, Finger, Calculator, CurrencyConverter, Ink and NSPanelTest.
-
-If they misbehave, please report it as a bug to bug-gnustep@gnu.org.
-
-A rearrangement is under way to make more clear that other
-examples/test are old and/or not supported.
+Tests are kept in subdirectories.
 
 Quick start to compile and run the tests:
 
 make
+cd testYouWantToSee
 openapp testYouWantToSee.app
 
 If this tip is not enough, read on for the detailed explanations.
@@ -27,31 +20,23 @@ To compile all the tests, simple type:
 
 make
 
-To compile only a specifical test, for example popupbuttons.app, 
-you have to type:
-
-make popupbuttons
-
+To compile a single test, go into its directory, then type 'make' there. 
 Compiling a test called "testName" creates a directory called 
 "testName.app".  
-For example, when compiling the popupbuttons test, the directory 
-popupbuttons.app is created.  
+For example, when compiling the CurrencyConverter test, the directory 
+CurrencyConverter.app is created.  
 
 RUNNING THE TESTS
 -----------------
 To run a test, launch openapp with the test .app directory [see 
 "COMPILING THE TESTS" above] as argument.  
-For example, to run the popupbuttons.app test, type
+For example, to run the CurrencyConverter.app test, type
 
-openapp popupbuttons.app
+cd CurrencyConverter
+openapp CurrencyConverter.app
 
-Some bigger tests have a directory of their own, so that to run 
-the Calculator.app test you have to type:
-
-cd Calculator
-openapp Calculator.app
-
-[or, in a single command, type "openapp Calculator/Calculator.app"]
+[or, in a single command, type 
+"openapp CurrencyConverter/CurrencyConverter.app"]
 
 ABOUT GNUSTEP
 -------------
