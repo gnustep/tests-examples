@@ -1,3 +1,10 @@
+Fri Sep  1 16:18:50 2000  Nicola Pero  <nicola@brainstorm.co.uk>
+
+	Implemented a memory panel to track memory leaks in the library.
+	* main.m (main): Added memory menu.  
+	* MemoryPanel.m, MemoryPabel.h: New files.  
+	* GNUmakefile: Added the new files.
+	
 Thu Jul 20 01:53:27 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* NSWindowStyleMask: New test.
