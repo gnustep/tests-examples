@@ -1,3 +1,30 @@
+Sat Jan  8 23:33:21 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* main.m: ([Controller -init]): Added missing retain.
+  	([Controller -dealloc]): Added method.  ([Controller
+ 	-runInfoPanel:sender]): Simplified.  ([Controller
+ 	-startUnlistedTest:sender]): Use the Open Panel.
+	* NSBox-test/NSBox-test.m ([-dealloc]): Added method.	
+	* NSColorWell-test/NSColorWell-test.m ([-init]): The color well is
+ 	not any longer an instance variable. ([-dealloc]): Added method.
+	* NSSavePanel-test/NSSavePanel-test.m ([-dealloc]): Added method.
+	* NSScrollView-test/NSScrollView-test.m ([-dealloc]): Added method.
+	* NSSlider-test/NSSlider-test.m ([-dealloc]): Added method.
+	* NSSplitView-test/NSSplitView-test.m ([-dealloc]): Added method.
+	* EncodingDecoding-test/EncodingDecoding-test.m ([-init]): Set
+ 	browser target so that double clicking on a window opens the
+ 	window.  ([-openWindow:]):  Removed log.  ([-dealloc]):
+ 	Finished.  ([-decode:]): Invoke the open panel in adherence to doc.
+	* KeyboardInput-test/KeyboardInput-test.m ([-dealloc]): Added
+ 	method.
+
+	New test NSColorList-test.
+	* NSColorList-test: New directory. 
+	* NSColorList-test/GNUmakefile: New file. 
+	* NSColorList-test/NSColorList-test.m: New file. 
+	* testList.h: Added test to the list.
+	* GNUmakefile: idem.
+	
 Fri Dec 17 06:16:30 1999  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* NSSavePanel-test/NSSavePanel-test.m ([NSSavePanelTest -init]):
