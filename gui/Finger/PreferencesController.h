@@ -33,6 +33,7 @@
 #define FINGER_TAG     0
 #define PING_TAG       1
 #define TRACEROUTE_TAG 2
+#define WHOIS_TAG      3
 
 @interface PreferencesController : NSObject
 {
@@ -40,6 +41,8 @@
   NSTextField *fingerCommand;
   NSTextField *pingCommand;  
   NSTextField *tracerouteCommand;
+  NSTextField *whoisCommand;
+  NSPopUpButton *buttonsSize;
 #if SET_BUTTON
   NSButton *setButton;
 #endif
