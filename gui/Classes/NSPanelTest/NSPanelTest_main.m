@@ -38,7 +38,6 @@ LEGAL
 int main(int argc, char *argv[])
 {
 	NSAutoreleasePool*	pool=[NSAutoreleasePool new];
-	BOOL				bei=initialize_gnustep_backend();
 	NSApplication*		app=[[NSPanelTest alloc]init];
 	[app run];
 	[pool release];
