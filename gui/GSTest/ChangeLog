@@ -1,3 +1,11 @@
+Mon Jan 24 23:17:12 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	New test StringDrawing-test:
+	* StringDrawing-test/StringDrawing-test.m: New file.
+	* StringDrawing-test/GNUmakefile: New file.
+	* GNUmakefile: Added StringDrawing-test.
+	* testList.h: Added StringDrawing-test. 
+	
 Fri Jan 14 06:55:29 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* EncodingDecoding-test/EncodingDecoding-test.m ([-init]): Set
