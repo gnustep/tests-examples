@@ -41,7 +41,7 @@ TEST_APP_NAME = Edit
 Edit_OBJC_FILES = Edit.m Controller.m Document.m
 
 # The Resource files to be copied into the app's resources directory
-Edit_RESOURCE_FILES = text.tiff Readme.txt
+Edit_RESOURCE_FILES = text.tiff Readme.txt Readme.rtf
 
 -include GNUmakefile.preamble
 
