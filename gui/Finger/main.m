@@ -71,7 +71,7 @@ main (void)
    [mainMenu setSubmenu: menu forItem: menuItem];
    [menu addItemWithTitle: @"New Finger Window" 
 	 action: @selector (startNewFingerWindow:)
-	 keyEquivalent: @""];
+	 keyEquivalent: @"n"];
    [menu addItemWithTitle: @"Save Results As..." 
 	 action: @selector (saveResults:)
 	 keyEquivalent: @"s"];
