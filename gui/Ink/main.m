@@ -30,11 +30,20 @@
 {
 }
 
+- (BOOL)application:(NSApplication *)application openFile:(NSString *)fileName;
 - (void) applicationWillFinishLaunching: (NSNotification *)not;
 - (void) applicationDidFinishLaunching: (NSNotification *)not;
 @end
 
 @implementation MyDelegate : NSObject 
+
+- (BOOL)application:(NSApplication *)application openFile:(NSString *)fileName
+{
+  [NSApp activateIgnoringOtherApps: YES];
+  [[NSDocumentController sharedDocumentController]
+    openDocumentWithContentsOfFile: fileName display: YES];
+  return YES;
+}
 
 - (void) applicationWillFinishLaunching: (NSNotification *)not
 {
