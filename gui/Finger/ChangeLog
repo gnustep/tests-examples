@@ -1,3 +1,16 @@
+Sat Jul 29 22:54:57 2000  Nicola Pero  <nicola@brainstorm.co.uk>
+
+	* Finger.h: Removed preprocessor defines used to display 
+	an info panel.
+	* Controller.m ([-runInfoPanel:]): Removed.
+	* Controller.h: Removed runInfoPanel:
+	* main.m (main): Removed initialize_gnustep_backend; 
+	use orderFrontStandardInfoPanel: to display the info panel;
+	do not set application icon.
+	* FingerInfo.plist: New file.
+	* GNUmakefile: Removed unused includes; (Finger_APPLICATION_ICON):
+	Added.
+	
 Sun Mar 19 01:11:40 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	Added images by Andrew Lindesay <apl@kcbbs.gen.nz>:
