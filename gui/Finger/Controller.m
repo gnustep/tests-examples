@@ -36,10 +36,12 @@
 
       defaults = [NSUserDefaults standardUserDefaults];      
       dict = AUTORELEASE ([NSMutableDictionary new]);
+      [dict setObject: WHOIS_DEFAULT_COMMAND forKey: @"WhoisCommand"];
       [dict setObject: FINGER_DEFAULT_COMMAND forKey: @"FingerCommand"];
       [dict setObject: PING_DEFAULT_COMMAND forKey: @"PingCommand"];
       [dict setObject: TRACEROUTE_DEFAULT_COMMAND 
 	    forKey: @"TracerouteCommand"];
+      [dict setObject: DEFAULT_BUTTON_SIZE forKey: @"ButtonSize"];
       [defaults registerDefaults: dict];
     }
 }
