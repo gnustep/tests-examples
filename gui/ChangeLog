@@ -1,3 +1,10 @@
+2001-12-09  Fred Kiefer <FredKiefer@gmx.de>
+
+	* Old/nsprogressindicator.m
+	Corrected so it shows how to use a NSProgressIndicator.
+	* Old/GNUmakefile
+	Compile nsprogressindicator.
+
 2001-10-04  Fred Kiefer <FredKiefer@gmx.de>
 
 	* Old/testpb.m
