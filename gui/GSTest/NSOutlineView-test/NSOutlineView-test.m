@@ -25,7 +25,7 @@
 
 #include <Foundation/Foundation.h>
 #include <AppKit/AppKit.h>
-#include <AppKit/GSVbox.h>
+#include <GNUstepGUI/GSVbox.h>
 #include "../GSTestProtocol.h"
 
 // Something to show in the table

@@ -40,8 +40,8 @@
 #include "CurrencyConverter.h"
 
 // Include GNUstep layout extension classes
-#include <AppKit/GSHbox.h>
-#include <AppKit/GSVbox.h>
+#include <GNUstepGUI/GSHbox.h>
+#include <GNUstepGUI/GSVbox.h>
 
 
 // Text to be displayed in the labels

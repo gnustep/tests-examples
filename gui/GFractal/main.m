@@ -28,8 +28,8 @@
 
 #import <Foundation/Foundation.h>
 #import <AppKit/AppKit.h>
-#import <AppKit/GSHbox.h>
-#import <AppKit/GSVbox.h>
+#import <GNUstepGUI/GSHbox.h>
+#import <GNUstepGUI/GSVbox.h>
 
 #import "Controller.h"
 

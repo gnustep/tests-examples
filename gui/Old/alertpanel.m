@@ -26,7 +26,7 @@
 
 #import <Foundation/NSAutoreleasePool.h>
 #import <AppKit/AppKit.h>
-#import <AppKit/GMArchiver.h>
+#import <GNUstepGUI/GMArchiver.h>
 
 @interface myController : NSObject
 {

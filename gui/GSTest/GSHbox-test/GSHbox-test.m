@@ -22,7 +22,7 @@
    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. */
 #include <Foundation/Foundation.h>
 #include <AppKit/AppKit.h>
-#include <AppKit/GSHbox.h>
+#include <GNUstepGUI/GSHbox.h>
 #include "../GSTestProtocol.h"
 
 @interface GSHboxTest: NSObject <GSTest>

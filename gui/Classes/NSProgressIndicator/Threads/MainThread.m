@@ -21,7 +21,7 @@
 #include <AppKit/AppKit.h>
 #include "SharedArea.h"
 #include "AuxiliaryThread.h"
-#include <AppKit/GSVbox.h>
+#include <GNUstepGUI/GSVbox.h>
 
 @implementation MainThread
 

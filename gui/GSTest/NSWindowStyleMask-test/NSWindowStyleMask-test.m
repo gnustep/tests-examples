@@ -23,9 +23,9 @@
 
 #include <Foundation/Foundation.h>
 #include <AppKit/AppKit.h>
-#include <AppKit/GSHbox.h>
-#include <AppKit/GSTable.h>
-#include <AppKit/GSVbox.h>
+#include <GNUstepGUI/GSHbox.h>
+#include <GNUstepGUI/GSTable.h>
+#include <GNUstepGUI/GSVbox.h>
 #include "../GSTestProtocol.h"
 
 #define STYLE_NUMBER 6

@@ -22,8 +22,8 @@
    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. */
 #include <Foundation/Foundation.h>
 #include <AppKit/AppKit.h>
-#include <AppKit/GSHbox.h>
-#include <AppKit/GSVbox.h>
+#include <GNUstepGUI/GSHbox.h>
+#include <GNUstepGUI/GSVbox.h>
 #include "../GSTestProtocol.h"
 
 /* The checking categories */
