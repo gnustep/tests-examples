@@ -1,3 +1,12 @@
+Thu Dec  9 20:47:06 1999  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	New test NSSavePanel-test.
+	* NSSavePanel-test: New directory.
+	* NSSavePanel-test/GNUmakefile: New file.
+	* NSSavePanel-test/NSSavePanel-test.m: New directory.
+	* testList.h: Added test to the list.
+	* GNUmakefile: idem.
+	
 Tue Dec  7 04:28:15 1999  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* KeyboardInput-test/KeyboardInput-test.m ([-init]): Set background 
