@@ -24,12 +24,14 @@
  */
 
 /* 
- * You may edit the following three (recommended if you are
+ * You may edit the following ones (recommended if you are
  * distributing this program bundled in some distribution.)  
  */
 #define FINGER_DEFAULT_COMMAND     @"/usr/bin/finger"
 #define PING_DEFAULT_COMMAND       @"/bin/ping"
 #define TRACEROUTE_DEFAULT_COMMAND @"/usr/sbin/traceroute"
+#define WHOIS_DEFAULT_COMMAND      @"/usr/bin/whois"
+#define DEFAULT_BUTTON_SIZE        @"Large"
 
 /*
  * Libraries
