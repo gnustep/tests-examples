@@ -106,7 +106,7 @@
   [copyrightOne release];
 
   fsf = [Label new];
-  [fsf setStringValue: @"Copyright (C) 1999 Free Software Foundation, Inc."];  
+  [fsf setStringValue: @"Copyright (C) 1999, 2000 Free Software Foundation, Inc."];  
   [fsf setFont: [NSFont systemFontOfSize: 10]];
   [fsf setAutoresizingMask: NSViewMaxXMargin | NSViewMinXMargin];
   [fsf sizeToFit];
