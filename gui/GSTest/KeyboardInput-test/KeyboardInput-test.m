@@ -182,7 +182,7 @@ static NSString *modifierTitle[8] =
 }
 -(void) drawRect: (NSRect)aRect
 {
-  [cell drawWithFrame: [self frame]
+  [cell drawWithFrame: [self bounds]
 	inView: self];
 }
 @end 
@@ -351,8 +351,8 @@ static NSString *modifierTitle[8] =
   vbox = [[GSVbox new] autorelease];
   [vbox setDefaultMinYMargin: 10];
   [vbox setBorder: 10];
-  [vbox addView: inputOnMe];
   [vbox addView: keyBox];
+  [vbox addView: inputOnMe];
 
   hbox = [[GSHbox new] autorelease];
   [hbox setDefaultMinXMargin: 10];
