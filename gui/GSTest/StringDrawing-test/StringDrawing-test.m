@@ -64,7 +64,10 @@
 }
 -(void) sizeToFit
 {
-  [self setFrameSize: [attr size]];
+  if (attr)
+    [self setFrameSize: [attr size]];
+  else
+    [self setFrameSize: NSZeroSize];
 }
 -(void) drawRect: (NSRect)rect
 {
@@ -98,7 +101,7 @@
   text = [TrivialTextView new];
 
   scrollView = [[NSScrollView alloc] 
-		 initWithFrame: NSMakeRect (0, 0, 362, 161)];
+		 initWithFrame: NSMakeRect (0, 0, 500, 222)];
   [scrollView setDocumentView: text];
   [text release];
   [scrollView setHasHorizontalScroller: YES];
@@ -184,11 +187,11 @@
 			    NSForegroundColorAttributeName,
 			    nil];
       
-      attr = [[NSAttributedString alloc] initWithString:  string
-					 attributes: dict];
+      attr = [[[NSAttributedString alloc] initWithString:  string
+					  attributes: dict] autorelease];
       [text setAttributedString: attr];
       [text sizeToFit];
-      /* A bit exagerated to redisplay all the window but anyway. */
+      /* It is a bit exagerated to redisplay all the window but anyway. */
       [win display];
     }
 }
