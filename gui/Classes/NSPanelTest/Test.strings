@@ -1,0 +1,6 @@
+"Testing Localized" = "Test de localisation"; /* Titre */
+"This message should be read in French." = "Ce message doit être en français."; /* Message */
+"Yes" = "Oui"; /* default button */
+"No" = "Non"; /* alternate button */
+"May be" = "Peut-être"; /* other button */
+
