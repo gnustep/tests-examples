@@ -25,6 +25,10 @@
 #include <AppKit/GSVbox.h>
 #include "../GSTestProtocol.h"
 
+NSString *NSTableViewTestPboardType = @"NSTableViewTestPboardType";
+
+static NSArray *draggedRows;
+
 // Something to show in the table
 NSString *keys[20] = 
 { 
@@ -99,6 +103,9 @@ NSString *test[20] =
 @interface NSTableViewTest: NSObject <GSTest>
 {
   NSWindow *win;
+  NSMutableArray *keysArray;
+  NSMutableArray *valuesArray;
+  NSMutableArray *testArray;
 }
 -(void) restart;
 - (int) numberOfRowsInTableView: (NSTableView *)aTableView;
@@ -126,6 +133,15 @@ NSString *test[20] =
   int i;
   NSString *string;
 
+  keysArray = [[NSMutableArray alloc] initWithObjects: keys
+				      count:20];
+
+  valuesArray = [[NSMutableArray alloc] initWithObjects: values
+					count:20];
+
+  testArray = [[NSMutableArray alloc] initWithObjects: test
+				      count:20];
+
   keyColumn = [[NSTableColumn alloc] initWithIdentifier: @"key"];
   AUTORELEASE (keyColumn);
   [keyColumn setEditable: NO];
@@ -150,6 +166,9 @@ NSString *test[20] =
   [tableView addTableColumn: valueColumn];
   [tableView addTableColumn: testColumn];
   //  [tableView setAutoresizesAllColumnsToFit: YES];
+  [tableView setAllowsMultipleSelection: YES];
+
+
 
   /* Now add some more columns */
   for (i = 0; i < 5; i++)
@@ -205,28 +224,33 @@ NSString *test[20] =
   RELEASE (externalBox);
   [win setTitle: @"NSTableView Test"];
   
-  [self restart];
+  [win orderFront: nil]; 
+  [[NSApplication sharedApplication] addWindowsItem: win
+				     title: @"NSTableView Test"
+				     filename: NO];
+
+  [tableView registerForDraggedTypes: 
+	       [NSArray arrayWithObject: NSTableViewTestPboardType]];
+
   return self;
 }
 
 -(void) restart
 {
-  [win orderFront: nil]; 
-  [[NSApplication sharedApplication] addWindowsItem: win
-				     title: @"NSTableView Test"
-				     filename: NO];
+  [[self class] new];
+  //  [win orderFront: nil]; 
 }
 
 - (int) numberOfRowsInTableView: (NSTableView *)aTableView
 {
-  return 20;
+  return [keysArray count];
 }
 
 - (id)           tableView: (NSTableView *)aTableView 
  objectValueForTableColumn: (NSTableColumn *)aTableColumn 
 		       row:(int)rowIndex
 {
-  if (rowIndex < 0 || rowIndex > 19)
+  if (rowIndex < 0 || rowIndex >= [keysArray count])
     {
       NSLog (@"BUG: We were asked for rowIndex: %d", rowIndex);
       return nil;
@@ -239,13 +263,13 @@ NSString *test[20] =
     }
 
   if ([(NSString *)[aTableColumn identifier] isEqual: @"key"])
-    return keys[rowIndex];
+    return [keysArray objectAtIndex: rowIndex];
   else if ([(NSString *)[aTableColumn identifier] isEqual: @"value"])
-    return values[rowIndex];
+    return [valuesArray objectAtIndex: rowIndex];
   else if ([(NSString *)[aTableColumn identifier] isEqual: @"test"])
-    return test[rowIndex];
+    return [testArray objectAtIndex: rowIndex];
   else 
-    return test[rowIndex];
+    return [testArray objectAtIndex: rowIndex];
 }
 
 - (void) tableView: (NSTableView *)aTableView 
@@ -258,4 +282,122 @@ NSString *test[20] =
   else
     [aCell setFont: [NSFont systemFontOfSize: 0]];
 }
+
+- (BOOL) tableView: (NSTableView *)aTableView
+	 writeRows: (NSArray *) rows
+      toPasteboard: (NSPasteboard *) pboard
+{
+  NSMutableArray *propertyList;
+  int i;
+
+  draggedRows = RETAIN(rows);
+  propertyList = [[NSMutableArray alloc] initWithCapacity: 
+					   [rows count]];
+
+  for (i = 0; i < [rows count]; i++)
+    {
+      NSMutableArray *line = [[NSMutableArray alloc] initWithCapacity:
+						       3];
+
+      
+      [line addObject: 
+	      [self tableView: aTableView
+		    objectValueForTableColumn: 
+		      [[aTableView tableColumns] objectAtIndex: 0]
+		    row: [[rows objectAtIndex: i] intValue]]];
+
+      [line addObject: 
+	      [self tableView: aTableView
+		    objectValueForTableColumn: 
+		      [[aTableView tableColumns] objectAtIndex: 1]
+		    row: [[rows objectAtIndex: i] intValue]]];
+
+      [line addObject: 
+	      [self tableView: aTableView
+		    objectValueForTableColumn: 
+		      [[aTableView tableColumns] objectAtIndex: 2]
+		    row: [[rows objectAtIndex: i] intValue]]];
+
+      [propertyList addObject: line];
+      RELEASE(line);
+    }
+
+  [pboard declareTypes: [NSArray arrayWithObject: NSTableViewTestPboardType]
+	  owner: self];
+
+  [pboard setPropertyList: propertyList
+	  forType: NSTableViewTestPboardType];
+  RELEASE(propertyList);
+  return YES;
+}
+
+- (NSDragOperation) tableView: (NSTableView *) tv
+		 validateDrop: (id <NSDraggingInfo>) info
+		  proposedRow: (int) row
+	proposedDropOperation: (NSTableViewDropOperation) operation
+
+{
+  if ([info draggingSourceOperationMask] & NSDragOperationGeneric)
+    return NSDragOperationGeneric;
+  else if ([info draggingSourceOperationMask] & NSDragOperationCopy)
+    return NSDragOperationCopy;
+  else
+    return NSDragOperationNone;
+}
+
+- (BOOL) tableView: (NSTableView *)tv
+	acceptDrop: (id <NSDraggingInfo>) info
+	       row: (int) row
+     dropOperation: (NSTableViewDropOperation) operation
+{
+  NSDragOperation dragOperation;
+  if ([info draggingSourceOperationMask] & NSDragOperationGeneric)
+    dragOperation = NSDragOperationGeneric;
+  else if ([info draggingSourceOperationMask] & NSDragOperationCopy)
+    dragOperation = NSDragOperationCopy;
+  else
+    dragOperation = NSDragOperationNone;
+
+  {
+    int i, j;
+    NSArray *pl = [[info draggingPasteboard] propertyListForType:
+					       NSTableViewTestPboardType];
+    int count = [pl count];
+
+    for ( i = count - 1; i >= 0; i-- )
+      {
+	[keysArray insertObject: 
+		     [[pl objectAtIndex: i] objectAtIndex: 0]
+		   atIndex: 
+		     row];
+	[valuesArray insertObject: 
+		     [[pl objectAtIndex: i] objectAtIndex: 1]
+		   atIndex: 
+		     row];
+	[testArray insertObject: 
+		     [[pl objectAtIndex: i] objectAtIndex: 2]
+		   atIndex: 
+		     row];
+      }
+    
+    if (dragOperation == NSDragOperationGeneric)
+      {
+	for ( i = count - 1; i >= 0; i-- )
+	  {
+	    j = [[draggedRows objectAtIndex: i] intValue];
+	    if (j >= row)
+	      {
+		j += count;
+	      }
+	    [keysArray removeObjectAtIndex: j];
+	    [valuesArray removeObjectAtIndex: j];
+	    [testArray removeObjectAtIndex: j];
+	  }
+      }
+    [tv reloadData];
+  }
+  
+  return YES;
+}
+
 @end

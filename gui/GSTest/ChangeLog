@@ -1,3 +1,8 @@
+2002-03-22  Pierre-Yves Rivaille <pyrivail@ens-lyon.fr>
+
+	* NSTableView-test/NSTableView-test.m : 
+	Modified to use drag'n'drop.
+
 2002-03-05  Gregory John Casamento <greg_casamento@yahoo.com>
 
 	* NSOutlineView-test/NSOutlineView-test.m made modifications
