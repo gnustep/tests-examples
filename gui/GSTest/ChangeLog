@@ -1,3 +1,16 @@
+Sat Sep  2 01:05:48 2000  Nicola Pero  <nicola@brainstorm.co.uk>
+
+	* MemoryPanel.m ([NSMenu -addMemoryPanelSubmenu]): Create the
+	shared memory panel later.
+	* MemoryPanel.h, MemoryPanel.m ([MemoryPanel +update:]): New method.  
+	* main.m (main): Empty autorelease pool before running 
+	application.
+
+Fri Sep  1 22:47:42 2000  Nicola Pero  <nicola@brainstorm.co.uk>
+
+	* MemoryPanel.m ([MemoryPanel -init]): Order entries by number 
+	of allocated objects by default.
+
 Fri Sep  1 16:18:50 2000  Nicola Pero  <nicola@brainstorm.co.uk>
 
 	Implemented a memory panel to track memory leaks in the library.
