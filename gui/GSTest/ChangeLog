@@ -1,3 +1,8 @@
+Sat Feb 12 18:03:01 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* StringDrawing-test/StringDrawing-test.m ([-init]): Improved 
+	autoresizing.
+
 Sat Feb  5 03:37:52 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* main.m (main): Added "Hide" menu item.
