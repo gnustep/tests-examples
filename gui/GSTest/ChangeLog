@@ -4,12 +4,11 @@ Fri Dec 17 06:16:30 1999  Nicola Pero  <n.pero@mi.flashnet.it>
  	Make 'Start Save Panel' button bigger; add more space over the
  	button.
 	
-	New test EncodingDecoding-test.
+	New test EncodingDecoding-test.  This test is meant for library 
+	developing.  It will be replaced with a test more focused as a demo.
 	* EncodingDecoding-test: New directory.
 	* EncodingDecoding-test/GNUmakefile: New file.
 	* EncodingDecoding-test/EncodingDecoding-test.m: New file.
-	* testList.h: Added test to the list.
-	* GNUmakefile: idem.
 	
 Thu Dec  9 20:47:06 1999  Nicola Pero  <n.pero@mi.flashnet.it>
 
