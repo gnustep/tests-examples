@@ -122,12 +122,11 @@ setup_box (NSString *command, NSTextField *field, int tag, id target)
       buttonSize.width = [setButton frame].size.width;
     }
 
-  [setButton setFrameSize: NSMakeSize (buttonSize.width + 6, 
-				       buttonSize.height + 4)];
+  [setButton setFrameSize: buttonSize];
+
 #endif 
   
-  [defaultButton setFrameSize: NSMakeSize (buttonSize.width + 6, 
-					   buttonSize.height + 4)];
+  [defaultButton setFrameSize: buttonSize];
 
   [hbox addView: defaultButton];
 #if SET_BUTTON
