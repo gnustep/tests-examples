@@ -217,6 +217,8 @@
   RELEASE (vbox);
   [win setTitle: @"Coordinate Check Test"];
 
+  [text setString: @"To select the window to check -\npress `Choose Window' and then click\ninside the window you want to choose\n"];
+
   [self restart];
   return self;
 }
@@ -257,7 +259,7 @@
     {
       [text replaceCharactersInRange: 
 	      NSMakeRange ([[text textStorage] length], 0)
-	    withString: @"Please select a window first -\nby pushing `Choose Window'\nand then clicking inside the window\nyou want to select\n"];      
+	    withString: @"Please select a window first -\nby pressing `Choose Window'\nand then clicking inside the window\nyou want to select\n"];      
     }
   else
     {
