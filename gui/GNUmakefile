@@ -17,9 +17,6 @@
 #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	 See the GNU
 #  Library General Public License for more details.
 #
-#  If you are interested in a warranty or support for this source code,
-#  contact Scott Christley at scottc@net-community.com
-#
 #  You should have received a copy of the GNU Library General Public
 #  License along with this library; see the file COPYING.LIB.
 #  If not, write to the Free Software Foundation,
@@ -39,7 +36,6 @@ include ../Version
 
 # The applications to be compiled
 TEST_APP_NAME = \
-		nstextfields \
 		GNUstepInstaller \
 		alertpanel \
 		buttons \
@@ -48,8 +44,6 @@ TEST_APP_NAME = \
 		gstextnetwork \
 		matrix \
 		menu \
-		nsbox \
-		nsbox \
 		nsbrowser \
 		nsbrowsercell \
 		nscombobox \
@@ -59,43 +53,69 @@ TEST_APP_NAME = \
 		nsprogressindicator \
 		nsscroller \
 		nstabview \
+		nstextfields \
 		scrollview \
 		scrollview2 \
-		slider \
 		windows
 
-SUBPROJECTS = Calculator Edit
+SUBPROJECTS = Calculator CurrencyConverter Edit GSTest
 
 # The Objective-C source files to be compiled
-TestApp_OBJC_FILES = TestApp.m 
-nstextfields_OBJC_FILES = nstextfields.m
-GNUstepInstaller_OBJC_FILES = GNUstepInstaller.m GSImageTabViewItem.m TestView.m ColorView.m
+GNUstepInstaller_OBJC_FILES = \
+		GNUstepInstaller.m \
+		GSImageTabViewItem.m \
+		TestView.m \
+		ColorView.m
 GNUstepInstaller_RESOURCE_FILES = Smiley.tiff
+
 alertpanel_OBJC_FILES = alertpanel.m
+
 buttons_OBJC_FILES = buttons.m
+
 popupbuttons_OBJC_FILES = popupbuttons.m TestView.m ColorView.m
-popupbuttons_RESOURCE_FILES = animations.tiff appearance.tiff configs.tiff dock.tiff
+popupbuttons_RESOURCE_FILES = \
+		animations.tiff \
+		appearance.tiff \
+		configs.tiff \
+		dock.tiff
+
 fontpanel_OBJC_FILES = fontpanel.m
+
 matrix_OBJC_FILES = matrix.m
+
 menu_OBJC_FILES = menu.m
 menu_RESOURCE_FILES = Smiley.tiff
-nsbox_OBJC_FILES = nsbox.m
+
 nsbrowser_OBJC_FILES = nsbrowser.m
+
 nsbrowsercell_OBJC_FILES = nsbrowsercell.m
+
 nscombobox_OBJC_FILES = nscombobox.m
+
 nscursor_OBJC_FILES = nscursor.m ColorView.m
+
 nsimage_OBJC_FILES = nsimage.m ImageView.m
+
 nsimagecell_OBJC_FILES = nsimagecell.m
+
 nsprogressindicator_OBJC_FILES = nsprogressindicator.m
+
 nsscroller_OBJC_FILES = nsscroller.m
+
+nstextfields_OBJC_FILES = nstextfields.m
+
 gstable_OBJC_FILES = gstable.m
+
 gstextnetwork_OBJC_FILES = gstextnetwork.m
 gstextnetwork_RESOURCE_FILES = ./Edit/Readme.txt
+
 nstabview_OBJC_FILES = nstabview.m GSImageTabViewItem.m
 nstabview_RESOURCE_FILES = Smiley.tiff
-scrollview2_OBJC_FILES = scrollview2.m
+
 scrollview_OBJC_FILES = scrollview.m TestView.m
-slider_OBJC_FILES = slider.m
+
+scrollview2_OBJC_FILES = scrollview2.m
+
 windows_OBJC_FILES = windows.m TestView.m
 
 
