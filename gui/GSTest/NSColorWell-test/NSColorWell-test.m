@@ -28,7 +28,6 @@
 @interface NSColorWellTest: NSObject <GSTest>
 {
   NSWindow *win;
-  NSColorWell *well;
 }
 -(void) restart;
 @end
@@ -42,6 +41,7 @@
   GSHbox *hbox;
   NSTextField *label;
   NSRect winFrame;
+  NSColorWell *well;
 
   label =[NSTextField new]; 
   [label setEditable: NO];
@@ -82,6 +82,11 @@
   [win setMinSize: winFrame.size];
   [self restart];
   return self;
+}
+- (void) dealloc
+{
+  RELEASE(win);
+  [super dealloc];
 }
 -(void) restart
 {

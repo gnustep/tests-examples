@@ -384,6 +384,11 @@ static NSString *modifierTitle[8] =
   [self restart];
   return self;
 }
+- (void) dealloc
+{
+  RELEASE(win);
+  [super dealloc];
+}
 - (void) restart
 {
   [win orderFront: nil]; 
