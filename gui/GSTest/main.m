@@ -26,7 +26,7 @@
 #include "testList.h"
 #include "MemoryPanel.h"
 
-#define GSTEST_VERSION @"0.7"
+#define GSTEST_VERSION @"0.8"
 #define GSTEST_FULLID @"CVS $Date$"
 
 // If you want to add a test, please refer to testList.h 
@@ -70,7 +70,7 @@
 			   @"Nicola Pero <n.pero@mi.flashnet.it>"]
      forKey: @"Authors"];
   //  [d setObject: @"See http://www.gnustep.org" forKey: @"URL"];
-  [d setObject: @"Copyright (C) 1999, 2000 Free Software Foundation, Inc."
+  [d setObject: @"Copyright (C) 1999, 2000, 2001 Free Software Foundation, Inc."
      forKey: @"Copyright"];
   [d setObject: @"Released under the GNU General Public License 2.0"
      forKey: @"CopyrightDescription"];
