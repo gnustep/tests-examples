@@ -131,6 +131,7 @@ willDisplayCell: (id)cell
   [browser setPath: @"/"];
   [browser setTarget: self];
   [browser setDoubleAction: @selector(showColorList:)];
+  [browser setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
   
   [vbox addView: browser];
   [browser release];
@@ -182,6 +183,7 @@ willDisplayCell: (id)cell
 
   vbox = [GSVbox new];
   [vbox setDefaultMinYMargin: 5];
+  [vbox setBorder: 5];
 
   e = [[cl allKeys] objectEnumerator];
   
