@@ -68,7 +68,7 @@ main(int argc, char **argv, char** env)
     wf0.size = [v imageSize];
     [win setFrame: wf0 display: YES];
     [win setTitle:@"GNUstep GUI X/RAW Image View"];
-    [win orderFront:nil];
+    [win orderFrontRegardless];
 
   {
     NSMenu	*menu = [NSMenu new];

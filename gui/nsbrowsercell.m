@@ -119,7 +119,7 @@ NSRect mr;
 	
 	[window setTitle:@"NSMatrix with NSBrowserCells"];
 	[window setFrame:winRect display:YES];
-	[window orderFront:nil];
+	[window orderFrontRegardless];
 	
 	[theApp run];
 	[pool release];

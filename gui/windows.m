@@ -158,9 +158,9 @@ main(int argc, char **argv, char** env)
 
   [w2 setFrame: wf2 display: YES];
 
-  [w0 orderFront:nil];
-  [w1 orderFront:nil];
-  [w2 orderFront:nil];
+  [w0 orderFrontRegardless];
+  [w1 orderFrontRegardless];
+  [w2 orderFrontRegardless];
 
   {
     NSMenu	*menu = [NSMenu new];

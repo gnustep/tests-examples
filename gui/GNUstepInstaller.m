@@ -322,7 +322,7 @@ Sorry. :-)"]];
     
   [window setTitle:@"NSTabView without Tabs"];
   [window setFrame:winRect display:YES];
-  [window orderFront:nil];
+  [window orderFrontRegardless];
       
   {
     NSMenu	*menu = [NSMenu new];

@@ -130,7 +130,7 @@ main(int argc, char **argv, char** env)
 	
   [window setFrame: wf0 display: YES];
   [window setTitle: @"GNUstep NSScroller"];
-  [window orderFront: nil];
+  [window orderFrontRegardless];
 	
   {
     NSMenu	*menu = [NSMenu new];

@@ -93,7 +93,7 @@ main(int argc, char **argv, char** env)
   [slider2 setAction:@selector(action:)];
   [[window contentView] addSubview:slider2];
 
-  [window orderFront:nil];
+  [window orderFrontRegardless];
 
   {
     NSMenu	*menu = [NSMenu new];

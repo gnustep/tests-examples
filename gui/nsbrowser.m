@@ -224,7 +224,7 @@ main(int argc, char **argv, char** env)
 	
   [window setTitle:@"NSBrowser"];
   [window display];
-  [window orderFront:nil];
+  [window orderFrontRegardless];
 	
   {
     NSMenu	*menu = [NSMenu new];

@@ -95,7 +95,7 @@ main(int argc, char **argv, char** env)
   [menu update];
   [menu display];
   
-  [window orderFront:nil];
+  [window orderFrontRegardless];
 
   [theApp run];
   [trigger release];

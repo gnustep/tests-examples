@@ -160,7 +160,7 @@ for rent."]];
 	
 	[window setTitle:@"NSTabView"];
 	[window setFrame:winRect display:YES];
-	[window orderFront:nil];
+	[window orderFrontRegardless];
 	
   {
     NSMenu	*menu = [NSMenu new];
