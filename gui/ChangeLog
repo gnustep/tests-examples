@@ -1,3 +1,8 @@
+Thu Jan 13 11:59:41 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* CurrencyConverter/CurrencyConverter.m ([CurrencyConverter -init]): 
+	Refined setting size of textfields.
+
 Fri Jan  7 02:20:43 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* scrollview2.m: Added code to test matrix double click.
