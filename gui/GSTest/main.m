@@ -207,7 +207,7 @@ int main (void)
    NSMenu *infoMenu;
    NSMenu *testMenu;
    NSMenu *windowsMenu;
-   NSMenuItem *menuItem;
+   id <NSMenuItem> menuItem;
    Controller *appController;
    int i;
 
