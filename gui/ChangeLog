@@ -1,3 +1,8 @@
+2004-02-18  Adam Fedor  <fedor@gnu.org>
+
+	* Classes/NSImage: New
+	* Old/nsimage.m: Remove.
+
 2003-11-19 17:02  Alexander Malmberg <alexander@malmberg.org>
 
 	* ExampleService/*: Move example.service and md5Digest.app here
