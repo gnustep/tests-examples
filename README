@@ -1,0 +1,25 @@
+
+Welcome to the GNUstep Examples directory.
+
+In this directory there is a full collection of examples for the GNUstep
+libraries.  Some tests are very old, other are newer; some are 
+up-to-date, other are not.
+
+Quick start to compile and run the tests:
+
+make
+openapp testYouWantToSee.app
+
+For more information, see the README file associated with each subdirectory.
+Currently there is only one, for gui tests.
+
+ABOUT GNUSTEP
+-------------
+If you want to know more about GNUstep, please refer to
+http://www.gnustep.org.
+
+IF YOU ARE A PROGRAMMER
+-----------------------
+Join us: write GNUstep apps!  
+Objective-C is exciting and easy to learn if you know C and object
+oriented programming fundamentals.
