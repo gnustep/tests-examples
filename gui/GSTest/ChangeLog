@@ -1,3 +1,9 @@
+Mon Feb 14 22:14:14 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* NSSavePanel-test/NSSavePanel-test.m ([-startSavePanel:sender]):
+	Emit a warning panel and refuse to run the save panel if a 
+	not-valid filename, ie one beginning with "/", is supplied.
+
 Sun Feb 13 01:18:37 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* main.m ([Controller -runInfoPanel:sender]): Use AUTORELEASE
