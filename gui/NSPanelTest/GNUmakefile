@@ -11,7 +11,7 @@ NSPanelTest_RESOURCE_DIRS=
 NSPanelTest_OBJC_FILES=\
 	NSPanelTest.m \
 	NSPanelTest_main.m
-NSPanelTest_TOOL_LIBS= -lgnustep-db -lFoundationExt
+#NSPanelTest_TOOL_LIBS= -lgnustep-db -lFoundationExt
 
 ADDITIONAL_LDFLAGS =  #-lefence
 ADDITIONAL_INCLUDE_DIRS = 
