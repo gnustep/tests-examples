@@ -37,7 +37,8 @@ SUBPROJECTS = \
   NSSavePanel-test \
   NSScrollView-test \
   NSSlider-test \
-  NSSplitView-test 
+  NSSplitView-test \
+  StringDrawing-test
 
 #
 # MAIN APP
