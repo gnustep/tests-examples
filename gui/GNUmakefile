@@ -39,8 +39,8 @@ include ../Version
 
 # The applications to be compiled
 TEST_APP_NAME = alertpanel buttons matrix menu nscursor \
-                nsimage nsscroller scrollview \
-                scrollview2 windows slider nsbox nsbrowsercell nsbrowser
+		nsimage nsscroller scrollview \
+		scrollview2 windows slider nsbox nsbrowsercell nsbrowser
 
 # The Objective-C source files to be compiled
 alertpanel_OBJC_FILES = alertpanel.m
