@@ -58,7 +58,7 @@ main (void)
   app = [NSApplication sharedApplication];
   [app setApplicationIconImage: [NSImage imageNamed: 
 					   @"Calculator.app.tiff"]];
-  mainMenu = [NSMenu new];
+  mainMenu = AUTORELEASE ([NSMenu new]);
   // Info
   [mainMenu addItemWithTitle: @"Info..." 
 	    action: @selector (runInfoPanel:) 
@@ -67,7 +67,7 @@ main (void)
   menuItem = [mainMenu addItemWithTitle: @"Edit" 	
 		       action: NULL 
 		       keyEquivalent: @""];
-  menu = [NSMenu new];
+  menu = AUTORELEASE ([NSMenu new]);
   [mainMenu setSubmenu: menu forItem: menuItem];
   /*
   [menu addItemWithTitle: @"Cut" 
@@ -104,7 +104,6 @@ main (void)
   [app setDelegate: face];
   
   [app run];
-  [pool release];
   return 0;
 }
 
