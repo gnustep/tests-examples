@@ -38,9 +38,7 @@ main (void)
    int i;
 
    pool = [NSAutoreleasePool new];
-   initialize_gnustep_backend ();
    app = [NSApplication sharedApplication];
-   [app setApplicationIconImage: [NSImage imageNamed: @"finger"]];
 
    //
    // Create the Menu 
@@ -56,7 +54,7 @@ main (void)
    menu = AUTORELEASE ([NSMenu new]);
    [mainMenu setSubmenu: menu forItem: menuItem];
    [menu addItemWithTitle: @"Info Panel..." 
-	 action: @selector (runInfoPanel:) 
+	 action: @selector (orderFrontStandardInfoPanel:) 
 	 keyEquivalent: @""];
    [menu addItemWithTitle: @"Preferences..." 
 	 action: @selector (runPreferencesPanel:) 
