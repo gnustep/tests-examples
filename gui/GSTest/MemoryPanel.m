@@ -108,6 +108,11 @@ static MemoryPanel *mp = nil;
   return mp;
 }
 
++ (void) update: (id)sender
+{
+  [[self sharedMemoryPanel] update: sender];
+}
+
 - (id) init
 {
   NSRect winFrame;
@@ -116,8 +121,11 @@ static MemoryPanel *mp = nil;
   NSScrollView *scrollView;
   GSVbox *vbox;
 
-  /* Activate debugging of allocation */
+  /* Activate debugging of allocation. */
   GSDebugAllocationActive (YES);
+
+  /* Ordering by number of objects by default */
+  orderingByNumber = YES;
 
   classColumn = [[NSTableColumn alloc] initWithIdentifier: @"Class"];
   AUTORELEASE (classColumn);
@@ -324,8 +332,8 @@ static MemoryPanel *mp = nil;
   NSMenu *memoryMenu;
 
   menuItem = [self addItemWithTitle: @"Memory" 
-	     action: NULL 
-	     keyEquivalent: @""];
+		   action: NULL 
+		   keyEquivalent: @""];
   memoryMenu = AUTORELEASE ([NSMenu new]);
   [self setSubmenu: memoryMenu forItem: menuItem];
   
@@ -335,6 +343,6 @@ static MemoryPanel *mp = nil;
   menuItem = [memoryMenu addItemWithTitle: @"Update Memory Panel" 
 			 action: @selector (update:)
 			 keyEquivalent: @""];
-  [menuItem setTarget: [MemoryPanel sharedMemoryPanel]];
+  [menuItem setTarget: [MemoryPanel class]];
 }
 @end
