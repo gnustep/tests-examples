@@ -1,3 +1,9 @@
+1999-09-07  Adam Fedor  <fedor@gnu.org>
+
+	* buttons.m ([buttonsController -applicationDidFinishLaunching:]): 
+	Move main menu creation to here, since it screws up xdps if it's
+	in main - must look into this...
+
 1999-08-21  Richard frith-Macdonald <richard@brainstorm.co.uk>
 
 	Added simple menu with 'quit' item for all test apps.

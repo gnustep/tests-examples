@@ -196,6 +196,15 @@
 
   NSLog(@"Make the buttons subviews\n");
 
+  {
+    NSMenu    *menu = [NSMenu new];
+  
+    [menu addItemWithTitle: @"Quit"
+                  action: @selector(terminate:)
+           keyEquivalent: @"q"];
+    [NSApp setMainMenu: menu];
+  }
+
   [v addSubview: mpush];
   [v addSubview: ponpoff];
   [v addSubview: toggle];
@@ -233,14 +242,6 @@ main(int argc, char **argv, char** env)
 
   theApp = [NSApplication sharedApplication];
   [theApp setDelegate: [buttonsController new]];
-  {
-    NSMenu	*menu = [NSMenu new];
-
-    [menu addItemWithTitle: @"Quit"
-		    action: @selector(terminate:)
-	     keyEquivalent: @"q"];
-    [NSApp setMainMenu: menu];
-  }
   [theApp run];
 
   [pool release];
