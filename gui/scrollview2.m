@@ -231,9 +231,6 @@ main(int argc, char** argv, char** env)
 #if LIB_FOUNDATION_LIBRARY
   [NSProcessInfo initializeWithArguments: argv count: argc environment: env];
 #endif
-#ifndef NX_CURRENT_COMPILER_RELEASE
-  initialize_gnustep_backend();
-#endif
 
   theApp = [NSApplication sharedApplication];
   [theApp setDelegate: [Controller new]];

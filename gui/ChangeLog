@@ -1,3 +1,7 @@
+2000-08-04  Adam Fedor  <fedor@gnu.org>
+
+	* All tests (main): Remove initialize_gnustep_backend function call.
+
 Sat Jul 29 22:17:35 2000  Nicola Pero  <nicola@brainstorm.co.uk>
 
 	Simplified the CurrencyConverter example/demo.

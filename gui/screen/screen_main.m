@@ -36,10 +36,6 @@ int main (int argc, const char *argv[])
   NSWindowDepth *depths = NULL;
   BOOL exactMatch = NO;
   
-#ifdef GNUSTEP
-  initialize_gnustep_backend();
-#endif
-  
   // insert your code here
   anApplication = [NSApplication sharedApplication];
   screenArray = [NSScreen screens];

@@ -98,8 +98,6 @@ int main (int argc, char **argv)
   NSApplication *application;
   NSMenu *menu;
 
-
-  initialize_gnustep_backend();
   [application = [NSApplication sharedApplication] setDelegate:[Controller new]];
 
   menu = [NSMenu new];

@@ -99,9 +99,6 @@ NSApplication *theApp;
 #if LIB_FOUNDATION_LIBRARY
     [NSProcessInfo initializeWithArguments:argv count:argc environment:env];
 #endif
-#ifndef NX_CURRENT_COMPILER_RELEASE
-    initialize_gnustep_backend();
-#endif
 
   theApp = [NSApplication sharedApplication];
   [theApp setDelegate: [nscursorController new]];	

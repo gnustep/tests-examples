@@ -32,7 +32,6 @@ main (void)
   NSMenu	    *menu;
   NSMenuItem        *item;
 
-  initialize_gnustep_backend ();
   app = [NSApplication sharedApplication];
 
   menu = [NSMenu new];
