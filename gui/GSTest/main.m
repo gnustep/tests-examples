@@ -26,6 +26,9 @@
 #include "testList.h"
 #include "MemoryPanel.h"
 
+#define GSTEST_VERSION @"0.5"
+#define GSTEST_FULLID @"CVS $Date$"
+
 // If you want to add a test, please refer to testList.h 
 
 @interface Controller: NSObject
@@ -61,8 +64,8 @@
   [d setObject: @"GSTest" forKey: @"ApplicationName"];
   [d setObject: @"GNUstep GUI Demo/Test Suite" 
      forKey: @"ApplicationDescription"];
-  [d setObject: @"GSTest 0.1" forKey: @"ApplicationRelease"];
-  [d setObject: @"0.1.1 Jan 2000" forKey: @"FullVersionID"];
+  [d setObject: GSTEST_VERSION forKey: @"ApplicationRelease"];
+  [d setObject: GSTEST_FULLID forKey: @"FullVersionID"];
   [d setObject: [NSArray arrayWithObject: 
 			   @"Nicola Pero <n.pero@mi.flashnet.it>"]
      forKey: @"Authors"];
