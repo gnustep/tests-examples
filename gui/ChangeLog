@@ -1,3 +1,9 @@
+2000-10-24  Fred Kiefer <FredKiefer@gmx.de>
+
+	* Ink/Document.h: Changed ivars
+	* Ink/Document.m: Use new ivars, changed text view handling
+	* Ink/Readme.rtf: Added some spaces
+
 2000-10-22  Michael Hanni <mhanni@sprintmail.com>
 
 	* nstabview.m: add 'Change Tab Font' menu item to use the font
