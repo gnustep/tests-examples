@@ -56,6 +56,7 @@
   NSRect	winRect = {{100, 400}, {270, 200}};
   NSRect	matrixRect = {{5, 5}, {265, 195}};
   NSMatrix	*theMatrix;
+  NSSize cellSize = {64, 64};
   NSImageCell	*imageCell;
   id		handler = self;
 
