@@ -285,21 +285,12 @@ main (void)
    // Main Menu
    mainMenu = [NSMenu new];
 
-   // Info SubMenu
-   menuItem = [mainMenu addItemWithTitle: @"Info" 
-			action: NULL 
-			keyEquivalent: @""];
-   menu = [NSMenu new];
-   [mainMenu setSubmenu: menu forItem: menuItem];
-   // The objects receiving these messages are determined at run time;
-   // they will be the NSApplication delegate for the first and NSApp
-   // (==[NSApplication sharedApplication[) for the second.
-   [menu addItemWithTitle: @"Info Panel..." 
-	 action: @selector (runInfoPanel:) 
-	 keyEquivalent: @""];
-   [menu addItemWithTitle: @"Help..." 
-	 action: @selector (orderFrontHelpPanel:)
-	 keyEquivalent: @"?"];
+   // Info Item
+   // The object receiving this message is determined at run time;
+   // it will be the NSApplication delegate
+   [mainMenu addItemWithTitle: @"Info..." 
+	     action: @selector (runInfoPanel:) 
+	     keyEquivalent: @""];
 
    // Edit Submenu
    menuItem = [mainMenu addItemWithTitle: @"Edit" 
@@ -331,12 +322,19 @@ main (void)
 	 action: @selector (selectAll:) 
 	 keyEquivalent: @"a"];
 
+   // Hide MenuItem
+   [mainMenu addItemWithTitle: @"Hide" 
+	     action: @selector (hide:) 
+	     keyEquivalent: @""];
    // Quit MenuItem
    [mainMenu addItemWithTitle: @"Quit" 
 	     action: @selector (terminate:)
 	     keyEquivalent: @"q"];	
 
    [app setMainMenu: mainMenu];
+   // The default title @"Currency Converter" is a bit too long
+   [mainMenu setTitle: @"CurrConv"];
+
 
    // Create and initializes an instance of our custom object.
    converter = [[CurrencyConverter alloc] init];
