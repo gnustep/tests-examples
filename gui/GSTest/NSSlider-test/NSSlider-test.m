@@ -52,8 +52,10 @@
   GSVbox *hSliderVbox;
   GSTable *table;
   GSVbox *vboxOne;
-  NSButton *hButton;
-  NSButton *vButton;
+  NSButton *hButton1;
+  NSButton *hButton2;
+  NSButton *vButton1;
+  NSButton *vButton2;
 
   NSTextField *hLabel;
   NSTextField *vLabel;
@@ -62,16 +64,27 @@
   NSRect winFrame;
 
   // Vertical Slider Box
-  vButton = [NSButton new];
-  [vButton setButtonType: NSSwitchButton];
-  [vButton setBordered: NO];
-  [vButton setTitle: @"Not Continuous"];
-  [vButton setAlternateTitle: @"Continuous"];
-  [vButton sizeToFit];
-  [vButton setTarget: self];
-  [vButton setAction: @selector (vContinuousChanged:)];
-  [vButton setState: NO];
-  [vButton setAutoresizingMask: NSViewMaxXMargin];
+  vButton1 = [NSButton new];
+  [vButton1 setButtonType: NSSwitchButton];
+  [vButton1 setBordered: NO];
+  [vButton1 setTitle: @"Disabled"];
+  [vButton1 setAlternateTitle: @"Enabled"];
+  [vButton1 sizeToFit];
+  [vButton1 setTarget: self];
+  [vButton1 setAction: @selector (vEnabledChanged:)];
+  [vButton1 setState: YES];
+  [vButton1 setAutoresizingMask: NSViewMaxXMargin];
+
+  vButton2 = [NSButton new];
+  [vButton2 setButtonType: NSSwitchButton];
+  [vButton2 setBordered: NO];
+  [vButton2 setTitle: @"Not Continuous"];
+  [vButton2 setAlternateTitle: @"Continuous"];
+  [vButton2 sizeToFit];
+  [vButton2 setTarget: self];
+  [vButton2 setAction: @selector (vContinuousChanged:)];
+  [vButton2 setState: NO];
+  [vButton2 setAutoresizingMask: NSViewMaxXMargin];
   
   vLabel = [NSTextField new];
   [vLabel setSelectable: NO];
@@ -101,8 +114,10 @@
   
   vSliderVbox = [GSVbox new];
   [vSliderVbox setDefaultMinYMargin: 5];
-  [vSliderVbox addView: vButton];
-  [vButton release];
+  [vSliderVbox addView: vButton1];
+  [vButton1 release];
+  [vSliderVbox addView: vButton2];
+  [vButton2 release];
   [vSliderVbox addView: vLabelBox];
   [vLabelBox release];
   [vSliderVbox setAutoresizingMask: (NSViewMinXMargin | NSViewMaxXMargin 
@@ -118,16 +133,27 @@
   [vSliderBox setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
   
   // Horizontal Slider Box
-  hButton = [NSButton new];
-  [hButton setButtonType: NSSwitchButton];
-  [hButton setBordered: NO];
-  [hButton setTitle: @"Not Continuous"];
-  [hButton setAlternateTitle: @"Continuous"];
-  [hButton sizeToFit];
-  [hButton setTarget: self];
-  [hButton setAction: @selector (hContinuousChanged:)];
-  [hButton setState: NO];
-  [hButton setAutoresizingMask: NSViewMaxXMargin];
+  hButton1 = [NSButton new];
+  [hButton1 setButtonType: NSSwitchButton];
+  [hButton1 setBordered: NO];
+  [hButton1 setTitle: @"Disabled"];
+  [hButton1 setAlternateTitle: @"Enabled"];
+  [hButton1 sizeToFit];
+  [hButton1 setTarget: self];
+  [hButton1 setAction: @selector (hEnabledChanged:)];
+  [hButton1 setState: YES];
+  [hButton1 setAutoresizingMask: NSViewMaxXMargin];
+
+  hButton2 = [NSButton new];
+  [hButton2 setButtonType: NSSwitchButton];
+  [hButton2 setBordered: NO];
+  [hButton2 setTitle: @"Not Continuous"];
+  [hButton2 setAlternateTitle: @"Continuous"];
+  [hButton2 sizeToFit];
+  [hButton2 setTarget: self];
+  [hButton2 setAction: @selector (hContinuousChanged:)];
+  [hButton2 setState: NO];
+  [hButton2 setAutoresizingMask: NSViewMaxXMargin];
   
   hLabel = [NSTextField new];
   [hLabel setSelectable: NO];
@@ -157,8 +183,10 @@
 
   hSliderVbox = [GSVbox new];
   [hSliderVbox setDefaultMinYMargin: 5];
-  [hSliderVbox addView: hButton];
-  [hButton release];
+  [hSliderVbox addView: hButton1];
+  [hButton1 release];
+  [hSliderVbox addView: hButton2];
+  [hButton2 release];
   [hSliderVbox addView: hLabelBox];
   [hLabelBox release];  
   [hSliderVbox setAutoresizingMask: (NSViewMinXMargin | NSViewMaxXMargin 
@@ -270,6 +298,14 @@
 -(void) vContinuousChanged: (id) sender
 { 
   [vSlider setContinuous: [sender state]];
+}
+-(void) hEnabledChanged: (id) sender
+{ 
+  [hSlider setEnabled: [sender state]];
+}
+-(void) vEnabledChanged: (id) sender
+{ 
+  [vSlider setEnabled: [sender state]];
 }
 @end
 
