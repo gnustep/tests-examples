@@ -57,8 +57,7 @@ GSTest_HEADERS = \
         testProtocol.h 
 
 GSTest_OBJC_FILES = \
-        main.m \
-        MemoryPanel.m
+        main.m
 
 -include GNUmakefile.preamble
 
