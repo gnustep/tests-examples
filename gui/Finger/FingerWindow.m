@@ -107,7 +107,7 @@
       [whoisButton setImage: [NSImage imageNamed: @"whois32"]];
     }
   [whoisButton setTitle: @"Whois"];
-  //  
+  [whoisButton setFont: font]; 
   [whoisButton setImagePosition: NSImageAbove];
   [whoisButton setAlignment: NSCenterTextAlignment];
   [whoisButton sizeToFit];
