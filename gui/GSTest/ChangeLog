@@ -1,3 +1,9 @@
+Mon Jun 10 09:36:57 2002  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* NSButton-test/GNUmakefile: New file.
+	* NSButton-test/NSButton-test.m: New file.
+	* NSButton-test/README: New file.
+
 2002-04-24  Adam Fedor  <fedor@gnu.org>
 
 	* main.m ([Controller -startUnlistedTest:sender]): Retain unlisted
