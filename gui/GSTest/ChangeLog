@@ -1,3 +1,7 @@
+Wed Sep  6 23:46:35 2000  Nicola Pero  <nicola@brainstorm.co.uk>
+
+	* GNUmakefile: Added NSWindowStyleMask-test.
+
 Tue Sep  5 19:09:32 2000  Nicola Pero  <nicola@brainstorm.co.uk>
 
 	* EncodingDecoding-test/EncodingDecoding-test.m ([-encode:]):
