@@ -61,6 +61,11 @@ id cell;
   NSLog (@"handleCellAction: sender = %@", [[sender selectedCell] title]);
 }
 
+- (void) handleDoubleAction: sender
+{
+  NSLog (@"handleDoubleAction");
+}
+
 - (void) addRow: sender
 {
   [matrix addRow];
@@ -108,6 +113,8 @@ id cell;
   [aMatrix retain];
   [matrix release];
   matrix = aMatrix;
+  [matrix setDoubleAction: @selector(handleDoubleAction:)];
+  [matrix setTarget: self];
 }
 
 - (void) applicationDidFinishLaunching: (NSNotification *)aNotification
