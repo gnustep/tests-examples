@@ -1,3 +1,7 @@
+2000-10-21  Adam Fedor  <fedor@gnu.org>
+
+	* GNUmakefile, GNUmakefile.preamble. Remove unused includes
+
 2000-10-19  Michael Hanni <mhanni@sprintmail.com>
 
 	* nstabview.m: rewrote, hopefully better reflects the status of
