@@ -194,7 +194,8 @@ static NSString* fieldString[3] = {
 	     defer: YES];
   [window setTitle: @"CurrencyConverter.app"];
   [window setContentView: windowVbox];
-  [window setMinSize: winFrame.size];
+  [window setMinSize: [NSWindow frameRectForContentRect: winFrame
+				styleMask: [window styleMask]].size];
 
   // Trick to forbid vertical resizing
   [window setResizeIncrements: NSMakeSize (1, 100000)];
