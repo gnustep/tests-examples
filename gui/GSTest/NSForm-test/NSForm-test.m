@@ -47,7 +47,7 @@
   NSTextField* field;
   NSRect winFrame;
 
-  field = [NSTextField new];
+  field = [[NSTextField new] autorelease];
   // I suppose this could be considered a hack
   [field setStringValue: @"Test"];
   [field sizeToFit];
@@ -56,7 +56,7 @@
   [field setEditable: YES];
   [field setAutoresizingMask: NSViewWidthSizable];
 
-  fieldBox = [NSBox new];
+  fieldBox = [[NSBox new] autorelease];
   [fieldBox setTitlePosition: NSAtTop];
   [fieldBox setTitle: @"A NSTextField"];
   [fieldBox setBorderType: NSGrooveBorder];
@@ -64,18 +64,22 @@
   [fieldBox sizeToFit];
   [fieldBox setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
 
-  formOne = [NSForm new];
+  formOne = [[NSForm new] autorelease];
   [formOne addEntry: @"First Name:"];
   [formOne addEntry: @"Surname:"];
   [formOne addEntry: @"Address:"];
   [formOne addEntry: @"City:"];
   [formOne addEntry: @"State:"];
-  [formOne setIntercellSpacing: NSMakeSize (0, 5)];
-  [formOne setEntryWidth: 240];
   [formOne setAutoresizingMask: NSViewWidthSizable];
+  // Please note the order of the following commands
   [formOne setAutosizesCells: YES];
+  // We use sizeToFit to make the form nice in the vertical direction
+  [formOne sizeToFit];
+  // Only then we set a bigger entry width (otherwise sizeToFit sets the 
+  // minimum width).
+  [formOne setEntryWidth: 240];
 
-  boxOne = [NSBox new];
+  boxOne = [[NSBox new] autorelease];
   [boxOne setTitlePosition: NSAtTop];
   [boxOne setTitle: @"A NSForm"];
   [boxOne setBorderType: NSGrooveBorder];
@@ -83,18 +87,19 @@
   [boxOne sizeToFit];
   [boxOne setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
 
-  formTwo = [NSForm new];
+  formTwo = [[NSForm new] autorelease];
   [formTwo addEntry: @"First Name:"];
   [formTwo addEntry: @"Surname:"];
   [formTwo addEntry: @"Address:"];
   [formTwo addEntry: @"City:"];
   [formTwo addEntry: @"State:"];
-  [formTwo setIntercellSpacing: NSMakeSize (0, 5)];
-  [formTwo setEntryWidth: 240];
+  // Please note the order of the following commands
   [formTwo setAutoresizingMask: (NSViewWidthSizable)];
   [formTwo setAutosizesCells: YES];
+  [formTwo sizeToFit];
+  [formTwo setEntryWidth: 240];
 
-  boxTwo = [NSBox new];
+  boxTwo = [[NSBox new] autorelease];
   [boxTwo setTitlePosition: NSAtTop];
   [boxTwo setTitle: @"Another NSForm"];
   [boxTwo setBorderType: NSGrooveBorder];
@@ -102,7 +107,7 @@
   [boxTwo sizeToFit];
   [boxTwo setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
 
-  vbox = [GSVbox new];
+  vbox = [[GSVbox new] autorelease];
   [vbox setBorder: 10];
   [vbox setDefaultMinYMargin: 10];
   [vbox setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
