@@ -33,6 +33,7 @@
 @interface Controller: NSObject
 {
   NSString *bundlesPath;
+  NSMutableArray *otherTests;
 }
 -(void) runInfoPanel: (id) sender;
 -(void) startListedTest: (id) sender;
@@ -85,6 +86,7 @@
     {
       DESTROY (testState[i].principalClassInstance);
     }
+  RELEASE(otherTests);
   RELEASE(bundlesPath);
   [super dealloc];
 }
@@ -167,6 +169,9 @@
   NSOpenPanel *openPanel;
   int result;
 
+  if (otherTests == nil)
+    otherTests = RETAIN([NSMutableArray array]);
+
   openPanel = [NSOpenPanel openPanel];
   [openPanel setTitle: @"Select Bundle"];
   [openPanel setPrompt: @"Bundle:"];
@@ -181,7 +186,8 @@
       
       while ((file = (NSString *)[e nextObject]))
 	{
-	  [self loadAndStartTestWithBundlePath: file];
+	  id test = [self loadAndStartTestWithBundlePath: file];
+	  [otherTests addObject: test];
 	}
     }
 }

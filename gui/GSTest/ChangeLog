@@ -1,3 +1,9 @@
+2002-04-24  Adam Fedor  <fedor@gnu.org>
+
+	* main.m ([Controller -startUnlistedTest:sender]): Retain unlisted
+	tests in an array so they don't disappear after the next autorelease 
+	loop.
+
 Thu Apr 11 22:59:34 2002  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* NSSavePanel-test/NSSavePanel-test.m ([NSSavePanelTest -init]): Updated 
