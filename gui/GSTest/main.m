@@ -26,7 +26,7 @@
 #include "testList.h"
 #include "MemoryPanel.h"
 
-#define GSTEST_VERSION @"0.6"
+#define GSTEST_VERSION @"0.7"
 #define GSTEST_FULLID @"CVS $Date$"
 
 // If you want to add a test, please refer to testList.h 
