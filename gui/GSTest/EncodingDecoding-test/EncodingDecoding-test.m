@@ -114,6 +114,7 @@ willDisplayCell: (id)cell
   [browser setTakesTitleFromPreviousColumn: NO];
   [browser setPath: @"/"];
   [browser setDoubleAction: @selector(openWindow:)];
+  [browser setTarget: self];
   // We want to be informed when the windows change, so that we can
   // update the selection list.  What we do is monitoring the windows
   // menu -- better than nothing and at least it should work.
@@ -175,7 +176,7 @@ willDisplayCell: (id)cell
 -(void) dealloc
 {
   [[NSNotificationCenter defaultCenter] removeObserver: self];
-  // TODO
+  RELEASE(win);
   [super dealloc];
 }
 -(void)encode: (id)sender
@@ -218,7 +219,7 @@ willDisplayCell: (id)cell
   int result;
   
   o = [NSOpenPanel openPanel];
-  result = [o runModal];
+  result = [o runModalForTypes: nil];
   
   if (result == NSOKButton)
     { 
@@ -267,9 +268,6 @@ willDisplayCell: (id)cell
 -(void) openWindow: (id)sender
 {
   id w;
-
-  // Double-click in NSBrowser/NSMatrix does not work.
-  NSLog (@"Opening Window: %@", [[sender selectedCell] title]);
 
   w = [[sender selectedCell] representedObject];
   [w orderFront: self];
