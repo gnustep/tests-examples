@@ -30,6 +30,7 @@ OBJCFLAGS += -Wall
 #
 SUBPROJECTS = \
   Composite-test \
+  CoordinateCheck-test \
   GSHbox-test \
   KeyboardInput-test \
   NSBox-test \
