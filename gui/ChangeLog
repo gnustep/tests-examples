@@ -1,3 +1,10 @@
+Sat Feb  5 03:35:09 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* Calculator/main.m (main): Added Hide item in menu; 
+	removed Info menu, superseded by a single Info... item.
+	* CurrencyConverter/CurrencyConverter.m (main): Idem; plus, 
+	set main menu title to a shorter "CurrConv"
+	
 Fri Feb  4 01:40:58 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* README: New file.
