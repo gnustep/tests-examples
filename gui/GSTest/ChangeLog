@@ -1,3 +1,10 @@
+Sun Jan 28 19:14:45 2001  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* testList.h (testList): Added CoordinateCheck-test.
+	* CoordinateCheck-test: New directory.
+	* CoordinateCheck-test/CoordinateCheck-test.m: New file.
+	* CoordinateCheck-test/GNUmakefile: New file.
+
 2001-01-08  Fred Kiefer  <FredKiefer@gmx.de>
 
 	* NSColorWell-test/NSColorWell-test.m 
