@@ -195,7 +195,8 @@
 	defer: NO];
 
   [self setInitialFirstResponder: buttons[17]];
-
+  [self setDefaultButtonCell: [buttons[17] cell]];
+  
   for (i = 0; i < 18; i++)
     {
       [[self contentView] addSubview: buttons[i]];
