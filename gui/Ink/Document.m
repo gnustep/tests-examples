@@ -169,12 +169,13 @@
   return YES;
 }
 
-- (void)makeWindowControllers
+- (void) makeWindowControllers
 {
   NSWindowController *controller;
   NSWindow *win = [self makeWindow];
   
   controller = [[NSWindowController alloc] initWithWindow: win];
+  RELEASE (win);
   [self addWindowController: controller];
   RELEASE(controller);
 
@@ -253,7 +254,6 @@
   [[textView textContainer] setWidthTracksTextView: YES];
   // Store the text view in an ivar
   ASSIGN(tv, textView);
-  RELEASE(textView);
 
   [scrollView setDocumentView: textView];
   RELEASE(textView);

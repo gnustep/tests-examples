@@ -1,3 +1,13 @@
+Mon Oct 22 16:48:19 2001  Nicola Pero  <nicola@brainstorm.co.uk>
+
+	* Document.m ([Document -makeWindowControllers]): Fixed memory
+	leak (Patch by Ludovic Marcotte <ludovi@Sophos.ca>).
+
+Mon Oct 22 16:46:21 2001  Nicola Pero  <nicola@brainstorm.co.uk>
+
+	* Document.m ([Document -makeWindow]): Reverted last change
+	(Patch by Ludovic Marcotte <ludovi@Sohpos.ca>).
+
 Thu Oct 18 15:11:08 2001  Nicola Pero  <nicola@brainstorm.co.uk>
 
 	* Document.m ([Document -makeWindow]): Fixed memory leak 
