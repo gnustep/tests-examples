@@ -115,7 +115,7 @@ id cell;
   NSWindow* window;
   NSScrollView* scrollView;
   Controller* controller = self;
-  NSMatrix* matrix;
+  NSMatrix* newMatrix;
   NSMatrix* selectionMatrix;
   NSButtonCell* buttonCell;
   NSButton *addRowButton, *removeRowButton, *addColButton, *removeColButton;
@@ -133,19 +133,19 @@ id cell;
   /* Setup the matrix */
   buttonCell = [[NSButtonCell new] autorelease];
   [buttonCell setButtonType: NSPushOnPushOffButton];
-  matrix = [[[NSMatrix alloc] initWithFrame: matrixRect
+  newMatrix = [[[NSMatrix alloc] initWithFrame: matrixRect
 				       mode: NSRadioModeMatrix
 				  prototype: buttonCell
 			       numberOfRows: 0
 			    numberOfColumns: 0] autorelease];
 
-  [controller setMatrix: matrix];
+  [controller setMatrix: newMatrix];
 
   scrollView = [[NSScrollView alloc] initWithFrame: scrollViewRect];
   [scrollView setHasHorizontalScroller: YES];
   [scrollView setHasVerticalScroller: YES];
   [scrollView setBorderType: NSBezelBorder];		// for NS compatibility
-  [scrollView setDocumentView: matrix];
+  [scrollView setDocumentView: newMatrix];
   [[window contentView] addSubview: scrollView];
 
   /* Setup the matrix for different selection types */
