@@ -42,6 +42,8 @@ TEST_APP_NAME = alertpanel buttons matrix menu nscursor \
 		nsimage nsscroller scrollview \
 		scrollview2 windows slider nsbox nsbrowsercell nsbrowser
 
+SUBPROJECTS = Edit
+
 # The Objective-C source files to be compiled
 alertpanel_OBJC_FILES = alertpanel.m
 buttons_OBJC_FILES = buttons.m
@@ -64,6 +66,7 @@ nsbrowser_OBJC_FILES = nsbrowser.m
 -include GNUmakefile.local
 
 include $(GNUSTEP_MAKEFILES)/test-application.make
+include $(GNUSTEP_MAKEFILES)/aggregate.make
 
 -include GNUmakefile.postamble
 
