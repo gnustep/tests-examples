@@ -1,3 +1,16 @@
+Wed Feb 20 19:25:20 2002  Nicola Pero  <nicola@brainstorm.co.uk>
+
+	Removed the memory panel, now available in the gui library
+	for all applications.
+	* GNUmakefile: Do not link to the memory panel classes; do
+	not compile the memory panel.
+	* main.m: Do not include MemoryPanel.h
+	* main.m ([MyDelegate -applicationWillFinishLaunching:]): Do not
+	add the memory panel submenu.  Click on the application icon in
+	the info panel to get the memory panel now.
+	
+	* GNUmakefile (Ink_HEADERS): variable unused removed.
+
 2001-12-09  Fred Kiefer <FredKiefer@gmx.de>
 
 	* InkInfo.plist

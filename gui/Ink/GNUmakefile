@@ -29,10 +29,7 @@ APP_NAME = Ink
 
 Ink_RESOURCE_FILES = Ink_app.tiff Ink_app_Tile.jpg Readme.rtf
 
-Ink_HEADERS = 
-
 Ink_OBJC_FILES = \
-        MemoryPanel.m \
         main.m \
 	Document.m 
 
@@ -44,8 +41,4 @@ Ink_OBJC_FILES = \
 include $(GNUSTEP_MAKEFILES)/application.make
 
 -include GNUmakefile.postamble
-
-MemoryPanel.m:
-	ln -s ../GSTest/MemoryPanel.m .
-	ln -s ../GSTest/MemoryPanel.h .
 

@@ -24,7 +24,6 @@
 #include <Foundation/Foundation.h>
 #include <AppKit/AppKit.h>
 #include <AppKit/NSDocumentController.h>
-#include "MemoryPanel.h"
 #include "Document.h"
 //#include "Controler.h"
 
@@ -105,8 +104,6 @@
   [info addItemWithTitle: @"Info Panel..."
 	          action: @selector(orderFrontStandardInfoPanel:)
 	   keyEquivalent: @""];
-
-  [info addMemoryPanelSubmenu];
 
 /*  
   [info addItemWithTitle: @"Preferences..."
