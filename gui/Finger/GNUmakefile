@@ -41,9 +41,7 @@ Finger_RESOURCE_FILES = \
   traceroute.tiff \
   ping.tiff \
   stop_button.tiff 
+Finger_APPLICATION_ICON = finger.tiff
 
-
--include GNUmakefile.preamble
 include $(GNUSTEP_MAKEFILES)/application.make
--include GNUmakefile.postamble
 
