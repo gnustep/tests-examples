@@ -26,7 +26,7 @@ include $(GNUSTEP_MAKEFILES)/common.make
 
 PACKAGE_NAME=gnustep-examples
 CVS_MODULE_NAME = examples
-VERSION=0.9.7
+VERSION=1.0.0
 
 SUBPROJECTS = gui
 
