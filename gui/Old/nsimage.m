@@ -26,9 +26,9 @@
    59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */ 
 
-#import <AppKit/AppKit.h>
-#import <Foundation/NSAutoreleasePool.h>
-#import <Foundation/NSProcessInfo.h>
+#include <AppKit/AppKit.h>
+#include <Foundation/NSAutoreleasePool.h>
+#include <Foundation/NSProcessInfo.h>
 #include "ImageView.h"
 
 int
@@ -55,6 +55,7 @@ main(int argc, char **argv, char** env)
 
     args = [[NSProcessInfo processInfo] arguments];
 
+//  NSLog(@"Image extensions %@", [NSImage imageFileTypes]);
     theApp = [NSApplication sharedApplication];
     v = [[ImageView alloc] initWithFile: [args objectAtIndex:1]];
     if (v == nil)
@@ -71,6 +72,7 @@ main(int argc, char **argv, char** env)
     [win setContentView: v];
     [win setTitle:@"GNUstep GUI X/RAW Image View"];
     [win orderFrontRegardless];
+  NSLog(@"Image extensions %@", [NSImage imageFileTypes]);
 
   {
     NSMenu	*menu = [NSMenu new];

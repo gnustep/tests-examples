@@ -29,7 +29,7 @@
 #ifndef _GNUstep_H_ColorView
 #define _GNUstep_H_ColorView
 
-#import <AppKit/NSView.h>
+#include <AppKit/NSView.h>
 
 @class NSColor;
 @class NSCursor;

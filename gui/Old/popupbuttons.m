@@ -29,9 +29,9 @@
    59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
-#import <Foundation/NSAutoreleasePool.h>
-#import <AppKit/AppKit.h>
-#import <AppKit/NSPopUpButton.h>
+#include <Foundation/NSAutoreleasePool.h>
+#include <AppKit/AppKit.h>
+#include <AppKit/NSPopUpButton.h>
 
 #include "TestView.h"
 #include "ColorView.h"
@@ -110,8 +110,14 @@
   [pushb addItemWithTitle:@"Austin"];
   [pushb addItemWithTitle:@"Powers"];
   [pushb addItemWithTitle:@"Shag"];
-
   [[win contentView] addSubview:pushb];
+  RELEASE(pushb);
+
+  pushb = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(200,175,100,20)];
+  [pushb setTarget:self];
+  [pushb setAction:@selector(buttonSwitchView:)];
+  [[win contentView] addSubview:pushb];
+  RELEASE(pushb);
 
   /* NB: popupbuttons with images are not possible in the 
   present framework */
@@ -150,6 +156,14 @@
   [pushb addItemWithTitle:@"Powers"];
   [pushb addItemWithTitle:@"Shag"];
   [[win contentView] addSubview:pushb];
+  RELEASE(pushb);
+
+  pushb = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(15,175,100,20) 
+				 pullsDown:YES];
+  [pushb setTarget:self];
+  [pushb setAction:@selector(buttonSwitchView:)];
+  [[win contentView] addSubview:pushb];
+  RELEASE(pushb);
 
   [win display];
   [win orderFront:nil];

@@ -23,8 +23,8 @@
    Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 
-#import <Foundation/NSAutoreleasePool.h>
-#import <AppKit/AppKit.h>
+#include <Foundation/NSAutoreleasePool.h>
+#include <AppKit/AppKit.h>
 
 @interface MyObject : NSObject
 {

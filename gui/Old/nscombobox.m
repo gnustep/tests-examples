@@ -23,8 +23,8 @@
    Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 
-#import <Foundation/NSAutoreleasePool.h>
-#import <AppKit/AppKit.h>
+#include <Foundation/NSAutoreleasePool.h>
+#include <AppKit/AppKit.h>
 
 @interface MyObject : NSObject
 {
@@ -110,7 +110,9 @@ main(int argc, char **argv, char** env)
    [sourceCombo setUsesDataSource:YES];
    [sourceCombo setDataSource:self];
    sourceArray = [[NSArray arrayWithObjects:
-			      @"One",@"Two",@"Three",@"Four",nil] retain];
+			      @"One",@"Two",@"Three",@"Four",@"Five",
+			   @"Six",@"Seven",@"Eight",@"Nine",@"Ten",
+			   @"Eleven",@"Twelve",@"Thirteen",nil] retain];
    [staticCombo addItemsWithObjectValues:
 		   [NSArray arrayWithObjects:@"Dog",@"Cat",@"Beast",nil]];
    return self;

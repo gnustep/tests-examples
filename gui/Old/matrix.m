@@ -23,8 +23,8 @@
    Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02111, USA.
 */
 
-#import <Foundation/NSAutoreleasePool.h>
-#import <AppKit/AppKit.h>
+#include <Foundation/NSAutoreleasePool.h>
+#include <AppKit/AppKit.h>
 
 
 
@@ -35,11 +35,6 @@
 
 @end
 @implementation matrixController
-
-- (void)setMatrix: (NSMatrix*)anObject
-{
-  matrix = anObject;
-}
 
 - (void)setMatrixMode: sender
 {
@@ -58,11 +53,10 @@
   NSRect matrixRect = {{175, 5}, {460, 550}};
   NSRect selectionMatrixRect = {{12, 36}, {120, 80}};
   NSRect selectionByRectSwitchRect = {{12, 12}, {150, 20}};
-  NSMatrix* matrix;
   NSMatrix* selectionMatrix;
   NSButtonCell* buttonCell;
   NSButton* selectionByRectSwitch;
-  id handler = self;
+  matrixController *handler = self;
 
   window = [[NSWindow alloc] init];
 
@@ -70,12 +64,11 @@
   [buttonCell setButtonType: NSPushOnPushOffButton];
 
   matrix = [[[NSMatrix alloc] initWithFrame: matrixRect
-				       mode: NSRadioModeMatrix
-				  prototype: buttonCell
-			       numberOfRows: 30
-			    numberOfColumns: 5] autorelease];
+			   mode: NSRadioModeMatrix
+			   prototype: buttonCell
+			   numberOfRows: 30
+			   numberOfColumns: 5] autorelease];
   [[window contentView] addSubview: matrix];
-//  [matrix _test];
 
   [buttonCell setButtonType: NSRadioButton];
   [buttonCell setBordered: NO];
@@ -85,7 +78,6 @@
 					   prototype: buttonCell
 					numberOfRows: 4
 				     numberOfColumns: 1] autorelease];
-  [handler setMatrix: matrix];
   [selectionMatrix setTarget: handler];
   [selectionMatrix setAction: @selector(setMatrixMode: )];
   

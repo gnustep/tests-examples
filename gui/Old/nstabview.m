@@ -1,6 +1,6 @@
-#import <Foundation/NSAutoreleasePool.h>
-#import <AppKit/AppKit.h>
-#import <AppKit/NSTabView.h>
+#include <Foundation/NSAutoreleasePool.h>
+#include <AppKit/AppKit.h>
+#include <AppKit/NSTabView.h>
 #include "TestView.h"
 #include "GSImageTabViewItem.h"
 

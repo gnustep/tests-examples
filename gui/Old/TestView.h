@@ -29,7 +29,7 @@
 #ifndef _GNUstep_H_TestView
 #define _GNUstep_H_TestView
 
-#import <AppKit/NSView.h>
+#include <AppKit/NSView.h>
 
 @interface TestView : NSView
 {
