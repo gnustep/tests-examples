@@ -112,8 +112,8 @@
   [self addWindowController: controller];
   RELEASE(controller);
 
-  // We have to do this our self, as there is currently no nib file
-  [self awakeFromNib];
+  // We have to do this ourself, as there is currently no nib file
+  [self windowControllerDidLoadNib: controller];
 } 
 
 - (void)printShowingPrintPanel:(BOOL)flag
@@ -125,8 +125,11 @@
   [po runOperation];
 }
 
-- (void) awakeFromNib
+
+- (void)windowControllerDidLoadNib:(NSWindowController *) aController;
 {
+  [super windowControllerDidLoadNib:aController];
+
   [[tv textStorage] setAttributedString: ts];
   DESTROY(ts);
 }
@@ -152,8 +155,8 @@
   unsigned int style = NSTitledWindowMask | NSClosableWindowMask | 
       NSMiniaturizableWindowMask | NSResizableWindowMask;
   
-  // This is expected to be retained, as it would normaly come from a nib file, where
-  // the owner would retain it.
+  // This is expected to be retained, as it would normaly come from a nib file,
+  // where the owner would retain it.
   window = [[NSWindow alloc] initWithContentRect: winRect
 			     styleMask: style
 			     backing: NSBackingStoreRetained
@@ -163,29 +166,34 @@
   [scrollView setHasHorizontalScroller: NO];
   [scrollView setHasVerticalScroller: YES]; 
   [scrollView setAutoresizingMask: NSViewHeightSizable | NSViewWidthSizable];
+  [[scrollView contentView] setAutoresizesSubviews:YES];
 
   // Build up the text network
   textRect = [[scrollView contentView] frame];
   textView = [[NSTextView alloc] initWithFrame: textRect];
-  backColor = [NSColor colorWithCalibratedWhite:0.85 alpha:1.0]; // off white
-  [textView setBackgroundColor: backColor];					
+  // off white
+  backColor = [NSColor colorWithCalibratedWhite: 0.85 alpha: 1.0];
+  [textView setBackgroundColor: backColor];
   [textView setRichText: YES];
   [textView setUsesFontPanel: YES];
   [textView setDelegate: self];
   [textView setVerticallyResizable: YES];
-  [[textView textContainer] setContainerSize: NSMakeSize(textRect.size.width, 1E99)];
-  [[textView textContainer] setWidthTracksTextView: YES];
+  [textView setMinSize: NSMakeSize(0,0)];
+  [textView setMaxSize: NSMakeSize(500,1E7)];
+  [textView setAutoresizingMask: NSViewHeightSizable | NSViewWidthSizable];
+  // Store the text view in an ivar
   ASSIGN(tv, textView);
 
   [scrollView setDocumentView: textView];
-  [[window contentView] addSubview: scrollView];
+  RELEASE(textView);
+  [window setContentView: scrollView];
+  RELEASE(scrollView);
+  // Make the Document the delegate of the window
   [window setDelegate: self];
   
   [window display];
-  [window orderFront:nil];
+  [window orderFront: nil];
 
-  RELEASE(scrollView);
-  RELEASE(textView);
   return window;
 }
 
