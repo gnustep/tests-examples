@@ -1,3 +1,10 @@
+2001-12-09  Fred Kiefer <FredKiefer@gmx.de>
+
+	* InkInfo.plist
+	Added MIME types.
+	* Ink.desktop
+	New desktop link file generated with pl2link.
+	
 Mon Oct 22 16:48:19 2001  Nicola Pero  <nicola@brainstorm.co.uk>
 
 	* Document.m ([Document -makeWindowControllers]): Fixed memory
