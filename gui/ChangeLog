@@ -1,3 +1,10 @@
+1999-07-10  Michael Hanni  <mhanni@sprintmail.com>
+
+	* GSImageTabViewItem.m: new file to draw a subclass of
+	NSTabViewItem that puts an image into a tab.
+	* nstabview.m: changed "Me" tab to also include an image.
+	* Smiley.tiff: image I drew to put in a tab.
+
 1999-07-9  Michael Hanni  <mhanni@sprintmail.com>
 
 	* nstabview.m: this is a must see. it really works quite well.

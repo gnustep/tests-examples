@@ -29,9 +29,7 @@
 #import <AppKit/AppKit.h>
 #import <AppKit/NSTabView.h>
 
-#include "TestView.h"
-#include "ColorView.h"
-
+#include "GSImageTabViewItem.h"
 
 int
 main(int argc, char **argv, char** env)
@@ -111,7 +109,8 @@ for rent."]];
 	[aView addSubview:label];
 	[label release];
 
-        item = [[NSTabViewItem alloc] initWithIdentifier:@"Urph3"];
+        item = [[GSImageTabViewItem alloc] initWithIdentifier:@"Urph3"];
+	[item setImage:[NSImage imageNamed:@"Smiley"]];
         [item setLabel:@"Me"];
 	[item setView:aView];
         [tabView addTabViewItem:item];
