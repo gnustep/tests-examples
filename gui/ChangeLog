@@ -1,3 +1,7 @@
+Sun Feb 13 02:14:29 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* Finger: New demo program.
+
 Sun Feb 13 01:11:31 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* CurrencyConverter/CurrencyConverter.m ([-init]): Use AUTORELEASE
