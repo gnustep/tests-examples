@@ -1,14 +1,4 @@
-#
-ifeq ($(GNUSTEP_SYSTEM_ROOT),)
-  GNUSTEP_SYSTEM_ROOT = $(TOPLEV)
-endif
-
-GNUSTEP_INSTALLATION_DIR = $(GNUSTEP_SYSTEM_ROOT)
-
-GNUSTEP_MAKEFILES = $(GNUSTEP_SYSTEM_ROOT)/Makefiles
-
-include $(GNUSTEP_SYSTEM_ROOT)/Makefiles/common.make
--include Makefile.preamble
+include $(GNUSTEP_MAKEFILES)/common.make
 
 APP_NAME=NSPanelTest
 NSPanelTest_PRINCIPAL_CLASS=NSPanelTest
@@ -24,7 +14,3 @@ ADDITIONAL_LDFLAGS =  #-lefence
 ADDITIONAL_INCLUDE_DIRS = 
 
 include $(GNUSTEP_MAKEFILES)/application.make
-
--include Makefile.postamble
-
-#END#
