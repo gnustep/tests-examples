@@ -69,6 +69,7 @@ GNUstepInstaller_RESOURCE_FILES = Smiley.tiff
 alertpanel_OBJC_FILES = alertpanel.m
 buttons_OBJC_FILES = buttons.m
 popupbuttons_OBJC_FILES = popupbuttons.m TestView.m ColorView.m
+popupbuttons_RESOURCE_FILES = animations.tiff appearance.tiff configs.tiff dock.tiff
 fontpanel_OBJC_FILES = fontpanel.m
 matrix_OBJC_FILES = matrix.m
 menu_OBJC_FILES = menu.m

@@ -52,8 +52,10 @@
    * This is a test to see if the delegate is doing its job.
    */
 
+/*
   if ([[tabViewItem label] isEqual:@"Me"])
     return NO;
+*/
 
   return YES;
 }
@@ -187,7 +189,7 @@ id scrollView;
 
 	tabView = [[NSTabView alloc] initWithFrame:tabViewRect];
 	[tabView setTabViewType:NSNoTabsBezelBorder];
-//	[tabView setDelegate:delegate];
+	[tabView setDelegate:delegate];
 	[delegate setTabView:tabView];
 	[[window contentView] addSubview:tabView];
 

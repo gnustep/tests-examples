@@ -77,6 +77,7 @@
   NSRect wf = {{100, 100}, {400, 400}};
   NSRect f = {{10, 10}, {380, 200}};
   NSPopUpButton *pushb;
+  id anItem;
   unsigned int style = NSTitledWindowMask | NSClosableWindowMask
 		      | NSMiniaturizableWindowMask | NSResizableWindowMask;
 
@@ -101,6 +102,28 @@
   [pushb setAction:@selector(buttonSwitchView:)];
   [[win contentView] addSubview:pushb];
 
+  pushb = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(15,275,64,64)];
+
+  [pushb addItemWithTitle:@""];
+  anItem = [pushb itemAtIndex:0];
+  [anItem setImage:[NSImage imageNamed:@"animations.tiff"]];
+
+  [pushb addItemWithTitle:@""];
+  anItem = [pushb itemAtIndex:1];
+  [anItem setImage:[NSImage imageNamed:@"appearance.tiff"]];
+
+  [pushb addItemWithTitle:@""];
+  anItem = [pushb itemAtIndex:2];
+  [anItem setImage:[NSImage imageNamed:@"configs.tiff"]];
+
+  [pushb addItemWithTitle:@""];
+  anItem = [pushb itemAtIndex:3];
+  [anItem setImage:[NSImage imageNamed:@"dock.tiff"]];
+
+//  [pushb setTarget:self];
+//  [pushb setAction:@selector(buttonSwitchView:)];
+  [[win contentView] addSubview:pushb];
+
   pushb = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(15,375,80,20) 
 pullsDown:YES];
   [pushb addItemWithTitle:@"Devices"];
@@ -109,8 +132,8 @@ pullsDown:YES];
   [pushb addItemWithTitle:@"Austin"];
   [pushb addItemWithTitle:@"Powers"];
   [pushb addItemWithTitle:@"Shag"];
-//  [pushb setTarget:self];
-//  [pushb setAction:@selector(buttonSwitchView:)];
+  [pushb setTarget:self];
+  [pushb setAction:@selector(buttonSwitchView:)];
   [[win contentView] addSubview:pushb];
 
   [win display];

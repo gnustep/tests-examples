@@ -1,3 +1,9 @@
+1999-07-30  Michael Hanni  <mhanni@sprintmail.com>
+
+	* Several images for new popup in popupbuttons.app:
+	animations.tiff appearance.tiff configs.tiff dock.tiff (images
+	taken from Window Maker, I hope this is ok.)
+
 1999-07-26  Michael Hanni  <mhanni@sprintmail.com>
 
 	* GNUstepInstaller.m: copy of nstabview.m, save this app uses no
