@@ -1,3 +1,9 @@
+Thu Apr 13 19:00:36 2000  Nicola Pero  <nicola@brainstorm.co.uk>
+
+	* EncodingDecoding-test/EncodingDecoding-test.m ([-decode:]):
+	Catch exception on decoding and show an error panel if that
+	happens. ([-encode:]): Idem on encoding.
+
 Thu Apr 13 18:31:08 2000  Nicola Pero  <nicola@brainstorm.co.uk>
 
 	* Composite-test/Composite-test.m ([-init]): Do not release the
