@@ -265,6 +265,10 @@
   [print addItemWithTitle: @"Spell Check"
 		  action: @selector(checkSpelling:)
 	   keyEquivalent: @"C"];
+
+  [print addItemWithTitle: @"Spell Panel"
+		  action: @selector(showGuessPanel:)
+	   keyEquivalent: @"c"];
   RELEASE(print);
 
   // Create the windows submenu
