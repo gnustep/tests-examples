@@ -1,3 +1,7 @@
+Sat Feb 23 13:08:47 2002  Gregory Casamento <greg_casamento@yahoo.com>
+
+	* Added NSOutlineView-test.m to the test directory.
+
 Wed Feb 20 19:28:52 2002  Nicola Pero  <nicola@brainstorm.co.uk>
 
 	Moved the memory panel into gnustep-gui so all apps have it.  To

@@ -45,7 +45,8 @@ SUBPROJECTS = \
   NSTableView-test \
   NSTextView-test \
   StringDrawing-test \
-  NSWindowStyleMask-test
+  NSWindowStyleMask-test \
+  NSOutlineView-test 
 
 #
 # MAIN APP
