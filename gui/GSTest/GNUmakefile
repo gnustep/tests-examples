@@ -39,6 +39,7 @@ SUBPROJECTS = \
   NSScrollView-test \
   NSSlider-test \
   NSSplitView-test \
+  NSTableView-test \
   StringDrawing-test
 
 #
@@ -52,10 +53,9 @@ GSTest_HEADERS = \
 
 GSTest_OBJC_FILES = \
         main.m 
+#ADDITIONAL_LDFLAGS += -lXmu
 
 -include GNUmakefile.preamble
-
--include GNUmakefile.local
 
 include $(GNUSTEP_MAKEFILES)/aggregate.make
 include $(GNUSTEP_MAKEFILES)/application.make
