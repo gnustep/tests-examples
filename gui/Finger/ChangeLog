@@ -1,3 +1,38 @@
+Wed Nov 14 16:51:42 2001  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	Added whois command and sizable buttons - based on code
+	contributed by Rob Burns <rburns@softhome.net>.
+	* ping32.tiff: New file.
+	* stop32.tiff: Idem.
+	* traceroute32.tiff: Idem.
+	* finger32.tiff: Idem.
+	* whois.tiff: Idem.
+	* whois32.tiff: Idem.
+	* stop.tiff: New file replacing stop_button.tiff.
+	* stop_button.tiff: Removed.
+	* GNUmakefile (Finger_RESOURCE_FILES): Added the new files; 
+	renamed stop_button.tiff to stop.tiff.
+	* Finger.h (WHOIS_DEFAULT_COMMAND): Define.
+	(DEFAULT_BUTTON_SIZE): Define.
+	* Controller.m ([+initialize]): Set default for WhoisCommand and
+	ButtonSize.
+	* FingerWindow.h (BIG_FONT_SIZE, SMALL_FONT_SIZE): Define.
+	([-startWhois:]): Declare.
+	* FingerWindow.m ([-init]): Added whois button; manage having size
+	of buttons controlled by used defaults.
+	([-startWhois:]): New method.
+	* PreferencesController.h: New ivars for whois button and for 
+	button size popup.  (WHOIS_TAG): Define.
+	* PreferencesController.m ([PreferencesController -init]): Added
+	popup for button size, and textfield for whois command.
+	([-reset], [-resetToDefault:], [-set]): Manage whois command and
+	button size popup too.
+	([-set:]): Synchronize user defaults immediately.
+	([-changePreference:]): Manage whois too.
+	([-controlTextDidEndEditing:]): Idem.
+	* FingerInfo.plist: Version is now 0.9.0.
+	* README: Mention Rob.
+	
 Sun Jun 10 20:09:23 2001  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* PreferencesController.m ([-changePreference:]): Use an open
