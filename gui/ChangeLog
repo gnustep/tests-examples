@@ -1,15 +1,17 @@
+Tue Jul 18 17:53:16 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* CurrencyConverter/CurrencyConverter.m ([-init]): Fixed minimum
+	size of the window.
+
 2000-07-01  Fred Kiefer <FredKiefer@gmx.de>
 
-	* Edit/Readme.rtf:
-	New file to load at startup
-	* Edit/GNUmakefile:
-	Added new file Readme.rtf as ressource
+	* Edit/Readme.rtf: New file to load at startup
+	* Edit/GNUmakefile: Added new file Readme.rtf as ressource
 	* Edit/Controller.m:
 	* Edit/Controller.h:
 	* Edit/Edit.m: 
 	* Edit/Document.m: 
-	* Edit/Document.h: 
-	Added font and ruler pasting
+	* Edit/Document.h: Added font and ruler pasting
 
 2000-05-04 Richard Frith-Macdonald <rfm@gnu.org>
 
@@ -22,6 +24,7 @@
 	not loaded.
 
 2000-04-17  Fred Kiefer <FredKiefer@gmx.de>
+
 	* Edit/Controller.m: Removed RTF setting, now become window delegate
 	* Edit/Edit.m: Added entries in menu for additional format test
 	* Edit/Document.m: Enable RTF
