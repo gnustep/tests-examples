@@ -107,6 +107,8 @@ main(int argc, char **argv, char** env)
    self = [self init];
    horInd = [aHorIndicator retain];
    verInd = [aVerIndicator retain];
+   [horInd setIndeterminate: NO];
+   [verInd setIndeterminate: NO];
    [verInd setVertical:YES];
    [verInd setMinValue:100];
    [verInd setMaxValue:700];
@@ -125,12 +127,18 @@ main(int argc, char **argv, char** env)
 
 - (void)doProgress
 {
-   int	i;
+  int	i;
 
-   for (i=0;i<100;i++)
+  for (i=0;i<100;i++)
+    {
       [horInd incrementBy:1.0];
-   for (i=0;i<200;i++)
+      [horInd displayIfNeeded];
+    }
+  for (i=0;i<200;i++)
+    {
       [verInd incrementBy:3.0];
+      [verInd displayIfNeeded];
+    }
 }
 
 @end
