@@ -294,10 +294,10 @@ main (void)
    // The objects receiving these messages are determined at run time;
    // they will be the NSApplication delegate for the first and NSApp
    // (==[NSApplication sharedApplication[) for the second.
-   [menu addItemWithTitle: @"Info Panel" 
+   [menu addItemWithTitle: @"Info Panel..." 
 	 action: @selector (runInfoPanel:) 
 	 keyEquivalent: @""];
-   [menu addItemWithTitle: @"Help" 
+   [menu addItemWithTitle: @"Help..." 
 	 action: @selector (orderFrontHelpPanel:)
 	 keyEquivalent: @"?"];
 
