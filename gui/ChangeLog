@@ -1,3 +1,8 @@
+2001-06-19  Gregory Casamento <greg_casamento@yahoo.com>
+
+	* Added menu item to allow Ink to bring up the NSSpellChecker
+	GUI.
+	
 2001-06-16  Fred Kiefer <FredKiefer@gmx.de>
 
 	* Ink/InkInfo.plist
