@@ -9,4 +9,13 @@
     FullVersionID = 0.1;
     NOTE = "Automatically generated!";
     URL = "";
+    NSTypes = (
+    {
+       NSName = "txt";
+       NSHumanReadableName = "Texte brut";
+       NSUnixExtensions = (txt,TXT);
+       NSDOSExtensions = (txt);
+       NSRole = Viewer;
+       NSDocumentClass = DocumentOwner;
+    });
 }

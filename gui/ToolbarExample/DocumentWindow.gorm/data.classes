@@ -1,10 +1,26 @@
 {
-    Controller = {
+    DocumentOwner = {
 	Actions = (
+	    "toggleToolbar:",
+	    "setFirstItemLabel:",
+	    "setSecondItemImage:",
+	    "newItem:",
+	    "popUpMenuDisplayChanged:",
+	    "popUpMenuSizeChanged:",
+	    "newWindow:",
+	    "reflectMenuSelection:"
 	);
 	Outlets = (
+	    newItemName,
+	    toolbarButton,
+	    firstItemSwitch,
+	    popUpField,
+	    sliderField,
+	    documentWindow,
+	    popUpMenuSize,
+	    popUpMenuDisplay
 	);
-	Super = NSObject;
+	Super = NSDocument;
     };
     FirstResponder = {
 	Actions = (
@@ -17,6 +33,7 @@
 	    "cancel:",
 	    "capitalizeWord:",
 	    "changeColor:",
+	    "changeFont:",
 	    "checkSpelling:",
 	    "close:",
 	    "complete:",
@@ -68,12 +85,12 @@
 	    "moveWordForwardAndModifySelection:",
 	    "newDocument:",
 	    "ok:",
-	    "open:",
 	    "openDocument:",
 	    "orderBack:",
 	    "orderFront:",
 	    "orderFrontColorPanel:",
 	    "orderFrontDataLinkPanel:",
+	    "orderFrontFontPanel:",
 	    "orderFrontHelpPanel:",
 	    "orderFrontStandardAboutPanel:",
 	    "orderFrontStandardInfoPanel:",
@@ -107,6 +124,7 @@
 	    "selectNextKeyView:",
 	    "selectParagraph:",
 	    "selectPreviousKeyView:",
+	    "selectText:",
 	    "selectText:",
 	    "selectToMark:",
 	    "selectWord:",
@@ -143,7 +161,14 @@
 	    "useStandardKerning:",
 	    "useStandardLigatures:",
 	    "yank:",
-	    "zoom:"
+	    "zoom:",
+	    "toggleToolbar:",
+	    "setFirstItemLabel:",
+	    "setSecondItemImage:",
+	    "newItem:",
+	    "newWindow:",
+	    "popUpMenuSizeChanged:",
+	    "popUpMenuDisplayChanged:"
 	);
 	Super = NSObject;
     };

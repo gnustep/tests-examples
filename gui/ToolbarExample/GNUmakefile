@@ -7,6 +7,7 @@ ToolbarExample_MAIN_MODEL_FILE = ToolbarExample.gorm
 
 ToolbarExample_RESOURCE_FILES= \
 ToolbarExample.gorm \
+DocumentWindow.gorm \
 SecondWindow.gorm \
 ToolbarExampleInfo.plist \
 Images/SecondImage.tiff \
@@ -15,14 +16,16 @@ Images/FileIcon_Directory.tiff
 
 ToolbarExample_HEADER_FILES= \
 Controller.h \
-MiniController.h
+DocumentOwner.h \
+MiniOwner.h \
+ButtonWithValidation.h
 
 ToolbarExample_OBJC_FILES= \
 main.m \
 Controller.m \
-MiniController.m
-
-Test_C_FILES= 
+DocumentOwner.m \
+MiniOwner.m \
+ButtonWithValidation.m
 
 -include GNUmakefile.preamble
 include $(GNUSTEP_MAKEFILES)/application.make
