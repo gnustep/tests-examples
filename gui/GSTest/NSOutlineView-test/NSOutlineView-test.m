@@ -177,16 +177,16 @@ NSString *test[20] =
     {
       switch(index)
 	{
-	case 1:
+	case 0:
 	  return @"NSApplication";
 	  break;
-	case 2:
+	case 1:
 	  return @"NSPanel";
 	  break;
-	case 3:
+	case 2:
 	  return @"NSWindow";
 	  break;
-	case 4:
+	case 3:
 	  return @"NSOutlineView";
 	  break;
 	default:
@@ -197,16 +197,16 @@ NSString *test[20] =
     {
       switch(index)
 	{
-	case 1:
+	case 0:
 	  return @"class1";
 	  break;
-	case 2:
+	case 1:
 	  return @"class2";
 	  break;
-	case 3:
+	case 2:
 	  return @"class3";
 	  break;
-	case 4:
+	case 3:
 	  return @"class4";
 	  break;
 	default:
@@ -216,7 +216,7 @@ NSString *test[20] =
   else
     if(item == nil)
       {
-	if(index == 1)
+	if(index == 0)
 	  return @"NSObject";
       }
 
