@@ -1,3 +1,8 @@
+2000-04-17  Fred Kiefer <FredKiefer@gmx.de>
+	* Edit/Controller.m: Removed RTF setting, now become window delegate
+	* Edit/Edit.m: Added entries in menu for additional format test
+	* Edit/Document.m: Enable RTF
+
 2000-03-11  Adam Fedor  <fedor@gnu.org>
 
 	* nsimage.m: Set window frame when initing window.
