@@ -49,17 +49,51 @@ main (void)
   CalcController *faceController;
   NSAutoreleasePool *pool;
   NSApplication *app;
+  NSMenu *mainMenu;
+  NSMenu *menu;
+  NSMenuItem *menuItem;
   
   pool = [NSAutoreleasePool new];
   initialize_gnustep_backend ();
   app = [NSApplication sharedApplication];
   [app setApplicationIconImage: [NSImage imageNamed: @"Calculator.app.tiff"]];
+  mainMenu = [NSMenu new];
+  menuItem = [mainMenu addItemWithTitle: @"Edit" 	
+		       action: NULL 
+		       keyEquivalent: @""];
+  menu = [NSMenu new];
+  [mainMenu setSubmenu: menu forItem: menuItem];
+  /*
+  [menu addItemWithTitle: @"Cut" 
+	action: @selector (cut:) 
+	keyEquivalent: @"x"];
+  */
+  [menu addItemWithTitle: @"Copy" 
+	action: @selector (copy:) 
+	keyEquivalent: @"c"];
+  /* 
+  [menu addItemWithTitle: @"Paste" 
+	action: @selector (paste:) 
+	keyEquivalent: @"v"];
+  */
+  [menu addItemWithTitle: @"SelectAll" 
+	action: @selector (selectAll:) 
+	keyEquivalent: @"a"];
+  
+  [mainMenu addItemWithTitle: @"Quit" 
+	    action: @selector (terminate:)
+	    keyEquivalent: @"q"];	
+  
+  [app setMainMenu: mainMenu];
+  
   brain = [CalcBrain new];
   face = [CalcFace new]; 
   [brain setFace: face];
   [face setBrain: brain];
   faceController = [CalcController new];
   [face setDelegate: faceController];
+  [app setDelegate: face];
+  
   [app run];
   [pool release];
   return 0;
