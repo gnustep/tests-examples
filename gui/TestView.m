@@ -28,7 +28,6 @@
 
 #import <AppKit/AppKit.h>
 #include "TestView.h"
-#include <config.h>
 
 @interface	FlippedView : NSView
 @end
@@ -41,7 +40,7 @@
 - (void)drawRect:(NSRect)rect
 {
   [[NSColor redColor] set];
-  NSRectFill([self bounds]);
+  NSRectFill ([self bounds]);
 }
 @end
 
@@ -56,7 +55,7 @@
 - (void)drawRect:(NSRect)rect
 {
   [[NSColor greenColor] set];
-  NSRectFill([self bounds]);
+  NSRectFill ([self bounds]);
 }
 @end
 
@@ -74,21 +73,18 @@
 {
   static BOOL beenHere = NO;
   NSFont *f;
-  float width, height;
   NSColor *c = [NSColor greenColor];
   NSColor *blue = [NSColor blueColor];
   NSColor *y = [NSColor yellowColor];
-  NSColor *mg = [NSColor magentaColor];
   NSColor *orange = [NSColor orangeColor];
   static NSView	*fv;
   static NSView	*uv;
 
-  NSDebugLog(@"Painting TestView %@\n", NSStringFromRect([self bounds]));
-
-  NSRectClip(rect);
+  NSRectClip (rect);
   [orange set];
-  NSRectFill([self bounds]);
- NSDrawGroove(NSMakeRect (10, 10, 100, 200), NSMakeRect (10, 10, 100, 200));
+  NSRectFill ([self bounds]);
+  NSDrawGroove (NSMakeRect (10, 10, 100, 200), 
+		NSMakeRect (10, 10, 100, 200));
 
   if (beenHere == NO)
     {
@@ -98,36 +94,9 @@
       uv = [[UnflippedView alloc] initWithFrame: NSMakeRect(45,15,20,20)];
       [self addSubview: uv];
     }
-#if 0
-  {
-    NSRect superBounds = [[self superview] bounds];
-    NSRect superFrame = [[self superview] frame];
-    NSRect theBounds = [self bounds];
-    NSRect theFrame = [self frame];
-
-    NSLog (@"TestView drawRect: ((%f, %f), (%f, %f))",
-	  rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
-    NSLog (@"TestView bounds: ((%f, %f), (%f, %f))",
-	  theBounds.origin.x, theBounds.origin.y,
-	  theBounds.size.width, theBounds.size.height);
-    NSLog (@"TestView frame: ((%f, %f), (%f, %f))",
-	  theFrame.origin.x, theFrame.origin.y,
-	  theFrame.size.width, theFrame.size.height);
-    NSLog (@"clip view bounds: ((%f, %f), (%f, %f))",
-	  superBounds.origin.x, superBounds.origin.y,
-	  superBounds.size.width, superBounds.size.height);
-    NSLog (@"clip view frame: ((%f, %f), (%f, %f))",
-	  superFrame.origin.x, superFrame.origin.y,
-	  superFrame.size.width, superFrame.size.height);
-  }
-#endif
-
+  
   [c set];
-#if 0
-  drawAnX(0, 0, 100, 100);
-#endif
-
-#if 1
+  
   // Text
   f = [NSFont boldSystemFontOfSize: 24];
   [f set];
@@ -148,41 +117,36 @@
   [f set];
   PSmoveto(15, 150);
   PSshow("User font.");
-#endif
 
-#if 1
   // Absolute Lines
   [blue set];
-  PSnewpath();
-  PSmoveto(400, 400);
-  PSlineto(420, 400);
-  PSlineto(440, 380);
-  PSlineto(440, 360);
-  PSlineto(420, 340);
-  PSlineto(400, 340);
-  PSlineto(380, 360);
-  PSlineto(380, 380);
-  PSclosepath();
-  PSfill();
-#endif
+  PSnewpath ();
+  PSmoveto (400, 400);
+  PSlineto (420, 400);
+  PSlineto (440, 380);
+  PSlineto (440, 360);
+  PSlineto (420, 340);
+  PSlineto (400, 340);
+  PSlineto (380, 360);
+  PSlineto (380, 380);
+  PSclosepath ();
+  PSfill ();
 
-#if 1
   // Relative Lines
   [y set];
-  PSnewpath();
-  PSmoveto(400, 200);
-  PSrlineto(20, 0);
-  PSrlineto(20, -20);
-  PSrlineto(0, -20);
-  PSrlineto(-20, -20);
-  PSrlineto(-20, 0);
-  PSrlineto(-20, 20);
-  PSrlineto(0, 20);
-  PSclosepath();
-  PSstroke();
-#endif
+  PSnewpath ();
+  PSmoveto (400, 200);
+  PSrlineto (20, 0);
+  PSrlineto (20, -20);
+  PSrlineto (0, -20);
+  PSrlineto (-20, -20);
+  PSrlineto (-20, 0);
+  PSrlineto (-20, 20);
+  PSrlineto (0, 20);
+  PSclosepath ();
+  PSstroke ();
 
-  PSinitclip();
+  PSinitclip ();
 }
 
 - (void)mouseDown:(NSEvent *)theEvent
