@@ -132,6 +132,11 @@
   [self restart];
   return self;
 }
+-(void) dealloc
+{
+  [win release];
+  [super dealloc];
+}
 - (void) restart
 {
   [win orderFront: nil]; 
