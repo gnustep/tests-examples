@@ -36,7 +36,6 @@ int main (void)
   NSMenuItem *menuItem;
 
   pool = [NSAutoreleasePool new];
-  initialize_gnustep_backend ();
   app = [NSApplication sharedApplication];
   [app setApplicationIconImage: [NSImage imageNamed: 
 					   @"Calculator.app.tiff"]];
