@@ -228,6 +228,29 @@ static NSString* fieldString[3] = {
 {
   [window orderFront: self];
 }
+
+// Display the Info Panel 
+-(void) runInfoPanel: (id) sender
+{
+  NSMutableDictionary *d;
+
+  d = [[NSMutableDictionary new] autorelease];
+  [d setObject: @"CurrencyConverter" forKey: @"ApplicationName"];
+  [d setObject: @"A Little GNUstep GUI Demo" 
+     forKey: @"ApplicationDescription"];
+  [d setObject: @"CurrencyConverter 1.0" forKey: @"ApplicationRelease"];
+  [d setObject: @"1.0.1 Jan 2000" forKey: @"FullVersionID"];
+  [d setObject: [NSArray arrayWithObject: 
+			   @"Nicola Pero <n.pero@mi.flashnet.it>"]
+     forKey: @"Authors"];
+  //  [d setObject: @"See http://www.gnustep.org" forKey: @"URL"];
+  [d setObject: @"Copyright (C) 1999, 2000 Free Software Foundation, Inc."
+     forKey: @"Copyright"];
+  [d setObject: @"Released under the GNU General Public License 2.0"
+     forKey: @"CopyrightDescription"];
+  
+  [NSApp orderFrontStandardInfoPanelWithOptions:d];
+}
 @end
 
 // Execution starts from here. 
@@ -261,6 +284,22 @@ main (void)
 
    // Main Menu
    mainMenu = [NSMenu new];
+
+   // Info SubMenu
+   menuItem = [mainMenu addItemWithTitle: @"Info" 
+			action: NULL 
+			keyEquivalent: @""];
+   menu = [NSMenu new];
+   [mainMenu setSubmenu: menu forItem: menuItem];
+   // The objects receiving these messages are determined at run time;
+   // they will be the NSApplication delegate for the first and NSApp
+   // (==[NSApplication sharedApplication[) for the second.
+   [menu addItemWithTitle: @"Info Panel" 
+	 action: @selector (runInfoPanel:) 
+	 keyEquivalent: @""];
+   [menu addItemWithTitle: @"Help" 
+	 action: @selector (orderFrontHelpPanel:)
+	 keyEquivalent: @"?"];
 
    // Edit Submenu
    menuItem = [mainMenu addItemWithTitle: @"Edit" 

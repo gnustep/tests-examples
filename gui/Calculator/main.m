@@ -58,6 +58,19 @@ main (void)
   app = [NSApplication sharedApplication];
   [app setApplicationIconImage: [NSImage imageNamed: @"Calculator.app.tiff"]];
   mainMenu = [NSMenu new];
+  // Info SubMenu
+  menuItem = [mainMenu addItemWithTitle: @"Info" 
+		       action: NULL 
+		       keyEquivalent: @""];
+  menu = [NSMenu new];
+  [mainMenu setSubmenu: menu forItem: menuItem];
+  [menu addItemWithTitle: @"Info Panel" 
+	action: @selector (runInfoPanel:) 
+	keyEquivalent: @""];
+  [menu addItemWithTitle: @"Help" 
+	action: @selector (orderFrontHelpPanel:)
+	keyEquivalent: @"?"];
+  // Edit SubMenu
   menuItem = [mainMenu addItemWithTitle: @"Edit" 	
 		       action: NULL 
 		       keyEquivalent: @""];

@@ -244,6 +244,27 @@
 {
   [self orderFront: self];
 }
+-(void) runInfoPanel: (id) sender
+{
+  NSMutableDictionary *d;
+
+  d = [[NSMutableDictionary new] autorelease];
+  [d setObject: @"Calculator" forKey: @"ApplicationName"];
+  [d setObject: @"A Little GNUstep GUI Demo" 
+     forKey: @"ApplicationDescription"];
+  [d setObject: @"Calculator 1.0" forKey: @"ApplicationRelease"];
+  [d setObject: @"1.0.1 Jan 2000" forKey: @"FullVersionID"];
+  [d setObject: [NSArray arrayWithObject: 
+			   @"Nicola Pero <n.pero@mi.flashnet.it>"]
+     forKey: @"Authors"];
+  //  [d setObject: @"See http://www.gnustep.org" forKey: @"URL"];
+  [d setObject: @"Copyright (C) 1999, 2000 Free Software Foundation, Inc."
+     forKey: @"Copyright"];
+  [d setObject: @"Released under the GNU General Public License 2.0"
+     forKey: @"CopyrightDescription"];
+  
+  [NSApp orderFrontStandardInfoPanelWithOptions:d];
+}
 @end
 
 
