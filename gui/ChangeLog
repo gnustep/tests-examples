@@ -1,3 +1,16 @@
+2000-07-01  Fred Kiefer <FredKiefer@gmx.de>
+
+	* Edit/Readme.rtf:
+	New file to load at startup
+	* Edit/GNUmakefile:
+	Added new file Readme.rtf as ressource
+	* Edit/Controller.m:
+	* Edit/Controller.h:
+	* Edit/Edit.m: 
+	* Edit/Document.m: 
+	* Edit/Document.h: 
+	Added font and ruler pasting
+
 2000-05-04 Richard Frith-Macdonald <rfm@gnu.org>
 
 	* screen: new subdirectory for tool to test screen access functions
