@@ -95,7 +95,7 @@ unsigned int style = NSTitledWindowMask | NSClosableWindowMask
 }
 
 - (BOOL)applicationShouldTerminate:(NSApplication *)app {
-    NSArray *windows = [app windows];
+    NSArray *windows = [NSApp windows];
     unsigned count = [windows count];
     BOOL needsSaving = NO;
 
