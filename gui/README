@@ -5,6 +5,15 @@ In this directory there is a full collection of tests for the GNUstep
 GUI libraries.  Some tests are very old, other are newer; some are 
 up-to-date, other are not.
 
+Important Note: the currently maintained and supported examples are:
+
+GSTest, Finger, Calculator, CurrencyConverter, Ink and NSPanelTest.
+
+If they misbehave, please report it as a bug to bug-gnustep@gnu.org.
+
+A rearrangement is under way to make more clear that other
+examples/test are old and/or not supported.
+
 Quick start to compile and run the tests:
 
 make
