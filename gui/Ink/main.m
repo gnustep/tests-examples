@@ -154,6 +154,11 @@
   [file addItemWithTitle: @"Close"
 		  action: @selector(close)
 	   keyEquivalent: @""];
+
+  [file addItemWithTitle: @"Insert File..."
+	          action: @selector(insertFile:)
+	   keyEquivalent: @""];
+
   RELEASE(file);
 
   // Create the edit submenu
