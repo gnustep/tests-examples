@@ -41,6 +41,7 @@ include ../Version
 TEST_APP_NAME = \
 		alertpanel \
 		buttons \
+		popupbuttons \
 		fontpanel \
 		matrix \
 		menu \
@@ -62,6 +63,7 @@ SUBPROJECTS = Edit
 # The Objective-C source files to be compiled
 alertpanel_OBJC_FILES = alertpanel.m
 buttons_OBJC_FILES = buttons.m
+popupbuttons_OBJC_FILES = popupbuttons.m
 fontpanel_OBJC_FILES = fontpanel.m
 matrix_OBJC_FILES = matrix.m
 menu_OBJC_FILES = menu.m
