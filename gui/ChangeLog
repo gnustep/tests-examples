@@ -1,3 +1,8 @@
+2001-02-13  Fred Kiefer <FredKiefer@gmx.de>
+
+	* Ink/main.m
+	Don't load the Readme.rtf file when starting the app.
+
 Tue Jan 20  Michael Hanni  <mhanni@sprintmail.com>
 
 	* Classes/NSBrowserTest/.cvsignore,
