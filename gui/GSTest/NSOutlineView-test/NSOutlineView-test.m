@@ -103,6 +103,7 @@ NSString *test[20] =
   [outlineView setOutlineTableColumn: keyColumn];
   [outlineView setDrawsGrid: NO];
   [outlineView setIndentationPerLevel: 10];
+  [outlineView setAllowsColumnReordering: NO];
   [outlineView setAutoresizesOutlineColumn: YES];
   [outlineView setIndentationMarkerFollowsCell: YES];
 
@@ -117,6 +118,10 @@ NSString *test[20] =
     }
   [outlineView setDataSource: self];
   [outlineView setDelegate: self];
+
+  [outlineView registerForDraggedTypes: 
+	       [NSArray arrayWithObject: NSStringPboardType]];
+
 
   scrollView = [[NSScrollView alloc] 
 		 initWithFrame: NSMakeRect (0, 0, 300, 200)];
@@ -383,4 +388,54 @@ NSString *test[20] =
   NSLog(@"should select item....");
   return YES;
 }
+
+- (BOOL) outlineView: (NSTableView *)aTableView
+	 writeItems: (NSArray *) items
+      toPasteboard: (NSPasteboard *) pboard
+{
+  NSLog(@"%@", items);
+  [pboard declareTypes: [NSArray arrayWithObject: NSStringPboardType]
+	  owner: self];
+
+  [pboard setPropertyList: @"1"
+	  forType: NSStringPboardType];
+  return YES;
+}
+
+/*
+- (NSDragOperation) outlineView: (NSOutlineView *) ov
+		   validateDrop: (id <NSDraggingInfo>) info
+		   proposedItem: (id) item
+	     proposedChildIndex: (int) childIndex
+
+{
+  if (item == nil)
+    [ov setDropItem: @"NSObject"
+	dropChildIndex: NSOutlineViewDropOnItemIndex];
+  else
+    [ov setDropItem: item
+	dropChildIndex: NSOutlineViewDropOnItemIndex];
+
+  return NSDragOperationCopy;
+}
+*/
+/*
+- (BOOL) tableView: (NSTableView *)tv
+	acceptDrop: (id <NSDraggingInfo>) info
+	       row: (int) row
+	 operation: (NSTableViewDropOperation) operation
+{
+  if (row % 2 == 0)
+    {
+      NSLog(@"acceptingRow");
+      return YES;
+    }
+  else
+    {
+      NSLog(@"refusingRow");
+      return NO;
+    }
+  
+}
+*/
 @end
