@@ -23,15 +23,11 @@
  */
 #include <AppKit/AppKit.h>
 #include <AppKit/NSWindowController.h>
-#include <AppKit/NSTextView.h>
 #include "Document.h"
 
 @interface Document (Private)
-- (NSTextContainer*) buildUpTextNetwork: (NSRect)frame;
 
 - (NSWindow*) makeWindow;
-
-- (NSView*) myView;
 
 @end
 
@@ -41,28 +37,38 @@
 {
   [super init];
 
-  _ts = [[NSTextStorage alloc] init];
+  ts = [[NSMutableAttributedString alloc] init];
   return self;
 }
 
 - (void) dealloc
 {
-  RELEASE(_ts);
+  RELEASE(ts);
+  RELEASE(tv);
+  RELEASE(pi);
 }
 
 - (NSData *)dataRepresentationOfType:(NSString *)aType 
 {
+  NSAttributedString *attr;
+
+  if (tv != nil)
+    attr = [tv textStorage];
+  else
+    attr = ts;
+
   if ([aType isEqualToString:@"rtf"])
     {
-      return [_ts RTFFromRange: NSMakeRange(0, [_ts length]) documentAttributes: NULL]; 
+      return [attr RTFFromRange: NSMakeRange(0, [attr length]) documentAttributes: 
+		       [[self printInfo] dictionary]]; 
     }
   else if ([aType isEqualToString:@"text"])
     {
-      return [[_ts string] dataUsingEncoding: [NSString defaultCStringEncoding]]; 
+      return [[attr string] dataUsingEncoding: [NSString defaultCStringEncoding]]; 
     }
   else
     {
-      NSAssert([aType isEqualToString:@"rtf"], ([NSString stringWithFormat: @"Unknown type %@", aType]));
+      NSAssert(NO, ([NSString stringWithFormat: @"Unknown type %@", aType]));
       return nil;
     }
 }
@@ -84,11 +90,15 @@
     }
   else
     {
-      NSAssert([aType isEqualToString:@"rtf"], ([NSString stringWithFormat: @"Unknown type %@", aType]));
+      NSAssert(NO, ([NSString stringWithFormat: @"Unknown type %@", aType]));
       return NO;
     }
 
-  [_ts setAttributedString: attr];
+  if (tv != nil)
+    [[tv textStorage] setAttributedString: attr];
+  else 
+    [ts setAttributedString: attr];
+
   RELEASE(attr);
   return YES;
 }
@@ -101,15 +111,29 @@
   controller = [[NSWindowController alloc] initWithWindow: win];
   [self addWindowController: controller];
   RELEASE(controller);
+
+  // We have to do this our self, as there is currently no nib file
+  [self awakeFromNib];
 } 
 
 - (void)printShowingPrintPanel:(BOOL)flag
 {
-  NSPrintOperation *po = [NSPrintOperation printOperationWithView: [self myView] 
+  NSPrintOperation *po = [NSPrintOperation printOperationWithView: tv
 					   printInfo: [self printInfo]];
 
   [po setShowPanels: flag];
   [po runOperation];
+}
+
+- (void) awakeFromNib
+{
+  [[tv textStorage] setAttributedString: ts];
+  DESTROY(ts);
+}
+
+- (void)textDidChange:(NSNotification *)textObject 
+{
+  [self updateChangeCount: NSChangeDone];
 }
 
 @end
@@ -122,7 +146,6 @@
   NSScrollView* scrollView;
   NSTextView* textView;
   NSColor* backColor;
-  NSTextContainer *container;
   NSRect scrollViewRect = {{0, 0}, {470, 400}};
   NSRect winRect = {{100, 100}, {470, 400}};
   NSRect textRect;
@@ -143,13 +166,16 @@
 
   // Build up the text network
   textRect = [[scrollView contentView] frame];
-  container = [self buildUpTextNetwork: textRect];
-  textView = [[NSTextView alloc] initWithFrame: textRect textContainer: container];
+  textView = [[NSTextView alloc] initWithFrame: textRect];
   backColor = [NSColor colorWithCalibratedWhite:0.85 alpha:1.0]; // off white
   [textView setBackgroundColor: backColor];					
   [textView setRichText: YES];
   [textView setUsesFontPanel: YES];
   [textView setDelegate: self];
+  [textView setVerticallyResizable: YES];
+  [[textView textContainer] setContainerSize: NSMakeSize(textRect.size.width, 1E99)];
+  [[textView textContainer] setWidthTracksTextView: YES];
+  ASSIGN(tv, textView);
 
   [scrollView setDocumentView: textView];
   [[window contentView] addSubview: scrollView];
@@ -161,33 +187,6 @@
   RELEASE(scrollView);
   RELEASE(textView);
   return window;
-}
-
-- (NSTextContainer*) buildUpTextNetwork: (NSRect)frame
-{
-  NSTextContainer *aTextContainer = [[NSTextContainer alloc] 
-					initWithContainerSize: frame.size];
-  NSLayoutManager *layoutManager = [[NSLayoutManager alloc] init];
-
-  [aTextContainer setWidthTracksTextView: YES];
-  [aTextContainer setHeightTracksTextView: YES];
-
-  [layoutManager addTextContainer: aTextContainer];
-  [_ts addLayoutManager: layoutManager];
-  AUTORELEASE(aTextContainer);
-  AUTORELEASE(layoutManager);
-
-  return aTextContainer;
-}
-
-- (NSView*) myView
-{
-  return nil;
-}
-
-- (void)textDidChange:(NSNotification *)textObject 
-{
-  [self updateChangeCount: NSChangeDone];
 }
 
 @end
