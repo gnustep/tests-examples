@@ -31,6 +31,7 @@ SUBPROJECTS = \
   KeyboardInput-test \
   NSBox-test \
   NSColorWell-test \
+  NSForm-test \
   NSScrollView-test \
   NSSlider-test \
   NSSplitView-test 

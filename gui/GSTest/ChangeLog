@@ -1,3 +1,10 @@
+Sun Nov 28 18:09:46 1999  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	New test NSForm-test.
+	* NSForm-test: New directory. 
+	* NSForm-test/GNUmakefile: New file. 
+	* NSForm-test/NSForm-test.m: New file. 
+
 Sat Nov 27 05:25:15 1999  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* KeyboardInput-test/KeyboardInput-test.m ([inputTestView
