@@ -1,3 +1,7 @@
+Sat Feb 17 19:08:29 2001  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* Ink/Document.m ([-makeWindow]): Use a white background.
+
 2001-02-13  Fred Kiefer <FredKiefer@gmx.de>
 
 	* Ink/main.m
