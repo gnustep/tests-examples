@@ -27,12 +27,10 @@
 */ 
 
 #import <AppKit/AppKit.h>
+#import <gnustep/xraw/XRDrawingEngine.h>
 #include "TestView.h"
 #include <config.h>
 
-extern void XRlineto(float x, float y);
-extern void XRmoveto(float x, float y);
-extern void XRshow(const char *str);
 
 @implementation TestView
 
@@ -91,7 +89,7 @@ extern void XRshow(const char *str);
   drawAnX(0, 0, 100, 100);
 #endif
 
-#if 0
+#if 1
   // Text
   f = [NSFont boldSystemFontOfSize: 24];
   [f set];

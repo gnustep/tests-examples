@@ -38,11 +38,26 @@ include $(GNUSTEP_MAKEFILES)/common.make
 include ../Version
 
 # The applications to be compiled
-TEST_APP_NAME = scrollview buttons
+TEST_APP_NAME = alertpanel buttons matrix menu nscursor \
+                nsimage nsscroller scrollview \
+                scrollview2 windows slider nsbox nsbrowsercell nsbrowser
 
 # The Objective-C source files to be compiled
+alertpanel_OBJC_FILES = alertpanel.m
 buttons_OBJC_FILES = buttons.m
+matrix_OBJC_FILES = matrix.m
+menu_OBJC_FILES = menu.m
+nscursor_OBJC_FILES = nscursor.m ColorView.m
+nsimage_OBJC_FILES = nsimage.m ImageView.m
+nsscroller_OBJC_FILES = nsscroller.m
 scrollview_OBJC_FILES = scrollview.m TestView.m
+scrollview2_OBJC_FILES = scrollview2.m
+windows_OBJC_FILES = windows.m TestView.m
+slider_OBJC_FILES = slider.m
+nsbox_OBJC_FILES = nsbox.m
+nsbrowsercell_OBJC_FILES = nsbrowsercell.m
+nsbrowser_OBJC_FILES = nsbrowser.m
+
 
 -include GNUmakefile.preamble
 
