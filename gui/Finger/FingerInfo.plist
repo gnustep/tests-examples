@@ -1,7 +1,7 @@
 {
   ApplicationName = "Finger";
   ApplicationDescription = "A GNUstep Frontend to Finger, Ping, Traceroute";
-  ApplicationRelease = "Calculator 0.8";
+  ApplicationRelease = "Finger 0.8";
   FullVersionID = "0.8.0, Jul 2000";
   Authors = ("Nicola Pero <n.pero@mi.flashnet.it>");
   Copyright = "Copyright (C) 1999, 2000 Free Software Foundation, Inc.";
