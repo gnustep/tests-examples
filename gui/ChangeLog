@@ -1,3 +1,8 @@
+Thu Feb 10 09:55:00 2000  Richard Frith-Macdonald <richard@brainstorm.co.uk>
+
+	* nsscroller.m: ([MyObject -scrollerAction:]) Move the knob when the
+	arrows are clicked.
+
 Thu Feb 10 01:29:48 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* nsscroller.m ([MyObject -scrollerAction:]): Print some 
