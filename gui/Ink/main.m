@@ -266,14 +266,6 @@
   RELEASE(pool);
 }
 
-- (void) applicationDidFinishLaunching: (NSNotification *)not;
-{
-  // Make the DocumentController the delegate of the application, 
-  // as this is the only way I know to bring it into the responder chain
-  [NSApp setDelegate: [NSDocumentController sharedDocumentController]];
-  RELEASE(self);
-}
-
 @end
 
 int

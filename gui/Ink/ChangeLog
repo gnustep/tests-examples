@@ -1,3 +1,8 @@
+2002-11-01  Adam Fedor  <fedor@gnu.org>
+
+	* main.m: Don't set NSDocumentController as app delegate
+	(set automatically now in gui).
+
 2002-04-03  Fred Kiefer <FredKiefer@gmx.de>
 
 	* Document.m
