@@ -1,3 +1,8 @@
+2002-03-05  Pierre-Yves Rivaille <pyrivail@ens-lyon.fr>
+
+	* NSTableView-test/NSTableView-test.m ([NSTableViewTest -init]): 
+	Set minWidth for all columns. Don't call sizeToFit: anymore.
+
 Mon Mar  4 09:31:04 2002  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* main.m (main): Set to nil the listed test instances at startup;

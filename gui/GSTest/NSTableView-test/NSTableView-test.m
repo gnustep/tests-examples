@@ -142,13 +142,14 @@ NSString *test[20] =
   AUTORELEASE (testColumn);
   [testColumn setEditable: NO];
   [[testColumn headerCell] setStringValue: @"test"];
-  [testColumn setMinWidth: 100];
+  [testColumn setMinWidth: 70];
 
   tableView = [[NSTableView alloc] 
 		 initWithFrame: NSMakeRect (0, 0, 300, 300)];
   [tableView addTableColumn: keyColumn];
   [tableView addTableColumn: valueColumn];
   [tableView addTableColumn: testColumn];
+  //  [tableView setAutoresizesAllColumnsToFit: YES];
 
   /* Now add some more columns */
   for (i = 0; i < 5; i++)
@@ -156,6 +157,8 @@ NSString *test[20] =
       string = [NSString stringWithFormat: @"Column %d", i];
       tb = AUTORELEASE ([[NSTableColumn alloc] initWithIdentifier: string]);
       [tb setEditable: NO];
+      [tb setMinWidth: 50];
+      [tb setMaxWidth: 400];
       [[tb headerCell] setStringValue: string];
       [tableView addTableColumn: tb];
     }
@@ -176,7 +179,6 @@ NSString *test[20] =
   [scrollView setAutoresizingMask: (NSViewWidthSizable 
 				    | NSViewHeightSizable)];
 	 
-  [tableView sizeToFit];
 
   externalBox = [NSBox new];
   [externalBox setTitlePosition: NSNoTitle];
