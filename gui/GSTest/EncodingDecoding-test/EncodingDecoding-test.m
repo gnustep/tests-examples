@@ -202,7 +202,8 @@ willDisplayCell: (id)cell
   if (result == NSOKButton)
     {
       BOOL result = NO;
-      
+      NSString *exception = nil;
+
       NS_DURING
 	{
 	  result = [NSArchiver archiveRootObject: w
@@ -210,17 +211,22 @@ willDisplayCell: (id)cell
 	}
       NS_HANDLER
 	{
-	  // TODO: Rewrite to show exception description
+	  exception = [localException description];
 	  result = NO;
 	}
       NS_ENDHANDLER
 
 	if (result == NO)
 	  {
+	    if (exception == nil)
+	      {
+		exception = @"UnknownProblem";
+	      }
+
 	    NSRunCriticalAlertPanel (@"Error", 
-				     @"Error encoding to file %@: %@", 
+				     @"Error encoding to file %@:\n%@", 
 				     @"OK", nil, nil, 
-				     [s filename]);
+				     [s filename], exception);
 	  }
     }
 }
