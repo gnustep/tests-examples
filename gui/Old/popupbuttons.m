@@ -62,27 +62,23 @@
 
 - (void)buttonSwitchView:(id)sender
 {
-    NSLog(@"Sender = %@ Cell = %@", sender, @"");
-/*
-  NSString *title = [sender titleOfSelectedItem];
+  NSString *title;
+  NSLog(@"Sender = %@", sender);
+
+  title = [sender titleOfSelectedItem];
 
   NSLog (@"title value = %@, indexOfSelectedItem: %d, titleIndexOfSelectedItem: %d numItems: %d",
-title,
-[sender indexOfSelectedItem],
-[sender indexOfItem:[sender selectedItem]],
-[sender numberOfItems]);
+	 title,
+	 [sender indexOfSelectedItem],
+	 [sender indexOfItem:[sender selectedItem]],
+	 [sender numberOfItems]);
 
+  /*
   if ([title isEqualToString:@"Devices"])
     [[win contentView] addSubview:anotherView1];    
-  else if ([title isEqualToString:@"Shag"])
-    {
-      [sender removeAllItems];
-      [sender addItemWithTitle:@"Devices"];
-      [sender addItemWithTitle:@"Network"];
-    }
   else
     [[win contentView] addSubview:anotherView2];    
-*/
+  */
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -90,6 +86,7 @@ title,
   NSRect wf = {{100, 100}, {400, 400}};
   NSRect f = {{10, 10}, {380, 200}};
   NSPopUpButton *pushb;
+
   id anItem;
   unsigned int style = NSTitledWindowMask | NSClosableWindowMask
 		      | NSMiniaturizableWindowMask | NSResizableWindowMask;
@@ -104,20 +101,21 @@ title,
   
   anotherView2 = [[TestView alloc] initWithFrame:f];
 
-  pushb = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(200,375,80,20)];
+  pushb = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(200,375,100,20)];
   [pushb setTarget:self];
   [pushb setAction:@selector(buttonSwitchView:)];
-  [pushb addItemWithTitle:@"Devices"];
+  [pushb addItemWithTitle:@"Devices Pop"];
   [pushb addItemWithTitle:@"Network"];
   [pushb addItemWithTitle:@"Printers"];
   [pushb addItemWithTitle:@"Austin"];
   [pushb addItemWithTitle:@"Powers"];
   [pushb addItemWithTitle:@"Shag"];
+
   [[win contentView] addSubview:pushb];
 
   /* NB: popupbuttons with images are not possible in the 
   present framework */
-/*
+#if 0
   pushb = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(15,275,64,64)];
 
   [pushb addItemWithTitle:@""];
@@ -139,12 +137,13 @@ title,
 //  [pushb setTarget:self];
 //  [pushb setAction:@selector(buttonSwitchView:)];
   [[win contentView] addSubview:pushb];
-*/
-  pushb = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(15,375,80,20) 
-pullsDown:YES];
+#endif
+
+  pushb = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(15,375,100,20) 
+				 pullsDown:YES];
   [pushb setTarget:self];
   [pushb setAction:@selector(buttonSwitchView:)];
-  [pushb addItemWithTitle:@"Devices"];
+  [pushb addItemWithTitle:@"Devices Pull"];
   [pushb addItemWithTitle:@"Network"];
   [pushb addItemWithTitle:@"Printers"];
   [pushb addItemWithTitle:@"Austin"];

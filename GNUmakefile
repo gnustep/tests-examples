@@ -25,7 +25,7 @@
 include $(GNUSTEP_MAKEFILES)/common.make
 
 PACKAGE_NAME=gnustep-examples
-VERSION=0.9.2
+VERSION=0.9.5
 
 SUBPROJECTS = gui
 
