@@ -1,3 +1,9 @@
+Sun Feb 13 01:18:37 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* main.m ([Controller -runInfoPanel:sender]): Use AUTORELEASE
+	instead of -autorelease.  (main): AUTORELEASE each created menu,
+	and a couple of minor memory management tidyups.
+
 Sat Feb 12 18:03:01 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* StringDrawing-test/StringDrawing-test.m ([-init]): Improved 
