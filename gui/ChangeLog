@@ -1,3 +1,11 @@
+Mon Jan 31 01:03:16 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* popupbuttons.m ([buttonsController
+	-applicationDidFinishLaunching:]): Removed example of popupbutton
+	with images.  Unfortunately we do not any longer have this
+	extension of popupbuttons with images [Popupbuttons are strictly
+	connected to menus].
+
 Tue Jan 25 00:28:31 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	Added Info Panel to Calculator and CurrencyConverter:
