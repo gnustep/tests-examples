@@ -39,6 +39,7 @@ main(int argc, char **argv, char** env)
     NSApplication *theApp;
     NSRect wf0 = {{200, 200}, {300, 300}};
     NSArray* args;
+    int style;
     id pool;
 
     if (argc == 1)
@@ -59,14 +60,17 @@ main(int argc, char **argv, char** env)
 #endif
 
     theApp = [NSApplication sharedApplication];
+    v = [[ImageView alloc] initWithFile: [args objectAtIndex:1]];
+    wf0.size = [v imageSize];
 
     NSLog(@"Create a window\n");
-    win = [[NSWindow alloc] init];
-    v = [[ImageView alloc] initWithFile: [args objectAtIndex:1]];
+    style = NSTitledWindowMask | NSClosableWindowMask
+      | NSMiniaturizableWindowMask | NSResizableWindowMask;
+    win = [[NSWindow alloc] initWithContentRect: wf0
+                  styleMask: style
+                    backing: NSBackingStoreBuffered
+                      defer: NO];
     [win setContentView: v];
-
-    wf0.size = [v imageSize];
-    [win setFrame: wf0 display: YES];
     [win setTitle:@"GNUstep GUI X/RAW Image View"];
     [win orderFrontRegardless];
 

@@ -1,3 +1,7 @@
+2000-03-11  Adam Fedor  <fedor@gnu.org>
+
+	* nsimage.m: Set window frame when initing window.
+
 Wed Mar  8 21:42:03 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* TestView.m: Do not include configure.h.  Some other tidying, 
