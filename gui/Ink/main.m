@@ -298,6 +298,7 @@
 
 - (void) applicationDidFinishLaunching: (NSNotification *)not;
 {
+/*
   NSString *fileName;
 
   // Start the readme file to have the same functionality as Edit
@@ -305,6 +306,7 @@
   fileName = [fileName stringByAppendingPathComponent: @"Readme.rtf"];
   [[NSDocumentController sharedDocumentController] openDocumentWithContentsOfFile: fileName
 						   display: YES];
+*/
 
   // Make the DocumentController the delegate of the application , as this is the only way 
   // I know to bring it into the responder chain
