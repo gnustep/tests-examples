@@ -36,12 +36,14 @@ Finger_HEADERS = \
   FingerWindow.h \
   PreferencesController.h \
   TrivialTextView.h 
-# Add images here when we have them
-Finger_RESOURCE_FILES = 
+Finger_RESOURCE_FILES = \
+  finger.tiff \
+  traceroute.tiff \
+  ping.tiff \
+  stop_button.tiff 
 
 
 -include GNUmakefile.preamble
--include ../GNUmakefile.local
 include $(GNUSTEP_MAKEFILES)/application.make
 -include GNUmakefile.postamble
 
