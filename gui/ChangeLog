@@ -1,3 +1,7 @@
+Sun Jan 21 23:33:04 2001  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* Calculator/CalcFace.m ([-init]): Set default button cell to `='.
+
 Mon Jan  9 23:21:34 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	Rearrangement of the whole directory structure.
