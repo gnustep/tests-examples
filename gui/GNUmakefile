@@ -52,6 +52,7 @@ TEST_APP_NAME = \
 		nsbox \
 		nsbrowser \
 		nsbrowsercell \
+		nscombobox \
 		nscursor \
 		nsimage \
 		nsimagecell \
@@ -79,6 +80,7 @@ menu_OBJC_FILES = menu.m
 nsbox_OBJC_FILES = nsbox.m
 nsbrowser_OBJC_FILES = nsbrowser.m
 nsbrowsercell_OBJC_FILES = nsbrowsercell.m
+nscombobox_OBJC_FILES = nscombobox.m
 nscursor_OBJC_FILES = nscursor.m ColorView.m
 nsimage_OBJC_FILES = nsimage.m ImageView.m
 nsimagecell_OBJC_FILES = nsimagecell.m

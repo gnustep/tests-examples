@@ -1,4 +1,8 @@
-1999-08-22  Gerrit van Dyk <gerritvd@decimax.com>
+1999-09-09  Gerrit van Dyk <gerritvd@decillion.net>
+
+	* nscombobox.m: Added ComboBox test
+
+1999-08-22  Gerrit van Dyk <gerritvd@decillion.net>
 
 	* nsprogressindicator.m: Added progressIndicator test
 
