@@ -1,3 +1,13 @@
+Tue Jan 25 00:41:11 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* main.m ([Controller -runInfoPanel:sender]): Use the new 
+	standard Info Panel provided by the GNUstep libraries;
+	* main.m (main): Invoke the Help Panel even if not yet implemented
+	yet.
+	* infoPanel.m, infoPanel.h: Added comment saying that this class 
+	is unused.
+	* GNUmakefile: Removed any reference to infoPanel.m, infoPanel.h.
+	
 Mon Jan 24 23:17:12 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	New test StringDrawing-test:
