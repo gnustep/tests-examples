@@ -44,6 +44,7 @@ NSApplication *theApp;
   	initialize_gnustep_backend();
 #endif
 
+//[NSObject enableDoubleReleaseCheck: YES];
 	theApp = [NSApplication sharedApplication];
 	[theApp setDelegate: [[Controller alloc] init]];
 	createMenu();									// create a generic menu
