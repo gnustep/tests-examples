@@ -25,7 +25,7 @@
 #include "GSTestProtocol.h"
 #include "testList.h"
 
-#define GSTEST_VERSION @"0.9"
+#define GSTEST_VERSION @"1.0"
 #define GSTEST_FULLID @"CVS $Date$"
 
 // If you want to add a test, please refer to testList.h 
