@@ -1,3 +1,14 @@
+Sun Mar 19 01:11:40 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	Added images by Andrew Lindesay <apl@kcbbs.gen.nz>:
+	* finger.tiff: New file.
+	* ping.tiff: New file.
+	* stop_button.tiff: New file.
+	* traceroute.tiff: New file.
+	* GNUmakefile: Updated for images.
+	* main.m: Idem.
+	* FingerWindow.m: Idem.
+	
 Sun Feb 13 01:55:21 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	New program: 
