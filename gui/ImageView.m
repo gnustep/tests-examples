@@ -44,7 +44,7 @@
   [super init];
 
   file_name = str;
-  image = [NSImage imageNamed: file_name];
+  image = [[NSImage alloc] initWithContentsOfFile: file_name];
   [image setBackgroundColor: [NSColor whiteColor]];
 
   if (image)
