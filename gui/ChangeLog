@@ -1,3 +1,8 @@
+2003-04-24  Adam Fedor  <fedor@gnu.org>
+
+	* Calculator/CalculatorInfo.plist: Add NSIcon (patch from
+	Rob Burns <rburns@softhome.net>).
+
 2002-05-28  Adam Fedor  <fedor@gnu.org>
 
 	* GPuzzle: New demo contributed by Marko Riedel

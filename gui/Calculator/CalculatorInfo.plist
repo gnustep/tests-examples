@@ -6,4 +6,5 @@
   Authors = ("Nicola Pero <n.pero@mi.flashnet.it>");
   Copyright = "Copyright (C) 1999, 2000 Free Software Foundation, Inc.";
   CopyrightDescription = "Released under the GNU General Public License 2.0";
+  NSIcon = Calculator.app.tiff;
 }
