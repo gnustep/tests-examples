@@ -1,3 +1,15 @@
+2003-07-26  Fred Kiefer  <FredKiefer@gmx.de>
+
+	* main.m
+	Changed type of variable menuItem in main() to remove compiler warnings.
+	* Composite-test/MyView.m
+	* NSTableView-test/NSTableView-test.m 
+	Added [dealloc] method.
+	* NSBox-test/NSBox-test.m 
+	In [NSBoxTest init] release the cell prototype.
+	* NSSavePanel-test/NSSavePanel-test.m 
+	Added missing @end.
+	
 Mon Jun 10 09:36:57 2002  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* NSButton-test/GNUmakefile: New file.
