@@ -101,6 +101,18 @@
   [pushb setAction:@selector(buttonSwitchView:)];
   [[win contentView] addSubview:pushb];
 
+  pushb = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(15,375,80,20) 
+pullsDown:YES];
+  [pushb addItemWithTitle:@"Devices"];
+  [pushb addItemWithTitle:@"Network"];
+  [pushb addItemWithTitle:@"Printers"];
+  [pushb addItemWithTitle:@"Austin"];
+  [pushb addItemWithTitle:@"Powers"];
+  [pushb addItemWithTitle:@"Shag"];
+//  [pushb setTarget:self];
+//  [pushb setAction:@selector(buttonSwitchView:)];
+  [[win contentView] addSubview:pushb];
+
   [win display];
   [win orderFront:nil];
 }
