@@ -1,3 +1,8 @@
+1999-11-30  Adam Fedor  <fedor@gnu.org>
+
+	* nsbrowser.m: Updated to show off new NSBrowser changes (patch
+	from F. Wolff <wolff@cybercable.fr>).
+
 Sat Nov 27 04:17:31 1999  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* GSTest/ChangeLog: Added file.

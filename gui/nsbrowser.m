@@ -6,6 +6,9 @@
    Author: Scott Christley <scottc@net-community.com>
    Date: October 1997
    
+   Author: Franck Wolff <wolff@cybercable.fr>
+   Date: November 1999
+   
    This file is part of the GNUstep GUI X/RAW Library.
    
    This library is free software; you can redistribute it and/or
@@ -25,7 +28,9 @@
 
 #import <Foundation/NSAutoreleasePool.h>
 #import <AppKit/AppKit.h>
-#import <Foundation/NSFileManager.h>
+
+
+#if 0
 
 //
 // a NSBrowser delegate which passively creates the rows
@@ -93,6 +98,46 @@
 
 @end
 
+#endif
+
+//
+// a NSWindow delegate which resize the browser
+//
+@interface WindowDelegate : NSObject
+{
+  NSWindow *_w;
+  NSBrowser *_b;
+}
+- (void)initMembersWith: (NSWindow *)w and: (NSBrowser *)b;
+- (void)windowDidResize:(NSNotification *)aNotification;
+- (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)proposedFrameSize;
+@end
+
+@implementation WindowDelegate
+- (void)initMembersWith: (NSWindow *)w and: (NSBrowser *)b
+{
+  _w = w;
+  _b = b;
+}
+- (void)windowDidResize:(NSNotification *)aNotification
+{
+  NSRect rect = [_w frame];
+
+  rect.origin.x = rect.origin.y = 10;
+  rect.size.width -= 20;
+  rect.size.height -= 150;
+
+  [_b setFrame: rect];
+  [[_w contentView] setNeedsDisplay: YES];
+}
+- (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)proposedFrameSize
+{
+  // Doesn't work. Why ????
+  printf("windowWillResize: %s\n", [NSStringFromSize(proposedFrameSize) cString]);
+  return proposedFrameSize;
+}
+@end
+
 //
 // an NSBrowser delegate which actively creates the rows
 //
@@ -111,7 +156,7 @@
 @implementation ActiveBrowserDelegate
 
 - (void)browser:(NSBrowser *)sender createRowsForColumn:(int)column
-      								inMatrix:(NSMatrix *)matrix
+      					inMatrix:(NSMatrix *)matrix
 {
   NSFileManager *fm = [NSFileManager defaultManager];
   NSString *ptc = [sender pathToColumn: column];
@@ -150,92 +195,198 @@
 }
 
 - (void)browser:(NSBrowser *)sender willDisplayCell:(id)cell
-											atRow:(int)row
-											column:(int)column
-{}
+	                            atRow:(int)row
+	                            column:(int)column;
+{
+}
 
 - (BOOL)browser:(NSBrowser *)sender selectCellWithString:(NSString *)title
        											inColumn:(int)column;
 {
-//NSFileManager *fm = [NSFileManager defaultManager];
-NSString *ptc = [sender pathToColumn: column];
-NSMutableString *s = [[[NSMutableString alloc] initWithString:ptc]autorelease];
+/*
+  //NSFileManager *fm = [NSFileManager defaultManager];
+  NSString *ptc = [sender pathToColumn: column];
+  NSMutableString *s = [[[NSMutableString alloc] initWithString:ptc]autorelease];
 
- fprintf(stderr, " browser:sender selectCellWithString: %s ", [title cString]);
+  fprintf(stderr, " browser:sender selectCellWithString: %s ", [title cString]);
 
-	if(column > 0)
-		[s appendString: @"/"];
-	[s appendString:title];
+  if(column > 0)
+    [s appendString: @"/"];
+  [s appendString:title];
 
-fprintf(stderr, " source Path: %s ", [s cString]);
+  fprintf(stderr, " source Path: %s ", [s cString]);
 
-// fprintf(stderr, " destination Path: %s ", [d cString]);
-//      if([fm movePath:s toPath:d handler:self])
+  fprintf(stderr, " destination Path: %s ", [d cString]);
 
+  //if([fm movePath:s toPath:d handler:self])
+*/
+  return YES;
 }
 
-// @interface NSObject (NSFileManagerHandler)
 - (BOOL)fileManager:(NSFileManager*)fileManager
 				shouldProceedAfterError:(NSDictionary*)errorDictionary
-{  return YES;  }
+{
+  return YES;
+}
 
 - (void)fileManager:(NSFileManager*)fileManager
 				willProcessPath:(NSString*)path
-{}
+{
+}
+
+@end
+
+typedef enum {
+  Tag_nothing,
+  Tag_moreColumns,
+  Tag_lessColumns,
+  Tag_setTitled,
+  Tag_setHasHScroller
+} TMenuItemTag;
+
+@interface browserController : NSObject
+{
+  NSBrowser *browser;
+}
+@end
+
+@implementation browserController
+
+- (void)menuAction:menuItem
+{
+  //NSLog (@"method \"menuAction\" invoked with tag: %d\n", [menuItem tag]);
+  switch ([menuItem tag])
+    {
+      case Tag_nothing:
+      	break;
+      case Tag_moreColumns:
+      	[browser setMaxVisibleColumns: [browser maxVisibleColumns] + 1];
+      	break;
+      case Tag_lessColumns:
+      	[browser setMaxVisibleColumns: [browser maxVisibleColumns] - 1];
+      	break;
+      case Tag_setTitled:
+      	[menuItem setState: [menuItem state] ? NSOffState : NSOnState];
+      	[browser setTitled: ([menuItem state] == NSOnState)];
+      	break;
+      case Tag_setHasHScroller:
+      	[menuItem setState: [menuItem state] ? NSOffState : NSOnState];
+      	[browser setHasHorizontalScroller: ([menuItem state] == NSOnState)];
+      	break;
+      default:
+      	break;
+    }
+}
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
+  NSWindow *win;
+  ActiveBrowserDelegate * abd;
+  WindowDelegate *wd;
+  NSRect wf = {{100, 100}, {600, 500}};
+  NSRect bf = {{10, 10}, {580, 350}};
+  unsigned int style = NSTitledWindowMask | NSClosableWindowMask
+		      | NSMiniaturizableWindowMask | NSResizableWindowMask;
+
+  //NSLog(@"Starting the application\n");
+  win = [[NSWindow alloc] initWithContentRect:wf
+				    styleMask:style
+				      backing:NSBackingStoreRetained
+					defer:NO];
+
+  //NSLog(@"Making the active browser delegate\n");
+  abd = [ActiveBrowserDelegate new];
+
+  //NSLog(@"Making the browser\n");
+  browser = [[NSBrowser alloc] initWithFrame: bf];
+  [browser setDelegate: abd];
+  [browser setMaxVisibleColumns: 3];
+  [browser setAllowsMultipleSelection:NO];
+
+  //NSLog(@"Making the window delegate\n");
+  wd = [WindowDelegate new];
+  [wd initMembersWith: win and: browser];
+
+  //NSLog(@"Setting the window subviews\n");
+  
+  [win setDelegate: wd];
+  [[win contentView] addSubview: browser];
+
+  //NSLog(@"Making the application menu\n");
+  {
+    NSMenu *menu, *columns, *options;
+    NSMenuItem *menuItem;
+    SEL ma = @selector(menuAction:);
+
+    //NSLog(@"Making the main menu\n");
+    menu = [NSMenu new];
+    {
+      [[menu addItemWithTitle: @"Columns" action: ma keyEquivalent: @""]
+	setTag: Tag_nothing];
+      [[menu addItemWithTitle: @"Options" action: ma keyEquivalent: @""]
+	setTag: Tag_nothing];
+      [[menu addItemWithTitle: @"Quit" action: @selector(terminate:)
+                                       keyEquivalent: @"q"]
+	setTag: Tag_nothing];
+    }
+
+    //NSLog(@"Making the sub menu \"Columns\"\n");
+    columns = [NSMenu new];
+    [menu setSubmenu: columns forItem: [menu itemWithTitle: @"Columns"]];
+    {
+      [[columns addItemWithTitle: @"More" action: ma keyEquivalent: @"+"]
+	setTag: Tag_moreColumns];
+      [[columns addItemWithTitle: @"Less" action: ma keyEquivalent: @"-"]
+	setTag: Tag_lessColumns];
+    }
+    
+    //NSLog(@"Making the sub menu \"Options\"\n");
+    options = [NSMenu new];
+    [menu setSubmenu: options forItem: [menu itemWithTitle:@"Options"]];
+    {
+      menuItem = [[NSMenuItem alloc] initWithTitle: @"Titled" action: ma
+				     keyEquivalent: @""];
+      [menuItem setState: NSOnState];
+      [menuItem setTag: Tag_setTitled];
+      [options addItem: menuItem];
+
+      menuItem = [[NSMenuItem alloc] initWithTitle: @"Horizontal scroller"
+                                     action: ma keyEquivalent: @""];
+      [menuItem setState: NSOnState];
+      [menuItem setTag: Tag_setHasHScroller];
+      [options addItem: menuItem];
+    }
+    
+    [menu update];
+
+    [NSApp setMainMenu: menu];    
+  }
+
+  //NSLog(@"Displaying\n");
+  [win setTitle:@"NSBrowser Test (try to resize window !)"];
+  [[win contentView] display];
+  [win orderFront:nil];
+}
 
 @end
 
 int
 main(int argc, char **argv, char** env)
 {
-  NSApplication *theApp;
-  NSWindow *window;
-  NSBrowser *browser;
-  NSRect winRect = {{100, 100}, {600, 600}};
-  NSRect browserRect = {{20, 20}, {500, 335}};
   id pool = [NSAutoreleasePool new];
-  PassiveBrowserDelegate *pbd = [PassiveBrowserDelegate new];
-  ActiveBrowserDelegate *abd = [ActiveBrowserDelegate new];
-  unsigned int style = NSTitledWindowMask | NSClosableWindowMask
-    | NSMiniaturizableWindowMask | NSResizableWindowMask;
+  NSApplication *theApp;
 
 #if LIB_FOUNDATION_LIBRARY
   [NSProcessInfo initializeWithArguments:argv count:argc environment:env];
 #endif
-
 #ifndef NX_CURRENT_COMPILER_RELEASE
-  initialize_gnustep_backend();
+    initialize_gnustep_backend();
 #endif
 
   theApp = [NSApplication sharedApplication];
-	
-  window = [[NSWindow alloc] initWithContentRect:winRect
-					styleMask:style
-				      backing:NSBackingStoreRetained
-						    defer:NO];
-	
-  browser = [[NSBrowser alloc] initWithFrame: browserRect];
-  [browser setTitle: @"Column 0" ofColumn: 0];
-  [browser setDelegate: abd];
-  [browser setMaxVisibleColumns: 3];
-  [browser setAllowsMultipleSelection:NO];
-  
-  [[window contentView] addSubview: browser];
-	
-  [window setTitle:@"NSBrowser"];
-  [window display];
-  [window orderFrontRegardless];
-	
-  {
-    NSMenu	*menu = [NSMenu new];
-
-    [menu addItemWithTitle: @"Quit"
-		    action: @selector(terminate:)
-	     keyEquivalent: @"q"];
-    [NSApp setMainMenu: menu];
-  }
-
+  [theApp setDelegate: [browserController new]];
   [theApp run];
+
   [pool release];
 
   return 0;
