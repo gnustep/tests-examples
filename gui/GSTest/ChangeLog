@@ -1,3 +1,14 @@
+Wed Feb 20 19:28:52 2002  Nicola Pero  <nicola@brainstorm.co.uk>
+
+	Moved the memory panel into gnustep-gui so all apps have it.  To
+	get the memory panel with new apps click on application icon in
+	the info panel (works for any app).
+	* MemoryPanel.m: Removed.
+	* MemoryPanel.h: Removed.
+	* main.m: Do not include MemoryPanel.h.
+	(main): Do not add the memory panel submenu.
+	* GNUmakefile: Do not compile MemoryPanel.m
+	
 Wed Jan 16 22:12:24 2002  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* NSSlider-test/NSSlider-test.m ([-init]): Added enable/disable
