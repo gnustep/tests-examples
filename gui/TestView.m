@@ -27,7 +27,6 @@
 */ 
 
 #import <AppKit/AppKit.h>
-#import <gnustep/xgps/XGContext.h>
 #include "TestView.h"
 #include <config.h>
 
