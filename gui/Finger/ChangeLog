@@ -1,3 +1,7 @@
+Tue Dec 18 15:25:02 2001  Nicola Pero  <nicola@brainstorm.co.uk>
+
+	* main.m (main): Removed unused variable i.
+
 Tue Dec 11 02:25:25 2001  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* FingerWindow.m ([FingerWindow -init]): Set the font of the whois

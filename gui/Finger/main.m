@@ -35,7 +35,6 @@ main (void)
    NSMenu *menu;
    NSMenuItem *menuItem;
    Controller *controller;
-   int i;
 
    pool = [NSAutoreleasePool new];
    app = [NSApplication sharedApplication];
