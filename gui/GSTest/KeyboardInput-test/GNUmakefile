@@ -28,6 +28,7 @@ OBJCFLAGS += -Wall
 # We are creating a bundle
 #
 BUNDLE_NAME = KeyboardInput-test
+BUNDLE_INSTALL_DIR = $(GNUSTEP_INSTALLATION_DIR)/Library/ApplicationSupport/GSTest
 KeyboardInput-test_OBJC_FILES = KeyboardInput-test.m ConvertKeys.m
 KeyboardInput-test_PRINCIPAL_CLASS = KeyboardInputTest
 

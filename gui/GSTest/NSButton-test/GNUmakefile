@@ -28,6 +28,7 @@ OBJCFLAGS += -Wall
 # We are creating a bundle
 #
 BUNDLE_NAME = NSButton-test
+BUNDLE_INSTALL_DIR = $(GNUSTEP_INSTALLATION_DIR)/Library/ApplicationSupport/GSTest
 NSButton-test_OBJC_FILES = NSButton-test.m
 NSButton-test_PRINCIPAL_CLASS = NSButtonTest
 

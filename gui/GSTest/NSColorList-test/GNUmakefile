@@ -28,6 +28,7 @@ OBJCFLAGS += -Wall
 # We are creating a bundle
 #
 BUNDLE_NAME = NSColorList-test
+BUNDLE_INSTALL_DIR = $(GNUSTEP_INSTALLATION_DIR)/Library/ApplicationSupport/GSTest
 NSColorList-test_OBJC_FILES = NSColorList-test.m
 NSColorList-test_PRINCIPAL_CLASS = NSColorListTest
 

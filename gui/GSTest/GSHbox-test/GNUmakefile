@@ -29,6 +29,7 @@ OBJCFLAGS += -Wall
 # We are creating a bundle
 #
 BUNDLE_NAME = GSHbox-test
+BUNDLE_INSTALL_DIR = $(GNUSTEP_INSTALLATION_DIR)/Library/ApplicationSupport/GSTest
 GSHbox-test_OBJC_FILES = GSHbox-test.m
 GSHbox-test_PRINCIPAL_CLASS = GSHboxTest
 

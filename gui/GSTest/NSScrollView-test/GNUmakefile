@@ -28,6 +28,7 @@ OBJCFLAGS += -Wall
 # We are creating a bundle
 #
 BUNDLE_NAME = NSScrollView-test
+BUNDLE_INSTALL_DIR = $(GNUSTEP_INSTALLATION_DIR)/Library/ApplicationSupport/GSTest
 NSScrollView-test_OBJC_FILES = NSScrollView-test.m
 NSScrollView-test_PRINCIPAL_CLASS = NSScrollViewTest
 

@@ -28,6 +28,7 @@ OBJCFLAGS += -Wall
 # We are creating a bundle
 #
 BUNDLE_NAME = Composite-test
+BUNDLE_INSTALL_DIR = $(GNUSTEP_INSTALLATION_DIR)/Library/ApplicationSupport/GSTest
 Composite-test_OBJC_FILES = Composite-test.m MyView.m
 Composite-test_PRINCIPAL_CLASS = Composite
 

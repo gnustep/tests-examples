@@ -29,6 +29,7 @@ OBJCFLAGS += -Wall
 # We are creating a bundle
 #
 BUNDLE_NAME = NSSlider-test
+BUNDLE_INSTALL_DIR = $(GNUSTEP_INSTALLATION_DIR)/Library/ApplicationSupport/GSTest
 NSSlider-test_OBJC_FILES = NSSlider-test.m
 NSSlider-test_PRINCIPAL_CLASS = NSSliderTest
 

@@ -29,6 +29,7 @@ OBJCFLAGS += -Wall
 # We are creating a bundle
 #
 BUNDLE_NAME = NSColorWell-test
+BUNDLE_INSTALL_DIR = $(GNUSTEP_INSTALLATION_DIR)/Library/ApplicationSupport/GSTest
 NSColorWell-test_OBJC_FILES = NSColorWell-test.m
 NSColorWell-test_PRINCIPAL_CLASS = NSColorWellTest
 

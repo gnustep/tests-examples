@@ -28,6 +28,7 @@ OBJCFLAGS += -Wall
 # We are creating a bundle
 #
 BUNDLE_NAME = NSTableView-test
+BUNDLE_INSTALL_DIR = $(GNUSTEP_INSTALLATION_DIR)/Library/ApplicationSupport/GSTest
 NSTableView-test_OBJC_FILES = NSTableView-test.m
 NSTableView-test_PRINCIPAL_CLASS = NSTableViewTest
 

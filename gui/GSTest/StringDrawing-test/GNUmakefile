@@ -28,6 +28,7 @@ OBJCFLAGS += -Wall
 # We are creating a bundle
 #
 BUNDLE_NAME = StringDrawing-test
+BUNDLE_INSTALL_DIR = $(GNUSTEP_INSTALLATION_DIR)/Library/ApplicationSupport/GSTest
 StringDrawing-test_OBJC_FILES = StringDrawing-test.m
 StringDrawing-test_PRINCIPAL_CLASS = StringDrawingTest
 

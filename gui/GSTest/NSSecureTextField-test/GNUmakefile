@@ -28,6 +28,7 @@ OBJCFLAGS += -Wall
 # We are creating a bundle
 #
 BUNDLE_NAME = NSSecureTextField-test
+BUNDLE_INSTALL_DIR = $(GNUSTEP_INSTALLATION_DIR)/Library/ApplicationSupport/GSTest
 NSSecureTextField-test_OBJC_FILES = NSSecureTextField-test.m
 NSSecureTextField-test_PRINCIPAL_CLASS = NSSecureTextFieldTest
 

@@ -28,6 +28,7 @@ OBJCFLAGS += -Wall
 # We are creating a bundle
 #
 BUNDLE_NAME = NSWindowStyleMask-test
+BUNDLE_INSTALL_DIR = $(GNUSTEP_INSTALLATION_DIR)/Library/ApplicationSupport/GSTest
 NSWindowStyleMask-test_OBJC_FILES = NSWindowStyleMask-test.m
 NSWindowStyleMask-test_PRINCIPAL_CLASS = NSWindowStyleMaskTest
 

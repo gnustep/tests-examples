@@ -28,6 +28,7 @@ OBJCFLAGS += -Wall
 # We are creating a bundle
 #
 BUNDLE_NAME = NSBox-test
+BUNDLE_INSTALL_DIR = $(GNUSTEP_INSTALLATION_DIR)/Library/ApplicationSupport/GSTest
 NSBox-test_OBJC_FILES = NSBox-test.m
 NSBox-test_PRINCIPAL_CLASS = NSBoxTest
 

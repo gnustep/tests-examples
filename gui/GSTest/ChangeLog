@@ -1,3 +1,11 @@
+2004-08-14  Adam Fedor  <fedor@gnu.org>
+
+	* Controller.[hm]: New files split from main
+	* MainModel.gmodel: Interface file.
+	* GSTestInfo.plist: New file
+	* */GNUmakefile: Install bundles in ApplicationSupport/GSTest
+	(Patches from Rob Burns <foobix@comcast.net>).
+
 2004-02-08  Fred Kiefer  <FredKiefer@gmx.de>
 
 	* KeyboardInput-test/KeyboardInput-test.m (-dealloc) Unset window

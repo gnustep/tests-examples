@@ -28,6 +28,7 @@ OBJCFLAGS += -Wall
 # We are creating a bundle
 #
 BUNDLE_NAME = EncodingDecoding-test
+BUNDLE_INSTALL_DIR = $(GNUSTEP_INSTALLATION_DIR)/Library/ApplicationSupport/GSTest
 EncodingDecoding-test_OBJC_FILES = EncodingDecoding-test.m
 EncodingDecoding-test_PRINCIPAL_CLASS = EncodingDecodingTest
 

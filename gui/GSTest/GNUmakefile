@@ -52,13 +52,16 @@ SUBPROJECTS = \
 # MAIN APP
 #
 APP_NAME = GSTest
+GSTest_MAIN_MODEL_FILE = MainMenu.nib
 
 GSTest_HEADERS = \
-        testList.h \
-        testProtocol.h 
+       GSTestProtocol.h 
 
 GSTest_OBJC_FILES = \
-        main.m
+       main.m \
+       Controller.m
+
+GSTest_RESOURCE_FILES = MainMenu.gorm
 
 -include GNUmakefile.preamble
 
