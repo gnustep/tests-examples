@@ -46,6 +46,7 @@
 }
 + (id) sharedMemoryPanel;
 /* Updates the statistics */
++ (void) update: (id)sender;
 - (void) update: (id)sender;
 @end
 
