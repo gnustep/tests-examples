@@ -1,3 +1,19 @@
+2004-04-15  Quentin Mathe <qmathe@club-internet.fr>
+	
+	* ToolbarExample: Added a demo application for the toolbar
+	implementation.
+	* ToolbarExample/GNUmakefile: New file
+	* ToolbarExample/ToolbarExampleInfo.plist: idem.
+	* ToolbarExample/main.m : idem.
+	* ToolbarExample/Controller.h: idem.
+	* ToolbarExample/Controller.m: idem.
+	* ToolbarExample/MiniController.h: idem.
+	* ToolbarExample/MiniController.m: idem.
+	* ToolbarExample/ToolbarExample.gorm/data.classes: idem.
+	* ToolbarExample/ToolbarExample.gorm/objects.gorm: idem.
+	* ToolbarExample/SecondWindow.gorm/data.classes: idem.
+	* ToolbarExample/SecondWindow.gorm/objects.gorm: idem.
+
 Sat Mar  6 13:57:07 2004  Brent Fulgham <bfulg@pacbell.net>,
  	                  Nicola Pero  <n.pero@mi.flashnet.it>
 	
