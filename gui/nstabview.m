@@ -4,6 +4,11 @@
 #include "TestView.h"
 #include "GSImageTabViewItem.h"
 
+@interface tabPlayground : NSView
+{
+}
+@end
+
 @interface appController : NSObject
 {
   int tabNum;
@@ -22,12 +27,49 @@
 - (void)tabViewDidChangeNumberOfTabViewItems:(NSTabView *)TabView;
 @end
 
+@implementation tabPlayground
+- (void) drawRect:(NSRect)rect
+{
+  NSGraphicsContext     *ctxt = GSCurrentContext();
+
+  DPSgsave(ctxt);
+/*
+  DPSsetlinewidth(ctxt,1);
+  DPSsetgray(ctxt,0.8);
+  DPSmoveto(ctxt, rect.origin.x+20, rect.origin.y+20);  
+//  DPSrlineto(ctxt, 5, 17);
+  DPScurveto(ctxt, rect.origin.x+20, rect.origin.y+20, 
+                   rect.origin.x+20+4, rect.origin.y+20+15, 
+		   rect.origin.x+20+4+5, rect.origin.y+20+15+5);
+
+  DPSstroke(ctxt);
+
+  DPSsetgray(ctxt,1);
+  DPSmoveto(ctxt, rect.origin.x+21, rect.origin.y+20);  
+//  DPSrlineto(ctxt, 5, 17);
+  DPScurveto(ctxt, rect.origin.x+21, rect.origin.y+20, 
+                   rect.origin.x+21+4, rect.origin.y+20+15, 
+		   rect.origin.x+21+4+5, rect.origin.y+20+15+5);
+
+  DPSstroke(ctxt);
+*/
+
+  DPSsetlinewidth(ctxt, 0.5);
+  DPSsetgray(ctxt, 0.8);
+  DPSmoveto(ctxt, rect.origin.x+20, rect.origin.y+20);  
+  DPSrlineto(ctxt, 5, 15);
+  DPSstroke(ctxt);
+
+  DPSgrestore(ctxt);
+}
+@end
+
 @implementation appController
 - (BOOL)validateMenuItem:(NSMenuItem*)aMenuItem;
 {
   NSString      *title = [aMenuItem title];
 
-  if ([title isEqual: @"Remove tab"])
+  if ([title isEqual: @"Remove"])
     {
       if (tabNum == 0)
         return NO;
@@ -81,6 +123,18 @@
   tabNum--;
 }
 
+- (void) changeTabFont: (id)sender
+{
+  [[NSFontManager sharedFontManager] setSelectedFont:[tabView font] isMultiple:NO];
+  [[NSFontManager sharedFontManager] orderFrontFontPanel:self];
+}
+
+- (void)changeFont:(id)fontManager
+{
+  [tabView setFont: [fontManager convertFont: [tabView font]]];
+  [tabView setNeedsDisplay: YES];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
   NSWindow *window;
@@ -89,6 +143,7 @@
   NSRect tabViewRect = {{10, 10}, {280, 280}};
   NSView *view;
   NSTextField *label;
+  NSMenu *tabMenu;
 
   tabNum = 0;
 
@@ -111,6 +166,8 @@
   [view setAutoresizingMask: (NSViewWidthSizable
                                | NSViewHeightSizable)];
 
+/*  view = [[tabPlayground alloc] initWithFrame:[tabView contentRect]];
+*/
   label = [[NSTextField alloc] initWithFrame:[view frame]];
   [label setEditable: NO];
   [label setSelectable: NO];
@@ -131,13 +188,22 @@
   [window setTitle:@"NSTabView"];
   [window orderFrontRegardless];
 
-  [[NSApp mainMenu] addItemWithTitle: @"Add tab"
-                              action: @selector(addTab:)
-             	       keyEquivalent: @"a"];
-  [[NSApp mainMenu] addItemWithTitle: @"Remove tab"
-                              action: @selector(removeTab:)
-             	       keyEquivalent: @"r"];
+  [[NSApp mainMenu] insertItemWithTitle: @"Tabs"
+				 action: NULL
+			  keyEquivalent: @""
+				atIndex: 0];
 
+  tabMenu = [NSMenu new];
+  [[NSApp mainMenu] setSubmenu:tabMenu forItem:[[NSApp mainMenu] itemWithTitle:@"Tabs"]];
+  [tabMenu addItemWithTitle: @"Add"
+                     action: @selector(addTab:)
+              keyEquivalent: @"a"];
+  [tabMenu addItemWithTitle: @"Remove"
+                     action: @selector(removeTab:)
+              keyEquivalent: @"r"];
+  [tabMenu addItemWithTitle: @"Change Tab Font"
+                     action: @selector(changeTabFont:)
+               keyEquivalent: @""];
 }
 @end
 
