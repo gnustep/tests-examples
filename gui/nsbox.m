@@ -147,11 +147,20 @@ NSApplication *theApp;
     initialize_gnustep_backend();
 #endif
 
-	theApp = [NSApplication sharedApplication];
-	[theApp setDelegate: [Controller new]];	
-	[theApp run];
+  theApp = [NSApplication sharedApplication];
+  [theApp setDelegate: [Controller new]];	
+  {
+    NSMenu	*menu = [NSMenu new];
+
+    [menu addItemWithTitle: @"Quit"
+		    action: @selector(terminate:)
+	     keyEquivalent: @"q"];
+    [NSApp setMainMenu: menu];
+  }
+
+  [theApp run];
 	
-	[pool release];
+  [pool release];
 	
-	return 0;
+  return 0;
 }

@@ -20,7 +20,7 @@
    
    You should have received a copy of the GNU General Public
    License along with this library; if not, write to the Free
-   Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+   Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02111, USA.
 */
 
 #import <Foundation/NSAutoreleasePool.h>
@@ -139,6 +139,15 @@ main(int argc, char** argv, char** env)
 
   theApp = [NSApplication sharedApplication];
   [theApp setDelegate: [matrixController new]];	
+  {
+    NSMenu	*menu = [NSMenu new];
+
+    [menu addItemWithTitle: @"Quit"
+		    action: @selector(terminate:)
+	     keyEquivalent: @"q"];
+    [NSApp setMainMenu: menu];
+  }
+
   [theApp run];
   
   [pool release];

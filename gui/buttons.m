@@ -6,10 +6,9 @@
    Copyright (C) 1996 Free Software Foundation, Inc.
 
    Author:  Scott Christley <scottc@net-community.com>
-   Author:  Ovidiu Predescu <ovidiu@net-community.com>
-   Date: June 1996
-   Author:  Felipe A. Rodriguez <far@ix.netcom.com>
-   Date: August 1998
+   Also: Ovidiu Predescu <ovidiu@net-community.com> June 1996
+	 Felipe A. Rodriguez <far@ix.netcom.com> August 1998
+	 Richard Frith-Macdonald
 
    This file is part of the GNUstep GUI X/RAW Backend.
 
@@ -197,6 +196,15 @@
 
   NSLog(@"Make the buttons subviews\n");
 
+  {
+    NSMenu    *menu = [NSMenu new];
+  
+    [menu addItemWithTitle: @"Quit"
+                  action: @selector(terminate:)
+           keyEquivalent: @"q"];
+    [NSApp setMainMenu: menu];
+  }
+
   [v addSubview: mpush];
   [v addSubview: ponpoff];
   [v addSubview: toggle];
@@ -233,8 +241,8 @@ main(int argc, char **argv, char** env)
 #endif
 
   theApp = [NSApplication sharedApplication];
-	[theApp setDelegate: [buttonsController new]];
-	[theApp run];
+  [theApp setDelegate: [buttonsController new]];
+  [theApp run];
 
   [pool release];
 

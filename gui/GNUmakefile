@@ -66,6 +66,7 @@ TEST_APP_NAME = \
 SUBPROJECTS = Edit
 
 # The Objective-C source files to be compiled
+TestApp_OBJC_FILES = TestApp.m 
 GNUstepInstaller_OBJC_FILES = GNUstepInstaller.m GSImageTabViewItem.m TestView.m ColorView.m
 GNUstepInstaller_RESOURCE_FILES = Smiley.tiff
 alertpanel_OBJC_FILES = alertpanel.m

@@ -22,7 +22,7 @@
    
    You should have received a copy of the GNU Library General Public
    License along with this library; if not, write to the Free
-   Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+   Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02111, USA.
 */
 
 #import <Foundation/NSAutoreleasePool.h>
@@ -30,24 +30,24 @@
 
 @interface MyObject : NSObject
 {
-	NSMatrix* matrix;
+  NSMatrix* matrix;
 }
 @end
 
 @implementation MyObject
 - (void)setMatrix:(NSMatrix*)anObject
 {
-	matrix = anObject;
+  matrix = anObject;
 }
 
 - (void)setMatrixMode:sender
 {
-	[matrix setMode:[[sender selectedCell] tag]];
+  [matrix setMode:[[sender selectedCell] tag]];
 }
 
 - (void)setSelectionByRect:sender
 {
-	[matrix setSelectionByRect:[sender state]];
+  [matrix setSelectionByRect:[sender state]];
 }
 @end
 

@@ -86,8 +86,17 @@ main(int argc, char **argv, char** env)
   NSLog(@"%@", [attributedString string]);
 
   theApp = [NSApplication sharedApplication];
-	[theApp setDelegate: [buttonsController new]];
-	[theApp run];
+  [theApp setDelegate: [buttonsController new]];
+  {
+    NSMenu	*menu = [NSMenu new];
+
+    [menu addItemWithTitle: @"Quit"
+		    action: @selector(terminate:)
+	     keyEquivalent: @"q"];
+    [NSApp setMainMenu: menu];
+  }
+
+  [theApp run];
 
   [pool release];
 

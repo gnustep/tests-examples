@@ -22,7 +22,7 @@
    
    You should have received a copy of the GNU Library General Public
    License along with this library; if not, write to the Free
-   Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+   Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02111, USA.
 */
 
 #import <Foundation/NSAutoreleasePool.h>
@@ -161,39 +161,39 @@
 int
 main(int argc, char **argv, char** env)
 {
-NSApplication *theApp;
-NSWindow *window;
-NSTabView *tabView;
-NSTabViewItem *item;
-NSRect winRect = {{100, 100}, {300, 300}};
-NSRect tabViewRect = {{10, 10}, {280, 280}};
-NSBox *slash;
-id pool = [NSAutoreleasePool new];
-id aView;
-id label;
-NSButton *button;
-id delegate = [myTabViewDelegate new];
-id scrollView;
+  NSApplication *theApp;
+  NSWindow *window;
+  NSTabView *tabView;
+  NSTabViewItem *item;
+  NSRect winRect = {{100, 100}, {300, 300}};
+  NSRect tabViewRect = {{10, 10}, {280, 280}};
+  NSBox *slash;
+  id pool = [NSAutoreleasePool new];
+  id aView;
+  id label;
+  NSButton *button;
+  id delegate = [myTabViewDelegate new];
+  id scrollView;
 
 #if LIB_FOUNDATION_LIBRARY
-	[NSProcessInfo initializeWithArguments:argv count:argc environment:env];
+  [NSProcessInfo initializeWithArguments:argv count:argc environment:env];
 #endif
 
 #ifndef NX_CURRENT_COMPILER_RELEASE
-	initialize_gnustep_backend();
+  initialize_gnustep_backend();
 #endif
 
-	theApp = [NSApplication sharedApplication];
+  theApp = [NSApplication sharedApplication];
 
-	window = [[NSWindow alloc] init];
+  window = [[NSWindow alloc] init];
 
-	tabView = [[NSTabView alloc] initWithFrame:tabViewRect];
-	[tabView setTabViewType:NSNoTabsBezelBorder];
-	[tabView setDelegate:delegate];
-	[delegate setTabView:tabView];
-	[[window contentView] addSubview:tabView];
+  tabView = [[NSTabView alloc] initWithFrame:tabViewRect];
+  [tabView setTabViewType:NSNoTabsBezelBorder];
+  [tabView setDelegate:delegate];
+  [delegate setTabView:tabView];
+  [[window contentView] addSubview:tabView];
 
-	aView = [[NSView alloc] initWithFrame:[tabView contentRect]];
+  aView = [[NSView alloc] initWithFrame:[tabView contentRect]];
   label = [[NSTextField alloc] initWithFrame:[aView frame]];
   [label setEditable:NO];
   [label setSelectable:NO];
@@ -310,22 +310,31 @@ Sorry. :-)"]];
   [button setTarget:delegate];
   [button setEnabled:NO];
   [button setAction:@selector(buttonNext:)];
-	[aView addSubview:button];
-	[button release];
+  [aView addSubview:button];
+  [button release];
 
-        item = [[GSImageTabViewItem alloc] initWithIdentifier:@"Urph3"];
-	[item setImage:[NSImage imageNamed:@"Smiley"]];
-        [item setLabel:@"Me"];
-	[item setView:aView];
-        [tabView addTabViewItem:item];
-	[aView release];
-	
-	[window setTitle:@"NSTabView without Tabs"];
-	[window setFrame:winRect display:YES];
-	[window orderFront:nil];
-	
-	[theApp run];
-	[pool release];
+  item = [[GSImageTabViewItem alloc] initWithIdentifier:@"Urph3"];
+  [item setImage:[NSImage imageNamed:@"Smiley"]];
+  [item setLabel:@"Me"];
+  [item setView:aView];
+  [tabView addTabViewItem:item];
+  [aView release];
+    
+  [window setTitle:@"NSTabView without Tabs"];
+  [window setFrame:winRect display:YES];
+  [window orderFront:nil];
+      
+  {
+    NSMenu	*menu = [NSMenu new];
 
-	return 0;
+    [menu addItemWithTitle: @"Quit"
+		    action: @selector(terminate:)
+	     keyEquivalent: @"q"];
+    [NSApp setMainMenu: menu];
+  }
+
+  [theApp run];
+  [pool release];
+
+  return 0;
 }
