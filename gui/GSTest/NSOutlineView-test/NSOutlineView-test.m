@@ -246,6 +246,74 @@ NSString *test[20] =
 	  value = @"2";
 	}
     }
+  if([item isEqual: @"NSApplication"])
+    {
+      if([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
+	{
+	  value = @"NSApplication";
+	}
+      else
+      if([[[tableColumn headerCell] stringValue] isEqual: @"outlets"])
+	{
+	  value = @"2";
+	}
+      else
+      if([[[tableColumn headerCell] stringValue] isEqual: @"actions"])
+	{
+	  value = @"3";
+	}
+    }
+  if([item isEqual: @"NSPanel"])
+    {
+      if([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
+	{
+	  value = @"NSPanel";
+	}
+      else
+      if([[[tableColumn headerCell] stringValue] isEqual: @"outlets"])
+	{
+	  value = @"2";
+	}
+      else
+      if([[[tableColumn headerCell] stringValue] isEqual: @"actions"])
+	{
+	  value = @"3";
+	}
+    }
+  if([item isEqual: @"NSWindow"])
+    {
+      if([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
+	{
+	  value = @"NSWindow";
+	}
+      else
+      if([[[tableColumn headerCell] stringValue] isEqual: @"outlets"])
+	{
+	  value = @"3";
+	}
+      else
+      if([[[tableColumn headerCell] stringValue] isEqual: @"actions"])
+	{
+	  value = @"5";
+	}
+    }
+  if([item isEqual: @"NSOutlineView"])
+    {
+      if([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
+	{
+	  value = @"NSOutlineView";
+	}
+      else
+      if([[[tableColumn headerCell] stringValue] isEqual: @"outlets"])
+	{
+	  value = @"4";
+	}
+      else
+      if([[[tableColumn headerCell] stringValue] isEqual: @"actions"])
+	{
+	  value = @"6";
+	}
+    }
   
   NSLog(@"value = %@",value);
   
@@ -259,6 +327,13 @@ NSString *test[20] =
 		item: (id)item
 {
   NSLog(@"outlineView:willDisplayCell:forTableColumn:item:");
+  return YES;
+}
+
+- (BOOL) outlineView: (NSOutlineView *)anOutlineView
+    shouldSelectItem: (id)item
+{
+  NSLog(@"should select item....");
   return YES;
 }
 @end
