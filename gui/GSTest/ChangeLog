@@ -1,3 +1,10 @@
+Tue Jan 25 23:40:24 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* StringDrawing-test/StringDrawing-test.m ([TrivialTextView
+	-drawRect:]): Fix for nil attr.
+	([StringDrawingTest -chooseTextFile:]): Fixed memory leak.
+	([StringDrawingTest -init]): Made the scrollview bigger.
+	
 Tue Jan 25 00:41:11 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* main.m ([Controller -runInfoPanel:sender]): Use the new 
