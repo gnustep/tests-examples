@@ -64,7 +64,7 @@
   [[item_tabview font] set];
 
   [[self image] compositeToPoint:NSMakePoint(lRect.origin.x,
-    lRect.origin.y - 3) operation: NSCompositeCopy];
+    lRect.origin.y) operation: NSCompositeCopy];
 
   lRect.origin.x += [[self image] size].width + 2;
   

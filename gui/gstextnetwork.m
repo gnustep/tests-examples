@@ -34,18 +34,18 @@
   [theScrollView setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
 
   theTextView = [[NSTextView alloc]
-initWithFrame:NSMakeRect(20,20,[theScrollView contentSize].width-50,
-[theScrollView contentSize].height-20)];
+initWithFrame:NSMakeRect(0,0,[theScrollView contentSize].width,
+1e7)];
   [theTextView setMinSize:NSMakeSize(0.0, [theScrollView
 contentSize].height)];
   [theTextView setMaxSize:NSMakeSize(1e7, 1e7)];
   [theTextView setVerticallyResizable:YES];
   [theTextView setHorizontallyResizable:NO];
-  [theTextView setAutoresizingMask: NSViewWidthSizable];
+  [theTextView setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
   [theTextView setBackgroundColor:[NSColor whiteColor]];
 
-//  [[theTextView textContainer]
-//    setContainerSize:NSMakeSize([theScrollView contentSize].width, 1e7)];
+  [[theTextView textContainer]
+    setContainerSize:NSMakeSize([theScrollView contentSize].width, 1e7)];
 //  [[theTextView textContainer] setWidthTracksTextView:YES];
 
   [theTextView setString:[NSString stringWithContentsOfFile:@"Readme.txt"]];

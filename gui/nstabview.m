@@ -49,8 +49,8 @@
    * This is a test to see if the delegate is doing its job.
    */
 
-  if ([[tabViewItem label] isEqual:@"Natalie"])
-    return NO;
+//  if ([[tabViewItem label] isEqual:@"Natalie"])
+//    return NO;
 
   return YES;
 }
@@ -97,7 +97,7 @@ id label;
 	window = [[NSWindow alloc] init];
 
 	tabView = [[NSTabView alloc] initWithFrame:tabViewRect];
-//	[tabView setTabViewType:NSBottomTabsBezelBorder];
+	[tabView setTabViewType:NSBottomTabsBezelBorder];
 	[tabView setDelegate:[myTabViewDelegate new]];
 	[[window contentView] addSubview:tabView];
 
