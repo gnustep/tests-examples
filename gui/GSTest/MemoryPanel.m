@@ -26,51 +26,16 @@
 #include "MemoryPanel.h"
 #include <AppKit/GSVbox.h>
 
-/*
- * Internal private class used in reordering entries.
- *
- */
-@interface MemoryPanelEntry : NSObject
-{
-  NSString *string;
-  NSNumber *number;
-}
-- (id) initWithString: (NSString *)aString  number: (int)aNumber;
-- (NSString *) string;
-- (NSNumber *) number;
-- (NSComparisonResult) compareByNumber: (MemoryPanelEntry *)aEntry;
-- (NSComparisonResult) compareByAlphabet: (MemoryPanelEntry *)aEntry;
-@end
+enum {
+  OrderByClassName,
+  OrderByCount,
+  OrderByTotal,
+  OrderByPeak
+};
 
-@implementation MemoryPanelEntry
-
-- (id) initWithString: (NSString *)aString  number: (int)aNumber
+static inline NSComparisonResult 
+invertComparison (NSComparisonResult comparison)
 {
-  ASSIGN (string, aString);
-  ASSIGN (number, [NSNumber numberWithInt: aNumber]);
-  return self;
-}
-
-- (void) dealloc
-{
-  RELEASE (string);
-  RELEASE (number);
-  [super dealloc];
-}
-
-- (NSString *) string
-{
-  return string;
-}
-
-- (NSNumber *) number
-{
-  return number;
-}
-
-- (NSComparisonResult) compareByNumber: (MemoryPanelEntry *)aEntry
-{
-  NSComparisonResult comparison = [number compare: aEntry->number];
   /* invert comparison */
   if (comparison == NSOrderedAscending)
     {
@@ -79,12 +44,100 @@
   else if (comparison == NSOrderedDescending)
     {
       comparison = NSOrderedAscending;
-    }
-
+    }  
   return comparison;
 }
 
-- (NSComparisonResult) compareByAlphabet: (MemoryPanelEntry *)aEntry
+/*
+ * Internal private class used in reordering entries.
+ *
+ */
+@interface MemoryPanelEntry : NSObject
+{
+  NSString *string;
+  NSNumber *count;
+  NSNumber *total;
+  NSNumber *peak;
+}
+- (id) initWithString: (NSString *)aString  
+		count: (int)aCount
+		total: (int)aTotal   
+		 peak: (int)aPeak;
+- (NSString *) string;
+- (NSNumber *) count;
+- (NSNumber *) total;
+- (NSNumber *) peak;
+- (NSComparisonResult) compareByTotal: (MemoryPanelEntry *)aEntry;
+- (NSComparisonResult) compareByCount: (MemoryPanelEntry *)aEntry;
+- (NSComparisonResult) compareByPeak: (MemoryPanelEntry *)aEntry;
+- (NSComparisonResult) compareByClassName: (MemoryPanelEntry *)aEntry;
+@end
+
+@implementation MemoryPanelEntry
+
+- (id) initWithString: (NSString *)aString  
+		count: (int)aCount
+		total: (int)aTotal   
+		 peak: (int)aPeak
+{
+  ASSIGN (string, aString);
+  ASSIGN (count, [NSNumber numberWithInt: aCount]);
+  ASSIGN (total, [NSNumber numberWithInt: aTotal]);
+  ASSIGN (peak, [NSNumber numberWithInt: aPeak]);
+  return self;
+}
+
+- (void) dealloc
+{
+  RELEASE (string);
+  RELEASE (count);
+  RELEASE (total);  
+  RELEASE (peak);
+  [super dealloc];
+}
+
+- (NSString *) string
+{
+  return string;
+}
+
+- (NSNumber *) count
+{
+  return count;
+}
+
+- (NSNumber *) total
+{
+  return total;
+}
+
+- (NSNumber *) peak
+{
+  return peak;
+}
+
+- (NSComparisonResult) compareByCount: (MemoryPanelEntry *)aEntry
+{
+  NSComparisonResult comparison = [count compare: aEntry->count];
+
+  return invertComparison (comparison);
+}
+
+- (NSComparisonResult) compareByTotal: (MemoryPanelEntry *)aEntry
+{
+  NSComparisonResult comparison = [total compare: aEntry->total];
+
+  return invertComparison (comparison);
+}
+
+- (NSComparisonResult) compareByPeak: (MemoryPanelEntry *)aEntry
+{
+  NSComparisonResult comparison = [peak compare: aEntry->peak];
+
+  return invertComparison (comparison);
+}
+
+- (NSComparisonResult) compareByClassName: (MemoryPanelEntry *)aEntry
 {
   return [string compare: aEntry->string];
 }
@@ -117,7 +170,9 @@ static MemoryPanel *mp = nil;
 {
   NSRect winFrame;
   NSTableColumn *classColumn;
-  NSTableColumn *numberColumn;  
+  NSTableColumn *countColumn;  
+  NSTableColumn *totalColumn;
+  NSTableColumn *peakColumn;  
   NSScrollView *scrollView;
   GSVbox *vbox;
 
@@ -125,7 +180,7 @@ static MemoryPanel *mp = nil;
   GSDebugAllocationActive (YES);
 
   /* Ordering by number of objects by default */
-  orderingByNumber = YES;
+  orderingBy = OrderByCount;
 
   classColumn = [[NSTableColumn alloc] initWithIdentifier: @"Class"];
   AUTORELEASE (classColumn);
@@ -133,15 +188,29 @@ static MemoryPanel *mp = nil;
   [[classColumn headerCell] setStringValue: @"Class Name"];
   [classColumn setMinWidth: 200];
 
-  numberColumn = [[NSTableColumn alloc] initWithIdentifier: @"Number"];
-  AUTORELEASE (numberColumn);
-  [numberColumn setEditable: NO];
-  [[numberColumn headerCell] setStringValue: @"Number of Objects"];
-  [numberColumn setMinWidth: 50];
+  countColumn = [[NSTableColumn alloc] initWithIdentifier: @"Count"];
+  AUTORELEASE (countColumn);
+  [countColumn setEditable: NO];
+  [[countColumn headerCell] setStringValue: @"Current"];
+  [countColumn setMinWidth: 50];
+
+  totalColumn = [[NSTableColumn alloc] initWithIdentifier: @"Total"];
+  AUTORELEASE (totalColumn);
+  [totalColumn setEditable: NO];
+  [[totalColumn headerCell] setStringValue: @"Total"];
+  [totalColumn setMinWidth: 50];
+
+  peakColumn = [[NSTableColumn alloc] initWithIdentifier: @"Peak"];
+  AUTORELEASE (peakColumn);
+  [peakColumn setEditable: NO];
+  [[peakColumn headerCell] setStringValue: @"Peak"];
+  [peakColumn setMinWidth: 50];
 
   table = [[NSTableView alloc] initWithFrame: NSMakeRect (0, 0, 300, 300)];
   [table addTableColumn: classColumn];
-  [table addTableColumn: numberColumn];
+  [table addTableColumn: countColumn];
+  [table addTableColumn: totalColumn];
+  [table addTableColumn: peakColumn];
   [table setDataSource: self];
   [table setDelegate: self];
   [table setDoubleAction: @selector (reorder:)];
@@ -183,20 +252,30 @@ static MemoryPanel *mp = nil;
 
 - (int) numberOfRowsInTableView: (NSTableView *)aTableView
 {
-  return [numberArray count];
+  return [countArray count];
 }
 
 - (id)           tableView: (NSTableView *)aTableView 
  objectValueForTableColumn: (NSTableColumn *)aTableColumn 
 		       row:(int)rowIndex
 {
-  if ([[aTableColumn identifier] isEqual: @"Class"])
+  id identifier = [aTableColumn identifier];
+
+  if ([identifier isEqual: @"Class"])
     {
       return [classArray objectAtIndex: rowIndex];
     }
-  else if ([[aTableColumn identifier] isEqual: @"Number"])
+  else if ([identifier isEqual: @"Count"])
     {
-      return [numberArray objectAtIndex: rowIndex];
+      return [countArray objectAtIndex: rowIndex];
+    }
+  else if ([identifier isEqual: @"Total"])
+    {
+      return [totalArray objectAtIndex: rowIndex];
+    }
+  else if ([identifier isEqual: @"Peak"])
+    {
+      return [peakArray objectAtIndex: rowIndex];
     }
 
   NSLog (@"Hi, I am a bug in your table view");
@@ -206,73 +285,78 @@ static MemoryPanel *mp = nil;
 
 - (void) update: (id)sender
 {
-  /* NB: We rely on GSDebugAllocationList format to parse it */
-  const char *allocationList = GSDebugAllocationList (NO);
-  NSString *string = [NSString stringWithCString: allocationList];
-  NSScanner *scanner = [NSScanner scannerWithString: string];
+  Class *classList = GSDebugAllocationClassList ();
+  Class *pointer;
   NSMutableArray *array = [NSMutableArray new];
   NSArray *array_imm;
+  SEL orderSel = NULL;
   MemoryPanelEntry *entry;
-  int number;
+  int i, count, total, peak;
   NSString *className;
-  static NSCharacterSet *space = nil;
   NSMutableArray *classes = [NSMutableArray new];
-  NSMutableArray *numbers = [NSMutableArray new];
-  int count, i;
+  NSMutableArray *counts = [NSMutableArray new];
+  NSMutableArray *totals = [NSMutableArray new];
+  NSMutableArray *peaks = [NSMutableArray new];
 
-  if (space == nil)
-    {
-      space = [NSCharacterSet whitespaceAndNewlineCharacterSet];
-    }
+  pointer = classList;
+  i = 0;
 
-  while ([scanner isAtEnd] == NO)
+  while (pointer[i] != NULL)
     {
-      /* Skip spaces */
-      [scanner scanCharactersFromSet: space  intoString: NULL];
-      /* Get number */
-      if ([scanner scanInt: &number] == NO)
-	{
-	  break;
-	}
-      /* Skip spaces */
-      [scanner scanCharactersFromSet: space  intoString: NULL];
-      /* Get class name */
-      if ([scanner scanUpToCharactersFromSet: space
-		   intoString: &className] == NO)
-	{
-	  break;
-	}
+      className = NSStringFromClass (pointer[i]);
+      count = GSDebugAllocationCount (pointer[i]);
+      total = GSDebugAllocationTotal (pointer[i]);
+      peak = GSDebugAllocationPeak (pointer[i]);
+      
       /* Insert into array */
       entry = [MemoryPanelEntry alloc];
-      [entry initWithString: className  number: number];
+      [entry initWithString: className  count: count  
+	     total: total  peak: peak];
       [array addObject: entry];
       RELEASE (entry);
+      i++;
+    }
+
+  switch (orderingBy)
+    {
+    case (OrderByClassName): 
+      orderSel = @selector(compareByClassName:); 
+      break;
+    case (OrderByCount): 
+      orderSel = @selector(compareByCount:);
+      break;
+    case (OrderByTotal): 
+      orderSel = @selector(compareByTotal:);
+      break;
+    case (OrderByPeak): 
+      orderSel = @selector(compareByPeak:);
+      break;
     }
   
-  if (orderingByNumber == YES)
-    {
-      array_imm = [array sortedArrayUsingSelector: @selector(compareByNumber:)];
-    }
-  else
-    {
-      array_imm = [array sortedArrayUsingSelector: @selector(compareByAlphabet:)];
-    }
-  
+  array_imm = [array sortedArrayUsingSelector: orderSel];
   RELEASE (array);
 
   count = [array_imm count];
   for (i = 0; i < count; i++)
     {
       entry = [array_imm objectAtIndex: i];
-      [numbers addObject: [entry number]];
+      [counts addObject: [entry count]];
+      [totals addObject: [entry total]];
+      [peaks addObject: [entry peak]];
       [classes addObject: [entry string]];
     }
 
   ASSIGN (classArray, classes);
   RELEASE (classes);
 
-  ASSIGN (numberArray, numbers);
-  RELEASE (numbers);
+  ASSIGN (countArray, counts);
+  RELEASE (counts);
+
+  ASSIGN (totalArray, totals);
+  RELEASE (totals);
+
+  ASSIGN (peakArray, peaks);
+  RELEASE (peaks);
 
   [table reloadData];
 }
@@ -281,32 +365,40 @@ static MemoryPanel *mp = nil;
 {
   int selectedColumn = [table clickedColumn];
   NSArray *tableColumns = [table tableColumns];
-  NSTableColumn *tb;
-  BOOL newFlag = YES;
+  id identifier;
+  int newOrderingBy = 0;
 
   if (selectedColumn == -1)
     {
       return;
     }
 
-  tb = [tableColumns objectAtIndex: selectedColumn];
+  identifier = [[tableColumns objectAtIndex: selectedColumn] identifier];
 
-  if ([[tb identifier] isEqual: @"Class"])
+  if ([identifier isEqual: @"Class"])
     {
-      newFlag = NO;
+      newOrderingBy = OrderByClassName;
     }
-  else if ([[tb identifier] isEqual: @"Number"])
+  else if ([identifier isEqual: @"Count"])
     {
-      newFlag = YES;
+      newOrderingBy = OrderByCount;
+    }
+  else if ([identifier isEqual: @"Total"])
+    {
+      newOrderingBy = OrderByTotal;
+    }
+  else if ([identifier isEqual: @"Peak"])
+    {
+      newOrderingBy = OrderByPeak;
     }
 
-  if (orderingByNumber == newFlag)
+  if (newOrderingBy == orderingBy)
     {
       return;
     }
   else
     {
-      orderingByNumber = newFlag;
+      orderingBy = newOrderingBy;
       [self update: self];
     }
 }
