@@ -38,11 +38,12 @@
 {
   NSTableView *table;
   NSMutableArray *classArray;
-  NSMutableArray *numberArray;
-  /* YES if we are ordering the entries of the table by number of
-     instances; NO if we are ordering the entries in the table
-     alphabetically by class name */
-  BOOL orderingByNumber;
+  NSMutableArray *countArray;
+  NSMutableArray *totalArray;
+  NSMutableArray *peakArray;
+  /* Are we ordering by class name, or by count or total or peak number 
+     of instances ? */
+  int orderingBy;
 }
 + (id) sharedMemoryPanel;
 /* Updates the statistics */
