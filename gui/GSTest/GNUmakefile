@@ -31,6 +31,7 @@ SUBPROJECTS = \
   GSHbox-test \
   KeyboardInput-test \
   NSBox-test \
+  NSColorList-test \
   NSColorWell-test \
   NSForm-test \
   NSSavePanel-test \
