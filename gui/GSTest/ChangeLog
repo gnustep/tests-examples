@@ -1,3 +1,8 @@
+Mon Jan 31 22:31:09 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* NSSlider-test/NSSlider-test.m ([NSSliderTest -init]): Fixed 
+	attributes of text fields.
+
 Mon Jan 31 22:01:07 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* KeyboardInput-test/KeyboardInput-test.m: Test rewritten 
