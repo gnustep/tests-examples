@@ -178,7 +178,7 @@
   [buttons[16] setTitle: @"CL"];
   [buttons[16] setState: NO];
   [buttons[16] setAction: @selector(clear:)];
-  [buttons[16] setKeyEquivalent: @"c"];
+  [buttons[16] setKeyEquivalent: @"C"];
 
   buttons[17] = [[NSButton alloc] initWithFrame: NSMakeRect (3, 3, 71, 24)];
   [buttons[17] setButtonType: NSToggleButton];
@@ -206,8 +206,6 @@
 
   [self setTitle: @"Calculator.app"];
   [self center];
-  [self orderFront: nil];
-
 
   return self;
 }
@@ -241,6 +239,10 @@
 -(void) setError
 {
   [display setStringValue: @"Error"];
+}
+- (void)applicationDidFinishLaunching: (NSNotification *)aNotification;
+{
+  [self orderFront: self];
 }
 @end
 
