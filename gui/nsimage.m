@@ -37,7 +37,7 @@ main(int argc, char **argv, char** env)
     NSWindow *win;
     ImageView *v;
     NSApplication *theApp;
-    NSRect wf0 = {{0, 0}, {300, 300}};
+    NSRect wf0 = {{200, 200}, {300, 300}};
     NSArray* args;
     id pool;
 
