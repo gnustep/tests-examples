@@ -63,7 +63,7 @@ TEST_APP_NAME = \
 		slider \
 		windows
 
-SUBPROJECTS = Edit
+SUBPROJECTS = Calculator Edit
 
 # The Objective-C source files to be compiled
 TestApp_OBJC_FILES = TestApp.m 

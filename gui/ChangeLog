@@ -1,3 +1,7 @@
+1999-10-07    <fedor@gnu.org>
+
+	* Calculator: New test from Nicola Pero <n.pero@mi.flashnet.it>
+
 1999-09-09  Gerrit van Dyk <gerritvd@decillion.net>
 
 	* nscombobox.m: Added ComboBox test
