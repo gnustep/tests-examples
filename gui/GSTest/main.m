@@ -169,8 +169,7 @@
 }
 @end
 
-int 
-main (void)
+int main (void)
 { 
    NSAutoreleasePool *pool;
    NSApplication *app;
@@ -183,6 +182,7 @@ main (void)
    int i;
 
    pool = [NSAutoreleasePool new];
+
    app = [NSApplication sharedApplication];
    // Main Menu 
    mainMenu = AUTORELEASE ([[NSMenu alloc] initWithTitle: @"GNUstep Test"]);
@@ -236,6 +236,9 @@ main (void)
    [mainMenu display];
    appController = [Controller new];
    [app setDelegate: appController];
+
+   RELEASE (pool);
+   pool = [NSAutoreleasePool new];
    [app run];
    RELEASE (appController); 
    RELEASE (pool);
