@@ -188,13 +188,14 @@ static NSString* fieldString[3] = {
   // NB: Note that we do not autorelease the window
   window = [[NSWindow alloc] 
 	     initWithContentRect: winFrame
-	     styleMask: (NSTitledWindowMask | NSClosableWindowMask 
-			 | NSMiniaturizableWindowMask | NSResizableWindowMask)
+	     styleMask: (NSTitledWindowMask | NSMiniaturizableWindowMask 
+			 | NSResizableWindowMask)
 	     backing: NSBackingStoreBuffered
 	     defer: YES];
   [window setTitle: @"CurrencyConverter.app"];
   [window setContentView: windowVbox];
-  [window setMinSize: winFrame.size];
+  [window setMinSize: [NSWindow frameRectForContentRect: winFrame
+				styleMask: [window styleMask]].size];
 
   // Trick to forbid vertical resizing
   [window setResizeIncrements: NSMakeSize (1, 100000)];
@@ -229,33 +230,8 @@ static NSString* fieldString[3] = {
   [window orderFront: self];
 }
 
-// Display the Info Panel 
--(void) runInfoPanel: (id) sender
-{
-  NSMutableDictionary *d;
-
-  d = [[NSMutableDictionary new] autorelease];
-  [d setObject: @"CurrencyConverter" forKey: @"ApplicationName"];
-  [d setObject: @"A Little GNUstep GUI Demo" 
-     forKey: @"ApplicationDescription"];
-  [d setObject: @"CurrencyConverter 1.0" forKey: @"ApplicationRelease"];
-  [d setObject: @"1.0.1 Jan 2000" forKey: @"FullVersionID"];
-  [d setObject: [NSArray arrayWithObject: 
-			   @"Nicola Pero <n.pero@mi.flashnet.it>"]
-     forKey: @"Authors"];
-  //  [d setObject: @"See http://www.gnustep.org" forKey: @"URL"];
-  [d setObject: @"Copyright (C) 1999, 2000 Free Software Foundation, Inc."
-     forKey: @"Copyright"];
-  [d setObject: @"Released under the GNU General Public License 2.0"
-     forKey: @"CopyrightDescription"];
-  
-  [NSApp orderFrontStandardInfoPanelWithOptions:d];
-}
-@end
-
 // Execution starts from here. 
-int
-main (void)
+int main (void)
 {
    NSAutoreleasePool *pool;
    NSApplication *app;
@@ -270,11 +246,6 @@ main (void)
    // automatically for us.
    pool = [NSAutoreleasePool new];
 
-   // Initialize the gnustep backend.
-   // The need for this command should be the biggest difference 
-   // with other OpenStep platforms.
-   initialize_gnustep_backend ();
-
    // Get the object representing our application.
    app = [NSApplication sharedApplication];
   
@@ -287,9 +258,9 @@ main (void)
 
    // Info Item
    // The object receiving this message is determined at run time;
-   // it will be the NSApplication delegate
+   // it will be the NSApplication
    [mainMenu addItemWithTitle: @"Info..." 
-	     action: @selector (runInfoPanel:) 
+	     action: @selector (orderFrontStandardInfoPanel:) 
 	     keyEquivalent: @""];
 
    // Edit Submenu

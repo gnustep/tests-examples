@@ -39,7 +39,6 @@
 - (void)dealloc;
 - (void)controlTextDidEndEditing: (NSNotification *)aNotification;
 - (void)applicationDidFinishLaunching: (NSNotification *)aNotification;
--(void) runInfoPanel: (id) sender;
 @end
 
 

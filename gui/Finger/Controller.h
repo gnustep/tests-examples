@@ -34,7 +34,6 @@
 }
 +(void)initialize;
 -(void)applicationDidFinishLaunching: (NSNotification *)aNotification;
--(void)runInfoPanel: (id)sender;
 -(void)runPreferencesPanel: (id)sender;
 -(void)startNewFingerWindow: (id)sender;
 @end

@@ -32,12 +32,6 @@
 #define TRACEROUTE_DEFAULT_COMMAND @"/usr/sbin/traceroute"
 
 /*
- * Version Number
- */
-#define NAME_WITH_SHORT_VERSION @"Finger 0.7"
-#define FULL_VERSION            @"0.7.2, Feb 2000"
-
-/*
  * Libraries
  */
 #import <Foundation/Foundation.h>
