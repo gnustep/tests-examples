@@ -62,6 +62,7 @@
 
 - (void)buttonSwitchView:(id)sender
 {
+/*
   NSString *title = [sender titleOfSelectedItem];
 
   NSLog (@"title value = %@, indexOfSelectedItem: %d, titleIndexOfSelectedItem: %d numItems: %d",
@@ -80,6 +81,7 @@ title,
     }
   else
     [[win contentView] addSubview:anotherView2];    
+*/
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
