@@ -1,3 +1,8 @@
+Wed Mar  8 21:42:03 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* TestView.m: Do not include configure.h.  Some other tidying, 
+	removed some unuseful historical code.
+
 2000-02-25  Adam Fedor  <fedor@gnu.org>
 
 	* ColorView.m: Fix some retain problems.
