@@ -104,7 +104,7 @@ main(int argc, char **argv, char** env)
   [editMenu addItemWithTitle:@"Paste" action:action keyEquivalent:@"v"];
   [editMenu addItemWithTitle:@"Link" action:action keyEquivalent:@""];
   [editMenu addItemWithTitle:@"Delete" action:action keyEquivalent:@""];
-  [editMenu addItemWithTitle:@"Undelete" action:NULL keyEquivalent:@""];
+  [editMenu addItemWithTitle:@"Undelete" action:action keyEquivalent:@""];
   [editMenu addItemWithTitle:@"Find" action:action keyEquivalent:@""];
   [editMenu addItemWithTitle:@"Spelling..." action:action keyEquivalent:@":"];
   [editMenu addItemWithTitle:@"Check Spelling" action:action keyEquivalent:@";"];
@@ -113,7 +113,7 @@ main(int argc, char **argv, char** env)
 
   linkMenu = [NSMenu new];
   [linkMenu addItemWithTitle:@"Paste and Link" action:action keyEquivalent:@"V"];
-  [linkMenu addItemWithTitle:@"Show Links" action:NULL keyEquivalent:@""];
+  [linkMenu addItemWithTitle:@"Show Links" action:action  keyEquivalent:@""];
   [linkMenu addItemWithTitle:@"Link Inspector..." action:action keyEquivalent:@""];
   [linkMenu addItemWithTitle:@"Verify Links" action:action keyEquivalent:@""];
   [editMenu setSubmenu:linkMenu forItem:[editMenu itemWithTitle:@"Link"]];
@@ -125,7 +125,16 @@ main(int argc, char **argv, char** env)
   [findMenu addItemWithTitle:@"Enter Selection" action:action keyEquivalent:@"e"];
   [findMenu addItemWithTitle:@"Jump to Selection" action:action keyEquivalent:@"j"];
   [findMenu addItemWithTitle:@"Line Range..." action:action keyEquivalent:@"l"];
-  [editMenu setSubmenu:findMenu forItem:[menu itemWithTitle:@"Find"]];
+  [linkMenu setSubmenu:findMenu forItem:[linkMenu itemWithTitle:@"Verify Links"]];
+
+  findMenu = [NSMenu new];
+  [findMenu addItemWithTitle:@"Find Panel..." action:action keyEquivalent:@"f"];
+  [findMenu addItemWithTitle:@"Find Next" action:action keyEquivalent:@"g"];
+  [findMenu addItemWithTitle:@"Find Previous" action:action keyEquivalent:@"d"];
+  [findMenu addItemWithTitle:@"Enter Selection" action:action keyEquivalent:@"e"];
+  [findMenu addItemWithTitle:@"Jump to Selection" action:action keyEquivalent:@"j"];
+  [findMenu addItemWithTitle:@"Line Range..." action:action keyEquivalent:@"l"];
+  [editMenu setSubmenu:findMenu forItem:[editMenu itemWithTitle:@"Find"]];
 
   [theApp setMainMenu:menu];
 
