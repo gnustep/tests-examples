@@ -1,0 +1,17 @@
+
+GPuzzle by Marko Riedel, mriedel@neuearbeit.de
+----------------------------------------------
+
+You need a medium-sized TIFF file to play this game.
+
+Left-click and drag to move a piece or cluster.
+Ctrl-left-click and drag to connect knobs to slots.
+Right-click to disassemble a cluster.
+Ctrl-right-click to extract a piece from a cluster.
+
+Drawing can be slow; this is because GNUstep's implementation of
+NSWindow does not have the method "cacheImageInRect."
+
+It can be difficult to manipulate two pieces that are very close
+together. It helps to move one of them so that they are at a greater
+distance.
