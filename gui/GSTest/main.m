@@ -1,9 +1,9 @@
 /* main.m: Main Body of GNUstep Gui demo suite
 
-   Copyright (C) 1999 Free Software Foundation, Inc.
+   Copyright (C) 1999, 2000 Free Software Foundation, Inc.
 
    Author:  Nicola Pero <n.pero@mi.flashnet.it>
-   Date: 1999
+   Date: 1999, 2000
    
    This file is part of GNUstep.
    
@@ -22,7 +22,6 @@
    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. */
 #include <Foundation/Foundation.h>
 #include <AppKit/AppKit.h>
-#include "infoPanel.h"
 #include "GSTestProtocol.h"
 #include "testList.h"
 
@@ -30,7 +29,6 @@
 
 @interface Controller: NSObject
 {
-  NSPanel *infoSharedPanel;
   NSString *bundlesPath;
 }
 -(void) runInfoPanel: (id) sender;
@@ -48,7 +46,6 @@
 -(id) init 
 {
   [super init];
-  infoSharedPanel = nil;
   // The test bundles are one directory up
   bundlesPath = [[[[NSBundle mainBundle] bundlePath] 
 		   stringByDeletingLastPathComponent] retain];
@@ -57,18 +54,28 @@
 
 -(void) runInfoPanel: (id) sender
 {
-  if (!infoSharedPanel)
-    infoSharedPanel = [infoPanel new];
+  NSMutableDictionary *d;
 
-  [infoSharedPanel orderFront: nil];
-  [[NSApplication sharedApplication] addWindowsItem: infoSharedPanel
-				     title: @"Info Panel"
-				     filename: NO];
+  d = [[NSMutableDictionary new] autorelease];
+  [d setObject: @"GSTest" forKey: @"ApplicationName"];
+  [d setObject: @"GNUstep GUI Demo/Test Suite" 
+     forKey: @"ApplicationDescription"];
+  [d setObject: @"GSTest 0.1" forKey: @"ApplicationRelease"];
+  [d setObject: @"0.1.1 Jan 2000" forKey: @"FullVersionID"];
+  [d setObject: [NSArray arrayWithObject: 
+			   @"Nicola Pero <n.pero@mi.flashnet.it>"]
+     forKey: @"Authors"];
+  //  [d setObject: @"See http://www.gnustep.org" forKey: @"URL"];
+  [d setObject: @"Copyright (C) 1999, 2000 Free Software Foundation, Inc."
+     forKey: @"Copyright"];
+  [d setObject: @"Released under the GNU General Public License 2.0"
+     forKey: @"CopyrightDescription"];
+  
+  [NSApp orderFrontStandardInfoPanelWithOptions:d];
 }
 
 -(void) dealloc
 {
-  TEST_RELEASE(infoSharedPanel);
   RELEASE(bundlesPath);
   [super dealloc];
 }
@@ -189,7 +196,7 @@ main (void)
 	     action: @selector (runInfoPanel:) 
 	     keyEquivalent: @""];
    [infoMenu addItemWithTitle: @"Help" 
-	     action: NULL 
+	     action: @selector (orderFrontHelpPanel:)
 	     keyEquivalent: @"?"];
    // Test SubMenu
    menuItem = [mainMenu addItemWithTitle:@"Tests" 

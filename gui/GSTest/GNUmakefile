@@ -46,13 +46,11 @@ SUBPROJECTS = \
 APP_NAME = GSTest
 
 GSTest_HEADERS = \
-	infoPanel.h \
         testList.h \
         testProtocol.h 
 
 GSTest_OBJC_FILES = \
-        main.m \
-	infoPanel.m
+        main.m 
 
 -include GNUmakefile.preamble
 
