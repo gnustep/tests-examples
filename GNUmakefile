@@ -25,11 +25,9 @@
 include $(GNUSTEP_MAKEFILES)/common.make
 
 PACKAGE_NAME=gnustep-examples
-VERSION=0.9.0
+VERSION=0.9.1
 
 SUBPROJECTS = gui
-
-include GNUmakefile.preamble
 
 include $(GNUSTEP_MAKEFILES)/aggregate.make
 
