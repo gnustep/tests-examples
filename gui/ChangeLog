@@ -1,3 +1,29 @@
+Sat Jul 29 22:17:35 2000  Nicola Pero  <nicola@brainstorm.co.uk>
+
+	Simplified the CurrencyConverter example/demo.
+	* CurrencyConverter/CurrencyConverter.m ([-init]): Made the window
+	not closable.  (main): Do not call initialize_gnustep_backend.
+	Removed runInfoPanel:
+	* CurrencyConverter/CurrencyConverter.h: Removed runInfoPanel:
+	* CurrencyConverter/CurrencyConverterInfo.plist: New file.
+	* CurrencyConverter/GNUmakefile: Removed useless includes.
+	
+Sat Jul 29 22:03:39 2000  Nicola Pero  <nicola@brainstorm.co.uk>
+
+	Simplified the Calculator example/demo.
+	* Calculator/CalculatorInfo.plist: New file.
+	* Calculator/CalcFace.m ([CalcFace -runInfoPanel:]): Removed
+	method, now using CalculatorInfo.plist
+	* Calculator/CalcFace.h: Removed method runInfoPanel:.
+	* Calculator/main.m: Removed class CalcController; changed 
+	Info menu item's action; do not call initialize_gnustep_backend; 
+	this is now done automatically.
+	* Calculator/CalcFace.m ([CalcFace -init]): Made window 
+	not closable.
+	* Calculator/GNUmakefile: Removed inclusion of
+	GNUmakefile.preamble, GNUmakefile.postamble.
+
+	
 Tue Jul 18 17:53:16 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* CurrencyConverter/CurrencyConverter.m ([-init]): Fixed minimum
