@@ -192,10 +192,10 @@ main (void)
 			keyEquivalent: @""];
    infoMenu = [NSMenu new];
    [mainMenu setSubmenu: infoMenu forItem: menuItem];
-   [infoMenu addItemWithTitle: @"Info Panel" 
+   [infoMenu addItemWithTitle: @"Info Panel..." 
 	     action: @selector (runInfoPanel:) 
 	     keyEquivalent: @""];
-   [infoMenu addItemWithTitle: @"Help" 
+   [infoMenu addItemWithTitle: @"Help..." 
 	     action: @selector (orderFrontHelpPanel:)
 	     keyEquivalent: @"?"];
    // Test SubMenu
@@ -204,7 +204,7 @@ main (void)
 			keyEquivalent:@""];
    testMenu = [NSMenu new];
    [mainMenu setSubmenu: testMenu forItem: menuItem];
-   menuItem = [testMenu addItemWithTitle: @"Test Not in the List" 
+   menuItem = [testMenu addItemWithTitle: @"Test Not in the List..." 
 			action: @selector (startUnlistedTest:)
 			keyEquivalent: @""];
    for (i = 0; i < TEST_NUMBER; i++)

@@ -64,10 +64,10 @@ main (void)
 		       keyEquivalent: @""];
   menu = [NSMenu new];
   [mainMenu setSubmenu: menu forItem: menuItem];
-  [menu addItemWithTitle: @"Info Panel" 
+  [menu addItemWithTitle: @"Info Panel..." 
 	action: @selector (runInfoPanel:) 
 	keyEquivalent: @""];
-  [menu addItemWithTitle: @"Help" 
+  [menu addItemWithTitle: @"Help..." 
 	action: @selector (orderFrontHelpPanel:)
 	keyEquivalent: @"?"];
   // Edit SubMenu
