@@ -24,7 +24,6 @@
 #include <AppKit/AppKit.h>
 #include "GSTestProtocol.h"
 #include "testList.h"
-#include "MemoryPanel.h"
 
 #define GSTEST_VERSION @"0.8"
 #define GSTEST_FULLID @"CVS $Date$"
@@ -198,7 +197,6 @@ int main (void)
    [infoMenu addItemWithTitle: @"Info Panel..." 
 	     action: @selector (runInfoPanel:) 
 	     keyEquivalent: @""];
-   [infoMenu addMemoryPanelSubmenu];
    [infoMenu addItemWithTitle: @"Help..." 
 	     action: @selector (orderFrontHelpPanel:)
 	     keyEquivalent: @"?"];
@@ -221,9 +219,9 @@ int main (void)
      }
    // Windows SubMenu
    menuItem = [mainMenu addItemWithTitle:@"Windows" 
-			action: NULL 
-			keyEquivalent:@""];
-   windowsMenu = AUTORELEASE ([NSMenu new]);
+   			action: NULL 
+   			keyEquivalent:@""];
+   windowsMenu = AUTORELEASE ([NSMenu new]); 
    [mainMenu setSubmenu: windowsMenu forItem: menuItem];
    // Hide MenuItem
    [mainMenu addItemWithTitle: @"Hide" 
