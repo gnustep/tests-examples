@@ -1,3 +1,8 @@
+2004-11-11  Adam Fedor  <fedor@gnu.org>
+
+	* Classes/NSImage/nsimage.m: Create menu before starting loop
+	(patch from Patrick Middleton, Patch #3500).
+
 2004-09-28  Fred Kiefer <FredKiefer@gmx.de>
 
 	* Classes/NSImage/nsimage.m: Use rand() instead of random() as

@@ -26,6 +26,7 @@ include $(GNUSTEP_MAKEFILES)/common.make
 
 SUBPROJECTS =             \
 	NSBrowserTest     \
+	NSImage           \
 	NSPanelTest       \
 	NSScreenTest
 

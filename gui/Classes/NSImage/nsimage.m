@@ -60,7 +60,9 @@ write_image (NSImage *image)
   NSImageView   *mview;
 }
 
-- (void) applicationWillFinishLaunching: (NSNotification *)not;
+- (void) applicationDidFinishLaunching: (NSNotification *)not;
+- (void) menuSet;
+
 - readImage: (NSString *)file;
 - openImage: sender;
 - copyImage: sender;
@@ -110,7 +112,7 @@ write_image (NSImage *image)
 			  backing: NSBackingStoreBuffered
 			  defer: NO];
   [win setContentView: mview];
-  [win setTitle:@"Image View"];
+  [win setTitle:file];
   [win orderFrontRegardless];
   return self;
 }
@@ -155,8 +157,11 @@ write_image (NSImage *image)
   return self;
 }
 
-- (void) applicationWillFinishLaunching: (NSNotification *)not
-{
+- (void) applicationDidFinishLaunching: (NSNotification *)not {
+//	[self openImage:nil];
+}
+
+- (void) menuSet {
   NSMenu	*menu = [NSMenu new];
 
 
@@ -187,7 +192,7 @@ main(int argc, char **argv, char** env)
   [NSApplication sharedApplication];
   controller = [MyController new];
   [NSApp setDelegate: controller];
-
+  [controller menuSet];
   [NSApp run];
   [pool release];
   return 0;
