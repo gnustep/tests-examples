@@ -22,7 +22,7 @@
 
 - (void)setupInitialTextViewSharedState 
 {
-NSTextView *textView = [self firstTextView];
+NSText *textView = [self firstTextView];
     
 //    [textView setUsesFontPanel:YES];
     [textView setDelegate:self];
@@ -109,12 +109,12 @@ Document *document = [[self allocWithZone:zone] initWithPath:nil
     [super dealloc];
 }
 
-- (NSTextView *)firstTextView 
+- (NSText *)firstTextView 
 {
 static textView;
 
 	if(!textView)
-		textView = [NSTextView new]; 
+		textView = [NSText new]; 
 
     return textView;
 }

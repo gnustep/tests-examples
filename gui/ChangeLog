@@ -1,3 +1,9 @@
+1999-07-26  Michael Hanni  <mhanni@sprintmail.com>
+
+	* gstextnetwork.m: new test app to test NSTextView/TextNetwork.
+	* Edit/*: minor fixes to use NSText directly so for the time being
+	Edit.app still works somewhat.
+
 1999-07-10  Michael Hanni  <mhanni@sprintmail.com>
 
 	* GSImageTabViewItem.m: new file to draw a subclass of

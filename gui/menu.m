@@ -72,7 +72,7 @@ main(int argc, char **argv, char** env)
   [menu addItemWithTitle:@"Format" action:action keyEquivalent:@""];
   [menu addItemWithTitle:@"Utilities" action:action keyEquivalent:@""];
   [menu addItemWithTitle:@"Windows" action:action keyEquivalent:@""];
-  [menu addItemWithTitle:@"Print" action:action keyEquivalent:@"p"];
+  [menu addItemWithTitle:@"Print" action:nil keyEquivalent:@"p"];
   [menu addItemWithTitle:@"Services" action:action keyEquivalent:@""];
   [menu addItemWithTitle:@"Hide" action:action keyEquivalent:@"h"];
   [menu addItemWithTitle:@"Quit"

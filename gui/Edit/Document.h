@@ -58,7 +58,7 @@ extern void SetUpEncodingPopupButton(NSPopUpButton *popup, int selectedEncoding,
 
 /* Attributes */
 - (NSTextStorage *)textStorage;
-- (NSTextView *)firstTextView;
+- (NSText *)firstTextView;
 - (NSWindow *)window;
 //- (NSLayoutManager *)layoutManager;
 
