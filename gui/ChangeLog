@@ -1,3 +1,8 @@
+2000-05-04 Richard Frith-Macdonald <rfm@gnu.org>
+
+	* screen: new subdirectory for tool to test screen access functions
+	contributed by Gregory John Casamento
+
 2000-04-18  Adam Fedor  <fedor@gnu.org>
 
 	* ImageView.m (-initWithFile:): Return nil if image
