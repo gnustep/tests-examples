@@ -1,3 +1,8 @@
+Mon Jan 31 22:01:07 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* KeyboardInput-test/KeyboardInput-test.m: Test rewritten 
+	with new interface design.
+
 Tue Jan 25 23:40:24 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* StringDrawing-test/StringDrawing-test.m ([TrivialTextView
