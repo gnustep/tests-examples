@@ -1,0 +1,9 @@
+{
+  ApplicationName = "CurrencyConverter";
+  ApplicationDescription = "A Little GNUstep GUI Demo";
+  ApplicationRelease = "CurrencyConverter 1.1";
+  FullVersionID = "1.1.0 Jul 2000";
+  Authors = ("Nicola Pero <n.pero@mi.flashnet.it>");
+  Copyright = "Copyright (C) 1999, 2000 Free Software Foundation, Inc.";
+  CopyrightDescription = "Released under the GNU General Public License 2.0";
+}
