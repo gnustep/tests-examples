@@ -1,3 +1,10 @@
+Tue Dec 12 02:37:42 2000  Nicola Pero  <nicola@brainstorm.co.uk>
+
+	* Calculator/GNUmakefile: Updated/simplified.
+	* CurrencyConverter/GNUmakefile: Idem.	
+	* Finger/GNUmakefile: Idem.
+	* Ink/GNUmakefile: Idem.
+	
 2000-11-06  Fred Kiefer <FredKiefer@gmx.de>
 
 	* Ink/Document.m: Improved resizing of views
