@@ -159,17 +159,17 @@
 }
 -(void) chooseTextFile: (id) sender 
 {
-  /* 
-   * We use a savePanel not to allow multiple files to be chosen.
-   */
-  NSSavePanel *savePanel;
+  NSOpenPanel *openPanel;
   int result;
 
-  savePanel = [NSSavePanel savePanel];
-  [savePanel setTitle: @"Open Text File"];
-  [savePanel setTreatsFilePackagesAsDirectories: YES];
+  openPanel = [NSOpenPanel openPanel];
+  [openPanel setTitle: @"Open Text File"];
+  [openPanel setTreatsFilePackagesAsDirectories: YES];
+  [openPanel setAllowsMultipleSelection: NO];
   
-  result = [savePanel runModal];
+  result = [openPanel runModalForDirectory: NSHomeDirectory ()
+		      file: nil
+		      types: nil];
 
   if (result == NSOKButton)
     {
@@ -177,7 +177,7 @@
       NSDictionary *dict;
       NSAttributedString *attr;
 
-      string = [NSString stringWithContentsOfFile: [savePanel filename]];
+      string = [NSString stringWithContentsOfFile: [openPanel filename]];
       dict =  [NSDictionary dictionaryWithObjectsAndKeys:
 			      [NSFont systemFontOfSize: 0], 
 			    NSFontAttributeName,
