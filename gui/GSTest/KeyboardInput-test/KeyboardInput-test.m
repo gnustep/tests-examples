@@ -267,7 +267,8 @@ static NSString *modifierTitle[8] =
 	       enablingXResizing: NO];
 
   keyCodeField = [[NSTextField new] autorelease];
-  [keyCodeField setDrawsBackground: NO];
+  [keyCodeField setDrawsBackground: YES];
+  [keyCodeField setBackgroundColor: [NSColor controlBackgroundColor]];
   [keyCodeField setEditable: NO];
   [keyCodeField setSelectable: NO];
   [keyCodeField setBezeled: YES];
@@ -296,7 +297,8 @@ static NSString *modifierTitle[8] =
 		  enablingXResizing: NO];
 
   charactersField = [[NSTextField new] autorelease];
-  [charactersField setDrawsBackground: NO];
+  [charactersField setDrawsBackground: YES];
+  [charactersField setBackgroundColor: [NSColor controlBackgroundColor]];
   [charactersField setEditable: NO];
   [charactersField setSelectable: NO];
   [charactersField setBezeled: YES];
@@ -327,6 +329,9 @@ static NSString *modifierTitle[8] =
 
   charactersIgnoringModifiersField = [[NSTextField new] autorelease];
   [charactersIgnoringModifiersField setDrawsBackground: NO];
+  [charactersIgnoringModifiersField setDrawsBackground: YES];
+  [charactersIgnoringModifiersField setBackgroundColor: 
+				      [NSColor controlBackgroundColor]];
   [charactersIgnoringModifiersField setEditable: NO];
   [charactersIgnoringModifiersField setSelectable: NO];
   [charactersIgnoringModifiersField setBezeled: YES];
