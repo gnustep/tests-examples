@@ -1,4 +1,13 @@
-Tue Dec 12 02:37:42 2000  Nicola Pero  <nicola@brainstorm.co.uk>
+Tue Dec 12 02:44:06 2000  Nicola Pero <n.pero@mi.flashnet.it>
+
+	* GNUmakefile: Updated/Simplified.
+	* GNUmakefile.preamble: Idem.
+	* Edit/GNUmakefile: Idem.
+	* Edit/GNUmakefile.preamble: Idem.
+	* Edit/GNUmakefile.postamble: Idem.
+	* GNUmakefile.postamble: Empty file removed.
+
+Tue Dec 12 02:37:42 2000  Nicola Pero <n.pero@mi.flashnet.it>
 
 	* Calculator/GNUmakefile: Updated/simplified.
 	* CurrencyConverter/GNUmakefile: Idem.	
