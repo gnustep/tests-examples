@@ -27,8 +27,6 @@ APP_NAME = CurrencyConverter
 CurrencyConverter_OBJC_FILES = CurrencyConverter.m 
 CurrencyConverter_HEADERS = CurrencyConverter.h
 
--include GNUmakefile.preamble
 -include ../GNUmakefile.local
 include $(GNUSTEP_MAKEFILES)/application.make
--include GNUmakefile.postamble
 
