@@ -335,6 +335,7 @@ set_standard_properties (NSTextField *tf, NSTextAlignment align)
 }
 - (void) dealloc
 {
+  [win setDelegate: nil];
   RELEASE(win);
   [super dealloc];
 }
