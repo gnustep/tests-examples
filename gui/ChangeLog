@@ -1,3 +1,16 @@
+Fri Jan 26 23:11:18 2001  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* HostAddress/: New Project contributed by Philippe C.D. Robert
+	<phr@projectcenter.ch>.
+	* HostAddress/AppController.h: New file.
+	* HostAddress/AppController.m: Idem.
+	* HostAddress/GNUmakefile: Idem.
+	* HostAddress/Info-project.plist: Idem.  	
+	* HostAddress/PC.project: Idem.
+	* HostAddress/Resolver.h: Idem.
+	* HostAddress/Resolver.m: Idem.	
+	* HostAddress/main.m: Idem.
+
 Sun Jan 21 23:33:04 2001  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* Calculator/CalcFace.m ([-init]): Set default button cell to `='.
