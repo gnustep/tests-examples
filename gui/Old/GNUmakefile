@@ -23,7 +23,8 @@
 include $(GNUSTEP_MAKEFILES)/common.make
 
 # The applications to be compiled
-TEST_APP_NAME = nscombobox nstabview nsimagecell popupbuttons testpb
+TEST_APP_NAME = nscombobox nstabview nsimagecell popupbuttons testpb \
+	nsprogressindicator
 
 nscombobox_OBJC_FILES = nscombobox.m
 nstabview_OBJC_FILES = nstabview.m GSImageTabViewItem.m TestView.m
@@ -31,6 +32,7 @@ nstabview_RESOURCE_FILES = Smiley.tiff
 nsimagecell_OBJC_FILES = nsimagecell.m
 popupbuttons_OBJC_FILES = popupbuttons.m TestView.m
 testpb_OBJC_FILES = testpb.m
+nsprogressindicator_OBJC_FILES = nsprogressindicator.m
 
 include $(GNUSTEP_MAKEFILES)/test-application.make
 
