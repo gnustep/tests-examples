@@ -21,14 +21,6 @@
 #   along with this program; if not, write to the Free Software
 #   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-ifeq ($(GNUSTEP_SYSTEM_ROOT),)
-  GNUSTEP_SYSTEM_ROOT = $(TOPLEV)
-endif
-
-GNUSTEP_INSTALLATION_DIR = $(GNUSTEP_SYSTEM_ROOT)
-
-GNUSTEP_MAKEFILES = $(GNUSTEP_SYSTEM_ROOT)/Makefiles
-
 include $(GNUSTEP_MAKEFILES)/common.make
 
 OBJCFLAGS += -Wall
