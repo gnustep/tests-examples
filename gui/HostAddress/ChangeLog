@@ -1,0 +1,5 @@
+Tue Jan  8 16:18:25 2002  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* main.m (createMenu): Explicitly call setWindowsMenu: as required
+	by the new gnustep-gui library.
+

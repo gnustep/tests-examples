@@ -92,6 +92,7 @@ void createMenu()
 
   [[NSApplication sharedApplication] setMainMenu:menu];
   [[NSApplication sharedApplication] setServicesMenu: services];
+  [[NSApplication sharedApplication] setWindowsMenu: windows];
 }
 
 
