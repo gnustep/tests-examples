@@ -62,6 +62,7 @@
 
 - (void)buttonSwitchView:(id)sender
 {
+    NSLog(@"Sender = %@ Cell = %@", sender, @"");
 /*
   NSString *title = [sender titleOfSelectedItem];
 
@@ -104,14 +105,14 @@ title,
   anotherView2 = [[TestView alloc] initWithFrame:f];
 
   pushb = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(200,375,80,20)];
+  [pushb setTarget:self];
+  [pushb setAction:@selector(buttonSwitchView:)];
   [pushb addItemWithTitle:@"Devices"];
   [pushb addItemWithTitle:@"Network"];
   [pushb addItemWithTitle:@"Printers"];
   [pushb addItemWithTitle:@"Austin"];
   [pushb addItemWithTitle:@"Powers"];
   [pushb addItemWithTitle:@"Shag"];
-  [pushb setTarget:self];
-  [pushb setAction:@selector(buttonSwitchView:)];
   [[win contentView] addSubview:pushb];
 
   /* NB: popupbuttons with images are not possible in the 
@@ -141,14 +142,14 @@ title,
 */
   pushb = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(15,375,80,20) 
 pullsDown:YES];
+  [pushb setTarget:self];
+  [pushb setAction:@selector(buttonSwitchView:)];
   [pushb addItemWithTitle:@"Devices"];
   [pushb addItemWithTitle:@"Network"];
   [pushb addItemWithTitle:@"Printers"];
   [pushb addItemWithTitle:@"Austin"];
   [pushb addItemWithTitle:@"Powers"];
   [pushb addItemWithTitle:@"Shag"];
-  [pushb setTarget:self];
-  [pushb setAction:@selector(buttonSwitchView:)];
   [[win contentView] addSubview:pushb];
 
   [win display];
