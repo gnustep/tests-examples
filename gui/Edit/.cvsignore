@@ -1,1 +1,5 @@
-shared_debug_obj
+*.app
+*.debug
+*.profile
+*obj
+.gdbinit
