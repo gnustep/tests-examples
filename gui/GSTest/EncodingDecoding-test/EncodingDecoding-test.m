@@ -70,8 +70,6 @@ willDisplayCell: (id)cell
   button = [NSButton new];
   [button setTitle: @"Decode from File..."];
   [button sizeToFit];
-  [button setFrameSize: NSMakeSize ([button frame].size.width + 6, 
-				    [button frame].size.height + 4)];
   [button setAutoresizingMask: NSViewMinXMargin | NSViewMaxXMargin];
   [button setTarget: self];
   [button setAction: @selector (decode:)];
@@ -94,8 +92,6 @@ willDisplayCell: (id)cell
   button = [NSButton new];
   [button setTitle: @"Encode to File..."];
   [button sizeToFit];
-  [button setFrameSize: NSMakeSize ([button frame].size.width + 4, 
-				    [button frame].size.height + 6)];
   [button setAutoresizingMask: NSViewMinXMargin | NSViewMaxXMargin];
   [button setTarget: self];
   [button setAction: @selector (encode:)];
