@@ -113,9 +113,6 @@
   button = [NSButton new];
   [button setTitle: @"Choose Text File To Display..."];
   [button sizeToFit];
-  // Stand-alone buttons look better slighlty bigger
-  [button setFrameSize: NSMakeSize ([button frame].size.width + 6, 
-				    [button frame].size.height + 4)];
   [button setAutoresizingMask: NSViewMinXMargin];
   [button setTarget: self];
   [button setAction: @selector (chooseTextFile:)];

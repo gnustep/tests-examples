@@ -73,10 +73,6 @@ struct
   newWindowButton = AUTORELEASE ([NSButton new]);
   [newWindowButton setTitle: @"Create Window"];
   [newWindowButton sizeToFit];
-  // Stand-alone buttons look better slighlty bigger
-  [newWindowButton setFrameSize: 
-		     NSMakeSize ([newWindowButton frame].size.width + 6, 
-				 [newWindowButton frame].size.height + 4)];
   [newWindowButton setAutoresizingMask: NSViewMinXMargin];
   [newWindowButton setTarget: self];
   [newWindowButton setAction: @selector (newWindow:)];
