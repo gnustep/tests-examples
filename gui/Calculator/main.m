@@ -53,6 +53,7 @@ main (void)
   pool = [NSAutoreleasePool new];
   initialize_gnustep_backend ();
   app = [NSApplication sharedApplication];
+  [app setApplicationIconImage: [NSImage imageNamed: @"Calculator.app.tiff"]];
   brain = [CalcBrain new];
   face = [CalcFace new]; 
   [brain setFace: face];
