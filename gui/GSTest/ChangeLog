@@ -1,8 +1,17 @@
+Thu Feb  8 19:42:38 2001  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* GNUmakefile (SUBPROJECTS), testList.h (testList): Added
+	NSSecureTextField-test.
+	* NSSecureTextField-test: New directory.
+	* NSSecureTextField-test/NSSecureTextField-test.m: New file.
+	* NSSecureTextField-test/GNUmakefile: New file.
+	* main.m: Updated version to 0.6.
+
 Tue Jan 20  Michael Hanni  <mhanni@sprintmail.com>
 
-	* Composite-test/.cvsignore,
-	CoordinateCheck-test/.cvsignore, NSTableView-test/.cvsignore,
-	NSWindowStyleMask-test/.cvsignore: added for cleanliness.
+	* Composite-test/.cvsignore, CoordinateCheck-test/.cvsignore,
+	NSTableView-test/.cvsignore, NSWindowStyleMask-test/.cvsignore:
+	added for cleanliness.
 
 Sun Jan 28 19:37:39 2001  Nicola Pero  <n.pero@mi.flashnet.it>
 
