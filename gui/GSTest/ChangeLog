@@ -1,3 +1,9 @@
+Tue Jan 20  Michael Hanni  <mhanni@sprintmail.com>
+
+	* Composite-test/.cvsignore,
+	CoordinateCheck-test/.cvsignore, NSTableView-test/.cvsignore,
+	NSWindowStyleMask-test/.cvsignore: added for cleanliness.
+
 Sun Jan 28 19:37:39 2001  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* main.m: Updated version to 0.5; keep track of date.

@@ -1,3 +1,9 @@
+Tue Jan 20  Michael Hanni  <mhanni@sprintmail.com>
+
+	* Classes/NSBrowserTest/.cvsignore,
+	NSPanelTest/.cvsignore, 
+	NSScreenTest/.cvsignore: added for cleanliness.
+
 Fri Jan 26 23:11:18 2001  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* HostAddress/: New Project contributed by Philippe C.D. Robert
