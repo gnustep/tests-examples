@@ -43,9 +43,10 @@
 
 - (void) dealloc
 {
-  RELEASE(ts);
-  RELEASE(tv);
-  RELEASE(pi);
+  RELEASE (ts);
+  RELEASE (tv);
+  RELEASE (pi);
+  [super dealloc];
 }
 
 - (NSFileWrapper *)fileWrapperRepresentationOfType:(NSString *)type
