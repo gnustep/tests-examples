@@ -58,19 +58,17 @@ main(int argc, char **argv, char** env)
   NSRect tf1 = {{25, 100}, {200, 50}};
   NSRect tf2 = {{25, 175}, {200, 50}};
   NSRect tf3 = {{25, 250}, {200, 50}};
-  id pool;
+  CREATE_AUTORELEASE_POOL(pool);
 
 #if LIB_FOUNDATION_LIBRARY
   [NSProcessInfo initializeWithArguments:argv count:argc environment:env];
 #endif
 
-  pool = [NSAutoreleasePool new];
-
 #ifndef NX_CURRENT_COMPILER_RELEASE
     initialize_gnustep_backend();
 #endif
 
-  theApp = [NSApplication sharedApplication];
+  theApp = RETAIN([NSApplication sharedApplication]);
 
   //
   // Windows
@@ -172,13 +170,13 @@ main(int argc, char **argv, char** env)
     [NSApp setMainMenu: menu];
   }
 
-  [theApp run];
-
-  [w0 release];
-  [w1 release];
-  [w2 release];
-
-  [pool release];
+  RELEASE(pool);
+  {
+    CREATE_AUTORELEASE_POOL(pool);
+    AUTORELEASE(theApp);
+    [theApp run];
+    RELEASE(pool);
+  }
 
   return 0;
 }
