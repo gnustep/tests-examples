@@ -1,3 +1,8 @@
+2000-11-03  Fred Kiefer <FredKiefer@gmx.de>
+
+	* Ink/main.m: Relase the menu entries.
+	* Ink/Document.m: The text view can now be resized.
+
 2000-10-24  Fred Kiefer <FredKiefer@gmx.de>
 
 	* Ink/Document.h: Changed ivars
