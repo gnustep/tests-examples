@@ -40,7 +40,8 @@ main (void)
    pool = [NSAutoreleasePool new];
    initialize_gnustep_backend ();
    app = [NSApplication sharedApplication];
-  
+   [app setApplicationIconImage: [NSImage imageNamed: @"finger"]];
+
    //
    // Create the Menu 
    //
