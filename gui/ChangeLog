@@ -1,3 +1,35 @@
+Fri Nov 26 01:05:04 1999  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	The new test suite.
+	* GNUmakefile: Updated.
+	* nsbox.m: Removed, obsoleted by the new NSBox-test.
+	* slider.m: Removed, obsoleted by the new NSSlider-test.
+	* Calculator/main.m (main): Added menu, to test cut&paste between
+ 	Calculator and CurrencyConverter.
+	* Calculator/CalcFace.m, Calculator/CalcFace.h: Order out self
+ 	when application did finish launching.	
+	* GSTest/: New directory.
+	* GSTest/main.m: New file.
+	* GSTest/infoPanel.h: New file.
+	* GSTest/infoPanel.m: New file.
+	* GSTest/GSTestProtocol.h: New file.
+	* GSTest/testList.h: New file.
+	* GSTest/KeyboardInput-test: New directory.
+	* GSTest/KeyboardInput-test/GNUmakefile: New file.
+	* GSTest/KeyboardInput-test/KeyboardInput-test.m: New file.
+	* GSTest/NSBox-test: New directory.
+	* GSTest/NSBox-test/GNUmakefile: New file.
+	* GSTest/NSBox-test/NSBox-test.m: New file.
+	* GSTest/NSColorWell-test: New directory.
+	* GSTest/NSColorWell-test/GNUmakefile: New file.
+	* GSTest/NSColorWell-test/NSColorWell-test.m: New file.
+	* GSTest/NSScrollView-test: New directory.
+	* GSTest/NSScrollView-test/GNUmakefile: New file.
+	* GSTest/NSScrollView-test/NSScrollView-test.m: New file.
+	* GSTest/NSSlider-test: New directory.
+	* GSTest/NSSlider-test/GNUmakefile: New file.
+	* GSTest/NSSlider-test/NSSlider-test.m: New file.
+	
 Thu Nov 25 05:26:29 1999  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	New little demo app showing text fields working.
