@@ -36,7 +36,31 @@
 
 - (void)scrollerAction: (id)sender
 {
-//	NSLog (@"scroller value = %f", [sender floatValue]);
+  switch ([sender hitPart])
+    {
+    case NSScrollerKnob:
+      NSLog (@"NSScrollerKnob");
+      NSLog (@"scroller value = %f", [sender floatValue]);
+      break;
+    case NSScrollerKnobSlot:
+      NSLog (@"NSScrollerKnobSlot");
+      break;
+    case NSScrollerDecrementLine:
+      NSLog (@"NSScrollerDecrementLine");
+      break;
+    case NSScrollerDecrementPage:
+      NSLog (@"NSScrollerDecrementPage");
+      break;
+    case NSScrollerIncrementLine:
+      NSLog (@"NSScrollerIncrementLine");
+      break;
+    case NSScrollerIncrementPage:
+      NSLog (@"NSScrollerIncrementPage");
+      break;
+    case NSScrollerNoPart:
+      NSLog (@"NSScrollerNoPart");
+      break;
+    }
 }
 
 @end
