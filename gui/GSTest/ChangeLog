@@ -1,3 +1,41 @@
+Mon Feb 14 22:14:14 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* NSSavePanel-test/NSSavePanel-test.m ([-startSavePanel:sender]):
+	Emit a warning panel and refuse to run the save panel if a 
+	not-valid filename, ie one beginning with "/", is supplied.
+
+Sun Feb 13 01:18:37 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* main.m ([Controller -runInfoPanel:sender]): Use AUTORELEASE
+	instead of -autorelease.  (main): AUTORELEASE each created menu,
+	and a couple of minor memory management tidyups.
+
+Sat Feb 12 18:03:01 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* StringDrawing-test/StringDrawing-test.m ([-init]): Improved 
+	autoresizing.
+
+Sat Feb  5 03:37:52 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* main.m (main): Added "Hide" menu item.
+	* StringDrawing-test/StringDrawing-test.m ([-init]): Changed
+	button text.
+	
+Thu Feb  3 01:23:59 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* main.m (main): Added "..." to Info Panel, Help and 
+	Test Not In The List menu items.
+	
+Mon Jan 31 22:31:09 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* NSSlider-test/NSSlider-test.m ([NSSliderTest -init]): Fixed 
+	attributes of text fields.
+
+Mon Jan 31 22:01:07 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* KeyboardInput-test/KeyboardInput-test.m: Test rewritten 
+	with new interface design.
+
 Tue Jan 25 23:40:24 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* StringDrawing-test/StringDrawing-test.m ([TrivialTextView

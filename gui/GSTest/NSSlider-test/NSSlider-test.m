@@ -74,7 +74,8 @@
   [vButton setAutoresizingMask: NSViewMaxXMargin];
   
   vLabel = [NSTextField new];
-  [vLabel setEditable: NO];
+  [vLabel setSelectable: NO];
+  [vLabel setEnabled: NO];
   [vLabel setBezeled: NO];
   [vLabel setBordered: NO];
   [vLabel setDrawsBackground: NO];
@@ -82,7 +83,8 @@
   [vLabel sizeToFit];
   
   vNumber = [NSTextField new];
-  [vNumber setEditable: NO];
+  [vNumber setSelectable: NO];
+  [vNumber setEnabled: NO];
   [vNumber setBezeled: NO];
   [vNumber setBordered: NO];
   [vNumber setDrawsBackground: NO];
@@ -128,7 +130,8 @@
   [hButton setAutoresizingMask: NSViewMaxXMargin];
   
   hLabel = [NSTextField new];
-  [hLabel setEditable: NO];
+  [hLabel setSelectable: NO];
+  [hLabel setEnabled: NO];
   [hLabel setBezeled: NO];
   [hLabel setBordered: NO];
   [hLabel setDrawsBackground: NO];
@@ -136,7 +139,8 @@
   [hLabel sizeToFit];
   
   hNumber = [NSTextField new];
-  [hNumber setEditable: NO];
+  [hNumber setSelectable: NO];
+  [hNumber setEnabled: NO];
   [hNumber setBordered: NO];
   [hNumber setBezeled: NO];
   [hNumber setDrawsBackground: NO];

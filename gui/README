@@ -1,0 +1,56 @@
+
+Welcome to the GNUstep Testing directory.
+
+In this directory there is a full collection of tests for the GNUstep
+GUI libraries.  Some tests are very old, other are newer; some are 
+up-to-date, other are not.
+
+Quick start to compile and run the tests:
+
+make
+openapp testYouWantToSee.app
+
+If this tip is not enough, read on for the detailed explanations.
+
+COMPILING THE TESTS
+-------------------
+To compile all the tests, simple type: 
+
+make
+
+To compile only a specifical test, for example popupbuttons.app, 
+you have to type:
+
+make popupbuttons
+
+Compiling a test called "testName" creates a directory called 
+"testName.app".  
+For example, when compiling the popupbuttons test, the directory 
+popupbuttons.app is created.  
+
+RUNNING THE TESTS
+-----------------
+To run a test, launch openapp with the test .app directory [see 
+"COMPILING THE TESTS" above] as argument.  
+For example, to run the popupbuttons.app test, type
+
+openapp popupbuttons.app
+
+Some bigger tests have a directory of their own, so that to run 
+the Calculator.app test you have to type:
+
+cd Calculator
+openapp Calculator.app
+
+[or, in a single command, type "openapp Calculator/Calculator.app"]
+
+ABOUT GNUSTEP
+-------------
+If you want to know more about GNUstep, please refer to
+http://www.gnustep.org.
+
+IF YOU ARE A PROGRAMMER
+-----------------------
+Join us: write GNUstep apps!  
+Objective-C is exciting and easy to learn if you know C and object
+oriented programming fundamentals.

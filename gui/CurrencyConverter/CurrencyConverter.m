@@ -77,18 +77,18 @@ static NSString* fieldString[3] = {
 
   // Create a vertical box (NB: Things are packed in the box 
   // from bottom to top)
-  windowVbox = [[GSVbox new] autorelease];
+  windowVbox = AUTORELEASE ([GSVbox new]);
   [windowVbox setBorder: 0];
   [windowVbox setDefaultMinYMargin: 0];
   
   //
   // Result field
   //
-  hbox = [[GSHbox new] autorelease];
+  hbox = AUTORELEASE ([GSHbox new]);
   [hbox setDefaultMinXMargin: 10];
   [hbox setBorder: 10];
 
-  label = [[NSTextField new] autorelease];
+  label = AUTORELEASE ([NSTextField new]);
   [label setSelectable: NO];
   [label setBezeled: NO];
   [label setDrawsBackground: NO];
@@ -98,7 +98,7 @@ static NSString* fieldString[3] = {
   [hbox addView: label
 	enablingXResizing: NO];
   
-  field[0] = [[NSTextField new] autorelease];
+  field[0] = AUTORELEASE ([NSTextField new]);
   [field[0] setSelectable: YES];
   [field[0] setEditable: NO];
   [field[0] setBezeled: YES];
@@ -125,7 +125,7 @@ static NSString* fieldString[3] = {
   //
   // Upper part of the window
   //
-  formVbox = [[GSVbox new] autorelease];
+  formVbox = AUTORELEASE ([GSVbox new]);
   [formVbox setBorder: 10];
   [formVbox setDefaultMinYMargin: 10];
 
@@ -134,10 +134,10 @@ static NSString* fieldString[3] = {
     {
       // We are doing it the hard way, without NSForm, to show how to do
       // more generally to pack things and objects
-      hbox = [[GSHbox new] autorelease];
+      hbox = AUTORELEASE ([GSHbox new]);
       [hbox setDefaultMinXMargin: 10];
 
-      label = [[NSTextField new] autorelease];
+      label = AUTORELEASE ([NSTextField new]);
       [label setSelectable: NO];
       [label setBezeled: NO];
       [label setDrawsBackground: NO];
@@ -147,7 +147,7 @@ static NSString* fieldString[3] = {
       [hbox addView: label
 	    enablingXResizing: NO];
 
-      field[i] = [[NSTextField new] autorelease];
+      field[i] = AUTORELEASE ([NSTextField new]);
       [field[i] setEditable: YES];
       [field[i] setBezeled: YES];
       [field[i] setDrawsBackground: YES];
@@ -203,7 +203,7 @@ static NSString* fieldString[3] = {
 - (void)dealloc
 {
   // Releasing the window releases all its views in cascade
-  [window release];
+  RELEASE (window);
   [super dealloc];
 }
 
@@ -283,29 +283,20 @@ main (void)
    //
 
    // Main Menu
-   mainMenu = [NSMenu new];
+   mainMenu = AUTORELEASE ([NSMenu new]);
 
-   // Info SubMenu
-   menuItem = [mainMenu addItemWithTitle: @"Info" 
-			action: NULL 
-			keyEquivalent: @""];
-   menu = [NSMenu new];
-   [mainMenu setSubmenu: menu forItem: menuItem];
-   // The objects receiving these messages are determined at run time;
-   // they will be the NSApplication delegate for the first and NSApp
-   // (==[NSApplication sharedApplication[) for the second.
-   [menu addItemWithTitle: @"Info Panel" 
-	 action: @selector (runInfoPanel:) 
-	 keyEquivalent: @""];
-   [menu addItemWithTitle: @"Help" 
-	 action: @selector (orderFrontHelpPanel:)
-	 keyEquivalent: @"?"];
+   // Info Item
+   // The object receiving this message is determined at run time;
+   // it will be the NSApplication delegate
+   [mainMenu addItemWithTitle: @"Info..." 
+	     action: @selector (runInfoPanel:) 
+	     keyEquivalent: @""];
 
    // Edit Submenu
    menuItem = [mainMenu addItemWithTitle: @"Edit" 
 			action: NULL 
 			keyEquivalent: @""];
-   menu = [NSMenu new];
+   menu = AUTORELEASE ([NSMenu new]);
    [mainMenu setSubmenu: menu forItem: menuItem];
 
    // The object which should receive the messages cut:, copy:, paste: is not 
@@ -331,12 +322,19 @@ main (void)
 	 action: @selector (selectAll:) 
 	 keyEquivalent: @"a"];
 
+   // Hide MenuItem
+   [mainMenu addItemWithTitle: @"Hide" 
+	     action: @selector (hide:) 
+	     keyEquivalent: @""];
    // Quit MenuItem
    [mainMenu addItemWithTitle: @"Quit" 
 	     action: @selector (terminate:)
 	     keyEquivalent: @"q"];	
 
    [app setMainMenu: mainMenu];
+   // The default title @"Currency Converter" is a bit too long
+   [mainMenu setTitle: @"CurrConv"];
+
 
    // Create and initializes an instance of our custom object.
    converter = [[CurrencyConverter alloc] init];

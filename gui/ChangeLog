@@ -3,6 +3,67 @@ Tue Jan 25 15:02:41 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 	* fontpanel.m: Rewritten completely, based on a contribution 
 	by Fred Kiefer.
 
+Sun Feb 13 02:14:29 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* Finger: New demo program.
+
+Sun Feb 13 01:11:31 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* CurrencyConverter/CurrencyConverter.m ([-init]): Use AUTORELEASE
+	instead of -autorelease.  ([-dealloc]): Use RELEASE instead of
+	-release. (main): AUTORELEASE the created menus.
+	* Calculator/main.m (main): AUTORELEASE the created menus.
+
+Thu Feb 10 09:55:00 2000  Richard Frith-Macdonald <richard@brainstorm.co.uk>
+
+	* nsscroller.m: ([MyObject -scrollerAction:]) Move the knob when the
+	arrows are clicked.
+
+Thu Feb 10 01:29:48 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* nsscroller.m ([MyObject -scrollerAction:]): Print some 
+	useful information.
+
+Mon Feb  7 12:25:24 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* scrollview2.m ([-addColumn:]), ([-addRow:]): Mark the scrollview
+	as needing redisplay. ([-removeRow:]), ([-removeColumn:]): Idem
+	plus reset button titles.
+
+Sat Feb  5 03:35:09 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* Calculator/main.m (main): Added Hide item in menu; 
+	removed Info menu, superseded by a single Info... item.
+	* CurrencyConverter/CurrencyConverter.m (main): Idem; plus, 
+	set main menu title to a shorter "CurrConv"
+	
+Fri Feb  4 01:40:58 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* README: New file.
+
+Thu Feb  3 01:21:53 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* Calculator/main.m (main): Added "..." to Info Panel 
+	and Help menu items.
+	* CurrencyConverter/CurrencyConverter.m (main): Idem.
+	
+Tue Feb  1 23:35:20 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* windows.m: Set alternate title of the momentary change button.
+	
+Tue Feb  1 23:21:04 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* windows.m: Put the text key view loop in natural 
+	order.  (Bug reported by Jory van Zessen).
+	
+Mon Jan 31 01:03:16 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* popupbuttons.m ([buttonsController
+	-applicationDidFinishLaunching:]): Removed example of popupbutton
+	with images.  Unfortunately we do not any longer have this
+	extension of popupbuttons with images [Popupbuttons are strictly
+	connected to menus].
+
 Tue Jan 25 00:28:31 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	Added Info Panel to Calculator and CurrencyConverter:

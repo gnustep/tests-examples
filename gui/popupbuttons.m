@@ -114,6 +114,9 @@ title,
   [pushb setAction:@selector(buttonSwitchView:)];
   [[win contentView] addSubview:pushb];
 
+  /* NB: popupbuttons with images are not possible in the 
+  present framework */
+/*
   pushb = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(15,275,64,64)];
 
   [pushb addItemWithTitle:@""];
@@ -135,7 +138,7 @@ title,
 //  [pushb setTarget:self];
 //  [pushb setAction:@selector(buttonSwitchView:)];
   [[win contentView] addSubview:pushb];
-
+*/
   pushb = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(15,375,80,20) 
 pullsDown:YES];
   [pushb addItemWithTitle:@"Devices"];
