@@ -1,3 +1,8 @@
+Mon Apr 28 13:22:49 2003  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* Document.m ([Document -makeWindow]): Do not make the document
+	the window delegate.
+
 2003-04-24  Adam Fedor  <fedor@gnu.org>
 
 	* InkInfo.plist: Add new Icon images
