@@ -231,7 +231,8 @@
   [scrollView setHasHorizontalScroller: NO];
   [scrollView setHasVerticalScroller: YES]; 
   [scrollView setAutoresizingMask: NSViewHeightSizable | NSViewWidthSizable];
-  [[scrollView contentView] setAutoresizingMask: NSViewHeightSizable | NSViewWidthSizable];
+  [[scrollView contentView] setAutoresizingMask: NSViewHeightSizable 
+			    | NSViewWidthSizable];
   [[scrollView contentView] setAutoresizesSubviews:YES];
 
   // Build up the text network
@@ -252,6 +253,7 @@
   [[textView textContainer] setWidthTracksTextView: YES];
   // Store the text view in an ivar
   ASSIGN(tv, textView);
+  RELEASE(textView);
 
   [scrollView setDocumentView: textView];
   RELEASE(textView);

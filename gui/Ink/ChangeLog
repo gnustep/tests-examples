@@ -1,0 +1,5 @@
+Thu Oct 18 15:11:08 2001  Nicola Pero  <nicola@brainstorm.co.uk>
+
+	* Document.m ([Document -makeWindow]): Fixed memory leak 
+	(Found by Ludovic Marcotte <ludovic@Sophos.ca>). 
+
