@@ -53,6 +53,7 @@ TEST_APP_NAME = \
 		nsimage \
 		nsimagecell \
 		nsscroller \
+		nstabview \
 		scrollview \
 		scrollview2 \
 		slider \
@@ -63,7 +64,7 @@ SUBPROJECTS = Edit
 # The Objective-C source files to be compiled
 alertpanel_OBJC_FILES = alertpanel.m
 buttons_OBJC_FILES = buttons.m
-popupbuttons_OBJC_FILES = popupbuttons.m
+popupbuttons_OBJC_FILES = popupbuttons.m TestView.m ColorView.m
 fontpanel_OBJC_FILES = fontpanel.m
 matrix_OBJC_FILES = matrix.m
 menu_OBJC_FILES = menu.m
@@ -74,6 +75,7 @@ nscursor_OBJC_FILES = nscursor.m ColorView.m
 nsimage_OBJC_FILES = nsimage.m ImageView.m
 nsimagecell_OBJC_FILES = nsimagecell.m
 nsscroller_OBJC_FILES = nsscroller.m
+nstabview_OBJC_FILES = nstabview.m
 scrollview2_OBJC_FILES = scrollview2.m
 scrollview_OBJC_FILES = scrollview.m TestView.m
 slider_OBJC_FILES = slider.m
