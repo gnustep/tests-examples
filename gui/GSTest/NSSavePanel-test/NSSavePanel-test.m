@@ -284,6 +284,13 @@
   filename = [[configureForm cellAtIndex: 3] stringValue];
   directory = [[configureForm cellAtIndex: 2] stringValue];
 
+  if ([filename hasPrefix: @"/"])
+    {
+      NSRunAlertPanel (NULL, @"A valid filename can not begin with / !",
+		       @"OK", NULL, NULL);
+      return;
+    }
+
   result = [savePanel runModalForDirectory:  directory
 		      file: filename];
   switch (result)
