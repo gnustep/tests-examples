@@ -1,4 +1,11 @@
 {
+    ButtonWithValidation = {
+	Actions = (
+	);
+	Outlets = (
+	);
+	Super = NSButton;
+    };
     FirstResponder = {
 	Actions = (
 	    "activateContextHelpMode:",
@@ -158,6 +165,7 @@
 	    window,
 	    otherToolbarView,
 	    itemIndexField,
+	    buttonWithValidation,
 	    whatever
 	);
 	Super = NSObject;

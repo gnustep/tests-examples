@@ -1,10 +1,10 @@
 /*
- *  Controller.h: An application to demonstrate GNUstep toolbars 
+ *  DocumentOwner.h: An application to demonstrate GNUstep toolbars 
  *
  *  Copyright (c) 2004 Free Software Foundation, Inc.
  *  
  *  Author: Quentin Mathe <qmathe@club-internet.fr>
- *  Date: September 2004
+ *  Date: March 2004
  *
  *  This sample program is part of GNUstep.
  *
@@ -26,9 +26,34 @@
 #include <Foundation/Foundation.h>
 #include <AppKit/AppKit.h>
 
-@interface Controller : NSObject
+@interface DocumentOwner : NSDocument
 {
-
+  id newItemName;
+  id toolbarButton;
+  id firstItemSwitch;
+  id popUpField;
+  id sliderField;
+  id documentWindow;
+  id popUpMenuSize;
+  id popUpMenuDisplay;
+  id whatever;
+  //Controller *controller;
 }
+
+// Controller/owner related methods
+
+- (void) toggleToolbar: (id)sender;
+- (void) setFirstItemLabel: (id)sender;
+- (void) setSecondItemImage: (id)sender;
+- (void) newItem:(id)sender;
+- (void) popUpMenuDisplayChanged: (id)sender;
+- (void) popUpMenuSizeChanged: (id)sender;
+- (void) reflectMenuSelection: (id)sender;
+- (void) newWindow:(id)sender;
+
+// Accessors (not used currently)
+
+//- (void) setController: (Controller *)newController;
+//- (Controller *) controller;
 
 @end

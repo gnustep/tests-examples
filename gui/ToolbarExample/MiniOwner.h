@@ -1,10 +1,10 @@
 /*
- *  Controller.h: An application to demonstrate GNUstep toolbars 
+ *  MiniOwner.h: An application to demonstrate the GNUstep toolbars 
  *
  *  Copyright (c) 2004 Free Software Foundation, Inc.
  *  
  *  Author: Quentin Mathe <qmathe@club-internet.fr>
- *  Date: September 2004
+ *  Date: March 2004
  *
  *  This sample program is part of GNUstep.
  *
@@ -25,10 +25,19 @@
 
 #include <Foundation/Foundation.h>
 #include <AppKit/AppKit.h>
+#include <GNUstepGUI/GSToolbarView.h>
+#include <GNUstepGUI/GSToolbar.h>
 
-@interface Controller : NSObject
+@interface MiniOwner : NSObject
 {
-
+  id window;
+  id otherToolbarView;
+  id itemIndexField;
+  id buttonWithValidation;
+  id whatever;
 }
+
+- (void) removeItem: (id)sender;
+- (NSWindow *) window;
 
 @end

@@ -1,13 +1,14 @@
 {
-    Controller = {
+    DocumentOwner = {
 	Actions = (
 	    "toggleToolbar:",
 	    "setFirstItemLabel:",
 	    "setSecondItemImage:",
 	    "newItem:",
-	    "newWindow:",
+	    "popUpMenuDisplayChanged:",
 	    "popUpMenuSizeChanged:",
-	    "popUpMenuDisplayChanged:"
+	    "newWindow:",
+	    "reflectMenuSelection:"
 	);
 	Outlets = (
 	    newItemName,
@@ -15,11 +16,11 @@
 	    firstItemSwitch,
 	    popUpField,
 	    sliderField,
-	    window,
+	    documentWindow,
 	    popUpMenuSize,
 	    popUpMenuDisplay
 	);
-	Super = NSObject;
+	Super = NSDocument;
     };
     FirstResponder = {
 	Actions = (
