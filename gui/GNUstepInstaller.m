@@ -165,7 +165,7 @@ main(int argc, char **argv, char** env)
   NSWindow *window;
   NSTabView *tabView;
   NSTabViewItem *item;
-  NSRect winRect = {{100, 100}, {300, 300}};
+  NSRect winRect = {{100, 100}, {300, 350}};
   NSRect tabViewRect = {{10, 10}, {280, 280}};
   NSBox *slash;
   id pool = [NSAutoreleasePool new];
