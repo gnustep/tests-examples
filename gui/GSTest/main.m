@@ -25,7 +25,7 @@
 #include "GSTestProtocol.h"
 #include "testList.h"
 
-#define GSTEST_VERSION @"0.8"
+#define GSTEST_VERSION @"0.9"
 #define GSTEST_FULLID @"CVS $Date$"
 
 // If you want to add a test, please refer to testList.h 
@@ -79,6 +79,12 @@
 
 -(void) dealloc
 {
+  int i;
+  
+  for (i = 0; i < TEST_NUMBER; i++)
+    {
+      DESTROY (testState[i].principalClassInstance);
+    }
   RELEASE(bundlesPath);
   [super dealloc];
 }
@@ -86,10 +92,14 @@
 -(void) restartTest: (id) testObject
 {
   if ([testObject conformsToProtocol: @protocol(GSTest)])
-    [(<GSTest>)testObject restart];
+    {
+      [(<GSTest>)testObject restart];
+    }
   else // ! conform to protocl:
-    NSRunAlertPanel (NULL, @"The object doesn't conform to GSTest protocol", 
-		     @"OK", NULL, NULL);
+    {
+      NSRunAlertPanel (NULL, @"The object doesn't conform to GSTest protocol", 
+		       @"OK", NULL, NULL);
+    }
 }
 
 -(id) loadAndStartTestWithBundlePath: (NSString *)fullPath
@@ -104,7 +114,9 @@
       // Load the principal class of the bundle 
       principalClass = [bundle principalClass];
       if (principalClass) // succesfully loaded 
-	return [principalClass new];
+	{
+	  return AUTORELEASE ([principalClass new]);
+	}
       else // !principalClass
 	{
 	  NSRunAlertPanel (NULL, @"Could not load principal class", 
@@ -140,12 +152,16 @@
 				    testList[i].bundleName] 
 		      stringByAppendingPathComponent: testList[i].bundleName]
 		     stringByAppendingPathExtension: @"bundle"];
-      testState[i].principalClassInstance 
-	= [self loadAndStartTestWithBundlePath: bundlePath];
+      ASSIGN(testState[i].principalClassInstance,
+	     [self loadAndStartTestWithBundlePath: bundlePath]);
+
       if (testState[i].principalClassInstance)
-	testState[i].isStarted = YES;
+	{
+	  testState[i].isStarted = YES;
+	}
     }
 }
+
 -(void) startUnlistedTest: (id) sender
 {
   NSOpenPanel *openPanel;
@@ -169,6 +185,12 @@
 	}
     }
 }
+
+- (void) applicationWillTerminate: (NSNotification *)not
+{
+  RELEASE (self);
+}
+
 @end
 
 int main (void)
@@ -186,6 +208,7 @@ int main (void)
    pool = [NSAutoreleasePool new];
 
    app = [NSApplication sharedApplication];
+
    // Main Menu 
    mainMenu = AUTORELEASE ([[NSMenu alloc] initWithTitle: @"GNUstep Test"]);
    // Info SubMenu
@@ -216,6 +239,7 @@ int main (void)
 			    keyEquivalent: @""];
        [menuItem setTag: i]; 
        testState[i].isStarted = NO;
+       testState[i].principalClassInstance = nil;
      }
    // Windows SubMenu
    menuItem = [mainMenu addItemWithTitle:@"Windows" 
@@ -236,12 +260,11 @@ int main (void)
    [app setWindowsMenu: windowsMenu];
    appController = [Controller new];
    [app setDelegate: appController];
+   RELEASE (pool);
 
-   RELEASE (pool);
-   pool = [NSAutoreleasePool new];
+   /* The following will never return!  */
    [app run];
-   RELEASE (appController); 
-   RELEASE (pool);
+   
    return 0;
 }
 
