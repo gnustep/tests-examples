@@ -42,7 +42,7 @@
 ADDITIONAL_CPPFLAGS += 
 
 # Additional flags to pass to the Objective-C compiler
-ADDITIONAL_OBJCFLAGS += \
+ADDITIONAL_OBJCFLAGS += -Wall \
 	-I../Source/$(GNUSTEP_TARGET_CPU)/$(GNUSTEP_TARGET_OS)
 
 # Additional flags to pass to the C compiler
@@ -50,15 +50,13 @@ ADDITIONAL_CFLAGS +=
 #ADDITIONAL_CFLAGS += 
 
 # Additional include directories the compiler should search
-ADDITIONAL_INCLUDE_DIRS += -I../Headers \
-	-I../../xraw/Headers \
-	-I../../xraw/Source \
+ADDITIONAL_INCLUDE_DIRS += -I../Headers -I../Source
 
 # Additional LDFLAGS to pass to the linker
 ADDITIONAL_LDFLAGS += 
 
 # Additional library directories the linker should search
-ADDITIONAL_LIB_DIRS += -L../Source/$(GNUSTEP_OBJ_DIR) -L/usr/local/lib
+ADDITIONAL_LIB_DIRS += -L../Source/$(GNUSTEP_OBJ_DIR)
 
 ADDITIONAL_TOOL_LIBS +=
 

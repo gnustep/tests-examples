@@ -27,7 +27,7 @@
 */ 
 
 #import <AppKit/AppKit.h>
-#import <gnustep/xraw/XRDrawingEngine.h>
+#import <gnustep/xgps/XGContext.h>
 #include "TestView.h"
 #include <config.h>
 
