@@ -44,7 +44,6 @@ TEST_APP_NAME = \
 		buttons \
 		popupbuttons \
 		fontpanel \
-		gstable \
 		gstextnetwork \
 		matrix \
 		menu \
