@@ -23,9 +23,10 @@ FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW.  [See GNU
 GPL for more details]
 
 AUTHORS
-This demo program is part of the GNUstep library; it was written by 
-Nicola Pero <n.pero@mi.flashnet.it>.  The Free Software Foundation 
-owns the copyright.
+This demo program is part of the GNUstep library; it was written by
+Nicola Pero <n.pero@mi.flashnet.it>.  The Free Software Foundation
+owns the copyright.  Rob Burns <rburns@softhome.net> contributed whois
+support and sizable buttons.
 
 BUGS
 Send bug reports to <bug-gnustep@gnu.org>
