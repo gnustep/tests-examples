@@ -1,0 +1,25 @@
+{\rtf1\ansi{\fonttbl\f0\fswiss Helvetica;}
+\pard\plain\f0\fs24 {\fs32\b INK }is the GNUstep text editor. \par
+\pard\plain\f0\fs24 It is based on the GNUstep implementation of 
+{\b NSText} which is still partialy based on work by {\b Daniel
+B*hringer}. His code is still used for the layout, which is now 
+done in the class GSSimpleLayoutManager.\par
+\pard\plain\f0\fs24 \par
+\pard\plain\f0\fs24 What this application already does is laying out text (plain or RTF). You
+can modify the selection, format and text as with NeXT's NSText class. There are
+problems remaining however (pasting newline characters at the end of 
+a paragraph and performance on very large text)... but these problems 
+will eventually fixed :-)\par
+\pard\plain\f0\fs24 \par
+\pard\plain\f0\fs24 Some annotations: \par
+\pard\plain\f0\fs24 \par
+\pard\plain\f0\fs24 At implementation level rtf is not treated different from rtfd since both are handled by NSAttributed string.\par
+\pard\plain\f0\fs24 \par
+\pard\plain\f0\fs24 Words wraps use the selectionGranularity configuration for word/ paragraph boundry detection.\par
+\pard\plain\f0\fs24 \par
+\pard\plain\f0\fs24 Tabs are not treated differently from other
+characters but nevertheles work as expected thanks to the
+implementation of -sizeWithAttributes: and -drawAtPoint: 
+(in plain mode tab information comes from [NSParagraphStyle defaultParagraphStyle]).\par
+\pard\plain\f0\fs24 \par
+}

@@ -1,0 +1,27 @@
+{
+  ApplicationName = "Ink";
+  ApplicationDescription = "An Example of how to use NSTextView";
+  ApplicationRelease = "0.1";
+  Authors = ("Fred Kiefer <fredkiefer@gmx.de>");
+  Copyright = "Copyright (c) 2000 Fred Kiefer <fredkiefer@gmx.de>";
+  CopyrightDescription = "This program is released under the GNU General Public License"; 
+  NSTypes = (
+        {
+             NSName = "rtf";
+             NSHumanReadableName = "RTF Document";
+             NSUnixExtensions = ("rtf");
+             NSDOSExtensions = ("rtf");
+	     NSIcon = FileIcon_rtf_Tile.jpg;
+             NSRole = Editor;
+             NSDocumentClass = Document;
+        },
+        {
+             NSName = "text";
+             NSHumanReadableName = "Text Document";
+             NSUnixExtensions = ("txt");
+             NSDOSExtensions = ("txt");
+             NSRole = Editor;
+             NSDocumentClass = Document;
+        }
+  );
+}
