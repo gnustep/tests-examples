@@ -1,3 +1,10 @@
+Tue Feb 22 18:19:11 2000  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	Contributed by Fred Kiefer: 
+	* Edit/Controller.m ([Controller -applicationDidFinishLaunching:]): 
+	Use the font manager.
+	* Edit/Edit.m (createMenu): Create the format menu.
+	
 Tue Jan 25 15:02:41 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* fontpanel.m: Rewritten completely, based on a contribution 
