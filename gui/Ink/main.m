@@ -121,6 +121,7 @@
   [info addItemWithTitle: @"Help"
 		  action: @selector (orderFrontHelpPanel:)
 	   keyEquivalent: @"?"];
+  RELEASE(info);
 
   // Create the file submenu
   file = [NSMenu new];
@@ -158,7 +159,7 @@
   [file addItemWithTitle: @"Close"
 		  action: @selector(close)
 	   keyEquivalent: @""];
-
+  RELEASE(file);
 
   // Create the edit submenu
   edit = [NSMenu new];
@@ -188,6 +189,7 @@
   [edit addItemWithTitle: @"Select All"
   	          action: @selector(selectAll:)
 	   keyEquivalent: @"a"];
+  RELEASE(edit);
 
   // Create the format submenu
   format = [[NSFontManager sharedFontManager] fontMenu: YES];
@@ -221,6 +223,7 @@
   [format addItemWithTitle: @"Paste Font" 
 	  action: @selector(pasteFont:) 
 	  keyEquivalent: @"4"];
+  RELEASE(format);
 
   // Create the text submenu
   text = [NSMenu new];
@@ -245,6 +248,7 @@
   [text addItemWithTitle: @"Paste Ruler" 
 	action: @selector(pasteRuler:) 
 	keyEquivalent: @"2"];
+  RELEASE(text);
 
   // Create the printing submenu
   print = [NSMenu new];
@@ -261,7 +265,7 @@
   [print addItemWithTitle: @"Spell Check"
 		  action: @selector(checkSpelling:)
 	   keyEquivalent: @"C"];
-
+  RELEASE(print);
 
   // Create the windows submenu
   windows = [NSMenu new];
@@ -281,15 +285,18 @@
 	      keyEquivalent: @"w"];
 
   [NSApp setWindowsMenu: windows];
-  
+  RELEASE(windows);
+
   // Create the service submenu
   services = [NSMenu new];
   [menu setSubmenu: services
 	   forItem: [menu itemWithTitle: @"Services"]];
 
   [NSApp setServicesMenu: services];
+  RELEASE(services);
 
   [NSApp setMainMenu: menu];
+  RELEASE(menu);
 
   RELEASE(pool);
 }
