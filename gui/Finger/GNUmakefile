@@ -1,9 +1,9 @@
-#   GNUmakefile: main makefile for GNUstep GUI Demo Suite
+#   GNUmakefile: makefile for Finger.app
 #
-#   Copyright (C) 1999 Free Software Foundation, Inc.
+#   Copyright (C) 2000 Free Software Foundation, Inc.
 #
 #   Author:  Nicola Pero <n.pero@mi.flashnet.it>
-#   Date: 1999
+#   Date: 2000
 #   
 #   This file is part of GNUstep.
 #   
@@ -20,46 +20,28 @@
 #   You should have received a copy of the GNU General Public License
 #   along with this program; if not, write to the Free Software
 #   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. */
+
 include $(GNUSTEP_MAKEFILES)/common.make
 
-OBJCFLAGS += -Wall
+APP_NAME = Finger
+Finger_OBJC_FILES = \
+  main.m \
+  Controller.m \
+  FingerWindow.m \
+  PreferencesController.m \
+  TrivialTextView.m
+Finger_HEADERS = \
+  Finger.h \
+  Controller.h \
+  FingerWindow.h \
+  PreferencesController.h \
+  TrivialTextView.h 
+# Add images here when we have them
+Finger_RESOURCE_FILES = 
 
-#
-# Each test is a bundle subproject, in its own dir
-#
-SUBPROJECTS = \
-  GSHbox-test \
-  KeyboardInput-test \
-  NSBox-test \
-  NSColorList-test \
-  NSColorWell-test \
-  NSForm-test \
-  NSSavePanel-test \
-  NSScrollView-test \
-  NSSlider-test \
-  NSSplitView-test \
-  StringDrawing-test
-
-#
-# MAIN APP
-#
-APP_NAME = GSTest
-
-GSTest_HEADERS = \
-        testList.h \
-        testProtocol.h 
-
-GSTest_OBJC_FILES = \
-        main.m 
 
 -include GNUmakefile.preamble
-
--include GNUmakefile.local
-
-include $(GNUSTEP_MAKEFILES)/aggregate.make
+-include ../GNUmakefile.local
 include $(GNUSTEP_MAKEFILES)/application.make
-include $(GNUSTEP_MAKEFILES)/bundle.make
-
 -include GNUmakefile.postamble
-
 

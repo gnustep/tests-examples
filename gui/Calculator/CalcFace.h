@@ -39,5 +39,7 @@ fractionalDigits: (int)fractionalDigits;
 -(void) setError;
 // Display the window after launching the app
 - (void)applicationDidFinishLaunching: (NSNotification *)aNotification;
+// Display the Info Panel
+-(void) runInfoPanel: (id) sender;
 @end
 

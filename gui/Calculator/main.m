@@ -56,12 +56,18 @@ main (void)
   pool = [NSAutoreleasePool new];
   initialize_gnustep_backend ();
   app = [NSApplication sharedApplication];
-  [app setApplicationIconImage: [NSImage imageNamed: @"Calculator.app.tiff"]];
-  mainMenu = [NSMenu new];
+  [app setApplicationIconImage: [NSImage imageNamed: 
+					   @"Calculator.app.tiff"]];
+  mainMenu = AUTORELEASE ([NSMenu new]);
+  // Info
+  [mainMenu addItemWithTitle: @"Info..." 
+	    action: @selector (runInfoPanel:) 
+	    keyEquivalent: @""];
+  // Edit SubMenu
   menuItem = [mainMenu addItemWithTitle: @"Edit" 	
 		       action: NULL 
 		       keyEquivalent: @""];
-  menu = [NSMenu new];
+  menu = AUTORELEASE ([NSMenu new]);
   [mainMenu setSubmenu: menu forItem: menuItem];
   /*
   [menu addItemWithTitle: @"Cut" 
@@ -79,7 +85,10 @@ main (void)
   [menu addItemWithTitle: @"SelectAll" 
 	action: @selector (selectAll:) 
 	keyEquivalent: @"a"];
-  
+
+  [mainMenu addItemWithTitle: @"Hide" 
+	action: @selector (hide:) 
+	keyEquivalent: @"h"];  
   [mainMenu addItemWithTitle: @"Quit" 
 	    action: @selector (terminate:)
 	    keyEquivalent: @"q"];	
@@ -95,7 +104,6 @@ main (void)
   [app setDelegate: face];
   
   [app run];
-  [pool release];
   return 0;
 }
 

@@ -23,6 +23,13 @@
 #ifndef INFO_PANEL_H
 #define INFO_PANEL_H
 
+/*
+ *
+ * This class is unused at the moment; for the InfoPanel 
+ * we are using the standardInfoPanel provided by NSApplication
+ *
+ */
+
 #include <Foundation/Foundation.h>
 #include <AppKit/AppKit.h>
 

@@ -117,6 +117,7 @@ main(int argc, char **argv, char** env)
   mchange = [[NSButton alloc] initWithFrame: bf5];
   [mchange setButtonType: NSMomentaryChangeButton];
   [mchange setTitle: @"MomentaryChange"];
+  [mchange setAlternateTitle: @"Alternate"];
 
   onoff = [[NSButton alloc] initWithFrame: bf6];
   [onoff setButtonType: NSOnOffButton];
@@ -144,10 +145,10 @@ main(int argc, char **argv, char** env)
   t3 = [[NSTextField alloc] initWithFrame: tf3];
   [t3 setBordered: NO];
   [t3 setTextColor: [NSColor redColor]];
-  [t0 setNextText: t1];
-  [t1 setNextText: t2];
-  [t2 setNextText: t3];
-  [t3 setNextText: t0];
+  [t0 setNextText: t3];
+  [t1 setNextText: t0];
+  [t2 setNextText: t1];
+  [t3 setNextText: t2];
   [v2 addSubview: t0];
   [v2 addSubview: t1];
   [v2 addSubview: t2];

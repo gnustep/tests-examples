@@ -1,11 +1,11 @@
 /*
- *  CurrencyConverter.h
+ *  Controller.h: Main Object of Finger.app
  *
- *  Copyright (c) 1999 Free Software Foundation, Inc.
+ *  Copyright (c) 2000 Free Software Foundation, Inc.
  *  
  *  Author: Nicola Pero
- *  Date: November 1999
- * 
+ *  Date: February 2000
+ *
  *  This sample program is part of GNUstep.
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -23,28 +23,19 @@
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-// Library headers
-#include <Foundation/Foundation.h>
-#include <AppKit/AppKit.h>
+#import "Finger.h"
+#import "FingerWindow.h"
+#import "PreferencesController.h"
 
-// @interface 'class' : 'superClass'
-@interface CurrencyConverter : NSObject
+@interface Controller : NSObject
 {
-  // Instance variables
-  NSTextField* field[3];
-  NSWindow* window;
+  /* Preferences Panel */
+  PreferencesController *pref;
 }
-// Methods
-- (id)init;
-- (void)dealloc;
-- (void)controlTextDidEndEditing: (NSNotification *)aNotification;
-- (void)applicationDidFinishLaunching: (NSNotification *)aNotification;
--(void) runInfoPanel: (id) sender;
++(void)initialize;
+-(void)applicationDidFinishLaunching: (NSNotification *)aNotification;
+-(void)runInfoPanel: (id)sender;
+-(void)runPreferencesPanel: (id)sender;
+-(void)startNewFingerWindow: (id)sender;
 @end
-
-
-
-
-
-
 

@@ -1,11 +1,11 @@
 /*
- *  CurrencyConverter.h
+ *  FingerWindow.h: One of Finger.app windows
  *
- *  Copyright (c) 1999 Free Software Foundation, Inc.
+ *  Copyright (c) 2000 Free Software Foundation, Inc.
  *  
  *  Author: Nicola Pero
- *  Date: November 1999
- * 
+ *  Date: February 2000
+ *
  *  This sample program is part of GNUstep.
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -23,28 +23,29 @@
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-// Library headers
-#include <Foundation/Foundation.h>
-#include <AppKit/AppKit.h>
+#import "Finger.h"
+#import "Controller.h"
+#import "TrivialTextView.h"
 
-// @interface 'class' : 'superClass'
-@interface CurrencyConverter : NSObject
+@interface FingerWindow : NSWindow
 {
-  // Instance variables
-  NSTextField* field[3];
-  NSWindow* window;
+  NSButton *stopButton;
+  NSForm *form;
+  TrivialTextView *text;
+  
+  NSPipe *pipe[2];
+  NSTask *task; 
 }
-// Methods
-- (id)init;
-- (void)dealloc;
-- (void)controlTextDidEndEditing: (NSNotification *)aNotification;
-- (void)applicationDidFinishLaunching: (NSNotification *)aNotification;
--(void) runInfoPanel: (id) sender;
+-(void)resetResults: (id)sender;
+-(void)saveResults: (id)sender;
+-(void)startFinger: (id)sender;
+-(void)startPing: (id)sender;
+-(void)startTraceroute: (id)sender;
+-(void)startTask: (NSString *)fullBinaryPath
+    withArgument: (NSString *)argument;
+-(void)stopTask: (id)sender;
+-(void)taskEnded: (NSNotification *)aNotification;
+-(void)readData: (NSNotification *)aNotification;
+-(void)controlTextDidEndEditing: (NSNotification *)aNotification;
 @end
-
-
-
-
-
-
 

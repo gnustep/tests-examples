@@ -1,4 +1,4 @@
-#   GNUmakefile: main makefile for GNUstep GUI Demo Suite
+#   GNUmakefile 
 #
 #   Copyright (C) 1999 Free Software Foundation, Inc.
 #
@@ -19,47 +19,23 @@
 #   
 #   You should have received a copy of the GNU General Public License
 #   along with this program; if not, write to the Free Software
-#   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. */
+#   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 include $(GNUSTEP_MAKEFILES)/common.make
 
 OBJCFLAGS += -Wall
 
 #
-# Each test is a bundle subproject, in its own dir
+# We are creating a bundle
 #
-SUBPROJECTS = \
-  GSHbox-test \
-  KeyboardInput-test \
-  NSBox-test \
-  NSColorList-test \
-  NSColorWell-test \
-  NSForm-test \
-  NSSavePanel-test \
-  NSScrollView-test \
-  NSSlider-test \
-  NSSplitView-test \
-  StringDrawing-test
-
-#
-# MAIN APP
-#
-APP_NAME = GSTest
-
-GSTest_HEADERS = \
-        testList.h \
-        testProtocol.h 
-
-GSTest_OBJC_FILES = \
-        main.m 
+BUNDLE_NAME = StringDrawing-test
+StringDrawing-test_OBJC_FILES = StringDrawing-test.m
+StringDrawing-test_PRINCIPAL_CLASS = StringDrawingTest
 
 -include GNUmakefile.preamble
 
 -include GNUmakefile.local
 
-include $(GNUSTEP_MAKEFILES)/aggregate.make
-include $(GNUSTEP_MAKEFILES)/application.make
 include $(GNUSTEP_MAKEFILES)/bundle.make
 
 -include GNUmakefile.postamble
-
 

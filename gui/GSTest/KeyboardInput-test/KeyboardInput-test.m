@@ -1,9 +1,9 @@
 /* KeyboardInput-test.m: Keyboard Input demo/test
 
-   Copyright (C) 1999 Free Software Foundation, Inc.
+   Copyright (C) 1999, 2000 Free Software Foundation, Inc.
 
    Author:  Nicola Pero <n.pero@mi.flashnet.it>
-   Date: 1999
+   Date: 1999, 2000
    
    This file is part of GNUstep.
    
@@ -22,7 +22,7 @@
    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. */
 #include <Foundation/Foundation.h>
 #include <AppKit/AppKit.h>
-#include <AppKit/GSHbox.h>
+#include <AppKit/GSTable.h>
 #include <AppKit/GSVbox.h>
 #include "../GSTestProtocol.h"
 
@@ -50,148 +50,253 @@ static NSString *modifierTitle[8] =
   @"NSNumericPadKeyMask"
 };
 
-// Same as a switch button, which you can't press.
-@interface CheckBox: NSButton
+static void
+set_standard_properties (NSTextField *tf, NSTextAlignment align)
 {
+  [tf setEditable: NO];
+  [tf setSelectable: NO];
+  [tf setBezeled: NO];
+  [tf setDrawsBackground: NO];
+  [tf setAlignment: align];
+  [tf setAutoresizingMask: NSViewWidthSizable | NSViewMinYMargin];
+}
+
+/* An NSTextField which can become invisible on request */
+@interface ModifierEntry: NSTextField
+{
+  BOOL is_visible;
+}
+-(void)setVisible: (BOOL) flag;
+@end
+
+@implementation ModifierEntry
+-(void)setVisible: (BOOL) flag
+{
+  if (is_visible != flag)
+    [self setNeedsDisplay];
+  is_visible = flag;
+}
+-(void) drawRect: (NSRect)aRect
+{
+  if (is_visible == NO)
+    return;
+
+  [super drawRect: aRect];
 }
 @end
 
-@implementation CheckBox: NSButton
+/* The object displaying the list of modifiers */
+@interface ModifiersList: GSVbox
+{
+  ModifierEntry *mod[8];
+}
+-(void)setModifiers: (unsigned int)flags;
+@end
+
+@implementation ModifiersList: GSVbox
 {
 }
 -(id) init
 {
-  self = [super init];
-  [self setButtonType: NSSwitchButton];
-  [self setBordered: NO];
+  int i;
+
+  [super init];
+
+  [self setDefaultMinYMargin: 2];
+
+  /* Start from 7 so that mod[0] is the uppest entry */
+  for (i = 7; i > -1; i--)
+    {
+      mod[i] = AUTORELEASE ([ModifierEntry new]);
+      set_standard_properties (mod[i], NSLeftTextAlignment);
+      /* setStringValue just to compute dimension */
+      [mod[i] setStringValue: modifierTitle[i]];
+      [mod[i] sizeToFit];
+      [mod[i] setVisible: NO];
+      [self addView: mod[i]];
+    }
   return self;
 }
-- (BOOL) acceptsFirstResponder
+-(void)setModifiers: (unsigned int)flags
 {
-  return NO;
-}
--(void) keyDown: (NSEvent *)theEvent
-{
-  if (next_responder)
-    return [next_responder keyDown: theEvent];
-  else
-    return [self noResponderFor: @selector(keyDown:)];
-}
--(void) mouseDown: (NSEvent *)theEvent
-{
-  if (next_responder)
-    return [next_responder mouseDown: theEvent];
-  else
-    return [self noResponderFor: @selector(mouseDown:)];
-}
-@end
-
-@interface inputTestView: NSView
-{
-  CheckBox *modifierCheckBox[8];
-  NSTextField *keyCodeField;
-  NSTextField *charactersField;
-  NSTextField *charactersIgnoringModifiersField;
-  NSTextFieldCell *cell;
-}
--(void) setCheckBox: (CheckBox *)theCheckBox withNumber: (int)checkBoxNumber; 
--(void) setKeyCodeField: (NSTextField *)theField;
--(void) setCharactersField: (NSTextField *)theField;
--(void) setCharactersIgnoringModifiersField: (NSTextField *)theField;
-@end
-
-@implementation inputTestView
-{
-  CheckBox *modifierCheckBox[8];
-  NSTextField *keyCodeField;
-  NSTextField *charactersField;
-  NSTextField *charactersIgnoringModifiersField;
-  NSTextFieldCell *cell;
-}
--(id) initWithFrame: (NSRect)aFrame
-{
-  cell = [NSTextFieldCell new];
-  [cell setStringValue: @"Type Keys in Here"];
-  [cell setBackgroundColor: [NSColor controlColor]];
-  [cell setTextColor: [NSColor controlTextColor]];
-  [cell setDrawsBackground: YES];
-  [cell setBordered: YES];
-  [cell setSelectable: NO];
-  [cell setAlignment: NSCenterTextAlignment];
-  return [super initWithFrame: aFrame];
-}
--(void) dealloc
-{
-  [cell release];
-  [super dealloc];
-}
--(void) setCheckBox: (CheckBox *) theCheckBox withNumber: (int) checkBoxNumber 
-{
-  if (modifierCheckBox[checkBoxNumber])
-    [modifierCheckBox[checkBoxNumber] release];
-  modifierCheckBox[checkBoxNumber] = [theCheckBox retain];
-}
--(void) setKeyCodeField: (NSTextField *)theField
-{
-  if (keyCodeField)
-    [keyCodeField release];
-  keyCodeField = [theField retain];
-}
--(void) setCharactersField: (NSTextField *)theField
-{
-  if (charactersField)
-    [charactersField release];
-  charactersField = [theField retain];
-}
--(void) setCharactersIgnoringModifiersField: (NSTextField *)theField
-{
-  if (charactersIgnoringModifiersField)
-    [charactersIgnoringModifiersField release];
-  charactersIgnoringModifiersField = [theField retain];
-}
-- (BOOL) acceptsFirstResponder
-{
-  return YES;
-}
-- (BOOL) resignFirstResponder
-{
-  return NO;
-}
--(BOOL) performKeyEquivalent: (NSEvent *)theEvent
-{
-  [self keyDown: theEvent];
-  return YES;
-}
--(void) keyDown: (NSEvent *)theEvent
-{
-  unsigned int flags = [theEvent modifierFlags];
-  int i;
+  int i, entries = 0;
 
   for (i = 0; i < 8; i++)
     {
       if (flags & modifiers[i])
-	[modifierCheckBox[i] setState: 1];
-      else 
-	[modifierCheckBox[i] setState: 0];
+	{
+	  [mod[entries] setStringValue: modifierTitle[i]];
+	  [mod[entries] setVisible: YES];
+	  entries++;
+	}
     }
 
-  [keyCodeField setIntValue: [theEvent keyCode]];
-  [charactersField setStringValue: [theEvent characters]];
-  [charactersIgnoringModifiersField 
-    setStringValue: [theEvent charactersIgnoringModifiers]];
+  for (i = entries; i < 8; i++)
+    {
+      [mod[i] setVisible: NO];
+    }
 }
--(void) drawRect: (NSRect)aRect
+@end
+
+/* The main view in our test window */
+@interface InputTestView: NSView
 {
-  [cell drawWithFrame: [self bounds]
-	inView: self];
+  /* If NO, we behave as a common NSView */
+  /* If YES, we catch all key events     */
+  BOOL enabled;
+  
+  ModifiersList *modifiersList;
+  NSTextField *keyCodeField;
+  NSTextField *charactersField;
+  NSTextField *charactersIgnoringModifiersField;
+}
+-(void) setEnabled: (BOOL)flag;
+@end
+
+@implementation InputTestView
+{
+}
+-(id) init
+{
+  NSBox *box;
+  NSBox *borderBox;
+  GSTable *table;
+  NSTextField *entry;
+
+  [super init];
+  
+  // The little results table
+  table = AUTORELEASE ([[GSTable alloc] initWithNumberOfRows: 4
+					numberOfColumns: 2]);
+  // Set resizing properties
+  [table setXResizingEnabled: NO  forColumn: 0];
+  [table setXResizingEnabled: YES forColumn: 1];
+  
+  [table setYResizingEnabled: NO forRow: 0];
+  [table setYResizingEnabled: NO forRow: 1];
+  [table setYResizingEnabled: NO forRow: 2];
+  [table setYResizingEnabled: NO forRow: 3];
+
+  [table setAutoresizingMask: NSViewWidthSizable | NSViewMinYMargin];
+
+  //Add entries in the table
+  entry = AUTORELEASE ([NSTextField new]);
+  set_standard_properties (entry, NSRightTextAlignment);
+  [entry setStringValue: @"keyCode:"];
+  [entry sizeToFit];
+  [table putView: entry atRow: 3 column: 0 withMargins: 2];
+
+  entry = AUTORELEASE ([NSTextField new]);
+  set_standard_properties (entry, NSRightTextAlignment);
+  [entry setStringValue: @"characters:"];
+  [entry sizeToFit];
+  [table putView: entry atRow: 2 column: 0 withMargins: 2];
+
+  entry = AUTORELEASE ([NSTextField new]);
+  set_standard_properties (entry, NSRightTextAlignment);
+  [entry setStringValue: @"charactersIgnoringModifiers:"];
+  [entry sizeToFit];
+  [table putView: entry atRow: 1 column: 0 withMargins: 2];
+
+  entry = AUTORELEASE ([NSTextField new]);
+  set_standard_properties (entry, NSRightTextAlignment);
+  [entry setStringValue: @"modifiers:"];
+  [entry sizeToFit];
+  [table putView: entry atRow: 0 column: 0 withMargins: 2];
+
+  keyCodeField = AUTORELEASE ([NSTextField new]);
+  set_standard_properties (keyCodeField, NSLeftTextAlignment);
+  [keyCodeField setStringValue: @" "];
+  [keyCodeField sizeToFit];
+  [table putView: keyCodeField atRow: 3 column: 1 withMargins: 2];
+
+  charactersField = AUTORELEASE ([NSTextField new]);
+  set_standard_properties (charactersField, NSLeftTextAlignment);
+  [charactersField setStringValue: @" "];
+  [charactersField sizeToFit];
+  [table putView: charactersField atRow: 2 column: 1 withMargins: 2];
+
+  charactersIgnoringModifiersField = AUTORELEASE ([NSTextField new]);
+  set_standard_properties (charactersIgnoringModifiersField, 
+			   NSLeftTextAlignment);
+  [charactersIgnoringModifiersField setStringValue: @" "];
+  [charactersIgnoringModifiersField sizeToFit];
+  [table putView: charactersIgnoringModifiersField 
+	 atRow: 1 column: 1 withMargins: 2];
+
+  modifiersList = AUTORELEASE ([ModifiersList new]);
+  [table putView: modifiersList atRow: 0 column: 1 withMargins: 2];
+
+  box = AUTORELEASE ([NSBox new]);
+  [box setTitle: @"Information On Latest Key Event"];
+  [box setTitlePosition: NSAtTop];
+  [box setBorderType: NSGrooveBorder];
+  [box addSubview: table];
+  [box sizeToFit];
+  [box setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
+
+  borderBox = AUTORELEASE ([NSBox new]);
+  [borderBox setTitlePosition: NSNoTitle];
+  [borderBox setBorderType: NSNoBorder];
+  [borderBox addSubview: box];
+  [borderBox sizeToFit];
+  [borderBox setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
+
+  [self setFrameSize: [borderBox frame].size];
+  [borderBox setFrameOrigin: NSMakePoint (0, 0)];
+  [self addSubview: borderBox];
+  enabled = NO;
+  return self;
+}
+
+/* NB: We do not need any dealloc method.  We are not retaining anything. */
+
+-(void) setEnabled: (BOOL)flag;
+{
+  enabled = flag;
+  [[self window] makeFirstResponder: self];
+}
+- (BOOL) acceptsFirstResponder
+{
+  return enabled;
+}
+- (BOOL) resignFirstResponder
+{
+  return (!enabled);
+}
+-(BOOL) performKeyEquivalent: (NSEvent *)theEvent
+{
+  if (enabled)
+    {
+      [self keyDown: theEvent];
+      return YES;
+    }
+  else
+    return [super performKeyEquivalent: theEvent];
+}
+-(void) keyDown: (NSEvent *)theEvent
+{
+  if (enabled)
+    {
+      [modifiersList setModifiers: [theEvent modifierFlags]];
+      [keyCodeField setIntValue: [theEvent keyCode]];
+      [charactersField setStringValue: [theEvent characters]];
+      [charactersIgnoringModifiersField 
+	setStringValue: [theEvent charactersIgnoringModifiers]];
+    }
+  else
+    [super keyDown: theEvent];
 }
 @end 
 
 @interface KeyboardInputTest: NSObject <GSTest>
 {
+  InputTestView *v;
   NSWindow *win;
 }
 -(void) restart;
+- (void)windowDidBecomeKey: (NSNotification *)aNotification;
+- (void)windowDidResignKey: (NSNotification *)aNotification;
 @end
 
 @implementation KeyboardInputTest: NSObject
@@ -200,176 +305,11 @@ static NSString *modifierTitle[8] =
 }
 -(id) init 
 {
-  GSHbox *hbox;
-  GSVbox *vbox;
-  NSBox *keyBox;
-  GSVbox *keyVbox;
-  GSHbox *keyCodeHbox;
-  GSHbox *charactersHbox;
-  GSHbox *charactersIgnoringModifiersHbox;
-  NSTextField *keyCodeName;
-  NSTextField *charactersName;
-  NSTextField *charactersIgnoringModifiersName;
-  NSTextField *keyCodeField;
-  NSTextField *charactersField;
-  NSTextField *charactersIgnoringModifiersField;
-  NSBox *modifierBox;
-  GSVbox *modifierVbox;
-  CheckBox *modifierCheckBox[8];
-  inputTestView *inputOnMe;
   NSRect winFrame;
-  int i;
 
-  inputOnMe = [[inputTestView alloc] 
-		initWithFrame: NSMakeRect (0, 0, 120, 120)];
-  [inputOnMe autorelease];
-  [inputOnMe setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
-
-  modifierVbox = [[GSVbox new] autorelease];
-  [modifierVbox setDefaultMinYMargin: 10];
-  [modifierVbox setBorder: 10];
-
-  for (i = 0; i < 8; i++)
-    {
-      modifierCheckBox[i] = [[CheckBox new] autorelease];
-      [modifierCheckBox[i] setTitle: modifierTitle[i]];
-      [modifierCheckBox[i] sizeToFit];
-      [modifierVbox addView: modifierCheckBox[i]];
-      [inputOnMe setCheckBox: modifierCheckBox[i] withNumber: i];
-    }
-
-  modifierBox = [[NSBox new] autorelease];
-  [modifierBox setTitle: @"Modifiers"];
-  [modifierBox setTitlePosition: NSAtTop];
-  [modifierBox setBorderType: NSGrooveBorder];
-  [modifierBox addSubview: modifierVbox];
-  [modifierBox sizeToFit];
-  [modifierBox setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
-
-  keyVbox = [[GSVbox new] autorelease];
-  [keyVbox setDefaultMinYMargin: 10];
-  [keyVbox setBorder: 10];
-  [keyVbox setAutoresizingMask: NSViewWidthSizable];
-
-  keyCodeHbox = [[GSHbox new] autorelease];
-  [keyCodeHbox setDefaultMinXMargin: 10];
-  [keyCodeHbox setAutoresizingMask: NSViewWidthSizable];
-
-  keyCodeName = [[NSTextField new] autorelease];
-  [keyCodeName setDrawsBackground: NO];
-  [keyCodeName setEditable: NO];
-  [keyCodeName setSelectable: NO];
-  [keyCodeName setBezeled: NO];
-  [keyCodeName setAlignment: NSLeftTextAlignment];
-  [keyCodeName setStringValue: @"keyCode:"];
-  [keyCodeName sizeToFit];
-  [keyCodeHbox addView: keyCodeName
-	       enablingXResizing: NO];
-
-  keyCodeField = [[NSTextField new] autorelease];
-  [keyCodeField setDrawsBackground: YES];
-  [keyCodeField setBackgroundColor: [NSColor controlBackgroundColor]];
-  [keyCodeField setEditable: NO];
-  [keyCodeField setSelectable: NO];
-  [keyCodeField setBezeled: YES];
-  [keyCodeField setAlignment: NSLeftTextAlignment];
-  [keyCodeField setStringValue: @"Not Set"];
-  [keyCodeField sizeToFit];
-  [keyCodeField setAutoresizingMask: NSViewWidthSizable];
-  [keyCodeHbox addView: keyCodeField];
-  [inputOnMe setKeyCodeField: keyCodeField];
-
-  [keyVbox addView: keyCodeHbox];
-
-  charactersHbox = [[GSHbox new] autorelease];
-  [charactersHbox setDefaultMinXMargin: 10];
-  [charactersHbox setAutoresizingMask: NSViewWidthSizable];
-
-  charactersName = [[NSTextField new] autorelease];
-  [charactersName setDrawsBackground: NO];
-  [charactersName setEditable: NO];
-  [charactersName setSelectable: NO];
-  [charactersName setBezeled: NO];
-  [charactersName setAlignment: NSLeftTextAlignment];
-  [charactersName setStringValue: @"characters:"];
-  [charactersName sizeToFit];
-  [charactersHbox addView: charactersName
-		  enablingXResizing: NO];
-
-  charactersField = [[NSTextField new] autorelease];
-  [charactersField setDrawsBackground: YES];
-  [charactersField setBackgroundColor: [NSColor controlBackgroundColor]];
-  [charactersField setEditable: NO];
-  [charactersField setSelectable: NO];
-  [charactersField setBezeled: YES];
-  [charactersField setAlignment: NSLeftTextAlignment];
-  [charactersField setStringValue: @"Not Set"];
-  [charactersField sizeToFit];
-  [charactersField setAutoresizingMask: NSViewWidthSizable];
-  [charactersHbox addView: charactersField];
-  [inputOnMe setCharactersField: charactersField];  
-  
-  [keyVbox addView: charactersHbox];
-
-  charactersIgnoringModifiersHbox = [[GSHbox new] autorelease];
-  [charactersIgnoringModifiersHbox setDefaultMinXMargin: 10];
-  [charactersIgnoringModifiersHbox setAutoresizingMask: NSViewWidthSizable];
-
-  charactersIgnoringModifiersName = [[NSTextField new] autorelease];
-  [charactersIgnoringModifiersName setDrawsBackground: NO];
-  [charactersIgnoringModifiersName setEditable: NO];
-  [charactersIgnoringModifiersName setSelectable: NO];
-  [charactersIgnoringModifiersName setBezeled: NO];
-  [charactersIgnoringModifiersName setAlignment: NSLeftTextAlignment];
-  [charactersIgnoringModifiersName 
-    setStringValue: @"charactersIgnoringModifiers:"];
-  [charactersIgnoringModifiersName sizeToFit];
-  [charactersIgnoringModifiersHbox addView: charactersIgnoringModifiersName
-				   enablingXResizing: NO];
-
-  charactersIgnoringModifiersField = [[NSTextField new] autorelease];
-  [charactersIgnoringModifiersField setDrawsBackground: NO];
-  [charactersIgnoringModifiersField setDrawsBackground: YES];
-  [charactersIgnoringModifiersField setBackgroundColor: 
-				      [NSColor controlBackgroundColor]];
-  [charactersIgnoringModifiersField setEditable: NO];
-  [charactersIgnoringModifiersField setSelectable: NO];
-  [charactersIgnoringModifiersField setBezeled: YES];
-  [charactersIgnoringModifiersField setAlignment: NSLeftTextAlignment];
-  [charactersIgnoringModifiersField setStringValue: @"Not Set"];
-  [charactersIgnoringModifiersField sizeToFit];
-  [charactersIgnoringModifiersField setAutoresizingMask: NSViewWidthSizable];
-  [charactersIgnoringModifiersHbox addView: charactersIgnoringModifiersField];
-  [inputOnMe 
-    setCharactersIgnoringModifiersField: charactersIgnoringModifiersField];  
-  
-  [keyVbox addView: charactersIgnoringModifiersHbox];
-
-  keyBox = [[NSBox new] autorelease];
-  [keyBox setTitle: @"Keys"];
-  [keyBox setTitlePosition: NSAtTop];
-  [keyBox setBorderType: NSGrooveBorder];
-  [keyBox addSubview: keyVbox];
-  [keyBox sizeToFit];
-  [keyBox setAutoresizingMask: NSViewWidthSizable];
-
-  vbox = [[GSVbox new] autorelease];
-  [vbox setDefaultMinYMargin: 10];
-  [vbox setBorder: 10];
-  [vbox addView: keyBox];
-  [vbox addView: inputOnMe];
-
-  hbox = [[GSHbox new] autorelease];
-  [hbox setDefaultMinXMargin: 10];
-  [hbox setBorder: 10];
-  [hbox addView: vbox];
-  [hbox addView: modifierBox];  
-
-
-  winFrame.size = [hbox frame].size;
+  v = AUTORELEASE ([InputTestView new]);
+  winFrame.size = [v frame].size;
   winFrame.origin = NSMakePoint (100, 100);
-
-  // Now we can make the window of the exact size 
   win = [[NSWindow alloc] initWithContentRect: winFrame
 			  styleMask: (NSTitledWindowMask 
 				      | NSClosableWindowMask 
@@ -378,9 +318,9 @@ static NSString *modifierTitle[8] =
 			  backing: NSBackingStoreBuffered
 			  defer: YES];
   [win setTitle:@"Keyboard Input Test"];
-  [win setContentView: hbox];
+  [win setContentView: v];
   [win setMinSize: winFrame.size];
-  [win makeFirstResponder: inputOnMe];
+  [win setDelegate: self];
   [self restart];
   return self;
 }
@@ -395,6 +335,14 @@ static NSString *modifierTitle[8] =
   [[NSApplication sharedApplication] addWindowsItem: win
 				     title: @"Keyboard Input Test"
 				     filename: NO];
+}
+- (void)windowDidBecomeKey: (NSNotification *)aNotification
+{
+  [v setEnabled: YES];
+}
+- (void)windowDidResignKey: (NSNotification *)aNotification
+{
+  [v setEnabled: NO];
 }
 @end
 

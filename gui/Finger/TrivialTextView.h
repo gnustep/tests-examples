@@ -1,11 +1,11 @@
 /*
- *  CurrencyConverter.h
+ *  TrivialTextView.h: A Text View for Finger.app
  *
- *  Copyright (c) 1999 Free Software Foundation, Inc.
+ *  Copyright (c) 2000 Free Software Foundation, Inc.
  *  
  *  Author: Nicola Pero
- *  Date: November 1999
- * 
+ *  Date: February 2000
+ *
  *  This sample program is part of GNUstep.
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -23,28 +23,26 @@
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-// Library headers
-#include <Foundation/Foundation.h>
-#include <AppKit/AppKit.h>
+#import "Finger.h"
 
-// @interface 'class' : 'superClass'
-@interface CurrencyConverter : NSObject
+/*
+ * Taken with modifications from GSTest/StringDrawing
+ */
+
+/*
+ * This object displays uneditable, unselectable attributed text.
+ */
+@interface TrivialTextView: NSView
 {
-  // Instance variables
-  NSTextField* field[3];
-  NSWindow* window;
+  NSDictionary *bold;
+  NSDictionary *normal;
+  NSMutableAttributedString *str;
 }
-// Methods
-- (id)init;
-- (void)dealloc;
-- (void)controlTextDidEndEditing: (NSNotification *)aNotification;
-- (void)applicationDidFinishLaunching: (NSNotification *)aNotification;
--(void) runInfoPanel: (id) sender;
+-(void) setString: (NSString *)s;
+-(NSString *) string;
+-(void) appendAttributedString: (NSMutableAttributedString *)s;
+-(void) appendString: (NSString *)s;
+-(void) appendBoldString: (NSString *)s;
+-(void) sizeToFit;
 @end
-
-
-
-
-
-
 
