@@ -1,3 +1,8 @@
+2000-02-25  Adam Fedor  <fedor@gnu.org>
+
+	* ColorView.m: Fix some retain problems.
+	* nscursor.m: Show implementation of image cursor.
+
 Tue Feb 22 18:19:11 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	Contributed by Fred Kiefer: 

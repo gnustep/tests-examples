@@ -38,15 +38,15 @@
 {
   [super initWithFrame: rect];
 
-  the_color = [NSColor blackColor];
-  the_cursor = [NSCursor IBeamCursor];
+  ASSIGN(the_color, [NSColor blackColor]);
+  ASSIGN(the_cursor, [NSCursor IBeamCursor]);
 
   return self;
 }
 
 - (void)setColor:(NSColor *)aColor
 {
-  the_color = aColor;
+  ASSIGN(the_color, aColor);
 }
 
 - (NSColor *)color
@@ -56,7 +56,7 @@
 
 - (void)setCursor:(NSCursor *)aCursor
 {
-  the_cursor = aCursor;
+  ASSIGN(the_cursor, aCursor);
 }
 
 - (NSCursor *)cursor

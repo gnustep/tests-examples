@@ -51,7 +51,7 @@ NSCursor *cur;
 NSCursor *arrow, *beam;
 ColorView *cv0;
 NSRect cvf0 = {{10, 120}, {150, 100}};
-//  NSImage *image;
+NSImage *image;
 
   	NSLog (@"method invoked from cell with title ");
 
@@ -69,25 +69,23 @@ NSRect cvf0 = {{10, 120}, {150, 100}};
 //  [cv0 setFrameRotation:30];
 	[v addSubview: cv0];
 	
-//  image = [NSImage imageNamed: @"common_SwitchOn"];
 
-//#if 0
-// Cursor for window
-  cur = [NSCursor IBeamCursor];
-  [cur set];
+  // Cursor for color view
+  image = AUTORELEASE([[NSImage alloc] initWithContentsOfFile:@"Smiley.tiff"]);
+  cur = [[NSCursor alloc] initWithImage: image];
+  [cv0 setCursor: cur];
 
-  // Cursor for color view using tracking rectangle
-  arrow = [NSCursor arrowCursor];
-  [arrow setOnMouseEntered: YES];
-  beam = [NSCursor IBeamCursor];
-  [beam setOnMouseExited: YES];
-  [v addTrackingRect: cvf0 owner: arrow userData: NULL assumeInside: YES];
-  [v addTrackingRect: cvf0 owner: beam userData: NULL assumeInside: YES];
-//#endif
+  // Cursor for color well using tracking rectangle
+  arrow = [[NSCursor arrowCursor] retain];
+  [arrow setOnMouseExited: YES];
+  beam = [[NSCursor IBeamCursor] retain];
+  [beam setOnMouseEntered: YES];
+  [v addTrackingRect: cf owner: arrow userData: NULL assumeInside: YES];
+  [v addTrackingRect: cf owner: beam userData: NULL assumeInside: YES];
 
-	[win setFrame:wf0 display:YES];
-	[win setTitle:@"GNUstep Cursor Management"];
-	[win orderFront:nil];
+  [win setFrame:wf0 display:YES];
+  [win setTitle:@"GNUstep Cursor Management"];
+  [win orderFront:nil];
 }
 
 @end
