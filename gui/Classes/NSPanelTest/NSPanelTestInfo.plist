@@ -1,0 +1,10 @@
+{
+  ApplicationName = "NSPanelTest";
+  ApplicationDescription = "Test bed application for the NSPanel functions.";
+  ApplicationRelease = "1.1";
+  FullVersionID = "1.1";
+  Authors = ("Pascal J. Bourguignon <pjb@imaginet.fr>");
+  Copyright = "Copyright (c) Free Software Foundation, Inc.";
+  CopyrightDescription = "This program is released under the GNU General Public License"; 
+  NSIcon = icon.tiff;
+}

@@ -33,7 +33,7 @@ int main (int argc, const char *argv[])
   NSArray *screenArray = nil;               
   NSEnumerator *screenEnumerator = nil;
   NSScreen *aScreen = nil;
-  NSWindowDepth *depths = NULL;
+  const NSWindowDepth *depths = NULL;
   BOOL exactMatch = NO;
   
   // insert your code here

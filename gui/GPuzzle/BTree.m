@@ -20,7 +20,6 @@ static NSString *BTreeMark = @"@endtree";
     NSString *line;
     int valtag, valfirst, valsecond, valleaf;
     BTree *current, *desc;
-    NSEnumerator *objEn;
     
     while((line = [en nextObject])!=nil &&
           [line hasPrefix:BTreeMark]==NO){
@@ -230,6 +229,7 @@ static NSString *BTreeMark = @"@endtree";
         // NSLog(@"found %@ for %@\n", leaf, obj);
         leaf = obj;
     }
+  return self;
 }
 
 - (NSString *)toString

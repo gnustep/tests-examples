@@ -38,13 +38,13 @@ LEGAL
 
 
 
-@interface NSPanelTest:NSApplication
+@interface NSPanelTest : NSObject
 {
     id      constructor;
 }
 
-	-(id)init;
-	-(void)applicationDidFinishLaunching:(NSNotification*)notification;
+    -(id)init;
+    -(void)applicationWillFinishLaunching:(NSNotification*)notification;
 
 // actions:
 

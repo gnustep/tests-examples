@@ -35,14 +35,12 @@ LEGAL
 #import <AppKit/AppKit.h>
 #import <NSPanelTest.h>
 
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-	NSAutoreleasePool*	pool=[NSAutoreleasePool new];
-	NSApplication*		app=[[NSPanelTest alloc]init];
-	[app run];
-	[pool release];
-    return(0);
-}//main;
+  [NSApplication sharedApplication];
+  [NSApp setDelegate: [NSPanelTest new]];
 
+  return NSApplicationMain(argc, argv);
+}
 
 /*** NSPanelTest_main.m               -- 2000-03-10 13:11:30 -- PJB ***/

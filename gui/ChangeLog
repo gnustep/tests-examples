@@ -1,3 +1,16 @@
+2004-09-28  Adam Fedor  <fedor@gnu.org>
+
+	* Classes/NSPanelTest/NSPanelTest.m: Make NSPanelTest an application 
+	delegate. Reindent. Fix compiler warnings.
+	* Classes/NSPanelTest/GNUmakefile: Don't make NSPanelTest the app class.
+	* Classes/NSPanelTest/NSPanelTestInfo.plist: New file.
+	* Classes/NSPanelTest/NSPanelTest_main.m: Use normal app startup 
+	function.
+
+	* Classes/NSScreenTest/screen_main.m: Fix warning.
+	* GPuzzle/BTree.m, GPuzzle/Document.m: Remove unused vars, Fix warnings.
+	* GPuzzle/GNUmakefile: Don't define GNUSTEP_MAKEFILES.
+
 2004-04-15  Quentin Mathe <qmathe@club-internet.fr>
 	
 	* ToolbarExample: Added a demo application for the toolbar

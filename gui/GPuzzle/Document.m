@@ -172,7 +172,6 @@
         int clcount, clind, lind;
         NSMutableDictionary *pdict;
         int x, y, ktag, posx, posy;
-        NSPoint *loc;
         PTYPE left, right, lower, upper;
 
         image = nil;
@@ -389,7 +388,7 @@
   int m = (NSTitledWindowMask |  NSClosableWindowMask | 
            NSMiniaturizableWindowMask);
 
-  int clind, pieceind;
+  int clind;
   BTree *cluster;
   NSScrollView *scroller;
   NSSize scrollSize, desktop;
