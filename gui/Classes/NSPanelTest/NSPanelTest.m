@@ -450,7 +450,7 @@ LEGAL
 
     -(int)random
     {
-        return(random()%3);
+        return(rand()%3);
     }//random;
 
 
