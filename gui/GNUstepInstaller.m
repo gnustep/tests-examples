@@ -33,6 +33,7 @@
 
 @interface myTabViewDelegate : NSObject
 {
+  NSTabView *ourView;
 }
 - (BOOL)tabView:(NSTabView *)tabView shouldSelectTabViewItem:(NSTabViewItem *)tabViewItem;
 - (void)tabView:(NSTabView *)tabView willSelectTabViewItem:(NSTabViewItem *)tabViewItem;
@@ -69,6 +70,21 @@
 {
   NSLog(@"tabViewDidChangeNumberOfTabViewItems: %d", [TabView numberOfTabViewItems]);
 }
+
+- (void)setTabView:(NSTabView *)tabView
+{
+  ourView = tabView;
+}
+
+- (void)buttonNext:(id)sender
+{
+  [ourView selectNextTabViewItem:sender];  
+}
+
+- (void)buttonPrevious:(id)sender
+{
+  [ourView selectPreviousTabViewItem:sender];  
+}
 @end
 
 int
@@ -83,6 +99,8 @@ NSRect tabViewRect = {{10, 10}, {280, 280}};
 id pool = [NSAutoreleasePool new];
 id aView;
 id label;
+NSButton *button;
+id delegate = [myTabViewDelegate new];
 
 #if LIB_FOUNDATION_LIBRARY
 	[NSProcessInfo initializeWithArguments:argv count:argc environment:env];
@@ -97,7 +115,9 @@ id label;
 	window = [[NSWindow alloc] init];
 
 	tabView = [[NSTabView alloc] initWithFrame:tabViewRect];
-	[tabView setDelegate:[myTabViewDelegate new]];
+	[tabView setTabViewType:NSNoTabsBezelBorder];
+//	[tabView setDelegate:delegate];
+	[delegate setTabView:tabView];
 	[[window contentView] addSubview:tabView];
 
 	aView = [[NSView alloc] initWithFrame:[tabView contentRect]];
@@ -106,12 +126,18 @@ id label;
   [label setSelectable:NO];
   [label setBezeled:NO];
   [label setBordered:NO];
-  [label setBackgroundColor:[NSColor blueColor]];
+  [label setBackgroundColor:[NSColor lightGrayColor]];
   [label setAlignment:NSCenterTextAlignment];
-  [label setStringValue:[NSString stringWithCString:"Natalie is a
-beautiful name... no?"]];
+  [label setStringValue:[NSString stringWithCString:"Press next to
+install."]];
 	[aView addSubview:label];
 	[label release];
+  button = [[NSButton alloc] initWithFrame:NSMakeRect(10,10,72,22)];
+  [button setTitle: @"Next..."];
+  [button setTarget:delegate];
+  [button setAction:@selector(buttonNext:)];
+	[aView addSubview:button];
+	[button release];
 
         item = [[NSTabViewItem alloc] initWithIdentifier:@"Urph"];
         [item setLabel:@"Natalie"];
@@ -125,11 +151,23 @@ beautiful name... no?"]];
   [label setSelectable:NO];
   [label setBezeled:NO];
   [label setBordered:NO];
-  [label setBackgroundColor:[NSColor redColor]];
+  [label setBackgroundColor:[NSColor lightGrayColor]];
   [label setAlignment:NSCenterTextAlignment];
-  [label setStringValue:[NSString stringWithCString:"This one sounds dangerous... hehe"]];
+  [label setStringValue:[NSString stringWithCString: "Previous, or Next?"]];
 	[aView addSubview:label];
 	[label release];
+  button = [[NSButton alloc] initWithFrame:NSMakeRect(10,10,72,22)];
+  [button setTitle: @"Next..."];
+  [button setTarget:delegate];
+  [button setAction:@selector(buttonNext:)];
+	[aView addSubview:button];
+	[button release];
+  button = [[NSButton alloc] initWithFrame:NSMakeRect(85,10,72,22)];
+  [button setTitle: @"Previous..."];
+  [button setTarget:delegate];
+  [button setAction:@selector(buttonPrevious:)];
+	[aView addSubview:button];
+	[button release];
 
         item = [[NSTabViewItem alloc] initWithIdentifier:@"Urph2"];
         [item setLabel:@"Natalia Conquistadori"];
@@ -143,12 +181,18 @@ beautiful name... no?"]];
   [label setSelectable:NO];
   [label setBezeled:NO];
   [label setBordered:NO];
-  [label setBackgroundColor:[NSColor greenColor]];
+  [label setBackgroundColor:[NSColor lightGrayColor]];
   [label setAlignment:NSCenterTextAlignment];
-  [label setStringValue:[NSString stringWithCString:"GNUstep hacker
-for rent."]];
+  [label setStringValue:[NSString stringWithCString:"Well, no install. 
+Sorry. :-)"]];
 	[aView addSubview:label];
 	[label release];
+  button = [[NSButton alloc] initWithFrame:NSMakeRect(10,10,72,22)];
+  [button setTitle: @"Previous..."];
+  [button setTarget:delegate];
+  [button setAction:@selector(buttonPrevious:)];
+	[aView addSubview:button];
+	[button release];
 
         item = [[GSImageTabViewItem alloc] initWithIdentifier:@"Urph3"];
 	[item setImage:[NSImage imageNamed:@"Smiley"]];
@@ -157,7 +201,7 @@ for rent."]];
         [tabView addTabViewItem:item];
 	[aView release];
 	
-	[window setTitle:@"NSTabView"];
+	[window setTitle:@"NSTabView without Tabs"];
 	[window setFrame:winRect display:YES];
 	[window orderFront:nil];
 	

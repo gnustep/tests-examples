@@ -39,6 +39,7 @@ include ../Version
 
 # The applications to be compiled
 TEST_APP_NAME = \
+		GNUstepInstaller \
 		alertpanel \
 		buttons \
 		popupbuttons \
@@ -63,6 +64,8 @@ TEST_APP_NAME = \
 SUBPROJECTS = Edit
 
 # The Objective-C source files to be compiled
+GNUstepInstaller_OBJC_FILES = GNUstepInstaller.m GSImageTabViewItem.m
+GNUstepInstaller_RESOURCE_FILES = Smiley.tiff
 alertpanel_OBJC_FILES = alertpanel.m
 buttons_OBJC_FILES = buttons.m
 popupbuttons_OBJC_FILES = popupbuttons.m TestView.m ColorView.m

@@ -1,5 +1,8 @@
 1999-07-26  Michael Hanni  <mhanni@sprintmail.com>
 
+	* GNUstepInstaller.m: copy of nstabview.m, save this app uses no
+	tabs and has buttons in the TabView for movement through tabs,
+	quite cool.
 	* nstabview.m: added a delegate to the nstabview. Delegate
 	responds to all selectors and gives debug information. In
 	addition, with the delegate you cannot click on the "Natalie"
