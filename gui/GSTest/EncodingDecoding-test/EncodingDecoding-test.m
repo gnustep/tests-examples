@@ -274,6 +274,7 @@ willDisplayCell: (id)cell
 	      if ([w isKindOfClass: [NSWindow class]])
 		{
 		  [w orderFront: self];
+		  RETAIN (w);
 		}
 	      else
 		{
