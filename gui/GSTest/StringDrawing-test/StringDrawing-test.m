@@ -96,12 +96,12 @@
   GSVbox *vbox;
   NSButton *button;
   NSScrollView *scrollView;
-  NSRect winFrame;
 
   text = [TrivialTextView new];
 
+  /* Minimum size we want it to have */
   scrollView = [[NSScrollView alloc] 
-		 initWithFrame: NSMakeRect (0, 0, 500, 222)];
+		 initWithFrame: NSMakeRect (0, 0, 60, 60)];
   [scrollView setDocumentView: text];
   [text release];
   [scrollView setHasHorizontalScroller: YES];
@@ -126,11 +126,9 @@
   [vbox addView: button
 	enablingYResizing: NO];
   [vbox addView: scrollView];
+  [vbox setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
   
-  winFrame.size = [vbox frame].size;
-  winFrame.origin = NSMakePoint (100, 200);
-  
-  win = [[NSWindow alloc] initWithContentRect: winFrame
+  win = [[NSWindow alloc] initWithContentRect: NSMakeRect (100, 100, 500, 250)
 			  styleMask: (NSTitledWindowMask 
 				      | NSClosableWindowMask 
 				      | NSMiniaturizableWindowMask 
