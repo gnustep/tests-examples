@@ -1,3 +1,7 @@
+2000-01-21  Adam Fedor  <fedor@gnu.org>
+
+	* scrollview.m; Rewrite with application delegate.
+
 2000-01-14  Adam Fedor  <fedor@gnu.org>
 
 	* TestView.m, ColocView.m: Fixes for changes in ivars.

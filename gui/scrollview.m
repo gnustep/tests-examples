@@ -63,16 +63,11 @@
   [docView setBoundsSize:viewFrame.size];
   [scrollView setNeedsDisplay:YES];
 }
-@end
 
-
-int
-main(int argc, char **argv, char** env)
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-  NSApplication *theApp;
   NSWindow* window;
   NSScrollView* scrollView;
-  MyObject* object;
   TestView* view;
   NSButtonCell* buttonCell;
   NSMatrix* zoomMatrix;
@@ -80,21 +75,8 @@ main(int argc, char **argv, char** env)
   NSRect zoomMatrixRect = {{270, 10}, {120, 80}};
   NSRect winRect = {{100, 100}, {380, 350}};
   NSRect f = {{0, 0}, {500, 700}};
-  NSAutoreleasePool* pool;
-  unsigned int style = NSTitledWindowMask | NSClosableWindowMask				
-					| NSMiniaturizableWindowMask | NSResizableWindowMask;
-
-#if LIB_FOUNDATION_LIBRARY
-  [NSProcessInfo initializeWithArguments:argv count:argc environment:env];
-#endif
-
-  pool = [NSAutoreleasePool new];
-
-#ifndef NX_CURRENT_COMPILER_RELEASE
-  initialize_gnustep_backend();
-#endif
-
-  theApp = [NSApplication sharedApplication];
+  unsigned int style = NSTitledWindowMask | NSClosableWindowMask
+		| NSMiniaturizableWindowMask | NSResizableWindowMask;
 
 #if 0
   window = [[NSWindow alloc]
@@ -114,8 +96,7 @@ main(int argc, char **argv, char** env)
   [scrollView setDocumentView:view];
   [[window contentView] addSubview:scrollView];
 
-  object = [[MyObject new] autorelease];
-  [object setScrollView:scrollView];
+  [self setScrollView:scrollView];
 
   buttonCell = [[NSButtonCell new] autorelease];
   [buttonCell setButtonType:NSRadioButton];
@@ -128,7 +109,7 @@ main(int argc, char **argv, char** env)
 		    numberOfRows:4
 		    numberOfColumns:1]
 		  autorelease];
-  [zoomMatrix setTarget:object];
+  [zoomMatrix setTarget: self];
   [zoomMatrix setAction:@selector(setZoomFactor:)];
 
   buttonCell = [zoomMatrix cellAtRow:0 column:0];
@@ -161,6 +142,33 @@ main(int argc, char **argv, char** env)
 	     keyEquivalent: @"q"];
     [NSApp setMainMenu: menu];
   }
+
+}
+
+@end
+
+
+int
+main(int argc, char **argv, char** env)
+{
+  id object;
+  NSApplication *theApp;
+  NSAutoreleasePool* pool;
+
+#if LIB_FOUNDATION_LIBRARY
+  [NSProcessInfo initializeWithArguments:argv count:argc environment:env];
+#endif
+
+  pool = [NSAutoreleasePool new];
+
+#ifndef NX_CURRENT_COMPILER_RELEASE
+  initialize_gnustep_backend();
+#endif
+
+  theApp = [NSApplication sharedApplication];
+
+  object = [[MyObject new] autorelease];
+  [theApp setDelegate: object];
 
   [theApp run];
   [pool release];
