@@ -17,6 +17,15 @@
              NSDocumentClass = Document;
         },
         {
+             NSName = "rtfd";
+             NSHumanReadableName = "RTFD Document";
+             NSUnixExtensions = ("rtfd");
+             NSDOSExtensions = ("rtfd");
+	     NSIcon = FileIcon_rtf_Tile;
+             NSRole = Editor;
+             NSDocumentClass = Document;
+        },
+        {
              NSName = "text";
              NSHumanReadableName = "Text Document";
              NSUnixExtensions = ("txt");
