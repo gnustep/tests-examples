@@ -1,0 +1,22 @@
+This is not a vanilla example, because it shows how to run an
+auxiliary thread in background, and to display a progress indicator
+for the work of the auxiliary thread in the main thread.  
+
+Before you rush at the example and try to copy it, I want to stress
+that if you can do without threads, it's better.  It's likely that you
+can implement the same thing using the gnustep-gui run-loop, and that
+might well run faster and be easier to write, debug, profile, and
+maintain.
+
+If you still want to use threads, then you need to know that this
+requires a lot of attention because the gnustep-gui library is not
+thread-safe, so you must always have at most one thread accessing the
+gui library at a time.  In this example, we set up a 'shared area'
+where the auxiliary thread saves information about its state.  At
+regular intervals (every 0.1 second approximately), the main thread
+polls the shared area to know what the state of the thread is, and
+displays the state on screen.  The shared area is protected by a lock,
+not particularly relevant in this case, but essential if you are
+actually passing more complex information in the shared area.
+
+Nicola

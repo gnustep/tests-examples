@@ -1,0 +1,14 @@
+Thu Jan 17 20:34:43 2002  Nicola Pero  <n.pero@mi.flashnet.it>
+
+	* README: New.
+	* GNUmakefile: New.
+	* main.m: New.
+	* SharedArea.m: New.
+	* SharedArea.h: New.
+	* MainThread.m: New.
+	* MainThread.h: New.
+	* AuxiliaryThread.m: New.
+	* AuxiliaryThread.h: New.
+
+
+
