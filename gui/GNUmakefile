@@ -1,11 +1,11 @@
 #
-#  Test apps makefile for GNUstep X/RAW GUI Backend
+#  Gui examples makefile
 #
-#  Copyright (C) 1997 Free Software Foundation, Inc.
+#  Copyright (C) 2001 Free Software Foundation, Inc.
 #
-#  Author: Scott Christley <scottc@net-community.com>
+#  Author: Nicola Pero
 #
-#  This file is part of the GNUstep X/RAW GUI Backend.
+#  This file is part of GNUstep
 #
 #  This library is free software; you can redistribute it and/or
 #  modify it under the terms of the GNU Library General Public
@@ -24,95 +24,14 @@
 
 include $(GNUSTEP_MAKEFILES)/common.make
 
-# The applications to be compiled
-TEST_APP_NAME = \
-		GNUstepInstaller \
-		alertpanel \
-		buttons \
-		popupbuttons \
-		fontpanel \
-		gstextnetwork \
-		matrix \
-		menu \
-		nsbrowser \
-		nsbrowsercell \
-		nscombobox \
-		nscursor \
-		nsimage \
-		nsimagecell \
-		nsprogressindicator \
-		nsscroller \
-		nstabview \
-		nstextfields \
-		scrollview \
-		scrollview2 \
-		windows
+SUBPROJECTS =             \
+	Calculator        \
+	Classes           \
+	CurrencyConverter \
+	Ink               \
+	GSTest
 
-SUBPROJECTS = Calculator CurrencyConverter Edit GSTest NSPanelTest Ink
+include GNUmakefile.preamble
 
-# The Objective-C source files to be compiled
-GNUstepInstaller_OBJC_FILES = \
-		GNUstepInstaller.m \
-		GSImageTabViewItem.m \
-		TestView.m \
-		ColorView.m
-GNUstepInstaller_RESOURCE_FILES = Smiley.tiff
-
-alertpanel_OBJC_FILES = alertpanel.m
-
-buttons_OBJC_FILES = buttons.m
-
-popupbuttons_OBJC_FILES = popupbuttons.m TestView.m ColorView.m
-popupbuttons_RESOURCE_FILES = \
-		animations.tiff \
-		appearance.tiff \
-		configs.tiff \
-		dock.tiff
-
-fontpanel_OBJC_FILES = fontpanel.m
-
-matrix_OBJC_FILES = matrix.m
-
-menu_OBJC_FILES = menu.m
-menu_RESOURCE_FILES = Smiley.tiff
-
-nsbrowser_OBJC_FILES = nsbrowser.m
-
-nsbrowsercell_OBJC_FILES = nsbrowsercell.m
-
-nscombobox_OBJC_FILES = nscombobox.m
-
-nscursor_OBJC_FILES = nscursor.m ColorView.m
-
-nsimage_OBJC_FILES = nsimage.m ImageView.m
-
-nsimagecell_OBJC_FILES = nsimagecell.m
-
-nsprogressindicator_OBJC_FILES = nsprogressindicator.m
-
-nsscroller_OBJC_FILES = nsscroller.m
-
-nstextfields_OBJC_FILES = nstextfields.m
-
-gstable_OBJC_FILES = gstable.m
-
-gstextnetwork_OBJC_FILES = gstextnetwork.m
-gstextnetwork_RESOURCE_FILES = ./Edit/Readme.txt
-
-nstabview_OBJC_FILES = nstabview.m GSImageTabViewItem.m
-nstabview_RESOURCE_FILES = Smiley.tiff
-
-scrollview_OBJC_FILES = scrollview.m TestView.m
-
-scrollview2_OBJC_FILES = scrollview2.m
-
-windows_OBJC_FILES = windows.m TestView.m
-
-
--include GNUmakefile.preamble
-
-include $(GNUSTEP_MAKEFILES)/test-application.make
 include $(GNUSTEP_MAKEFILES)/aggregate.make
-
--include GNUmakefile.postamble
 
