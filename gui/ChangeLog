@@ -1,11 +1,13 @@
 Mon Jan  9 23:21:34 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
+	Rearrangement of the whole directory structure.
 	* Old/: New directory.  Old tests moved here.
 	* Classes/: New directory.  Rewritten most makefiles in the dir.
 	* Classes/NSPanelTest: Moved from top level.
 	* Classes/NSBrowserTest: Moved from browser.m in top level.
 	* Classes/NSScreen: Moved from screen in top level.
 	* GNUmakefile: Rewritten from scratch.
+	* README: Updated for new rearrangement.
 	
 Sat Jan  6 20:01:07 2001  Nicola Pero  <n.pero@mi.flashnet.it>
 
