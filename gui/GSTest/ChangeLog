@@ -1,3 +1,13 @@
+Fri Dec 21 14:28:48 2001  Nicola Pero  <nicola@brainstorm.co.uk>
+
+	* KeyboardInput-test/ConvertKeys.m: New file.
+	* KeyboardInput-test/ConvertKeys.h: Idem.
+	* KeyboardInput-test/GNUmakefile: Compile it.
+	* KeyboardInput-test/KeyboardInput-test.m ([InputTestView
+	-keyDown:]): Use the new falitites to display pretty names for
+	function keys.
+	* main.m: Updated version to 0.8.
+	
 Wed Jul  4 18:41:29 2001  Nicola Pero  <nicola@brainstorm.co.uk>
 
 	* GNUmakefile (SUBPROJECTS), testList.h (testList): Added
