@@ -1,3 +1,7 @@
+2000-03-11  Adam Fedor  <fedor@gnu.org>
+
+	* Composite-test: New test.
+
 Mon Feb 14 22:14:14 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* NSSavePanel-test/NSSavePanel-test.m ([-startSavePanel:sender]):
