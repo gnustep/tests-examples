@@ -58,7 +58,7 @@ TEST_APP_NAME = \
 		scrollview2 \
 		windows
 
-SUBPROJECTS = Calculator CurrencyConverter Edit GSTest NSPanelTest
+SUBPROJECTS = Calculator CurrencyConverter Edit GSTest NSPanelTest Ink
 
 # The Objective-C source files to be compiled
 GNUstepInstaller_OBJC_FILES = \
