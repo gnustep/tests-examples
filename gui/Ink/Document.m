@@ -252,11 +252,13 @@
   [[textView textContainer] setContainerSize: NSMakeSize (textRect.size.width,
 							  1e7)];
   [[textView textContainer] setWidthTracksTextView: YES];
+  [textView setUsesRuler: YES];
   // Store the text view in an ivar
   ASSIGN(tv, textView);
 
   [scrollView setDocumentView: textView];
   RELEASE(textView);
+  [scrollView setHasHorizontalRuler: YES];
   [window setContentView: scrollView];
   RELEASE(scrollView);
 
