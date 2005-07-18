@@ -1,3 +1,13 @@
+2005-07-17  Adam Fedor  <fedor@gnu.org>
+
+	* Convert Ink to use gorm files.
+	* Document.m: Remove programmatic window creating. Add nib name.
+	* GNUmakefile: Add gorm resource files.
+	* main.m: Remove programmatic gui.
+	* Readme.rtf: Update.
+	* Document.gorm, English.lproj: New.
+	(Patches from Rob Burns).
+
 Mon Apr 28 13:22:49 2003  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* Document.m ([Document -makeWindow]): Do not make the document

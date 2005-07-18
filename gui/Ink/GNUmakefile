@@ -23,16 +23,27 @@
 
 include $(GNUSTEP_MAKEFILES)/common.make
 
-OBJCFLAGS += -Wall
+PACKAGE_NAME=gnustep-Ink
+CVS_MODULE_NAME = gnustep/usr-apps/examples/gui/Ink
+CVS_TAG_NAME=Ink
+VERSION=1.0.0
 
 APP_NAME = Ink
+Ink_MAIN_MODEL_FILE = MainMenu.gorm
 
-Ink_RESOURCE_FILES = Ink_app.tiff FileIcon_rtf.tiff FileIcon_txt.tiff Readme.rtf
+Ink_RESOURCE_FILES = \
+  Ink_app.tiff \
+  FileIcon_rtf.tiff \
+  FileIcon_txt.tiff \
+  Document.gorm
+
+Ink_LANGUAGES = English
+
+Ink_LOCALIZED_RESOURCE_FILES = MainMenu.gorm
 
 Ink_OBJC_FILES = \
-        main.m \
-	Document.m 
-
+  main.m \
+  Document.m
 
 -include GNUmakefile.preamble
 

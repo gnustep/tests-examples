@@ -1,0 +1,25 @@
+{
+    "## Comment" = "Do NOT change this file, Gorm maintains it";
+    Document = {
+	Actions = (
+	    "insertFile:"
+	);
+	Outlets = (
+	);
+	Super = NSDocument;
+    };
+    FirstResponder = {
+	Actions = (
+	    "insertFile:",
+	    "modifyFont:"
+	);
+	Super = NSObject;
+    };
+    MyDelegate = {
+	Actions = (
+	);
+	Outlets = (
+	);
+	Super = NSObject;
+    };
+}

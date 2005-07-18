@@ -25,12 +25,6 @@
 #include <AppKit/NSWindowController.h>
 #include "Document.h"
 
-@interface Document (Private)
-
-- (NSWindow*) makeWindow;
-
-@end
-
 @implementation Document
 
 - (id) init
@@ -44,7 +38,6 @@
 - (void) dealloc
 {
   RELEASE (ts);
-  RELEASE (tv);
   RELEASE (pi);
   [super dealloc];
 }
@@ -109,6 +102,7 @@
     }
 }
 
+
 - (BOOL)loadFileWrapperRepresentation:(NSFileWrapper *)wrapper 
 			       ofType:(NSString *)type
 {
@@ -134,6 +128,7 @@
     }
 }
 
+
 - (BOOL)loadDataRepresentation:(NSData *)data ofType:(NSString *)aType 
 {
   NSAttributedString *attr;
@@ -144,12 +139,12 @@
 					 documentAttributes: NULL];
     }
   else if ([aType isEqualToString:@"rtfd"])
-    {
+    {   
       attr = [[NSAttributedString alloc] initWithRTFD: data 
 					 documentAttributes: NULL];
     }
   else if ([aType isEqualToString:@"text"])
-    {
+    {      
       attr = [[NSAttributedString alloc] 
 		 initWithString: AUTORELEASE([[NSString alloc] initWithData: data
 							       encoding: [NSString defaultCStringEncoding]])];
@@ -169,19 +164,10 @@
   return YES;
 }
 
-- (void) makeWindowControllers
+- (NSString *) windowNibName
 {
-  NSWindowController *controller;
-  NSWindow *win = [self makeWindow];
-  
-  controller = [[NSWindowController alloc] initWithWindow: win];
-  RELEASE (win);
-  [self addWindowController: controller];
-  RELEASE(controller);
-
-  // We have to do this ourself, as there is currently no nib file
-  [self windowControllerDidLoadNib: controller];
-} 
+  return @"Document";
+}
 
 - (void)printShowingPrintPanel:(BOOL)flag
 {
@@ -192,10 +178,16 @@
   [po runOperation];
 }
 
-
 - (void)windowControllerDidLoadNib:(NSWindowController *) aController;
 {
   [super windowControllerDidLoadNib:aController];
+
+  // These two lines could possibly be removed after some gorm/gui fixes
+  // The second one should go before any localizations are made.
+
+  [[tv enclosingScrollView] setHasHorizontalRuler: YES];
+  [[NSFontManager sharedFontManager] setFontMenu:
+     [[[[[NSApp mainMenu] itemWithTitle: @"Format"] submenu] itemWithTitle: @"Font"] submenu]];
 
   [[tv textStorage] setAttributedString: ts];
   DESTROY(ts);
@@ -204,72 +196,6 @@
 - (void)textDidChange:(NSNotification *)textObject 
 {
   [self updateChangeCount: NSChangeDone];
-}
-
-@end
-
-@implementation Document (Private)
-
-- (NSWindow*)makeWindow
-{
-  NSWindow *window;
-  NSScrollView* scrollView;
-  NSTextView* textView;
-  NSRect scrollViewRect = {{0, 0}, {470, 400}};
-  NSRect winRect = {{100, 100}, {470, 400}};
-  NSRect textRect;
-  unsigned int style = NSTitledWindowMask | NSClosableWindowMask | 
-      NSMiniaturizableWindowMask | NSResizableWindowMask;
-  
-  // This is expected to be retained, as it would normaly come from a
-  // nib file, where the owner would retain it.
-  window = [[NSWindow alloc] initWithContentRect: winRect
-			     styleMask: style
-			     backing: NSBackingStoreRetained
-			     defer: NO];
-   
-  scrollView = [[NSScrollView alloc] initWithFrame: scrollViewRect];
-  [scrollView setHasHorizontalScroller: NO];
-  [scrollView setHasVerticalScroller: YES]; 
-  [scrollView setAutoresizingMask: NSViewHeightSizable | NSViewWidthSizable];
-  [[scrollView contentView] setAutoresizingMask: NSViewHeightSizable 
-			    | NSViewWidthSizable];
-  [[scrollView contentView] setAutoresizesSubviews:YES];
-
-  // Build up the text network
-  textRect = [[scrollView contentView] frame];
-  textView = [[NSTextView alloc] initWithFrame: textRect];
-
-  [textView setBackgroundColor: [NSColor whiteColor]];
-  [textView setRichText: YES];
-  [textView setImportsGraphics: YES];
-  [textView setUsesFontPanel: YES];
-  [textView setDelegate: self];
-  [textView setHorizontallyResizable: NO];
-  [textView setVerticallyResizable: YES];
-  [textView setMinSize: NSMakeSize (0, 0)];
-  [textView setMaxSize: NSMakeSize (1E7, 1E7)];
-  [textView setAutoresizingMask: NSViewHeightSizable | NSViewWidthSizable];
-  [[textView textContainer] setContainerSize: NSMakeSize (textRect.size.width,
-							  1e7)];
-  [[textView textContainer] setWidthTracksTextView: YES];
-  [textView setUsesRuler: YES];
-  // Store the text view in an ivar
-  ASSIGN(tv, textView);
-
-  [scrollView setDocumentView: textView];
-  RELEASE(textView);
-  [scrollView setHasHorizontalRuler: YES];
-  [scrollView setHasVerticalRuler: YES];
-  [window setContentView: scrollView];
-  RELEASE(scrollView);
-
-  // Make the text view the first responder
-  [window makeFirstResponder: textView];
-  [window display];
-  [window orderFront: nil];
-
-  return window;
 }
 
 - (void)insertFile: (id)sender
@@ -393,6 +319,10 @@
     }
 }
 
+@end
+
+@implementation Document (Private)
+
 -        (void)textView: (NSTextView *)aTextView
     doubleClickedOnCell: (id <NSTextAttachmentCell>)attachmentCell
                  inRect: (NSRect)cellFrame
@@ -404,9 +334,8 @@
   attachment  = [attachmentCell attachment];
   filewrapper = [attachment fileWrapper];
   
-  NSLog(@"Opening file '%@'", [filewrapper filename]);
-  
   /* openFile:fromImage:at:inView: */
   [[NSWorkspace sharedWorkspace] openFile: [filewrapper filename]];
 }
+
 @end

@@ -34,4 +34,6 @@
     NSPrintInfo *pi;
 }
 
+- (void)insertFile: (id)sender;
+
 @end
