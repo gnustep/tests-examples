@@ -182,9 +182,10 @@
 {
   [super windowControllerDidLoadNib:aController];
 
-  // These two lines could possibly be removed after some gorm/gui fixes
-  // The second one should go before any localizations are made.
-
+  // These lines could possibly be removed after some gorm/gui fixes
+  // The last one should go before any localizations are made.
+  [[tv enclosingScrollView] setHasVerticalRuler: YES];
+  [[[tv enclosingScrollView] verticalRulerView] setRuleThickness: 30];
   [[tv enclosingScrollView] setHasHorizontalRuler: YES];
   [[NSFontManager sharedFontManager] setFontMenu:
      [[[[[NSApp mainMenu] itemWithTitle: @"Format"] submenu] itemWithTitle: @"Font"] submenu]];

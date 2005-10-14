@@ -1,3 +1,8 @@
+2005-10-14  Fred Kiefer <FredKiefer@gmx.de>
+
+	* Document.m (-windowControllerDidLoadNib:):
+	Added a vertical ruler view.
+	
 2005-07-17  Adam Fedor  <fedor@gnu.org>
 
 	* Convert Ink to use gorm files.
