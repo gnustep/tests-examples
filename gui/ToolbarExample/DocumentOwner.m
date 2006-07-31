@@ -24,7 +24,7 @@
  */
 
 #include "DocumentOwner.h"
-#include "MiniOwner.h"
+#include "SecondWindowOwner.h"
 
 @implementation DocumentOwner
 
@@ -309,7 +309,7 @@
 
 - (void) newWindow: (id)sender
 {
-  MiniOwner *otherNibOwner = [[MiniOwner alloc] init];
+  SecondWindowOwner *otherNibOwner = [[SecondWindowOwner alloc] init];
   NSWindow *otherWindow;
   NSToolbar *toolbar = [[NSToolbar alloc] initWithIdentifier: @"myToolbar"];
   NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];

@@ -17,14 +17,14 @@ Images/FileIcon_Directory.tiff
 ToolbarExample_HEADER_FILES= \
 Controller.h \
 DocumentOwner.h \
-MiniOwner.h \
+SecondWindowOwner.h \
 ButtonWithValidation.h
 
 ToolbarExample_OBJC_FILES= \
 main.m \
 Controller.m \
 DocumentOwner.m \
-MiniOwner.m \
+SecondWindowOwner.m \
 ButtonWithValidation.m
 
 -include GNUmakefile.preamble

@@ -1,5 +1,5 @@
 /*
- *  MiniOwner.h: An application to demonstrate the GNUstep toolbars 
+ *  SecondWindowOwner.h: An application to demonstrate the GNUstep toolbars 
  *
  *  Copyright (c) 2004 Free Software Foundation, Inc.
  *  
@@ -28,7 +28,7 @@
 #include <GNUstepGUI/GSToolbarView.h>
 #include <GNUstepGUI/GSToolbar.h>
 
-@interface MiniOwner : NSObject
+@interface SecondWindowOwner : NSObject
 {
   id window;
   id otherToolbarView;

@@ -1,5 +1,5 @@
 /*
- *  MiniOwner.m: An application to demonstrate the GNUstep toolbars 
+ *  SecondWindowOwner.m: An application to demonstrate the GNUstep toolbars 
  *
  *  Copyright (c) 2004 Free Software Foundation, Inc.
  *  
@@ -23,9 +23,9 @@
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-#include "MiniOwner.h"
+#include "SecondWindowOwner.h"
 
-@implementation MiniOwner
+@implementation SecondWindowOwner
 
 - (void) awakeFromNib
 {
