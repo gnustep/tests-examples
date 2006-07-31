@@ -51,6 +51,8 @@
   
   [popUpMenuDisplay setAutoenablesItems: NO];
   [popUpMenuSize setAutoenablesItems: NO];
+  [popUpMenuDisplay removeAllItems];
+  [popUpMenuSize removeAllItems];
     
   [popUpMenuDisplay addItemWithTitle: @"Default"];
   [[popUpMenuDisplay itemWithTitle: @"Default"] setEnabled: YES];
@@ -68,6 +70,13 @@
   [[popUpMenuDisplay itemWithTitle: @"Text only"] setEnabled: YES]; 
   [[popUpMenuDisplay itemWithTitle: @"Text only"] 
     setTag: NSToolbarDisplayModeLabelOnly];
+/* Below is a GNUstep only extension */
+#ifdef GSToolbarDisplayModeIconFit
+  [popUpMenuDisplay addItemWithTitle: @"Icon fit"];
+  [[popUpMenuDisplay itemWithTitle: @"Icon fit"] setEnabled: YES]; 
+  [[popUpMenuDisplay itemWithTitle: @"Icon fit"] 
+    setTag: GSToolbarDisplayModeIconFit];
+#endif
     
   [popUpMenuSize addItemWithTitle: @"Default"];
   [[popUpMenuSize itemWithTitle: @"Default"] setEnabled: YES];
