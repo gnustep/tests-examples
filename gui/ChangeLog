@@ -1,3 +1,7 @@
+2006-09-08 Adam Fedor <fedor@gnu.org>
+
+	* Remove GPuzzle - more up-to-date at Marko's site.
+
 2005-01-13 17:38  Alexander Malmberg  <alexander@malmberg.org>
 
         * GNUmakefile (SUBPROJECTS): Add ExampleService. Partially fixes
