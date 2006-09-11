@@ -25,7 +25,9 @@
 include $(GNUSTEP_MAKEFILES)/common.make
 
 PACKAGE_NAME=gnustep-examples
-CVS_MODULE_NAME = examples
+SVN_MODULE_NAME = examples
+SVN_BASE_URL=svn+ssh://svn.gna.org/svn/gnustep/tests
+
 VERSION=1.1.0
 
 SUBPROJECTS = gui
