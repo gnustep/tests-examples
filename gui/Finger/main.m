@@ -23,8 +23,7 @@
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-#import "Finger.h"
-#import "Controller.h"
+#import <FingerIncludeAll.h>
 
 int
 main (void)

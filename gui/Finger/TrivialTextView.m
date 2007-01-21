@@ -23,7 +23,7 @@
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-#import "TrivialTextView.h"
+#import <FingerIncludeAll.h>
 
 @implementation TrivialTextView
 -(id) init

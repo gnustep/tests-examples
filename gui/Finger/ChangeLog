@@ -1,3 +1,15 @@
+Sun Jan 21 02:01:18 2007  Nicola Pero  <nicola.pero@meta-innovation.com>
+
+	* GNUmakefile: Added precompiled header to demonstrate how to use
+	it.
+	* FingerIncludeAll.h: New file.
+	* main.m: Import the new file at the very
+	beginning.
+	* FingerWindow.m: Same change.
+	* PreferencesController.m: Same change.
+	* TrivialTextView.m: Same change.
+	* Controller.m: Same change.
+	
 Thu Apr 11 23:04:35 2002  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* PreferencesController.m ([PreferencesController -init]): Updated

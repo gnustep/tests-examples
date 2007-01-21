@@ -30,6 +30,8 @@ Finger_OBJC_FILES = \
   FingerWindow.m \
   PreferencesController.m \
   TrivialTextView.m
+Finger_OBJC_PRECOMPILED_HEADERS = \
+  FingerIncludeAll.h
 Finger_HEADERS = \
   Finger.h \
   Controller.h \

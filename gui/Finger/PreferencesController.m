@@ -23,7 +23,7 @@
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-#import "PreferencesController.h"
+#import <FingerIncludeAll.h>
 
 /* We cache here the shared file manager for speed */
 static NSFileManager *fm;
