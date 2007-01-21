@@ -24,6 +24,7 @@
  */
 
 #import <FingerIncludeAll.h>
+#import "PreferencesController.h"
 
 /* We cache here the shared file manager for speed */
 static NSFileManager *fm;

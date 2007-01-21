@@ -24,6 +24,7 @@
  */
 
 #import <FingerIncludeAll.h>
+#import "FingerWindow.h"
 
 @implementation FingerWindow
 

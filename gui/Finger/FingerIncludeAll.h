@@ -23,19 +23,16 @@
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-/* This file includes all the headers that all files in this project use.  */
+/* This file includes all the library headers that all files in this project use.  */
 
 /* The reason for having such a wide include is to speed up
  * compilation where precompiled headers are available.  By setting
  * xxx_OBJC_PRECOMPILED_HEADERS = <this file> in the GNUmakefile, the
  * file gets precompiled and then automatically reused when compiled
  * the rest, gaining a massive speed up in compilation speed.
- *
- * PS: If precompiled headers are not available, we include a bit more headers
- * than needed.
  */
-#import "Finger.h"
-#import "Controller.h"
-#import "FingerWindow.h"
-#import "PreferencesController.h"
-#import "TrivialTextView.h"
+#import <Foundation/Foundation.h>
+#import <AppKit/AppKit.h>
+#import <GNUstepGUI/GSHbox.h>
+#import <GNUstepGUI/GSVbox.h>
+

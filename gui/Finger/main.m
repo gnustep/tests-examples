@@ -24,6 +24,8 @@
  */
 
 #import <FingerIncludeAll.h>
+#import "Finger.h"
+#import "Controller.h"
 
 int
 main (void)

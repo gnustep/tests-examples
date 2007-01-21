@@ -24,6 +24,7 @@
  */
 
 #import <FingerIncludeAll.h>
+#import "TrivialTextView.h"
 
 @implementation TrivialTextView
 -(id) init

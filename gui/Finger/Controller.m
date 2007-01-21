@@ -24,6 +24,7 @@
  */
 
 #import <FingerIncludeAll.h>
+#import "Controller.h"
 
 @implementation Controller
 
