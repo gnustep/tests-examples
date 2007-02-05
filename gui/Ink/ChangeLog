@@ -1,3 +1,10 @@
+2007-02-05  Fred Kiefer <FredKiefer@gmx.de>
+
+	* Document.m (-windowControllerDidLoadNib:):
+	Allow undo.
+	* English.lproj/MainMenu.gorm: Converted to current Gorm format and add undo
+	menu entries.
+	
 2005-10-14  Fred Kiefer <FredKiefer@gmx.de>
 
 	* Document.m (-windowControllerDidLoadNib:):

@@ -191,6 +191,8 @@
      [[[[[NSApp mainMenu] itemWithTitle: @"Format"] submenu] itemWithTitle: @"Font"] submenu]];
 
   [[tv textStorage] setAttributedString: ts];
+  // Activate undo
+  [tv setAllowsUndo: YES];
   DESTROY(ts);
 }
 
