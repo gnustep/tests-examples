@@ -28,7 +28,7 @@ OBJCFLAGS += -Wall
 # We are creating a bundle
 #
 BUNDLE_NAME = NSSplitView-test
-BUNDLE_INSTALL_DIR = $(GNUSTEP_INSTALLATION_DIR)/Library/ApplicationSupport/GSTest
+BUNDLE_INSTALL_DIR = $(GNUSTEP_LIBRARY)/ApplicationSupport/GSTest
 NSSplitView-test_OBJC_FILES = NSSplitView-test.m
 NSSplitView-test_PRINCIPAL_CLASS = NSSplitViewTest
 

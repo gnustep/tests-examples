@@ -28,7 +28,7 @@ OBJCFLAGS += -Wall -g
 # We are creating a bundle
 #
 BUNDLE_NAME = NSOutlineView-test
-BUNDLE_INSTALL_DIR = $(GNUSTEP_INSTALLATION_DIR)/Library/ApplicationSupport/GSTest
+BUNDLE_INSTALL_DIR = $(GNUSTEP_LIBRARY)/ApplicationSupport/GSTest
 NSOutlineView-test_OBJC_FILES = NSOutlineView-test.m
 NSOutlineView-test_PRINCIPAL_CLASS = NSOutlineViewTest
 

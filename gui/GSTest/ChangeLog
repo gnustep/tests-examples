@@ -1,3 +1,28 @@
+2007-02-14  Nicola Pero <nicola.pero@meta-innovation.com>
+
+	* Composite-test/GNUmakefile: Updated definition of
+	BUNDLE_INSTALL_DIR to use GNUSTEP_LIBRARY instead of
+	GNUSTEP_INSTALLATION_DIR.
+	* CoordinateCheck-test/GNUmakefile: Same change.
+	* EncodingDecoding-test/GNUmakefile: Same change.
+	* GSHbox-test/GNUmakefile: Same change.
+	* KeyboardInput-test/GNUmakefile: Same change.
+	* NSBox-test/GNUmakefile: Same change.
+	* NSButton-test/GNUmakefile: Same change.
+	* NSColorList-test/GNUmakefile: Same change.
+	* NSColorWell-test/GNUmakefile: Same change.
+	* NSForm-test/GNUmakefile: Same change.
+	* NSOutlineView-test/GNUmakefile: Same change.
+	* NSSavePanel-test/GNUmakefile: Same change.
+	* NSScrollView-test/GNUmakefile: Same change.
+	* NSSecureTextField-test/GNUmakefile: Same change.
+	* NSSlider-test/GNUmakefile: Same change.
+	* NSSplitView-test/GNUmakefile: Same change.
+	* NSTableView-test/GNUmakefile: Same change.
+	* NSTextView-test/GNUmakefile: Same change.
+	* NSWindowStyleMask-test/GNUmakefile: Same change.
+	* StringDrawing-test/GNUmakefile: Same change.
+
 2004-08-14  Adam Fedor  <fedor@gnu.org>
 
 	* Controller.[hm]: New files split from main

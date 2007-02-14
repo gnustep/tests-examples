@@ -28,7 +28,7 @@ OBJCFLAGS += -Wall
 # We are creating a bundle
 #
 BUNDLE_NAME = NSTextView-test
-BUNDLE_INSTALL_DIR = $(GNUSTEP_INSTALLATION_DIR)/Library/ApplicationSupport/GSTest
+BUNDLE_INSTALL_DIR = $(GNUSTEP_LIBRARY)/ApplicationSupport/GSTest
 NSTextView-test_OBJC_FILES = NSTextView-test.m
 NSTextView-test_PRINCIPAL_CLASS = NSTextViewTest
 
