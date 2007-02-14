@@ -1,3 +1,8 @@
+2007-02-14  Nicola Pero <nicola.pero@meta-innovation.com>
+
+	* GNUmakefile (GNUSTEP_INSTALLATION_DIR): Manually edited the
+	file not to set it.
+
 Sat Jan 26 17:46:03 CET 2002 Philippe C.D. Robert <phr@3dkit.org>
 
         * Updated the ProjectCenter file
