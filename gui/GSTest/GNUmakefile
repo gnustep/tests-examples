@@ -33,6 +33,7 @@ SUBPROJECTS = \
   CoordinateCheck-test \
   GSHbox-test \
   KeyboardInput-test \
+  NSAnimation-test \
   NSBox-test \
   NSColorList-test \
   NSColorWell-test \
@@ -45,6 +46,7 @@ SUBPROJECTS = \
   NSTableView-test \
   NSTextView-test \
   StringDrawing-test \
+  NSViewAnimation-test \
   NSWindowStyleMask-test \
   NSOutlineView-test 
 
