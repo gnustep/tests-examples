@@ -26,6 +26,10 @@
 #include <AppKit/AppKit.h>
 #include "../GSTestProtocol.h"
 
+//#define ANIMATION_MODE NSAnimationNonblocking
+//#define ANIMATION_MODE NSAnimationBlocking
+#define ANIMATION_MODE NSAnimationNonblockingThreaded
+
 @interface NSViewAnimationTest: NSObject <GSTest>
 {
   NSWindow* win[3];
@@ -67,6 +71,7 @@
                  nil];
 
   viewAnimation = [[NSViewAnimation alloc] initWithViewAnimations: animations];
+  [viewAnimation setAnimationBlockingMode: ANIMATION_MODE];
 
   [self restart];
   return self;

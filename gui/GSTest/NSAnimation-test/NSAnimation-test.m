@@ -46,11 +46,12 @@
 			       | NSClosableWindowMask
 			       | NSMiniaturizableWindowMask
 	              backing: NSBackingStoreRetained
-			defer: YES
+			defer: NO
 	];
   view = [[AnimationView alloc ] initWithFrame: NSZeroRect];
 
   [win setContentView: view];
+  [win setReleasedWhenClosed: NO];
 
   [self restart];
   return self;

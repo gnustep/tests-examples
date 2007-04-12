@@ -1,3 +1,13 @@
+2007-04-12 Xavier Glattard <xavier.glattard@online.fr>
+
+    * GSTest/NSAnimation-test : Follow changes in NSAnimation class, run threaded
+    * GSTest/NSViewAnimation-test : run threaded
+
+2007-04-05 Xavier Glattard <xavier.glattard@online.fr>
+
+    * GSTest/NSAnimation-test : New test
+    * GSTest/NSViewAnimation-test : New test
+
 2006-09-08 Adam Fedor <fedor@gnu.org>
 
 	* Remove GPuzzle - more up-to-date at Marko's site.
