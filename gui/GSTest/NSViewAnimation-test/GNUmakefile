@@ -26,7 +26,7 @@ include $(GNUSTEP_MAKEFILES)/common.make
 OBJCFLAGS += -Wall
 
 BUNDLE_NAME = NSViewAnimation-test
-BUNDLE_INSTALL_DIR = $(GNUSTEP_INSTALLATION_DIR)/Library/ApplicationSupport/GSTest
+BUNDLE_INSTALL_DIR = $(GNUSTEP_LIBRARY)/ApplicationSupport/GSTest
 NSViewAnimation-test_OBJC_FILES = NSViewAnimation-test.m
 NSViewAnimation-test_PRINCIPAL_CLASS = NSViewAnimationTest
 
