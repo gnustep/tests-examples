@@ -1,3 +1,8 @@
+2007-05-24  Adam Fedor  <fedor@gnu.org>
+
+	* Version 1.2.0
+	* Update makefiles for new filesystem directories
+	* Some new examples
 
 2006-09-11  Adam Fedor  <fedor@gnu.org>
 

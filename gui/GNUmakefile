@@ -30,6 +30,7 @@ SUBPROJECTS =             \
 	CurrencyConverter \
 	Ink               \
 	ExampleService    \
+	MyGL		  \
 	GSTest
 
 include GNUmakefile.preamble
