@@ -198,7 +198,10 @@
 
 - (void)textDidChange:(NSNotification *)textObject 
 {
-  [self updateChangeCount: NSChangeDone];
+  if (![self hasUndoManager])
+    {
+      [self updateChangeCount: NSChangeDone];
+    }
 }
 
 - (void)insertFile: (id)sender
