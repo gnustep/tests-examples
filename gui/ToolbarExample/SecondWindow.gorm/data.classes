@@ -1,1 +1,37 @@
-{"## Comment" = "Do NOT change this file, Gorm maintains it"; ButtonWithValidation = {Actions = (); Outlets = (); Super = NSButton; }; FirstResponder = {Actions = ("orderFrontFontPanel:", "removeItem:"); Super = NSObject; }; GSToolbarView = {Actions = (); Outlets = (); Super = NSView; }; SecondWindowOwner = {Actions = ("removeItem:"); Outlets = (window, otherToolbarView, itemIndexField, buttonWithValidation, whatever); Super = NSObject; }; }
+{
+    "## Comment" = "Do NOT change this file, Gorm maintains it";
+    ButtonWithValidation = {
+	Actions = (
+	);
+	Outlets = (
+	);
+	Super = NSButton;
+    };
+    FirstResponder = {
+	Actions = (
+	    "orderFrontFontPanel:",
+	    "removeItem:"
+	);
+	Super = NSObject;
+    };
+    GSToolbarView = {
+	Actions = (
+	);
+	Outlets = (
+	);
+	Super = NSView;
+    };
+    SecondWindowOwner = {
+	Actions = (
+	    "removeItem:"
+	);
+	Outlets = (
+	    window,
+	    otherToolbarView,
+	    itemIndexField,
+	    buttonWithValidation,
+	    whatever
+	);
+	Super = NSObject;
+    };
+}
