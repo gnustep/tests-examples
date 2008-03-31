@@ -4,12 +4,14 @@
 #include <AppKit/NSOpenGLView.h>
 #include "AppController.h"
 #include <GL/gl.h>
-#include <Foundation/GSXML.h>
+#include <GL/glu.h>
+#include <GNUstepBase/GSXML.h>
+
+#include <math.h>
 
 static GLfloat _rtx = 0;
 static GLfloat _rty = 0;
 static GLfloat _rtz = 0;
-static GLfloat _rtl = 0;
 static GLfloat _artx = 0;
 static GLfloat _arty = 0;
 static GLfloat _artz = 0;
@@ -320,7 +322,6 @@ static void Normalize (Vector *v)
 
 @implementation MyGLView
 
-static char initialized = 0;
 - (void) scrollWheel:(NSEvent *)theEvent
 {
 	_artl += [theEvent deltaY];
@@ -340,12 +341,10 @@ static char initialized = 0;
 	_rtx += _artx;
 }
 
-- (BOOL) initGL
+- (void) prepareOpenGL
 {
-	[[self openGLContext] makeCurrentContext];
 	meshArray = [NSMutableArray new];
 
-	initialized = 1;
 	glShadeModel(GL_SMOOTH);
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	glClearDepth(1.0f);
@@ -357,18 +356,11 @@ static char initialized = 0;
 	glMatrixMode(GL_MODELVIEW);
 
 	[self reshape];
-	return YES;
 }
 
 - (void) reshape
 {
 	[super reshape];
-	if (!initialized)
-	{
-		return;
-	}
-
-	//[[self openGLContext] makeCurrentContext];
 
 	GLfloat ratio;
 	NSRect sceneBounds = [self bounds];
@@ -386,10 +378,6 @@ static char initialized = 0;
 
 - (void) drawRect:(NSRect)r
 {
-	int t;
-	if (!initialized)
-		return;
-
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
 	glLoadIdentity();
@@ -413,7 +401,6 @@ static char initialized = 0;
 - (void) loadModel
 {
 	GSXMLParser *p;
-	GSXMLDocument *d;
 	MySAX *h;
 
 	h = [MySAX new];
@@ -437,7 +424,6 @@ static id glview;
 								   selector:@selector(refresh)
 								   userInfo:nil
 									repeats:YES];
-	[glview initGL];
 	[glview loadModel];
 }
 
