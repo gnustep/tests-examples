@@ -1,3 +1,7 @@
+2008-06-09  Fred Kiefer <FredKiefer@gmx.de>
+
+	* English.lproj/MainMenu.gorm: Change action close: to performClose:
+	
 2007-10-01  Fred Kiefer <FredKiefer@gmx.de>
 
 	* Document.m (-textDidChange:): Only change update count if there
