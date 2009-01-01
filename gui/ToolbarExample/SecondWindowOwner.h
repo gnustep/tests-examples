@@ -25,8 +25,6 @@
 
 #include <Foundation/Foundation.h>
 #include <AppKit/AppKit.h>
-#include <GNUstepGUI/GSToolbarView.h>
-#include <GNUstepGUI/GSToolbar.h>
 
 @interface SecondWindowOwner : NSObject
 {

@@ -24,24 +24,25 @@
  */
 
 #include "SecondWindowOwner.h"
+#include <GNUstepGUI/GSToolbarView.h>
 
 @implementation SecondWindowOwner
 
 - (void) awakeFromNib
 {
-  GSToolbar *otherToolbar;
+  NSToolbar *otherToolbar;
   
   //NSLog(@"Nib loaded with window");
   
-  otherToolbar = [[GSToolbar alloc] initWithIdentifier: @"blablaToolbar"];
+  otherToolbar = [[NSToolbar alloc] initWithIdentifier: @"blablaToolbar"];
   //NSLog(@"Mini controller delegate %@", self);
   
   [otherToolbar setDelegate: self];
   
   [otherToolbarView setBorderMask: GSToolbarViewTopBorder 
-                                 | GSToolbarViewBottomBorder
-				 | GSToolbarViewRightBorder
-			         | GSToolbarViewLeftBorder];
+                    | GSToolbarViewBottomBorder
+                    | GSToolbarViewRightBorder
+                    | GSToolbarViewLeftBorder];
   [(GSToolbarView *)otherToolbarView setToolbar: otherToolbar];
   // We do a cast to eliminate a warning...
   
@@ -50,15 +51,14 @@
 
 // Toolbar delegates
 
-- (NSToolbarItem *) toolbar: (GSToolbar *)toolbar itemForItemIdentifier: (NSString *)identifier 
-                                             willBeInsertedIntoToolbar: (BOOL)willBeInserted 
+- (NSToolbarItem *) toolbar: (NSToolbar *)toolbar 
+      itemForItemIdentifier: (NSString *)identifier 
+  willBeInsertedIntoToolbar: (BOOL)willBeInserted 
 {
   NSToolbarItem *toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: identifier];
 
   //NSLog(@"toolbar:itemForItemIdentifier:willBeInsertedIntoToolbar: has been called");
   
-  AUTORELEASE(toolbarItem);
-
   if ([identifier isEqual: @"Third"])
     {
       [toolbarItem setLabel: @"Validation example"];
@@ -74,10 +74,11 @@
       [toolbarItem setAction: @selector(toggleToolbarShown:)];
     }
 
-  return toolbarItem;
+  return AUTORELEASE(toolbarItem);
 }
 
-- (NSArray *) toolbarDefaultItemIdentifiers: (GSToolbar *)toolbar {
+- (NSArray *) toolbarDefaultItemIdentifiers: (NSToolbar *)toolbar
+{
   //NSLog(@"toolbarDefaultItemIdentifiers: has been called");
 
   return [NSArray arrayWithObjects: @"Third",
@@ -87,7 +88,8 @@
 				    nil];
 }
 
-- (NSArray *) toolbarAllowedItemIdentifiers: (GSToolbar *)toolbar {
+- (NSArray *) toolbarAllowedItemIdentifiers: (NSToolbar *)toolbar
+{
   //NSLog(@"toolbarAllowedItemIdentifiers: has been called"); 
     
   return [NSArray arrayWithObjects: @"Third", 

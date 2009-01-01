@@ -42,7 +42,7 @@
   NSToolbar *toolbar = [[NSToolbar alloc] initWithIdentifier:@"myToolbar"];
   id item;
   
-  [documentWindow setDelegate: self];
+//  [documentWindow setDelegate: self];
     
   [toolbar setAllowsUserCustomization: YES];
   [toolbar setDelegate: self];

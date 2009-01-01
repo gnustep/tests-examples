@@ -1,3 +1,9 @@
+2009-01-01  Fred Kiefer <FredKiefer@gmx.de>
+
+	* GSTest/NSAnimation-test/AnimationView.m: Correct line endings.
+	* ToolbarExample: Adopt to changes in NSToolbar and the removal of
+	GSToolbar.
+
 2007-05-24 Adam Fedor <fedor@gnu.org>
 
 	* Add MyGL, by Banlu Kemiyatorn

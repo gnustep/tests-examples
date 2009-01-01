@@ -144,7 +144,9 @@
 
 - (void) fpsDisplay
 //{ [fpsField setFloatValue: [mainAnimation frameCount]]; }
-{ [fpsField setFloatValue: [mainAnimation actualFrameRate]]; }
+{ 
+  [fpsField setFloatValue: [mainAnimation actualFrameRate]]; 
+}
 
 - (void) drawRect: (NSRect)rect
 {
