@@ -43,10 +43,12 @@
                     | GSToolbarViewBottomBorder
                     | GSToolbarViewRightBorder
                     | GSToolbarViewLeftBorder];
-  [(GSToolbarView *)otherToolbarView setToolbar: otherToolbar];
   // We do a cast to eliminate a warning...
+  [otherToolbar _setToolbarView: (GSToolbarView *)otherToolbarView];
   
-  RELEASE(otherToolbar);  
+  // We leak the toolbar! It should rather be an instance variable and 
+  // freed when this object gets deallocated.
+  //RELEASE(otherToolbar);  
 }
 
 // Toolbar delegates
