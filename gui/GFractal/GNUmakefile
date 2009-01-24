@@ -1,5 +1,7 @@
 
 include $(GNUSTEP_MAKEFILES)/common.make
+PACKAGE_NAME = GFractal
+VERSION = 0.1
 
 # The application to be compiled
 APP_NAME = GFractal

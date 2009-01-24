@@ -1,3 +1,7 @@
+Sun Jan 24 2009 Riccardo Mottola <rmottola@users.sf.net>
+
+	* GNUMakefile : set package name and version
+
 Fri May 17 16:16:30 2002  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* FractalView.h: Intial checkin. 
