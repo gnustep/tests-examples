@@ -1,3 +1,8 @@
+2009-05-20  Fred Kiefer <FredKiefer@gmx.de>
+
+	* ExampleTheme: New directory with one example theme
+	by Fred Morcos <fred.morcos@gmail.com>
+
 2009-01-07  Fred Kiefer <FredKiefer@gmx.de>
 
 	* ToolbarExample/SecondWindowOwner.m (-awakeFromNib): Adopt to

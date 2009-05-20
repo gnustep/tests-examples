@@ -1,0 +1,17 @@
+Installation
+------------
+
+Just compile the Rhea bundle: 
+
+	make
+
+Now you should have a Rhea.theme bundle. 
+Install it with (You may need to become root to do so.):
+
+ make install
+
+After that, you need to tell GNUstep to use the 
+theme bundle: 
+
+  defaults write NSGlobalDomain GSTheme Rhea
+

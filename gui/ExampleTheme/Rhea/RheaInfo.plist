@@ -1,0 +1,6 @@
+{
+	ThemeDescription="A Bezier Path based Theme for GNUstep and Etoile";
+	ThemeName="Rhea";
+	ThemeRelease="0.1";
+	Authors=("Fred Morcos <fred.morcos@gmail.com>");
+}
