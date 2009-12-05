@@ -206,9 +206,15 @@ static NSString *test[20] =
 	    return @"class3";
 	  case 3:
 	    return @"class4";
+          case 4:
+            return @"Color";
 	  default:
 	    break;
 	}
+    }
+  else if ([item isEqual: @"Color"])
+    {
+      return @"blue";
     }
   else if (item == nil && index == 0)
     {
@@ -222,8 +228,12 @@ static NSString *test[20] =
    isItemExpandable: (id)item
 {
   NSLog(@"isItemExpandable:....");
-  if ([item isEqual: @"NSObject"] || [item isEqual: @"NSPanel"])
-    return YES;
+
+  if ([item isEqual: @"NSObject"] || [item isEqual: @"NSPanel"] 
+    || [item isEqual: @"Color"])
+    {
+      return YES;
+    }
 
   return NO;
 }
@@ -242,7 +252,11 @@ static NSString *test[20] =
     }
   else if ([item isEqual: @"NSPanel"])
     {
-      return 4;
+      return 5;
+    }
+  else if ([item isEqual: @"Color"])
+    {
+      return 1;
     }
 
   return 0;
@@ -345,6 +359,13 @@ static NSString *test[20] =
 	  value = @"3";
 	}
     }
+  else if ([item isEqual: @"Color"] || [item isEqual: @"blue"])
+    {
+      if ([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
+        {
+	  value = item;
+	}
+    }
 
   return value;
 }
@@ -379,23 +400,23 @@ static NSString *test[20] =
   return YES;
 }
 
-/*
 - (NSDragOperation) outlineView: (NSOutlineView *) ov
 		   validateDrop: (id <NSDraggingInfo>) info
 		   proposedItem: (id) item
 	     proposedChildIndex: (int) childIndex
 
 {
-  if (item == nil)
+  NSLog(@"Validate drop %@ at %i", item, childIndex);
+  /*if (item == nil)
     [ov setDropItem: @"NSObject"
 	dropChildIndex: NSOutlineViewDropOnItemIndex];
   else
     [ov setDropItem: item
 	dropChildIndex: NSOutlineViewDropOnItemIndex];
 
-  return NSDragOperationCopy;
+  return NSDragOperationCopy;*/
 }
-*/
+
 /*
 - (BOOL) tableView: (NSTableView *)tv
 	acceptDrop: (id <NSDraggingInfo>) info
