@@ -177,53 +177,43 @@ static NSString *test[20] =
 	    child: (int)index
 	   ofItem: (id)item
 {
-  //  NSLog(@"child: %d ofItem: %@", index, item);
-  if([item isEqual: @"NSObject"])
+  //NSLog(@"child: %d ofItem: %@", index, item);
+  if ([item isEqual: @"NSObject"])
     {
       switch(index)
 	{
-	case 0:
-	  return @"NSApplication";
-	  break;
-	case 1:
-	  return @"NSPanel";
-	  break;
-	case 2:
-	  return @"NSWindow";
-	  break;
-	case 3:
-	  return @"NSOutlineView";
-	  break;
-	default:
-	  break;
+	  case 0:
+	    return @"NSApplication";
+	  case 1:
+	    return @"NSPanel";
+	  case 2:
+	    return @"NSWindow";
+	  case 3:
+	    return @"NSOutlineView";
+	  default:
+	    break;
 	}
     }
-  if([item isEqual: @"NSPanel"])
+  else if ([item isEqual: @"NSPanel"])
     {
-      switch(index)
+      switch (index)
 	{
-	case 0:
-	  return @"class1";
-	  break;
-	case 1:
-	  return @"class2";
-	  break;
-	case 2:
-	  return @"class3";
-	  break;
-	case 3:
-	  return @"class4";
-	  break;
-	default:
-	  break;
+	  case 0:
+	    return @"class1";
+	  case 1:
+	    return @"class2";
+	  case 2:
+	    return @"class3";
+	  case 3:
+	    return @"class4";
+	  default:
+	    break;
 	}
     }
-  else
-    if(item == nil)
-      {
-	if(index == 0)
-	  return @"NSObject";
-      }
+  else if (item == nil && index == 0)
+    {
+      return @"NSObject";
+    }
 
   return nil;
 }
@@ -232,9 +222,7 @@ static NSString *test[20] =
    isItemExpandable: (id)item
 {
   NSLog(@"isItemExpandable:....");
-  if([item isEqual: @"NSObject"])
-    return YES;
-  if([item isEqual: @"NSPanel"])
+  if ([item isEqual: @"NSObject"] || [item isEqual: @"NSPanel"])
     return YES;
 
   return NO;
@@ -243,15 +231,19 @@ static NSString *test[20] =
 - (int)        outlineView: (NSOutlineView *)outlineView 
     numberOfChildrenOfItem: (id)item
 {
-  //  NSLog(@"numberOfChildren:....");
-  if(item == nil)
-    return 1;
-  else
-    if([item isEqual: @"NSObject"])
+  //NSLog(@"numberOfChildren:....");
+  if (item == nil)
+    {
+      return 1;
+    }
+  else if ([item isEqual: @"NSObject"])
+    {
       return 4;
-  else
-    if([item isEqual: @"NSPanel"])
+    }
+  else if ([item isEqual: @"NSPanel"])
+    {
       return 4;
+    }
 
   return 0;
 }
@@ -261,109 +253,94 @@ static NSString *test[20] =
 		    byItem: (id)item
 {
   NSString *value = nil;
-  //  NSLog(@"item = %@", item);
-  if([item isEqual: @"NSObject"])
+  //NSLog(@"item = %@", item);
+  if ([item isEqual: @"NSObject"])
     {
-      if([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
+      if ([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
 	{
 	  value = @"NSObject";
 	}
-      else
-      if([[[tableColumn headerCell] stringValue] isEqual: @"outlets"])
+      else if ([[[tableColumn headerCell] stringValue] isEqual: @"outlets"])
 	{
 	  value = @"1";
 	}
-      else
-      if([[[tableColumn headerCell] stringValue] isEqual: @"actions"])
+      else if ([[[tableColumn headerCell] stringValue] isEqual: @"actions"])
 	{
 	  value = @"2";
 	}
     }
-  if([item isEqual: @"NSApplication"])
+  else if ([item isEqual: @"NSApplication"])
     {
-      if([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
+      if ([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
 	{
 	  value = @"NSApplication";
 	}
-      else
-      if([[[tableColumn headerCell] stringValue] isEqual: @"outlets"])
+      else if ([[[tableColumn headerCell] stringValue] isEqual: @"outlets"])
 	{
 	  value = @"2";
 	}
-      else
-      if([[[tableColumn headerCell] stringValue] isEqual: @"actions"])
+      else if ([[[tableColumn headerCell] stringValue] isEqual: @"actions"])
 	{
 	  value = @"3";
 	}
     }
-  if([item isEqual: @"NSPanel"])
+  else if ([item isEqual: @"NSPanel"])
     {
-      if([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
+      if ([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
 	{
 	  value = @"NSPanel";
 	}
-      else
-      if([[[tableColumn headerCell] stringValue] isEqual: @"outlets"])
+      else if ([[[tableColumn headerCell] stringValue] isEqual: @"outlets"])
 	{
 	  value = @"2";
 	}
-      else
-      if([[[tableColumn headerCell] stringValue] isEqual: @"actions"])
+      else if ([[[tableColumn headerCell] stringValue] isEqual: @"actions"])
 	{
 	  value = @"3";
 	}
     }
-  if([item isEqual: @"NSWindow"])
+  else if ([item isEqual: @"NSWindow"])
     {
-      if([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
+      if ([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
 	{
 	  value = @"NSWindow";
 	}
-      else
-      if([[[tableColumn headerCell] stringValue] isEqual: @"outlets"])
+      else if ([[[tableColumn headerCell] stringValue] isEqual: @"outlets"])
 	{
 	  value = @"3";
 	}
-      else
-      if([[[tableColumn headerCell] stringValue] isEqual: @"actions"])
+      else if ([[[tableColumn headerCell] stringValue] isEqual: @"actions"])
 	{
 	  value = @"5";
 	}
     }
-  if([item isEqual: @"NSOutlineView"])
+  else if ([item isEqual: @"NSOutlineView"])
     {
-      if([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
+      if ([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
 	{
 	  value = @"NSOutlineView";
 	}
-      else
-      if([[[tableColumn headerCell] stringValue] isEqual: @"outlets"])
+      else if ([[[tableColumn headerCell] stringValue] isEqual: @"outlets"])
 	{
 	  value = @"4";
 	}
-      else
-      if([[[tableColumn headerCell] stringValue] isEqual: @"actions"])
+      else if ([[[tableColumn headerCell] stringValue] isEqual: @"actions"])
 	{
 	  value = @"6";
 	}
     }
-  
-  if([item isEqual: @"class1"] ||
-     [item isEqual: @"class2"] ||
-     [item isEqual: @"class3"] ||
-     [item isEqual: @"class4"])
+  else if ([item isEqual: @"class1"] || [item isEqual: @"class2"] 
+    || [item isEqual: @"class3"] || [item isEqual: @"class4"])
     {
-      if([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
+      if ([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
 	{
 	  value = item;
 	}
-      else
-      if([[[tableColumn headerCell] stringValue] isEqual: @"outlets"])
+      else if ([[[tableColumn headerCell] stringValue] isEqual: @"outlets"])
 	{
 	  value = @"2";
 	}
-      else
-      if([[[tableColumn headerCell] stringValue] isEqual: @"actions"])
+      else if ([[[tableColumn headerCell] stringValue] isEqual: @"actions"])
 	{
 	  value = @"3";
 	}
