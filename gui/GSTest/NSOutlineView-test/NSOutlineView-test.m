@@ -419,9 +419,9 @@ static NSString *test[20] =
 	dropChildIndex: NSOutlineViewDropOnItemIndex];
   else
     [ov setDropItem: item
-	dropChildIndex: NSOutlineViewDropOnItemIndex];
+	dropChildIndex: NSOutlineViewDropOnItemIndex];*/
 
-  return NSDragOperationCopy;*/
+  return NSDragOperationCopy;
 }
 
 /*
