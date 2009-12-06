@@ -190,6 +190,8 @@ static NSString *test[20] =
 	    return @"NSWindow";
 	  case 3:
 	    return @"NSOutlineView";
+          case 4:
+            return @"City";
 	  default:
 	    break;
 	}
@@ -227,10 +229,10 @@ static NSString *test[20] =
 - (BOOL)outlineView: (NSOutlineView *)outlineView
    isItemExpandable: (id)item
 {
-  NSLog(@"isItemExpandable:....");
+  //NSLog(@"isItemExpandable:....");
 
   if ([item isEqual: @"NSObject"] || [item isEqual: @"NSPanel"] 
-    || [item isEqual: @"Color"])
+    || [item isEqual: @"City"] || [item isEqual: @"Color"])
     {
       return YES;
     }
@@ -248,11 +250,15 @@ static NSString *test[20] =
     }
   else if ([item isEqual: @"NSObject"])
     {
-      return 4;
+      return 5;
     }
   else if ([item isEqual: @"NSPanel"])
     {
       return 5;
+    }
+  else if ([item isEqual: @"City"])
+    {
+      return 0;
     }
   else if ([item isEqual: @"Color"])
     {
@@ -359,7 +365,8 @@ static NSString *test[20] =
 	  value = @"3";
 	}
     }
-  else if ([item isEqual: @"Color"] || [item isEqual: @"blue"])
+  else if ([item isEqual: @"Color"] || [item isEqual: @"blue"] 
+    || [item isEqual: @"City"])
     {
       if ([[[tableColumn headerCell] stringValue] isEqual: @"classes"])
         {
@@ -376,7 +383,7 @@ static NSString *test[20] =
       forTableColumn: (NSTableColumn *)aTableColumn
 		item: (id)item
 {
-  NSLog(@"outlineView:willDisplayCell:forTableColumn:item:");
+  //NSLog(@"outlineView:willDisplayCell:forTableColumn:item:");
   return YES;
 }
 

@@ -1,6 +1,6 @@
 2009-12-05  Quentin Mathe  <quentin.mathe@gmail.com>
 
-	* NSOutlineView-test/NSOutlineView-test.m: Added a new expandable item 
+	* NSOutlineView-test/NSOutlineView-test.m: Added new expandable items
 	to better test drop above at multiple levels on the same row.
 
 2009-12-05  Quentin Mathe  <quentin.mathe@gmail.com>
