@@ -46,10 +46,12 @@
 
 @interface NSSavePanelTest: NSObject <GSTest>
 {
+  NSButton *otherTypesButton;
   NSButton *packageButton;
   NSButton *accessoryViewButton;
   NSForm *configureForm;
   NSWindow *win;
+  TableEntry *typesEntry;
   TableEntry *filenameEntry;
   TableEntry *directoryEntry;
   TableEntry *buttonEntry;
@@ -176,12 +178,21 @@
   [configureForm addEntry: @"Prompt:"];
   [configureForm addEntry: @"Directory:"];
   [configureForm addEntry: @"File:"];
+  [configureForm addEntry: @"Types:"];
   [configureForm sizeToFit];
   [configureForm setAutoresizingMask: NSViewWidthSizable];
 
   tmp_box = [[GSVbox new] autorelease];
   [tmp_box setDefaultMinYMargin: 4];
   [tmp_box setAutoresizingMask: NSViewMinXMargin | NSViewMaxXMargin];
+
+  otherTypesButton = [[NSButton new] autorelease];
+  [otherTypesButton setTitle: @"Allows Other Types"];
+  [otherTypesButton setButtonType: NSSwitchButton];
+  [otherTypesButton setBordered: NO];
+  [otherTypesButton sizeToFit];
+  [otherTypesButton setAutoresizingMask: NSViewMaxXMargin];
+  [tmp_box addView: otherTypesButton];
   
   packageButton = [[NSButton new] autorelease];
   [packageButton setTitle: @"Treat File Packages as Directories"];
@@ -250,15 +261,32 @@
 				     title: @"NSSavePanel Test"
 				     filename: NO];
 }
+static NSArray *tokenize(NSString *string)
+{
+  NSString *token;
+  NSMutableArray *tokens = [NSMutableArray new];
+  NSScanner *scanner = [NSScanner scannerWithString: string];
+  NSCharacterSet *whiteSet = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+
+  [scanner scanCharactersFromSet: whiteSet intoString: NULL];
+  while ([scanner scanUpToCharactersFromSet: whiteSet intoString: &token])
+    {
+      [tokens addObject: token];
+      [scanner scanCharactersFromSet: whiteSet intoString: NULL];
+    }
+  return [tokens autorelease];
+}
 -(void) startSavePanel: (id) sender 
 {
   NSSavePanel *savePanel;
+  int otherTypesFlag;
   int packageFlag;
   int accessoryViewFlag;
   int result;
   NSString *string;
   NSString *directory;
   NSString *filename;
+  NSArray *allowedTypes;
 
   savePanel = [NSSavePanel savePanel];
   string = [[configureForm cellAtIndex: 0] stringValue];
@@ -274,6 +302,18 @@
     [savePanel setTreatsFilePackagesAsDirectories: NO];
   else
     [savePanel setTreatsFilePackagesAsDirectories: YES];
+
+  allowedTypes = tokenize([[configureForm cellAtIndex: 4] stringValue]);
+  if ([allowedTypes count] > 0)
+    [savePanel setAllowedFileTypes: allowedTypes];
+  else
+    [savePanel setAllowedFileTypes: nil];
+
+  otherTypesFlag = [otherTypesButton state];
+  if (otherTypesFlag == 0)
+    [savePanel setAllowsOtherFileTypes: NO];
+  else
+    [savePanel setAllowsOtherFileTypes: YES];
 
   accessoryViewFlag = [accessoryViewButton state];
   if (accessoryViewFlag == 1)
