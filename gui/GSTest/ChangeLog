@@ -1,3 +1,10 @@
+2009-12-16  Wolfgang Lux  <wolfgang.lux@gmail.com>
+
+	* GNUmakefile:
+	* NSOpenPanel-test/GNUmakefile:
+	* NSOpenPanel-test/NSOpenPanel-test.m: Add demo/test for the Open
+	panel. The test has been adapted from the Save panel test.
+
 2009-12-15  Wolfgang Lux  <wolfgang.lux@gmail.com>
 
 	* NSSavePanel-test/NSSavePanel-test.m: Add field to supply a list
