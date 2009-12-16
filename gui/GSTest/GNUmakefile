@@ -38,6 +38,7 @@ SUBPROJECTS = \
   NSColorList-test \
   NSColorWell-test \
   NSForm-test \
+  NSOpenPanel-test \
   NSSavePanel-test \
   NSScrollView-test \
   NSSecureTextField-test \
