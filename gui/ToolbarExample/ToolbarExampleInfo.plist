@@ -1,11 +1,14 @@
 {
-    ApplicationDescription = "";
+    ApplicationDescription = "Toolbar Example";
     ApplicationIcon = "";
-    ApplicationName = Test;
+    ApplicationName = ToolbarExample;
     ApplicationRelease = 0.1;
-    Authors = ("");
-    Copyright = "Copyright (C) 200x by ...";
-    CopyrightDescription = "Released under ...";
+    Authors = (
+    	    "GNUstep Team",
+	    "Quentin Mathe"
+    );
+    Copyright = "Copyright (C) 2004-2009  GNUstep";
+    CopyrightDescription = "Released under GPLv2";
     FullVersionID = 0.1;
     NOTE = "Automatically generated!";
     URL = "";
