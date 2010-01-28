@@ -54,7 +54,7 @@
 // 
 
 // Number of tests in the list
-#define TEST_NUMBER 18
+#define TEST_NUMBER 19
 struct 
 {
   NSString *menuName;      // Name shown on the menu
@@ -68,6 +68,7 @@ testList[TEST_NUMBER] =
   {@"GSHbox", @"GSHbox-test"},
   {@"Keyboard Input", @"KeyboardInput-test"},
   {@"NSBox", @"NSBox-test"},
+  {@"NSButton", @"NSButton-test"},
   {@"NSColorList", @"NSColorList-test"},
   {@"NSColorWell", @"NSColorWell-test"},
   {@"NSForm", @"NSForm-test"},

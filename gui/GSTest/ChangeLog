@@ -1,3 +1,10 @@
+2010-01-28 Eric Wasylishen <ewasylishen@gmail.com>
+
+	* GNUmakefile:
+	* NSButton-test/NSButton-test.m:
+	* testList.h: Enable the NSButton test. Modify the test to show off
+	all of the bezel styles.
+
 2009-12-16  Wolfgang Lux  <wolfgang.lux@gmail.com>
 
 	* GNUmakefile:

@@ -30,29 +30,50 @@
 {
   NSWindow *win;
   NSTextView *text;
+  GSVbox *vbox;
 }
 -(void) restart;
 -(void) action: (id)sender;
 @end
 
 @implementation NSButtonTest: NSObject
+
+
+- (NSButton *) addButtonWithLabel: (NSString *)label
 {
-  // for instance variables see above
+  NSButton *button = [NSButton new];
+  [button setFrame: NSMakeRect (0, 0, 200, 32)];
+  [button setTitle: label];
+  [button setAutoresizingMask: NSViewMaxXMargin];
+  [button setTarget: self];
+  [button setContinuous: YES];
+  [button setAction: @selector (action:)];
+  [vbox addView: button];
+  return [button autorelease];
 }
+
+
+
+- (NSButton *) addButtonWithLabel: (NSString *)label bezel: (NSBezelStyle)bezel
+{
+  NSButton *button = [self addButtonWithLabel: label];
+  [button setBezelStyle: bezel];
+  return button;
+}
+
+
+
 -(id) init
 {
-  GSHbox *hbox;
-  GSVbox *vbox;
-  NSButton *button;
   NSScrollView *scrollView;
   NSRect winFrame;
 
   vbox = [GSVbox new];
-  [vbox setDefaultMinYMargin: 5];
+  [vbox setDefaultMinYMargin: 1];
   [vbox setBorder: 5];
 
   scrollView = [[NSScrollView alloc] initWithFrame: 
-				       NSMakeRect (0, 0, 300, 300)];
+				       NSMakeRect (0, 0, 300, 100)];
   [scrollView setHasHorizontalScroller: NO];
   [scrollView setHasVerticalScroller: YES]; 
   [scrollView setAutoresizingMask: NSViewHeightSizable | NSViewWidthSizable];
@@ -77,25 +98,21 @@
 
   [vbox addSeparator];
 
-
-  hbox = [GSHbox new];
-  [hbox setDefaultMinXMargin: 5];
-  [hbox setBorder: 0];
-
-  button = [NSButton new];
-  [button setFrame: NSMakeRect (0, 0, 64, 64)];
-  [button setTitle: @"Click"];
-  [button setAutoresizingMask: NSViewMaxXMargin];
-  [button setTarget: self];
-  [button setContinuous: YES];
-  [button setAction: @selector (action:)];
-  [hbox addView: button];
-  RELEASE (button);
-
-  [hbox setAutoresizingMask: NSViewNotSizable];
-
-  [vbox addView: hbox  enablingYResizing: NO];
-  RELEASE (hbox);
+  [self addButtonWithLabel: @"NSButton"];
+  [self addButtonWithLabel: @"NSRoundedBezelStyle" bezel: NSRoundedBezelStyle];
+  [self addButtonWithLabel: @"NSRegularSquareBezelStyle" bezel: NSRegularSquareBezelStyle];
+  [self addButtonWithLabel: @"NSThickSquareBezelStyle" bezel: NSThickSquareBezelStyle];
+  [self addButtonWithLabel: @"NSThickerSquareBezelStyle" bezel: NSThickerSquareBezelStyle];
+  [self addButtonWithLabel: @"NSDisclosureBezelStyle" bezel: NSDisclosureBezelStyle];
+  [self addButtonWithLabel: @"NSShadowlessSquareBezelStyle" bezel: NSShadowlessSquareBezelStyle];
+  [self addButtonWithLabel: @"NSCircularBezelStyle" bezel: NSCircularBezelStyle];
+  [self addButtonWithLabel: @"NSTexturedSquareBezelStyle" bezel: NSTexturedSquareBezelStyle];
+  [self addButtonWithLabel: @"NSHelpButtonBezelStyle" bezel: NSHelpButtonBezelStyle];
+  [self addButtonWithLabel: @"NSSmallSquareBezelStyle" bezel: NSSmallSquareBezelStyle];
+  [self addButtonWithLabel: @"NSTexturedRoundedBezelStyle" bezel: NSTexturedRoundedBezelStyle];
+  [self addButtonWithLabel: @"NSRoundRectBezelStyle" bezel: NSRoundRectBezelStyle];
+  [self addButtonWithLabel: @"NSRecessedBezelStyle" bezel: NSRecessedBezelStyle];
+  [self addButtonWithLabel: @"NSRoundedDisclosureBezelStyle" bezel: NSRoundedDisclosureBezelStyle];
 
   [vbox setAutoresizingMask: NSViewHeightSizable | NSViewWidthSizable];
   
@@ -112,7 +129,7 @@
   [win setReleasedWhenClosed: NO];
   [win setContentView: vbox];
   [win setMinSize: [win frame].size];
-  RELEASE (vbox);
+
   [win setTitle: @"Continuous button test"];
 
   [self restart];
@@ -130,6 +147,7 @@
 - (void) dealloc
 {
   RELEASE (win);
+  RELEASE (vbox);
   [super dealloc];
 }
 
@@ -137,7 +155,8 @@
 {
   [text replaceCharactersInRange: 
 	  NSMakeRange ([[text textStorage] length], 0)
-	withString: @"Action sent!\n"];
+	withString: [NSString stringWithFormat: @"Action sent from %@!\n", sender]];
 }
+
 @end
 
