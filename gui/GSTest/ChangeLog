@@ -1,5 +1,13 @@
 2010-01-28 Eric Wasylishen <ewasylishen@gmail.com>
 
+	* NSWindowStyleMask-test/NSWindowStyleMask-test.m: Tweak to allow
+	creating NSPanels, and allow setting the new NSWindow and NSPanel
+	style masks.
+	Also added a close button and descriptive label to the created
+	windows.
+
+2010-01-28 Eric Wasylishen <ewasylishen@gmail.com>
+
 	* NSButton-test/NSButton-test.m: Add NSPopUpButton and NSComboBox
 
 2010-01-28 Eric Wasylishen <ewasylishen@gmail.com>

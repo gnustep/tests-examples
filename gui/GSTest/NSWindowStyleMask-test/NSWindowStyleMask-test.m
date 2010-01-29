@@ -28,25 +28,33 @@
 #include <GNUstepGUI/GSVbox.h>
 #include "../GSTestProtocol.h"
 
-#define STYLE_NUMBER 6
+#define STYLE_NUMBER 7
+#define PANEL_STYLE_NUMBER 4
 
 struct 
 { 
   NSString *name; unsigned int styleMask;
-} styles[STYLE_NUMBER] = 
+} styles[STYLE_NUMBER + PANEL_STYLE_NUMBER] = 
 {
-  { @"NSMiniWindowMask",           NSMiniWindowMask           },
-  { @"NSIconWindowMask",           NSIconWindowMask           },
-  { @"NSResizableWindowMask",      NSResizableWindowMask      },
-  { @"NSMiniaturizableWindowMask", NSMiniaturizableWindowMask },
-  { @"NSClosableWindowMask",       NSClosableWindowMask       },
-  { @"NSTitledWindowMask",         NSTitledWindowMask         }
+  { @"NSMiniWindowMask",                            NSMiniWindowMask               },
+  { @"NSIconWindowMask",                            NSIconWindowMask               },
+  { @"NSResizableWindowMask",                       NSResizableWindowMask          },
+  { @"NSMiniaturizableWindowMask",                  NSMiniaturizableWindowMask     },
+  { @"NSClosableWindowMask",                        NSClosableWindowMask           },
+  { @"NSTitledWindowMask",                          NSTitledWindowMask             },
+  { @"NSTexturedBackgroundWindowMask",              NSTexturedBackgroundWindowMask },
+  { @"NSUtilityWindowMask (NSPanel only)",          NSUtilityWindowMask            },
+  { @"NSDocModalWindowMask (NSPanel only)",         NSDocModalWindowMask           },
+  { @"NSNonactivatingPanelMask (NSPanel only)",     NSNonactivatingPanelMask       },
+  { @"NSHUDWindowMask (NSPanel only)",              NSHUDWindowMask                }
 };
+
 
 
 @interface NSWindowStyleMaskTest: NSObject <GSTest>
 {
-  NSButton *styleButton[6];
+  NSButton *styleButton[STYLE_NUMBER + PANEL_STYLE_NUMBER];
+  NSButton *panelButton;
   NSWindow *win;
 }
 -(void) restart;
@@ -78,14 +86,27 @@ struct
   [newWindowButton setAction: @selector (newWindow:)];
   [mainVbox addView: newWindowButton  enablingYResizing: NO];
 
+  panelButton = AUTORELEASE ([NSButton new]);
+  [panelButton setTitle: @"Create NSPanel"];
+  [panelButton setButtonType: NSSwitchButton];
+  [panelButton setBordered: NO];
+  [panelButton sizeToFit];
+  [panelButton setAutoresizingMask: NSViewMaxXMargin];
+  [mainVbox addView: panelButton];
+ 
   [mainVbox addSeparator];
   
   styleVbox = AUTORELEASE ([GSVbox new]);
   [styleVbox setDefaultMinYMargin: 5];
   [styleVbox setBorder: 5];
 
-  for (i = 0; i < STYLE_NUMBER; i++)
+  for (i = 0; i < STYLE_NUMBER + PANEL_STYLE_NUMBER; i++)
     {
+      if (i == STYLE_NUMBER)
+        {
+          [styleVbox addSeparator];
+        }
+
       styleButton[i] = AUTORELEASE ([NSButton new]);
       [styleButton[i] setTitle: styles[i].name];
       [styleButton[i] setButtonType: NSSwitchButton];
@@ -94,7 +115,10 @@ struct
       [styleButton[i] setAutoresizingMask: NSViewMaxXMargin];
       [styleVbox addView: styleButton[i]];
     }
-  
+ 
+
+
+ 
   optionsBox = AUTORELEASE ([NSBox new]);
   [optionsBox setTitle: @"Window Style Mask"];
   [optionsBox setTitlePosition: NSAtTop];
@@ -134,25 +158,62 @@ struct
 }
 -(void) newWindow: (id) sender 
 {
+  BOOL isPanel;
+  NSButton *button;
+  NSTextField *label;
+  NSString *labelString;
   NSWindow *newWindow;
   unsigned int styleMask;
   int i;
   
+  isPanel = ([panelButton state] == 1);
+
   styleMask = 0;
-  for (i = 0; i < STYLE_NUMBER; i++)
+  labelString = @"";
+  for (i = 0; i < (isPanel ? (STYLE_NUMBER + PANEL_STYLE_NUMBER) : STYLE_NUMBER); i++)
     {
       if ([styleButton[i] state] == 1)
 	{
 	  styleMask |= styles[i].styleMask;
+          labelString = [NSString stringWithFormat: @"%@\n%@", labelString, styles[i].name];
 	}      
     }
 
-  newWindow = [NSWindow alloc];
-  newWindow = [newWindow initWithContentRect: NSMakeRect (100, 100, 200, 200)
+  if (isPanel)
+    newWindow = [NSPanel alloc];
+  else
+    newWindow = [NSWindow alloc];
+
+  newWindow = [newWindow initWithContentRect: NSMakeRect (100, 100, 300, 200)
 			 styleMask: styleMask
 			 backing: NSBackingStoreBuffered
 			 defer: NO];
   [newWindow setReleasedWhenClosed: YES];
+  
+  if (isPanel)
+    [newWindow setTitle: @"Panel"];
+
+  button = [[[NSButton alloc] initWithFrame: NSMakeRect(100, 0, 100, 30)] autorelease];
+  [button setTitle: @"Close"];
+  [button setTarget: self];
+  [button setAction: @selector(closeWindow:)];
+  [[newWindow contentView] addSubview: button];
+
+  label = [[[NSTextField alloc] initWithFrame: NSMakeRect(0, 30, 300, 170)] autorelease];
+  [label setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
+  [label setStringValue: labelString];
+  [label setDrawsBackground: NO];
+  [label setEditable: NO];
+  [label setBezeled: NO];
+  [label setSelectable: NO];
+  [[newWindow contentView] addSubview: label];
+
   [newWindow orderFront: self]; 
 }
+
+- (void) closeWindow: (id) sender
+{
+  [[sender window] close];
+}
+
 @end
