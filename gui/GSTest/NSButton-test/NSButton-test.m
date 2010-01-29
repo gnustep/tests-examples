@@ -42,7 +42,7 @@
 {
   NSTextField *labelView = [NSTextField new];
   [labelView setStringValue: label];
-  [labelView setFrame: NSMakeRect (0, 0, 200, 16)];
+  [labelView setFrame: NSMakeRect (0, 0, 250, 16)];
   [labelView setEditable: NO];
   [labelView setSelectable: NO];
   [labelView setBezeled: NO];
@@ -84,12 +84,63 @@
   [segmented setLabel: @"Third" forSegment: 2];
 
   [segmented setTarget: self];
+  [segmented setAction: @selector (action:)];
+ 
   [box addView: segmented];
 
   [self addLabel: label to: box];
   
   return [segmented autorelease];
 }
+
+- (NSComboBox *) addComboBoxWithLabel: (NSString *)label buttonBordered: (BOOL)button to: (id)box
+{
+  NSComboBox *combo = [NSComboBox new];
+  [combo setFrame: NSMakeRect (0, 0, 200, 32)];
+  [combo setAutoresizingMask: NSViewMaxXMargin];
+  [combo setButtonBordered: button];
+
+  [combo addItemWithObjectValue: @"First"];
+  [combo addItemWithObjectValue: @"Second"];
+  [combo addItemWithObjectValue: @"Third"];
+
+  [combo setTarget: self];
+  [combo setAction: @selector (action:)];
+ 
+  [box addView: combo];
+  [self addLabel: label to: box];
+
+  return [combo autorelease];
+}
+
+- (NSPopUpButton *) addPopUpButtonWithLabel: (NSString *)label pullsDown:(BOOL)pullsDown to: (id)box
+{
+  NSPopUpButton *button = [NSPopUpButton new];
+  [button setFrame: NSMakeRect (0, 0, 200, 32)];
+  [button setPullsDown: pullsDown];
+  [button setAutoresizingMask: NSViewMaxXMargin];
+
+  [button addItemWithTitle: @"First"];
+  [button addItemWithTitle: @"Second"];
+  [button addItemWithTitle: @"Third"];
+
+  [button setTarget: self];
+  [button setAction: @selector (action:)];
+  [box addView: button];
+
+  [self addLabel: label to: box];
+
+  return [button autorelease];
+}
+
+- (NSPopUpButton *) addPopUpButtonWithLabel: (NSString *)label pullsDown:(BOOL)pullsDown bezel:(NSBezelStyle)bezel to: (id)box
+{
+  NSPopUpButton *button = [self addPopUpButtonWithLabel: label pullsDown: pullsDown to: box];
+  [button setBezelStyle: bezel];
+  return button;
+}
+
+
 
 -(id) init
 {
@@ -163,6 +214,25 @@
   [self addSegmentedControlWithLabel: @"NSSegmentStyleTexturedSquare" style: NSSegmentStyleTexturedSquare to: column];
   [self addSegmentedControlWithLabel: @"NSSegmentStyleCapsule" style: NSSegmentStyleCapsule to: column];
   [self addSegmentedControlWithLabel: @"NSSegmentStyleSmallSquare" style: NSSegmentStyleSmallSquare to: column];
+
+  [hbox addView: column];  
+  RELEASE(column);
+
+  column = [GSVbox new];
+  [column setDefaultMinYMargin: 2];
+
+  [self addPopUpButtonWithLabel: @"NSPopUpButton" pullsDown:NO to: column]; 
+  [self addPopUpButtonWithLabel: @"NSPopUpButton pullsDown" pullsDown:YES to: column]; 
+  [self addPopUpButtonWithLabel: @"NSPopUpButton NSRoundedBezelStyle" pullsDown:NO bezel: NSRoundedBezelStyle to: column]; 
+
+  [hbox addView: column];  
+  RELEASE(column);
+
+  column = [GSVbox new];
+  [column setDefaultMinYMargin: 2];
+ 
+  [self addComboBoxWithLabel: @"NSComboBox" buttonBordered: NO to: column];
+  [self addComboBoxWithLabel: @"NSComboBox buttonBordered" buttonBordered: YES to: column];
 
   [hbox addView: column];
   RELEASE(column);
