@@ -30,7 +30,6 @@
 {
   NSWindow *win;
   NSTextView *text;
-  GSVbox *vbox;
 }
 -(void) restart;
 -(void) action: (id)sender;
@@ -39,7 +38,20 @@
 @implementation NSButtonTest: NSObject
 
 
-- (NSButton *) addButtonWithLabel: (NSString *)label
+- (NSTextField *) addLabel: (NSString *)label to: (id)box
+{
+  NSTextField *labelView = [NSTextField new];
+  [labelView setStringValue: label];
+  [labelView setFrame: NSMakeRect (0, 0, 200, 16)];
+  [labelView setEditable: NO];
+  [labelView setSelectable: NO];
+  [labelView setBezeled: NO];
+  [labelView setDrawsBackground: NO];
+  [box addView: labelView];
+  return [labelView autorelease];
+}
+
+- (NSButton *) addButtonWithLabel: (NSString *)label to: (id)box
 {
   NSButton *button = [NSButton new];
   [button setFrame: NSMakeRect (0, 0, 200, 32)];
@@ -48,25 +60,43 @@
   [button setTarget: self];
   [button setContinuous: YES];
   [button setAction: @selector (action:)];
-  [vbox addView: button];
+  [box addView: button];
   return [button autorelease];
 }
 
-
-
-- (NSButton *) addButtonWithLabel: (NSString *)label bezel: (NSBezelStyle)bezel
+- (NSButton *) addButtonWithLabel: (NSString *)label bezel: (NSBezelStyle)bezel to: (id)box
 {
-  NSButton *button = [self addButtonWithLabel: label];
+  NSButton *button = [self addButtonWithLabel: label to: box];
   [button setBezelStyle: bezel];
   return button;
 }
 
+- (NSSegmentedControl *) addSegmentedControlWithLabel: (NSString *)label style: (NSSegmentStyle)style to: (id)box
+{
+  NSSegmentedControl *segmented = [NSSegmentedControl new];
+  [segmented setFrame: NSMakeRect (0, 0, 200, 32)];
+  [segmented setAutoresizingMask: NSViewMaxXMargin];
+  [segmented setSegmentCount: 3];
+  [segmented setSegmentStyle: style];
 
+  [segmented setLabel: @"First" forSegment: 0];
+  [segmented setLabel: @"Second" forSegment: 1];
+  [segmented setLabel: @"Third" forSegment: 2];
+
+  [segmented setTarget: self];
+  [box addView: segmented];
+
+  [self addLabel: label to: box];
+  
+  return [segmented autorelease];
+}
 
 -(id) init
 {
   NSScrollView *scrollView;
   NSRect winFrame;
+  GSVbox *vbox, *column;
+  GSHbox *hbox;
 
   vbox = [GSVbox new];
   [vbox setDefaultMinYMargin: 1];
@@ -98,21 +128,47 @@
 
   [vbox addSeparator];
 
-  [self addButtonWithLabel: @"NSButton"];
-  [self addButtonWithLabel: @"NSRoundedBezelStyle" bezel: NSRoundedBezelStyle];
-  [self addButtonWithLabel: @"NSRegularSquareBezelStyle" bezel: NSRegularSquareBezelStyle];
-  [self addButtonWithLabel: @"NSThickSquareBezelStyle" bezel: NSThickSquareBezelStyle];
-  [self addButtonWithLabel: @"NSThickerSquareBezelStyle" bezel: NSThickerSquareBezelStyle];
-  [self addButtonWithLabel: @"NSDisclosureBezelStyle" bezel: NSDisclosureBezelStyle];
-  [self addButtonWithLabel: @"NSShadowlessSquareBezelStyle" bezel: NSShadowlessSquareBezelStyle];
-  [self addButtonWithLabel: @"NSCircularBezelStyle" bezel: NSCircularBezelStyle];
-  [self addButtonWithLabel: @"NSTexturedSquareBezelStyle" bezel: NSTexturedSquareBezelStyle];
-  [self addButtonWithLabel: @"NSHelpButtonBezelStyle" bezel: NSHelpButtonBezelStyle];
-  [self addButtonWithLabel: @"NSSmallSquareBezelStyle" bezel: NSSmallSquareBezelStyle];
-  [self addButtonWithLabel: @"NSTexturedRoundedBezelStyle" bezel: NSTexturedRoundedBezelStyle];
-  [self addButtonWithLabel: @"NSRoundRectBezelStyle" bezel: NSRoundRectBezelStyle];
-  [self addButtonWithLabel: @"NSRecessedBezelStyle" bezel: NSRecessedBezelStyle];
-  [self addButtonWithLabel: @"NSRoundedDisclosureBezelStyle" bezel: NSRoundedDisclosureBezelStyle];
+  hbox = [GSHbox new];
+  [hbox setDefaultMinXMargin: 5];
+ 
+  column = [GSVbox new];
+  [column setDefaultMinYMargin: 2];
+ 
+  [self addButtonWithLabel: @"NSButton" to: column];
+  [self addButtonWithLabel: @"NSRoundedBezelStyle" bezel: NSRoundedBezelStyle to: column];
+  [self addButtonWithLabel: @"NSRegularSquareBezelStyle" bezel: NSRegularSquareBezelStyle to: column];
+  [self addButtonWithLabel: @"NSThickSquareBezelStyle" bezel: NSThickSquareBezelStyle to: column];
+  [self addButtonWithLabel: @"NSThickerSquareBezelStyle" bezel: NSThickerSquareBezelStyle to: column];
+  [self addButtonWithLabel: @"NSDisclosureBezelStyle" bezel: NSDisclosureBezelStyle to: column];
+  [self addButtonWithLabel: @"NSShadowlessSquareBezelStyle" bezel: NSShadowlessSquareBezelStyle to: column];
+  [self addButtonWithLabel: @"NSCircularBezelStyle" bezel: NSCircularBezelStyle to: column];
+  [self addButtonWithLabel: @"NSTexturedSquareBezelStyle" bezel: NSTexturedSquareBezelStyle to: column];
+  [self addButtonWithLabel: @"NSHelpButtonBezelStyle" bezel: NSHelpButtonBezelStyle to: column];
+  [self addButtonWithLabel: @"NSSmallSquareBezelStyle" bezel: NSSmallSquareBezelStyle to: column];
+  [self addButtonWithLabel: @"NSTexturedRoundedBezelStyle" bezel: NSTexturedRoundedBezelStyle to: column];
+  [self addButtonWithLabel: @"NSRoundRectBezelStyle" bezel: NSRoundRectBezelStyle to: column];
+  [self addButtonWithLabel: @"NSRecessedBezelStyle" bezel: NSRecessedBezelStyle to: column];
+  [self addButtonWithLabel: @"NSRoundedDisclosureBezelStyle" bezel: NSRoundedDisclosureBezelStyle to: column];
+
+  [hbox addView: column];  
+  RELEASE(column);
+
+  column = [GSVbox new];
+  [column setDefaultMinYMargin: 2];
+ 
+  [self addSegmentedControlWithLabel: @"NSSegmentStyleAutomatic" style: NSSegmentStyleAutomatic to: column];
+  [self addSegmentedControlWithLabel: @"NSSegmentStyleRounded" style: NSSegmentStyleRounded to: column];
+  [self addSegmentedControlWithLabel: @"NSSegmentStyleTexturedRounded" style: NSSegmentStyleTexturedRounded to: column];
+  [self addSegmentedControlWithLabel: @"NSSegmentStyleRoundRect" style: NSSegmentStyleRoundRect to: column];
+  [self addSegmentedControlWithLabel: @"NSSegmentStyleTexturedSquare" style: NSSegmentStyleTexturedSquare to: column];
+  [self addSegmentedControlWithLabel: @"NSSegmentStyleCapsule" style: NSSegmentStyleCapsule to: column];
+  [self addSegmentedControlWithLabel: @"NSSegmentStyleSmallSquare" style: NSSegmentStyleSmallSquare to: column];
+
+  [hbox addView: column];
+  RELEASE(column);
+
+  [vbox addView: hbox];
+  RELEASE(hbox);
 
   [vbox setAutoresizingMask: NSViewHeightSizable | NSViewWidthSizable];
   
@@ -147,7 +203,6 @@
 - (void) dealloc
 {
   RELEASE (win);
-  RELEASE (vbox);
   [super dealloc];
 }
 

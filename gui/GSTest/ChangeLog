@@ -1,5 +1,9 @@
 2010-01-28 Eric Wasylishen <ewasylishen@gmail.com>
 
+	* NSButton-test/NSButton-test.m: Show some NSSegmentedControls
+
+2010-01-28 Eric Wasylishen <ewasylishen@gmail.com>
+
 	* GNUmakefile:
 	* NSButton-test/NSButton-test.m:
 	* testList.h: Enable the NSButton test. Modify the test to show off
