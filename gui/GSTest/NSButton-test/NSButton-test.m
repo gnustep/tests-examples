@@ -148,6 +148,7 @@
   NSRect winFrame;
   GSVbox *vbox, *column;
   GSHbox *hbox;
+  NSButton *button;
 
   vbox = [GSVbox new];
   [vbox setDefaultMinYMargin: 1];
@@ -214,6 +215,19 @@
   [self addSegmentedControlWithLabel: @"NSSegmentStyleTexturedSquare" style: NSSegmentStyleTexturedSquare to: column];
   [self addSegmentedControlWithLabel: @"NSSegmentStyleCapsule" style: NSSegmentStyleCapsule to: column];
   [self addSegmentedControlWithLabel: @"NSSegmentStyleSmallSquare" style: NSSegmentStyleSmallSquare to: column];
+
+  [column addSeparator];
+
+  button = [self addButtonWithLabel: @"Disabled Button" to: column];
+  [button setEnabled: NO];
+
+  button = [self addButtonWithLabel: @"PushOnPushOff Button" to: column];
+  [button setButtonType: NSPushOnPushOffButton];
+
+  button = [self addButtonWithLabel: @"Disabled PushOnPushOff Button" to: column];
+  [button setButtonType: NSPushOnPushOffButton];
+  [button setState: NSOnState];
+  [button setEnabled: NO];
 
   [hbox addView: column];  
   RELEASE(column);

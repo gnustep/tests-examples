@@ -1,5 +1,10 @@
 2010-01-28 Eric Wasylishen <ewasylishen@gmail.com>
 
+	* NSButton-test/NSButton-test.m: Show an NSPushOnPushOff button,
+	as well as a disabled button.
+
+2010-01-28 Eric Wasylishen <ewasylishen@gmail.com>
+
 	* NSWindowStyleMask-test/NSWindowStyleMask-test.m: Tweak to allow
 	creating NSPanels, and allow setting the new NSWindow and NSPanel
 	style masks.
