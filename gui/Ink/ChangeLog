@@ -1,3 +1,8 @@
+2010-02-02  Gregory Casamento  <greg.casamento@gmail.com>
+
+	* Ink_app.ico: Windows icon for Ink.
+	* GNUmakefile: Modified to copy ico file into app wrapper.
+	
 2008-11-26  Wolfgang Lux  <wolfgang.lux@gmail.com>
 
 	* English.lproj/MainMenu.gorm: Use keyboard equivalents Cmd-z and

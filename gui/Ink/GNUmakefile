@@ -35,7 +35,8 @@ Ink_RESOURCE_FILES = \
   Ink_app.tiff \
   FileIcon_rtf.tiff \
   FileIcon_txt.tiff \
-  Document.gorm
+  Document.gorm \
+  Ink_app.ico
 
 Ink_LANGUAGES = English
 
