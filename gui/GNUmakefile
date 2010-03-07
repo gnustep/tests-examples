@@ -30,8 +30,12 @@ SUBPROJECTS =             \
 	CurrencyConverter \
 	Ink               \
 	ExampleService    \
-	MyGL		  \
 	GSTest
+
+# MyGL commented out because it required OpenGL which some people
+# don't have.
+#	MyGL		  
+
 
 include GNUmakefile.preamble
 

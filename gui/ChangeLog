@@ -1,3 +1,8 @@
+2010-03-07  Nicola  <nicola.pero@meta-innovation.com>
+
+	* GNUmakefile (SUBPROJECTS): Do not compile MyGL by default as not
+	everyone has OpenGL.
+
 2009-05-20  Fred Kiefer <FredKiefer@gmx.de>
 
 	* ExampleTheme: New directory with one example theme
