@@ -9,6 +9,11 @@ MyGL_APPLICATION_ICON=MyGL.tiff
 MyGL_OBJC_FILES = main.m AppController.m
 MyGL_RESOURCE_FILES = MyGL.gorm MyGL.tiff
 
+
+ifeq ($(GNUSTEP_TARGET_OS), mingw32)
+ADDITIONAL_TOOL_LIBS += -lopengl32 -lglu32 -lm
+else
 ADDITIONAL_TOOL_LIBS += -lGL -lGLU -lm
+endif
 
 include $(GNUSTEP_MAKEFILES)/application.make
