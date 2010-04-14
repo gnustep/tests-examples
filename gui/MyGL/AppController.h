@@ -5,5 +5,6 @@
 @interface AppController : NSObject
 {
   id window;
+  NSMutableArray *glViews;
 }
 @end

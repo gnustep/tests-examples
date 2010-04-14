@@ -1,3 +1,9 @@
+2010-04-14  Eric Wasylishen <ewasylishen@gmail.com>
+
+	* MyGL/AppController.h:
+	* MyGL/AppController.m: Modify MyGL to have several NSOpenGLView's
+	displayed in NSSplitView's.
+
 2010-03-07  Nicola  <nicola.pero@meta-innovation.com>
 
 	* GNUmakefile (SUBPROJECTS): Do not compile MyGL by default as not

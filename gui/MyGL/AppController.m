@@ -9,14 +9,6 @@
 
 #include <math.h>
 
-static GLfloat _rtx = 0;
-static GLfloat _rty = 0;
-static GLfloat _rtz = 0;
-static GLfloat _artx = 0;
-static GLfloat _arty = 0;
-static GLfloat _artz = 0;
-static GLfloat _artl = 50;
-
 typedef struct _Vector
 {
 	float X;
@@ -79,14 +71,14 @@ static void Normalize (Vector *v)
 
 }
 
-- (void) drawCelShade
+- (void) drawCelShadeWithRtx: (GLfloat)rtx rty: (GLfloat)rty rtz: (GLfloat)rtz
 {
 	int t;
 	Vector light;
 	Vector vv;
-	light.X = 1.0f + _rtx;
-	light.Y = 1.0f + _rty;
-	light.Z = 1.0f + _rtz;;
+	light.X = 1.0f + rtx;
+	light.Y = 1.0f + rty;
+	light.Z = 1.0f + rtz;;
 	Normalize(&light);
 	float xx;
 
@@ -316,6 +308,13 @@ static void Normalize (Vector *v)
 @interface MyGLView : NSOpenGLView
 {
 	NSMutableArray *meshArray;
+	GLfloat _rtx;
+	GLfloat _rty;
+	GLfloat _rtz;
+	GLfloat _artx;
+	GLfloat _arty;
+	GLfloat _artz;
+	GLfloat _artl;
 }
 
 @end
@@ -343,6 +342,7 @@ static void Normalize (Vector *v)
 
 - (void) prepareOpenGL
 {
+	_artl = 50;
 	meshArray = [NSMutableArray new];
 
 	glShadeModel(GL_SMOOTH);
@@ -378,6 +378,7 @@ static void Normalize (Vector *v)
 
 - (void) drawRect:(NSRect)r
 {
+	unsigned int i;
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
 	glLoadIdentity();
@@ -387,8 +388,12 @@ static void Normalize (Vector *v)
 	glRotatef(_rty,0.0f,1.0f,0.0f);
 	glRotatef(_rtz,0.0f,0.0f,1.0f);
 
-	[meshArray makeObjectsPerform:@selector(drawCelShade)];
-
+	for (i=0; i<[meshArray count]; i++)
+	{
+		[[meshArray objectAtIndex: i] drawCelShadeWithRtx: _rtx
+		                                              rty: _rty
+		                                              rtz: _rtz];
+	}
 
 	[[self openGLContext] flushBuffer];
 }
@@ -416,26 +421,44 @@ static void Normalize (Vector *v)
 @end
 
 @implementation AppController
-static id glview;
+
 -(void) applicationDidFinishLaunching: (NSNotification *)not
 {
-	[NSTimer scheduledTimerWithTimeInterval:0.05 //(1.0 / 30)
-									 target:glview
-								   selector:@selector(refresh)
-								   userInfo:nil
-									repeats:YES];
-	[glview loadModel];
+	int i;
+	for (i=0; i<[glViews count]; i++)
+	{
+		[NSTimer scheduledTimerWithTimeInterval:0.05 //(1.0 / 30)
+			target:[glViews objectAtIndex: i]
+			selector:@selector(refresh)
+			userInfo:nil
+			repeats:YES];
+		[[glViews objectAtIndex: i] loadModel];
+	}
 }
 
 -(void) applicationWillFinishLaunching: (NSNotification *)not
 {
-	glview = [[MyGLView alloc] initWithFrame:[window frame]];
-	/*
-								   colorBits:16
-								   depthBits:16
-								  fullscreen:NO];
-								  */
-	[window setContentView:glview];
+	NSView *glview1, *glview2, *glview3;
+	NSSplitView *splitView1, *splitView2;
+
+	glViews = [NSMutableArray new];
+	glview1 = [[MyGLView alloc] initWithFrame: [window frame]];
+	glview2 = [[MyGLView alloc] initWithFrame: [window frame]];
+	glview3 = [[MyGLView alloc] initWithFrame: [window frame]];
+	[glViews addObject: glview1];
+	[glViews addObject: glview2];
+	[glViews addObject: glview3];
+
+	splitView1 = [[[NSSplitView alloc] initWithFrame: [window frame]] autorelease];
+	[splitView1 addSubview: glview1];	
+	[splitView1 addSubview: glview2];
+
+	splitView2 = [[[NSSplitView alloc] initWithFrame: [window frame]] autorelease];
+	[splitView2 addSubview: splitView1];
+	[splitView2 addSubview: glview3];
+	[splitView2 setVertical: YES];
+	
+	[window setContentView: splitView2];
 }
 
 @end
