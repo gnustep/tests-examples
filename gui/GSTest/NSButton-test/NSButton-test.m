@@ -60,6 +60,7 @@
   [button setTarget: self];
   [button setContinuous: YES];
   [button setAction: @selector (action:)];
+  [button setToolTip: label];
   [box addView: button];
   return [button autorelease];
 }
@@ -85,7 +86,9 @@
 
   [segmented setTarget: self];
   [segmented setAction: @selector (action:)];
- 
+
+  [segmented setToolTip: label];
+
   [box addView: segmented];
 
   [self addLabel: label to: box];
@@ -106,6 +109,8 @@
 
   [combo setTarget: self];
   [combo setAction: @selector (action:)];
+
+  [combo setToolTip: label];
  
   [box addView: combo];
   [self addLabel: label to: box];
@@ -126,6 +131,9 @@
 
   [button setTarget: self];
   [button setAction: @selector (action:)];
+
+  [button setToolTip: label];
+
   [box addView: button];
 
   [self addLabel: label to: box];

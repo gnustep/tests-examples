@@ -39,6 +39,15 @@ int nameSort(id path1, id path2, void *context);
         keyEquivalent: @""];
       [menuItem setTag: i];
    }  
+
+#ifdef __MINGW__
+  NSWindow *w = [[NSWindow alloc] initWithContentRect: NSMakeRect(400,400,300,200)
+					    styleMask: NSTitledWindowMask
+					      backing: NSBackingStoreBuffered
+						defer: NO];
+  [w setTitle: @"GSTest"];
+  [w makeKeyAndOrderFront: nil];
+#endif
 }
 
 -(id) loadAndStartTestWithBundlePath: (NSString *)fullPath

@@ -1,3 +1,10 @@
+2010-04-14  Eric Wasylishen <ewasylishen@gmail.com>
+
+	* Controller.m: On MinGW, display a main window so GSTest
+	can be run when the WinUXTheme is enabled.
+	* NSButton-test/NSButton-test.m: Add tooltips to the buttons.
+	This is to demonstrate a bug I am reporting.
+
 2010-01-28 Eric Wasylishen <ewasylishen@gmail.com>
 
 	* NSButton-test/NSButton-test.m: Show an NSPushOnPushOff button,
