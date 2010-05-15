@@ -1,3 +1,11 @@
+2010-05-15  Wolfgang Lux  <wolfgang.lux@gmail.com>
+
+	* English.lproj/MainMenu.gorm:
+	Add an Open Recent menu to the Document menu.
+	Add a few more key equivalents and fix the key equivalents of the
+	Larger and Smaller Font menu items (the latter was conflicting
+	with the Save menu item).
+
 2010-02-02  Gregory Casamento  <greg.casamento@gmail.com>
 
 	* Ink_app.ico: Windows icon for Ink.
