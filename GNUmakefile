@@ -28,7 +28,7 @@ PACKAGE_NAME=gnustep-examples
 SVN_MODULE_NAME = examples
 SVN_BASE_URL=svn+ssh://svn.gna.org/svn/gnustep/tests
 
-VERSION=1.2.0
+VERSION=1.3.0
 
 SUBPROJECTS = gui
 

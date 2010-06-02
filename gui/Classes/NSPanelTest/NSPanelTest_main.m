@@ -35,7 +35,7 @@ LEGAL
 #import <AppKit/AppKit.h>
 #import <NSPanelTest.h>
 
-int main(int argc, char **argv)
+int main(int argc, const char **argv)
 {
   [NSApplication sharedApplication];
   [NSApp setDelegate: [NSPanelTest new]];

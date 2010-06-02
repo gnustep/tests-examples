@@ -154,7 +154,6 @@
   unsigned i,j;
   NSRect frame = [self frame];
   float x,y,w,h;
-  _NSAnimationCurveDesc *cd;
   w = frame.size.width; h = frame.size.height;
 
   // Background

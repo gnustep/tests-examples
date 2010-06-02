@@ -8,7 +8,7 @@ up-to-date, other are not.
 Quick start to compile and run the tests:
 
 make
-openapp testYouWantToSee.app
+openapp ./testYouWantToSee.app
 
 For more information, see the README file associated with each subdirectory.
 Currently there is only one, for gui tests.

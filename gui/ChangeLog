@@ -1,3 +1,7 @@
+2010-06-02 Adam Fedor <fedor@gnu.org>
+
+	* Fix a few compiler warnings
+
 2010-04-14  Eric Wasylishen <ewasylishen@gmail.com>
 
 	* MyGL/AppController.h:

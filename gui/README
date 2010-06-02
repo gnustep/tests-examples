@@ -10,7 +10,7 @@ Quick start to compile and run the tests:
 
 make
 cd testYouWantToSee
-openapp testYouWantToSee.app
+openapp ./testYouWantToSee.app
 
 If this tip is not enough, read on for the detailed explanations.
 

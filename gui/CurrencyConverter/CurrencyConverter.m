@@ -68,7 +68,6 @@ static NSString* fieldString[3] = {
   GSVbox* formVbox;
   GSHbox* hbox;
   NSTextField* label;
-  NSButton* convertButton;
   NSRect winFrame;
   int i;
   NSSize size;
@@ -239,7 +238,6 @@ int main (void)
    NSMenu *menu;
    NSMenuItem *menuItem;
    CurrencyConverter *converter;
-   int i;
 
    // We need to explicitly create this object only in the main function;     
    // instead, while the app is running, the gui library creates these objects
@@ -323,4 +321,4 @@ int main (void)
    return 0;
 }
 
-
+@end
