@@ -50,7 +50,8 @@ SUBPROJECTS = \
   StringDrawing-test \
   NSViewAnimation-test \
   NSWindowStyleMask-test \
-  NSOutlineView-test 
+  NSOutlineView-test \
+  NSProgressIndicator-test
 
 #
 # MAIN APP
