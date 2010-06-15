@@ -1,6 +1,6 @@
 /* testList.h: List of Implemented Tests 
 
-   Copyright (C) 1999 Free Software Foundation, Inc.
+   Copyright (C) 1999-2010 Free Software Foundation, Inc.
 
    Author:  Nicola Pero <n.pero@mi.flashnet.it>
    Date: 1999
@@ -79,6 +79,7 @@ testList[TEST_NUMBER] =
   {@"NSSplitView", @"NSSplitView-test"},
   {@"NSTextView", @"NSTextView-test"},
   {@"NSTableView", @"NSTableView-test"},
+  {@"NSProgressIndicator", @"NSProgressIndicator-test"},
   {@"NSWindowStyleMask", @"NSWindowStyleMask-test"},
   {@"StringDrawing", @"StringDrawing-test"},
   {@"NSOutlineView", @"NSOutlineView-test"}
