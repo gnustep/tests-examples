@@ -1,10 +1,7 @@
 #include <AppKit/AppKit.h>
 
-int main(int argc, char **argv)
+int main(int argc, const char **argv)
 {
-	CREATE_AUTORELEASE_POOL(pool);
-	[NSApplication sharedApplication];
-	[NSApp run];
-	DESTROY(pool);
+	NSApplicationMain(argc, argv);
 	return 0;
 }

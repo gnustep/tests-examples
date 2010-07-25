@@ -1,3 +1,8 @@
+2010-07-25  Eric Wasylishen <ewasylishen@gmail.com>
+
+	* MyGL/main.m: Use NSApplicationMain() as the current method wasn't
+	loading the main nib
+
 2010-06-02 Adam Fedor <fedor@gnu.org>
 
 	* Fix a few compiler warnings
