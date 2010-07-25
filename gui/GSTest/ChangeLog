@@ -1,8 +1,12 @@
+2010-07-25  Fred Kiefer  <FredKiefer@gmx.de>
+
+	* KeyboardInput-test/ConvertKeys.m: Add support for backtab character.
+
 2010-06-15 Riccardo Mottola
-	
+
 	* NSProgressIndicator-test:
 	Added new test for the progress indicator
-	
+
 2010-04-14  Eric Wasylishen <ewasylishen@gmail.com>
 
 	* Controller.m: On MinGW, display a main window so GSTest

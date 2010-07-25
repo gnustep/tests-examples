@@ -108,6 +108,7 @@ character_table[CHARACTER_TABLE_SIZE] =
   { @"Help", NSHelpFunctionKey },
   { @"ModeSwitch", NSModeSwitchFunctionKey },
   { @"Backspace", NSBackspaceCharacter },
+  { @"BackTab", NSBackTabCharacter },
   { @"Tab", NSTabCharacter },
   { @"Enter", NSEnterCharacter },
   { @"FormFeed", NSFormFeedCharacter },
