@@ -26,7 +26,7 @@
 #include "ConvertKeys.h"
 
 /* Code stolen from the corresponding gnustep-gui code also by myself.  */
-#define CHARACTER_TABLE_SIZE 77
+#define CHARACTER_TABLE_SIZE 78
 
 static struct 
 {
@@ -107,7 +107,7 @@ character_table[CHARACTER_TABLE_SIZE] =
   { @"Find", NSFindFunctionKey },
   { @"Help", NSHelpFunctionKey },
   { @"ModeSwitch", NSModeSwitchFunctionKey },
-  { @"Backspace", NSBackspaceCharacter },
+  { @"Backspace", NSDeleteCharacter },
   { @"BackTab", NSBackTabCharacter },
   { @"Tab", NSTabCharacter },
   { @"Enter", NSEnterCharacter },

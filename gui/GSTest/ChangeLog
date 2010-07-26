@@ -1,3 +1,7 @@
+2010-07-26  Fred Kiefer  <FredKiefer@gmx.de>
+
+	* KeyboardInput-test/ConvertKeys.m: Correct setting for backspace key.
+
 2010-07-25  Fred Kiefer  <FredKiefer@gmx.de>
 
 	* KeyboardInput-test/ConvertKeys.m: Add support for backtab character.
