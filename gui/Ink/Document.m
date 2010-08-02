@@ -193,6 +193,8 @@
   [[tv textStorage] setAttributedString: ts];
   // Activate undo
   [tv setAllowsUndo: YES];
+  [tv setSmartInsertDeleteEnabled: YES];
+  [tv setUsesFindPanel: YES];
   DESTROY(ts);
 }
 
