@@ -6,6 +6,27 @@
   Copyright = "Copyright (c) 2000 Fred Kiefer <fredkiefer@gmx.de>";
   CopyrightDescription = "This program is released under the GNU General Public License"; 
   NSIcon = Ink_app;
+  NSServices = (
+        {
+             NSMenuItem = { default = "Ink/Open Selection"; };
+	     NSMessage = openSelection;
+	     NSPortName = Ink;
+	     NSSendTypes = (
+	          NSStringPboardType,
+		  NSRTFPboardType,
+		  NSRTFDPboardType
+	     );
+        },
+        {
+             NSMenuItem = { default = "Ink/Open File"; };
+	     NSMessage = openFile;
+	     NSPortName = Ink;
+	     NSSendTypes = ( 
+	          NSStringPboardType,
+		  NSFilenamesPboardType
+	     );
+        }
+  );
   NSTypes = (
         {
              NSName = "rtf";

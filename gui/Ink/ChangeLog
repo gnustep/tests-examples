@@ -1,3 +1,15 @@
+2011-01-20  Wolfgang Lux  <wolfgang.lux@gmail.com>
+
+	* GNUmakefile:
+	* InkInfo.plist:
+	* English.lproj/MainMenu.gorm/data.classes:
+	* English.lproj/MainMenu.gorm/objects.gorm:
+	* AppDelegate.h:
+	* AppDelegate.m:
+	Add an application delegate to make Ink a service provider. The
+	services allow opening new documents with the current selection
+	and for the selected file, respectively.
+
 2010-08-02  Wolfgang Lux  <wolfgang.lux@gmail.com>
 
 	* Document.m (-windowControllerDidLoadNib:):

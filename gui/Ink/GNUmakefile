@@ -44,6 +44,7 @@ Ink_LOCALIZED_RESOURCE_FILES = MainMenu.gorm
 
 Ink_OBJC_FILES = \
   main.m \
+  AppDelegate.m \
   Document.m
 
 -include GNUmakefile.preamble
