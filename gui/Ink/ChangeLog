@@ -1,3 +1,9 @@
+2011-03-13  Eric Wasylishen  <ewasylishen@gmail.com>
+
+	* English.lproj/MainMenu.gorm:
+	Change Cmd+u from revert document to underine.
+	Add a "Check spelling automatically" menu item.
+
 2011-01-20  Wolfgang Lux  <wolfgang.lux@gmail.com>
 
 	* GNUmakefile:
