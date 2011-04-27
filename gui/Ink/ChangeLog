@@ -1,3 +1,9 @@
+2011-04-26  Eric Wasylishen  <ewasylishen@gmail.com>
+
+	* Document.m: Call -[NSTextView breakUndoCoalescing] when
+	a save is performed so that the first characters typed after
+	a save mark the document as having changes.
+
 2011-03-13  Eric Wasylishen  <ewasylishen@gmail.com>
 
 	* English.lproj/MainMenu.gorm:

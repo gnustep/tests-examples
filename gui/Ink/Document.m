@@ -206,6 +206,12 @@
     }
 }
 
+- (BOOL)saveToURL:(NSURL *)aURL ofType:(NSString *)type forSaveOperation:(NSSaveOperationType)saveOperation error:(NSError **)err
+{
+  [tv breakUndoCoalescing];
+  return [super saveToURL:aURL ofType:type forSaveOperation:saveOperation error:err];
+}
+
 - (void)insertFile: (id)sender
 {
   static NSString  *lastDir = nil;  
