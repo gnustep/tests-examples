@@ -1,3 +1,7 @@
+2011-04-30  Eric Wasylishen  <ewasylishen@gmail.com>
+
+	* MainMenu.gorm: Add an Edit and a Format menu.
+
 2011-04-29  Eric Wasylishen  <ewasylishen@gmail.com>
 
 	* NSTextView-test/NSTextView-test.m: Test multiple layout managers
