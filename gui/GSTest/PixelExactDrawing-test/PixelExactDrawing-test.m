@@ -121,7 +121,7 @@ static void DrawCrosshair(NSPoint point)
 
 	prototype = [[[NSButtonCell alloc] init] autorelease];
 	[prototype setButtonType:NSRadioButton];
-	matrix = [[[NSMatrix alloc] initWithFrame: NSMakeRect(0, 360, 150, 25)
+	matrix = [[[NSMatrix alloc] initWithFrame: NSMakeRect(0, 390, 150, 25)
 					     mode: NSRadioModeMatrix
 					prototype: prototype
 				     numberOfRows: 1
@@ -147,6 +147,7 @@ static void DrawCrosshair(NSPoint point)
       AddLabel(@"NSCopyBits from (10, 269, 10, 10) to (10.5, 280.5)", NSMakeRect(30,275,350,15), self);
       AddLabel(@"NSCopyBits from (10.5, 299.5, 9.5, 9.5) to (10, 310)", NSMakeRect(30,305,350,15), self);
       AddLabel(@"NSCopyBits from (10.5, 329.5, 9.5, 9.5) to (10.5, 340.5)", NSMakeRect(30,335,350,15), self);
+      AddLabel(@"Draw from (9.33, 9.33): top and right edges should be dimmed", NSMakeRect(30,365,350,15), self);
 
       iv1 = [[[NSImageView alloc] initWithFrame: NSMakeRect(10,130,10,10)] autorelease];
       [iv1 setImage: checkerboard];
@@ -208,6 +209,9 @@ static void DrawCrosshair(NSPoint point)
 {
   NSImage *checkerboard = CheckerboardImage(10, 10);
 
+  [[NSColor whiteColor] set];
+  NSRectFill(NSMakeRect(0,0,800,390));
+
   // Image tests
 
   DrawCrosshair(NSMakePoint(9,9));
@@ -254,6 +258,12 @@ static void DrawCrosshair(NSPoint point)
   [checkerboard compositeToPoint: NSMakePoint(10, 329)
 		       operation: NSCompositeSourceOver];
   NSCopyBits(0, NSMakeRect(10.5, 329.5, 9.5, 9.5), NSMakePoint(10.5, 340.5));
+
+  DrawCrosshair(NSMakePoint(9,369));
+  [checkerboard drawAtPoint: NSMakePoint(10, 370)
+		   fromRect: NSMakeRect(0, 0, 9.33, 9.33)
+		  operation: NSCompositeSourceOver
+		   fraction: 1.0];
 
   // Fill tests
 
@@ -310,7 +320,7 @@ static void DrawCrosshair(NSPoint point)
 -(id) init
 {
   NSView *content;
-  content = [[PixelExactDrawingTestView alloc] initWithFrame: NSMakeRect(0,0,800,385)];
+  content = [[PixelExactDrawingTestView alloc] initWithFrame: NSMakeRect(0,0,800,415)];
 
   // Create the window
   win = [[NSWindow alloc] initWithContentRect: [content frame]
@@ -323,7 +333,6 @@ static void DrawCrosshair(NSPoint point)
   [win setReleasedWhenClosed: NO];
   [win setContentView: content];
   [win setMinSize: [win frame].size];
-  [win setBackgroundColor: [NSColor whiteColor]];
   [win setTitle: @"Pixel-Exact Drawing Test"];
 
   [self restart];
