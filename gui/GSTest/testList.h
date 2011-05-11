@@ -54,7 +54,7 @@
 // 
 
 // Number of tests in the list
-#define TEST_NUMBER 19
+#define TEST_NUMBER 20
 struct 
 {
   NSString *menuName;      // Name shown on the menu
@@ -82,7 +82,8 @@ testList[TEST_NUMBER] =
   {@"NSProgressIndicator", @"NSProgressIndicator-test"},
   {@"NSWindowStyleMask", @"NSWindowStyleMask-test"},
   {@"StringDrawing", @"StringDrawing-test"},
-  {@"NSOutlineView", @"NSOutlineView-test"}
+  {@"NSOutlineView", @"NSOutlineView-test"},
+  {@"Pixel Exact Drawing", @"PixelExactDrawing-test"}
 };
 
 struct 
