@@ -1,3 +1,8 @@
+2011-05-15  Eric Wasylishen  <ewasylishen@gmail.com>
+
+	* NSTextView-test/NSTextView-test.m: Test links (add a link on the
+	second word of the lorem ipsum text to a wikipedia article)
+
 2011-05-11  Eric Wasylishen  <ewasylishen@gmail.com>
 
 	* PixelExactDrawing-test: Add a new test case.
