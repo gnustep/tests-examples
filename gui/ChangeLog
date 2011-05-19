@@ -1,3 +1,8 @@
+2011-05-19 Fred Kiefer <FredKiefer@gmx.de>
+
+	* MyGL/AppController.m: Protect the name id.
+	Patch by Sebastian Reitenbach <sebastia@l00-bugdead-prods.de>
+
 2010-07-25  Eric Wasylishen <ewasylishen@gmail.com>
 
 	* MyGL/main.m: Use NSApplicationMain() as the current method wasn't
