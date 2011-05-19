@@ -50,10 +50,6 @@ main(int argc, char **argv, char** env)
   NSMenu* infoMenu;
   NSMenu* fileMenu;
   NSMenu* editMenu;
-  NSMenu* formatMenu;
-  NSMenu* utilitiesMenu;
-  NSMenu* windowsMenu;
-  NSMenu* servicesMenu;
   NSMenu* linkMenu;
   NSMenu* findMenu;
   SEL action = @selector(method:);
@@ -81,7 +77,7 @@ main(int argc, char **argv, char** env)
   [menu addItemWithTitle:@"Format" action:action keyEquivalent:@""];
   [menu addItemWithTitle:@"Utilities" action:action keyEquivalent:@""];
   [menu addItemWithTitle:@"Windows" action:action keyEquivalent:@""];
-  [menu addItemWithTitle:@"Print" action:nil keyEquivalent:@"p"];
+  [menu addItemWithTitle:@"Print" action:NULL keyEquivalent:@"p"];
   [menu addItemWithTitle:@"Services" action:action keyEquivalent:@""];
   [menu addItemWithTitle:@"Hide" action:action keyEquivalent:@"h"];
   [menu insertItem:menuItem atIndex:[[menu itemArray] count]];

@@ -55,7 +55,7 @@
   NSRect bf4 = {{5, 225}, {200, 26}};
   NSRect bf5 = {{5, 280}, {200, 50}};
   NSRect bf6 = {{5, 335}, {200, 50}};
-  NSSliderCell *s0;
+  NSSlider *s0;
   NSRect sf0 = {{25, 325}, {100, 50}};
 
   NSTextField *t0, *t1, *t2, *t3;
@@ -165,6 +165,7 @@
   [w2 orderFrontRegardless];
 
 }
+@end
 
 
 //

@@ -1,5 +1,12 @@
 2011-05-19 Fred Kiefer <FredKiefer@gmx.de>
 
+	* Old/nscursor.m
+	* Old/windows.m
+	* Old/menu.m
+	* Old/GNUmakefile: Get these old tests to compile again.
+
+2011-05-19 Fred Kiefer <FredKiefer@gmx.de>
+
 	* MyGL/AppController.m: Protect the name id.
 	Patch by Sebastian Reitenbach <sebastia@l00-bugdead-prods.de>
 

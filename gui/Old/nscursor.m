@@ -39,40 +39,36 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-NSWindow *win;
-NSView *v;
-NSColorWell *c;
-NSRect cf = {{10, 10}, {150, 100}};
-NSButton *b;
-NSRect bf = {{10, 120}, {150, 100}};
-NSRect wf0 = {{150, 150}, {300, 300}};
-NSColor *green;
-NSCursor *cur;
-NSCursor *arrow, *beam;
-ColorView *cv0;
-NSRect cvf0 = {{10, 120}, {150, 100}};
-NSImage *image;
-
-  	NSLog (@"method invoked from cell with title ");
-
-	green = [NSColor greenColor];
-	win = [[NSWindow alloc] init];
-//  [win setBackgroundColor: green];
-	v = [win contentView];
-	
-	c = [[NSColorWell alloc] initWithFrame: cf];
-	[c setColor:green];
-//  [c setColor:[NSColor whiteColor]];
-	[v addSubview: c];
-	cv0 = [[ColorView alloc] initWithFrame: cvf0];
-	[cv0 setColor:[NSColor blueColor]];
-//  [cv0 setFrameRotation:30];
-	[v addSubview: cv0];
-	
-
+  NSWindow *win;
+  NSView *v;
+  NSColorWell *c;
+  NSRect cf = {{10, 10}, {150, 100}};
+  NSRect wf0 = {{150, 150}, {300, 300}};
+  NSColor *green;
+  NSCursor *cur;
+  NSCursor *arrow, *beam;
+  ColorView *cv0;
+  NSRect cvf0 = {{10, 120}, {150, 100}};
+  NSImage *image;
+  
+  green = [NSColor greenColor];
+  win = [[NSWindow alloc] init];
+  //  [win setBackgroundColor: green];
+  v = [win contentView];
+        
+  c = [[NSColorWell alloc] initWithFrame: cf];
+  [c setColor:green];
+  //  [c setColor:[NSColor whiteColor]];
+  [v addSubview: c];
+  cv0 = [[ColorView alloc] initWithFrame: cvf0];
+  [cv0 setColor:[NSColor blueColor]];
+  //  [cv0 setFrameRotation:30];
+  [v addSubview: cv0];
+  
   // Cursor for color view
-  image = AUTORELEASE([[NSImage alloc] initWithContentsOfFile:@"Smiley.tiff"]);
+  image = [[NSImage alloc] initWithContentsOfFile:@"Smiley.tiff"];
   cur = [[NSCursor alloc] initWithImage: image];
+  RELEASE(image);
   [cv0 setCursor: cur];
 
   // Cursor for color well using tracking rectangle
