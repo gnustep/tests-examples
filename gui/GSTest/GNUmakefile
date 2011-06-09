@@ -52,7 +52,8 @@ SUBPROJECTS = \
   NSWindowStyleMask-test \
   NSOutlineView-test \
   NSProgressIndicator-test \
-  PixelExactDrawing-test
+  PixelExactDrawing-test \
+  ImageSelection-test
 
 #
 # MAIN APP
