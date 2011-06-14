@@ -118,7 +118,7 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
 
     // Set the clipping path to a 'g' character
     {
-      NSFont *font = [NSFont fontWithName: @"Helvetica" size: 100.0];
+      NSFont *font = [NSFont fontWithName: @"Helvetica" size: 64.0];
       NSBezierPath *clip = [NSBezierPath bezierPath];
       [clip moveToPoint: NSMakePoint(68,68)];
       [clip appendBezierPathWithGlyph: [font glyphWithName: @"a"]
@@ -133,6 +133,26 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
 
     [[NSGraphicsContext currentContext] restoreGraphicsState];
   }
+
+  // Test drawing sub-regions of an image
+  {
+    NSImage *img = ImageFromBundle(@"fourcorners", @"png");
+
+    [img drawInRect: NSMakeRect(128,64,32,32)
+	   fromRect: NSMakeRect(0,64,64,64)
+	  operation: NSCompositeSourceOver
+	  fraction: 1.0];
+
+    [img drawAtPoint: NSMakePoint(192, 64)
+	    fromRect: NSMakeRect(0,64,64,64)
+	   operation: NSCompositeSourceOver
+	    fraction: 1.0];
+
+    [img compositeToPoint: NSMakePoint(128, 128)
+		 fromRect: NSMakeRect(64,64,64,64)
+		operation: NSCompositeSourceOver];
+  }
+
   
 }
 @end

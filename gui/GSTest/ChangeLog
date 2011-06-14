@@ -1,5 +1,10 @@
 2011-06-14  Eric Wasylishen  <ewasylishen@gmail.com>
 
+	* ImageSelection-test/ImageSelection-test.m: Test drawing sub-
+	regions of images.
+
+2011-06-14  Eric Wasylishen  <ewasylishen@gmail.com>
+
 	* ImageSelection-test/ImageSelection-test.m: Expand to include
 	tests for -setSize: as well as complex clipping paths
 
