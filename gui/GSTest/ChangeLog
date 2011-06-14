@@ -1,3 +1,8 @@
+2011-06-14  Eric Wasylishen  <ewasylishen@gmail.com>
+
+	* ImageSelection-test/ImageSelection-test.m: Expand to include
+	tests for -setSize: as well as complex clipping paths
+
 2011-06-13  Eric Wasylishen  <ewasylishen@gmail.com>
 
 	* ImageSelection-test: Fix the TIFFs, which had some sub-images

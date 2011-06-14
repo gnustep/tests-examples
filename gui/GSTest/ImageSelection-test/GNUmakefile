@@ -31,7 +31,7 @@ BUNDLE_NAME = ImageSelection-test
 BUNDLE_INSTALL_DIR = $(GNUSTEP_LIBRARY)/ApplicationSupport/GSTest
 $(BUNDLE_NAME)_OBJC_FILES = $(wildcard *.m)
 $(BUNDLE_NAME)_PRINCIPAL_CLASS = ImageSelectionTest
-$(BUNDLE_NAME)_RESOURCE_FILES = $(wildcard *.tiff) $(wildcard *.icns)
+$(BUNDLE_NAME)_RESOURCE_FILES = $(wildcard *.tiff) $(wildcard *.icns) $(wildcard *.png)
 -include GNUmakefile.preamble
 
 -include GNUmakefile.local

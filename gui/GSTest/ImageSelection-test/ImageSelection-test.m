@@ -83,17 +83,58 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
 
   // Image tests
 
-  [test72DPIAnd288DPI compositeToPoint: NSMakePoint(0, 0)
-		       operation: NSCompositeSourceOver];
+  [test72DPIAnd288DPI drawInRect: NSMakeRect(0,0,32,32)
+			fromRect: NSZeroRect
+		       operation: NSCompositeSourceOver
+			fraction: 1.0f];
 
-  [testICNSIcon compositeToPoint: NSMakePoint(128, 0)
-		       operation: NSCompositeSourceOver];
+  [testICNSIcon drawInRect: NSMakeRect(64, 0, 16, 16)
+		  fromRect: NSZeroRect
+		 operation: NSCompositeSourceOver
+		  fraction: 1.0f];
 
-  [testTIFFIconWithAllImages72DPI compositeToPoint: NSMakePoint(256, 0)
-					 operation: NSCompositeSourceOver];
+  [testTIFFIconWithAllImages72DPI drawInRect: NSMakeRect(128, 0, 32, 32)
+				    fromRect: NSZeroRect
+				   operation: NSCompositeSourceOver
+				    fraction: 1.0f];
 
+  // Test calling setSize: and drawAtPoint: works
+  {
+    NSImage *gs = [NSImage imageNamed: @"GNUstep"];
+    [gs setSize: NSMakeSize(24, 24)];
+    [gs drawAtPoint: NSMakePoint(0, 64)
+	   fromRect: NSZeroRect
+	  operation: NSCompositeSourceOver
+	  fraction: 1.0];
+    [[NSColor redColor] set];
+    NSFrameRect(NSMakeRect(0,64,24,24));
+  }
+
+  // Test drawing with a complex clip path
+  {
+    NSImage *img = ImageFromBundle(@"plasma", @"png");
+
+    [[NSGraphicsContext currentContext] saveGraphicsState];
+
+    // Set the clipping path to a 'g' character
+    {
+      NSFont *font = [NSFont fontWithName: @"Helvetica" size: 100.0];
+      NSBezierPath *clip = [NSBezierPath bezierPath];
+      [clip moveToPoint: NSMakePoint(68,68)];
+      [clip appendBezierPathWithGlyph: [font glyphWithName: @"a"]
+			       inFont: font];
+      [clip addClip];
+    }
+
+    [img drawInRect: NSMakeRect(64,64,128,128)
+	   fromRect: NSZeroRect
+	  operation: NSCompositeSourceOver
+	  fraction: 1.0];
+
+    [[NSGraphicsContext currentContext] restoreGraphicsState];
+  }
+  
 }
-
 @end
 
 @implementation ImageSelectionTest : NSObject
