@@ -1,3 +1,7 @@
+2011-06-15  Eric Wasylishen  <ewasylishen@gmail.com>
+
+	* ImageSelection-test/ImageSelection-test.m: Test NSImageView scaling
+
 2011-06-14  Eric Wasylishen  <ewasylishen@gmail.com>
 
 	* ImageSelection-test/ImageSelection-test.m: Add a few more cases

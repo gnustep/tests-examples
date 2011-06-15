@@ -52,6 +52,7 @@ static void AddLabel(NSString *text, NSRect frame, NSView *dest)
   NSImage *test72DPIAnd288DPI;
   NSImage *testICNSIcon;
   NSImage *testTIFFIconWithAllImages72DPI;
+  NSImageView *imageView;
 }
 @end
 
@@ -72,8 +73,72 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
       test72DPIAnd288DPI = [ImageFromBundle(@"test72DPIAnd288DPI", @"tiff") retain];
       testICNSIcon = [ImageFromBundle(@"testICNSIcon", @"icns") retain];
       testTIFFIconWithAllImages72DPI = [ImageFromBundle(@"testTIFFIconWithAllImages72DPI", @"tiff") retain];
+
+      {
+	NSSlider *slider = [[[NSSlider alloc] initWithFrame: NSMakeRect(248, 200, 256, 16)] autorelease];
+	[slider setMinValue: 8.0];
+	[slider setMaxValue: 600.0];
+	[slider setFloatValue: 48.0];
+	[slider setTarget: self];
+	[slider setAction: @selector(sliderH:)];
+	[slider setContinuous: YES];
+	[self addSubview: slider];
+      }
+
+      {
+	NSSlider *sliderV = [[[NSSlider alloc] initWithFrame: NSMakeRect(228, 200, 16, 256)] autorelease];
+	[sliderV setMinValue: 8.0];
+	[sliderV setMaxValue: 600.0];
+	[sliderV setFloatValue: 48.0];
+	[sliderV setTarget: self];
+	[sliderV setAction: @selector(sliderV:)];
+	[sliderV setContinuous: YES];
+	[self addSubview: sliderV];
+      }
+
+      {
+	NSPopUpButton *popup = [[NSPopUpButton alloc] initWithFrame: NSMakeRect (0, 200, 220, 32)];
+	[popup addItemWithTitle: @"NSImageScaleProportionallyDown"];
+	[[popup lastItem] setTag: NSImageScaleProportionallyDown];
+	[popup addItemWithTitle: @"NSImageScaleAxesIndependently"];
+	[[popup lastItem] setTag: NSImageScaleAxesIndependently];
+	[popup addItemWithTitle: @"NSImageScaleNone"];
+	[[popup lastItem] setTag: NSImageScaleNone];
+	[popup addItemWithTitle: @"NSImageScaleProportionallyUpOrDown"];
+	[[popup lastItem] setTag: NSImageScaleProportionallyUpOrDown];
+
+	[popup setTarget: self];
+	[popup setAction: @selector(imageScaling:)];
+	[self addSubview: popup];
+      }
+      
+      imageView = [[[NSImageView alloc] initWithFrame: NSMakeRect(248, 224, 48, 48)] autorelease];
+      [imageView setImage: testTIFFIconWithAllImages72DPI];
+      [imageView setImageFrameStyle: NSImageFrameGrayBezel];
+      [self addSubview: imageView];
     }
   return self;
+}
+
+- (void) sliderH: (id)sender
+{
+  [[imageView superview] setNeedsDisplayInRect: [imageView frame]];
+  [imageView setFrameSize: NSMakeSize([sender floatValue],
+				      [imageView frame].size.height)];
+  [[imageView superview] setNeedsDisplayInRect: [imageView frame]];
+}
+
+- (void) sliderV: (id)sender
+{
+  [[imageView superview] setNeedsDisplayInRect: [imageView frame]];
+  [imageView setFrameSize: NSMakeSize([imageView frame].size.width,
+				   [sender floatValue])];
+  [[imageView superview] setNeedsDisplayInRect: [imageView frame]];
+}
+
+- (void) imageScaling: (id)sender
+{
+  [imageView setImageScaling: [[sender selectedItem] tag]];
 }
 
 - (void) drawRect: (NSRect)dirty
