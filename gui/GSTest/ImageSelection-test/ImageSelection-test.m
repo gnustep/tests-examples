@@ -98,16 +98,23 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
 				   operation: NSCompositeSourceOver
 				    fraction: 1.0f];
 
+  [testTIFFIconWithAllImages72DPI drawInRect: NSMakeRect(192, 0, 48, 48)
+				    fromRect: NSZeroRect
+				   operation: NSCompositeSourceOver
+				    fraction: 1.0f];
+
+
   // Test calling setSize: and drawAtPoint: works
   {
-    NSImage *gs = [NSImage imageNamed: @"GNUstep"];
-    [gs setSize: NSMakeSize(24, 24)];
-    [gs drawAtPoint: NSMakePoint(0, 64)
-	   fromRect: NSZeroRect
-	  operation: NSCompositeSourceOver
-	  fraction: 1.0];
+    NSImage *img = [testTIFFIconWithAllImages72DPI copy];
+    [img setSize: NSMakeSize(24, 24)];
+    [img drawAtPoint: NSMakePoint(0, 64)
+	    fromRect: NSZeroRect
+	   operation: NSCompositeSourceOver
+	    fraction: 1.0];
     [[NSColor redColor] set];
     NSFrameRect(NSMakeRect(0,64,24,24));
+    [img release];
   }
 
   // Test drawing with a complex clip path
