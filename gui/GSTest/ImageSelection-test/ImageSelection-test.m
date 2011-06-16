@@ -53,7 +53,16 @@ static void AddLabel(NSString *text, NSRect frame, NSView *dest)
   NSImage *testICNSIcon;
   NSImage *testTIFFIconWithAllImages72DPI;
   NSImageView *imageView;
+
+  NSPopUpButton *classesPopUp;
+  NSPopUpButton *scalingModesPopUp;
 }
+
+- (void) sliderH: (id)sender;
+- (void) sliderV: (id)sender;
+- (void) imageScaling: (id)sender;
+- (void) imageClass: (id)sender;
+
 @end
 
 @implementation ImageSelectionTestView
@@ -97,25 +106,31 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
       }
 
       {
-	NSPopUpButton *popup = [[NSPopUpButton alloc] initWithFrame: NSMakeRect (0, 200, 220, 32)];
-	[popup addItemWithTitle: @"NSImageScaleProportionallyDown"];
-	[[popup lastItem] setTag: NSImageScaleProportionallyDown];
-	[popup addItemWithTitle: @"NSImageScaleAxesIndependently"];
-	[[popup lastItem] setTag: NSImageScaleAxesIndependently];
-	[popup addItemWithTitle: @"NSImageScaleNone"];
-	[[popup lastItem] setTag: NSImageScaleNone];
-	[popup addItemWithTitle: @"NSImageScaleProportionallyUpOrDown"];
-	[[popup lastItem] setTag: NSImageScaleProportionallyUpOrDown];
+	scalingModesPopUp = [[[NSPopUpButton alloc] initWithFrame: NSMakeRect (0, 200, 220, 32)] autorelease];
+	[scalingModesPopUp addItemWithTitle: @"NSImageScaleProportionallyDown"];
+	[[scalingModesPopUp lastItem] setTag: NSImageScaleProportionallyDown];
+	[scalingModesPopUp addItemWithTitle: @"NSImageScaleAxesIndependently"];
+	[[scalingModesPopUp lastItem] setTag: NSImageScaleAxesIndependently];
+	[scalingModesPopUp addItemWithTitle: @"NSImageScaleNone"];
+	[[scalingModesPopUp lastItem] setTag: NSImageScaleNone];
+	[scalingModesPopUp addItemWithTitle: @"NSImageScaleProportionallyUpOrDown"];
+	[[scalingModesPopUp lastItem] setTag: NSImageScaleProportionallyUpOrDown];
 
-	[popup setTarget: self];
-	[popup setAction: @selector(imageScaling:)];
-	[self addSubview: popup];
+	[scalingModesPopUp setTarget: self];
+	[scalingModesPopUp setAction: @selector(imageScaling:)];
+	[self addSubview: scalingModesPopUp];
       }
-      
-      imageView = [[[NSImageView alloc] initWithFrame: NSMakeRect(248, 224, 48, 48)] autorelease];
-      [imageView setImage: testTIFFIconWithAllImages72DPI];
-      [imageView setImageFrameStyle: NSImageFrameGrayBezel];
-      [self addSubview: imageView];
+
+      {
+	classesPopUp = [[[NSPopUpButton alloc] initWithFrame: NSMakeRect (0, 240, 220, 32)] autorelease];
+	[classesPopUp addItemWithTitle: @"NSButton"];
+	[classesPopUp addItemWithTitle: @"NSImageView"];
+	[classesPopUp setTarget: self];
+	[classesPopUp setAction: @selector(imageClass:)];
+	[self addSubview: classesPopUp];
+      }
+
+      [self imageClass: nil];
     }
   return self;
 }
@@ -138,14 +153,51 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
 
 - (void) imageScaling: (id)sender
 {
-  [imageView setImageScaling: [[sender selectedItem] tag]];
+  if ([imageView isKindOfClass: [NSImageView class]])
+    {
+      [imageView setImageScaling: [[scalingModesPopUp selectedItem] tag]];
+    }
+}
+
+- (void) imageClass: (id)sender
+{
+  Class c = Nil;
+  NSRect frame;
+  NSString *selected = [[classesPopUp selectedItem] title];
+
+  if (imageView)
+    {
+      frame = [imageView frame];
+      [imageView removeFromSuperview];
+      imageView = nil;
+    }
+  else
+    {
+      frame = NSMakeRect(248, 224, 48, 48);
+    }
+
+
+  if ([selected isEqual: @"NSImageView"])
+    {
+      imageView = [[[NSImageView alloc] initWithFrame: frame] autorelease];
+      [imageView setImage: testTIFFIconWithAllImages72DPI];
+      [imageView setImageFrameStyle: NSImageFrameGrayBezel];
+    }
+  else if ([selected isEqual: @"NSButton"])
+    {
+      imageView = [[[NSButton alloc] initWithFrame: frame] autorelease];
+      [imageView setImage: testTIFFIconWithAllImages72DPI];
+    }
+
+  if (imageView)
+    {
+      [self addSubview: imageView];
+      [self imageScaling: nil];
+    }
 }
 
 - (void) drawRect: (NSRect)dirty
 {
-  [[NSColor whiteColor] set];
-  NSRectFill([self bounds]);
-
   // Image tests
 
   [test72DPIAnd288DPI drawInRect: NSMakeRect(0,0,32,32)
