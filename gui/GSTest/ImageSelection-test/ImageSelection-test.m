@@ -33,6 +33,13 @@
 -(void) restart;
 @end
 
+@interface VectorTestRep : NSImageRep
+{
+}
+
++ (NSImage*) testImage;
+
+@end
 
 static void AddLabel(NSString *text, NSRect frame, NSView *dest)
 {
@@ -277,7 +284,20 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
 		operation: NSCompositeSourceOver];
   }
 
-  
+  // Test that drawing a vector rep scales properly
+  {
+    NSImage *img = [VectorTestRep testImage];
+    
+    [img drawAtPoint: NSMakePoint(256, 0)
+	   fromRect: NSZeroRect
+	  operation: NSCompositeSourceOver
+	  fraction: 1.0];
+
+    [img drawInRect: NSMakeRect(300, 0, 100, 100)
+	   fromRect: NSZeroRect
+	  operation: NSCompositeSourceOver
+	   fraction: 1.0];
+  }
 }
 @end
 
@@ -320,3 +340,42 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
 
 @end
 
+@implementation VectorTestRep
+
+- (id)init
+{
+  [self setSize: NSMakeSize(32, 32)];
+  [self setAlpha: YES];
+  [self setOpaque: NO];
+  [self setBitsPerSample: NSImageRepMatchesDevice];
+  [self setPixelsWide: NSImageRepMatchesDevice];
+  [self setPixelsHigh: NSImageRepMatchesDevice];
+  return self;
+}
+
+- (BOOL)draw
+{
+  [[[NSColor blueColor] colorWithAlphaComponent: 0.5] set];
+  [NSBezierPath setDefaultLineWidth: 2.0];
+  [NSBezierPath strokeRect: NSMakeRect(1, 1, 28, 28)];
+  
+  [[[NSColor redColor] colorWithAlphaComponent: 0.5] set];
+  [NSBezierPath setDefaultLineWidth: 1.0];
+  [[NSBezierPath bezierPathWithOvalInRect: NSMakeRect(2,2,26,26)] stroke];
+  
+  [@"Vector Rep" drawInRect: NSMakeRect(2,2,26,26)
+	     withAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+						 [NSFont userFontOfSize: 8], NSFontAttributeName,
+					   nil]];
+  
+  return YES;
+}
+
++ (NSImage *)testImage
+{
+  NSImage *img = [[[NSImage alloc] initWithSize: NSMakeSize(32, 32)] autorelease];
+  [img addRepresentation: [[[self alloc] init] autorelease]];
+  return img;
+}
+
+@end

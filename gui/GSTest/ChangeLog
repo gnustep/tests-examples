@@ -1,3 +1,8 @@
+2011-06-27  Eric Wasylishen  <ewasylishen@gmail.com>
+
+	* ImageSelection-test/ImageSelection-test.m: Test that drawing a vector
+	rep scales properly.
+
 2011-06-16  Eric Wasylishen  <ewasylishen@gmail.com>
 
 	* ImageSelection-test/ImageSelection-test.m: Also test NSButton's image
