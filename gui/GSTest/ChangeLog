@@ -1,3 +1,9 @@
+2011-07-14  Eric Wasylishen  <ewasylishen@gmail.com>
+
+	* ImageSelection-test/ImageSelection-test.m: Test
+	+[NSGraphicsContext graphicsContextWithBitmapImageRep:], which isn't
+	working with cairo.
+
 2011-06-27  Eric Wasylishen  <ewasylishen@gmail.com>
 
 	* ImageSelection-test/ImageSelection-test.m: Test that drawing a vector

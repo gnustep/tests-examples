@@ -298,6 +298,48 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
 	  operation: NSCompositeSourceOver
 	   fraction: 1.0];
   }
+
+  // Test drawing into an NSBitmapImageRep
+  {
+    NSImage *img;
+    NSBitmapImageRep *rep = [[[NSBitmapImageRep alloc] initWithBitmapDataPlanes: NULL
+								    pixelsWide: 64
+								    pixelsHigh: 64
+								 bitsPerSample: 8
+							       samplesPerPixel: 4
+								      hasAlpha: YES
+								      isPlanar: NO
+								colorSpaceName: NSCalibratedRGBColorSpace
+								  bitmapFormat: 0
+								   bytesPerRow: 0
+								  bitsPerPixel: 0] autorelease];
+    [NSGraphicsContext saveGraphicsState];
+    [NSGraphicsContext setCurrentContext:
+			 [NSGraphicsContext graphicsContextWithBitmapImageRep: rep]];
+    [[NSColor purpleColor] setFill];
+    [[NSBezierPath bezierPathWithOvalInRect:NSMakeRect(0,0,64,64)] fill];
+    [NSGraphicsContext restoreGraphicsState];
+    
+    
+    img = [[[NSImage alloc] initWithSize: NSMakeSize(64,64)] autorelease];
+    [img addRepresentation: rep];
+    
+    [img drawInRect: NSMakeRect(400, 0,64,64)
+	   fromRect: NSZeroRect
+	  operation: NSCompositeSourceOver
+	   fraction: 0.5];
+    
+    [img drawInRect: NSMakeRect(432, 0,64,64)
+	   fromRect: NSZeroRect
+	  operation: NSCompositeSourceOver
+	   fraction: 0.5];
+
+    // Stroke around where the images should be drawn
+
+    [[NSColor purpleColor] setStroke];
+    [[NSBezierPath bezierPathWithOvalInRect:NSMakeRect(400,0,64,64)] stroke];
+    [[NSBezierPath bezierPathWithOvalInRect:NSMakeRect(432,0,64,64)] stroke];
+  }
 }
 @end
 
