@@ -41,17 +41,6 @@
 
 @end
 
-static void AddLabel(NSString *text, NSRect frame, NSView *dest)
-{
-  NSTextField *labelView = [[NSTextField alloc] initWithFrame: frame];
-  [labelView setStringValue: text];
-  [labelView setEditable: NO];
-  [labelView setSelectable: NO];
-  [labelView setBezeled: NO];
-  [labelView setFont: [NSFont labelFontOfSize: 10]];
-  [dest addSubview: labelView];
-  [labelView release];
-}
 
 
 @interface ImageSelectionTestView : NSView
@@ -239,106 +228,6 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
     [[NSColor redColor] set];
     NSFrameRect(NSMakeRect(0,64,24,24));
     [img release];
-  }
-
-  // Test drawing with a complex clip path
-  {
-    NSImage *img = ImageFromBundle(@"plasma", @"png");
-
-    [[NSGraphicsContext currentContext] saveGraphicsState];
-
-    // Set the clipping path to a 'g' character
-    {
-      NSFont *font = [NSFont fontWithName: @"Helvetica" size: 64.0];
-      NSBezierPath *clip = [NSBezierPath bezierPath];
-      [clip moveToPoint: NSMakePoint(68,68)];
-      [clip appendBezierPathWithGlyph: [font glyphWithName: @"a"]
-			       inFont: font];
-      [clip addClip];
-    }
-
-    [img drawInRect: NSMakeRect(64,64,128,128)
-	   fromRect: NSZeroRect
-	  operation: NSCompositeSourceOver
-	  fraction: 1.0];
-
-    [[NSGraphicsContext currentContext] restoreGraphicsState];
-  }
-
-  // Test drawing sub-regions of an image
-  {
-    NSImage *img = ImageFromBundle(@"fourcorners", @"png");
-
-    [img drawInRect: NSMakeRect(128,64,32,32)
-	   fromRect: NSMakeRect(0,64,64,64)
-	  operation: NSCompositeSourceOver
-	  fraction: 1.0];
-
-    [img drawAtPoint: NSMakePoint(192, 64)
-	    fromRect: NSMakeRect(0,64,64,64)
-	   operation: NSCompositeSourceOver
-	    fraction: 1.0];
-
-    [img compositeToPoint: NSMakePoint(128, 128)
-		 fromRect: NSMakeRect(64,64,64,64)
-		operation: NSCompositeSourceOver];
-  }
-
-  // Test that drawing a vector rep scales properly
-  {
-    NSImage *img = [VectorTestRep testImage];
-    
-    [img drawAtPoint: NSMakePoint(256, 0)
-	   fromRect: NSZeroRect
-	  operation: NSCompositeSourceOver
-	  fraction: 1.0];
-
-    [img drawInRect: NSMakeRect(300, 0, 100, 100)
-	   fromRect: NSZeroRect
-	  operation: NSCompositeSourceOver
-	   fraction: 1.0];
-  }
-
-  // Test drawing into an NSBitmapImageRep
-  {
-    NSImage *img;
-    NSBitmapImageRep *rep = [[[NSBitmapImageRep alloc] initWithBitmapDataPlanes: NULL
-								    pixelsWide: 64
-								    pixelsHigh: 64
-								 bitsPerSample: 8
-							       samplesPerPixel: 4
-								      hasAlpha: YES
-								      isPlanar: NO
-								colorSpaceName: NSCalibratedRGBColorSpace
-								  bitmapFormat: 0
-								   bytesPerRow: 0
-								  bitsPerPixel: 0] autorelease];
-    [NSGraphicsContext saveGraphicsState];
-    [NSGraphicsContext setCurrentContext:
-			 [NSGraphicsContext graphicsContextWithBitmapImageRep: rep]];
-    [[NSColor purpleColor] setFill];
-    [[NSBezierPath bezierPathWithOvalInRect:NSMakeRect(0,0,64,64)] fill];
-    [NSGraphicsContext restoreGraphicsState];
-    
-    
-    img = [[[NSImage alloc] initWithSize: NSMakeSize(64,64)] autorelease];
-    [img addRepresentation: rep];
-    
-    [img drawInRect: NSMakeRect(400, 0,64,64)
-	   fromRect: NSZeroRect
-	  operation: NSCompositeSourceOver
-	   fraction: 0.5];
-    
-    [img drawInRect: NSMakeRect(432, 0,64,64)
-	   fromRect: NSZeroRect
-	  operation: NSCompositeSourceOver
-	   fraction: 0.5];
-
-    // Stroke around where the images should be drawn
-
-    [[NSColor purpleColor] setStroke];
-    [[NSBezierPath bezierPathWithOvalInRect:NSMakeRect(400,0,64,64)] stroke];
-    [[NSBezierPath bezierPathWithOvalInRect:NSMakeRect(432,0,64,64)] stroke];
   }
 }
 @end

@@ -53,7 +53,8 @@ SUBPROJECTS = \
   NSOutlineView-test \
   NSProgressIndicator-test \
   PixelExactDrawing-test \
-  ImageSelection-test
+  ImageSelection-test \
+  Image-test
 
 #
 # MAIN APP

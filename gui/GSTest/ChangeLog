@@ -1,3 +1,9 @@
+2011-07-15  Eric Wasylishen  <ewasylishen@gmail.com>
+
+	* ImageSelection-test:
+	* Image-test: Split part of ImageSelection test off in to a new test
+	for general testing of image drawing.
+
 2011-07-14  Eric Wasylishen  <ewasylishen@gmail.com>
 
 	* ImageSelection-test/ImageSelection-test.m: Test
