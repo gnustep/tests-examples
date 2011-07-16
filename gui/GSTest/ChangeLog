@@ -1,5 +1,9 @@
 2011-07-15  Eric Wasylishen  <ewasylishen@gmail.com>
 
+	* Image-test/Image-test.m: Test drawing images in a a flipped view
+
+2011-07-15  Eric Wasylishen  <ewasylishen@gmail.com>
+
 	* ImageSelection-test:
 	* Image-test: Split part of ImageSelection test off in to a new test
 	for general testing of image drawing.

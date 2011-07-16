@@ -26,6 +26,21 @@
 #include <AppKit/AppKit.h>
 #include "../GSTestProtocol.h"
 
+static NSImage *ImageFromBundle(NSString *name, NSString *type);
+
+static void AddLabel(NSString *text, NSRect frame, NSView *dest)
+{
+  NSTextField *labelView = [[NSTextField alloc] initWithFrame: frame];
+  [labelView setStringValue: text];
+  [labelView setEditable: NO];
+  [labelView setSelectable: NO];
+  [labelView setBezeled: NO];
+  [labelView setFont: [NSFont labelFontOfSize: 10]];
+  [labelView setDrawsBackground: NO];
+  [dest addSubview: labelView];
+  [labelView release];
+}
+
 @interface ImageTest : NSObject <GSTest>
 {
   NSWindow *win;
@@ -38,6 +53,63 @@
 }
 
 + (NSImage*) testImage;
+
+@end
+
+@interface FlippedTestView : NSView
+{
+  NSImage *gsImage;
+}
+@end
+
+@implementation FlippedTestView
+
+- (id)initWithFrame: (NSRect)aFrame
+{
+  self = [super initWithFrame: aFrame];
+  if (self)
+    {
+      AddLabel(@"(10, 10) This is a flipped view", NSMakeRect(10,10,300,12), self);
+      AddLabel(@"Composite image to (10, 80):", NSMakeRect(10,30,300,12), self);
+      AddLabel(@"Draw image at (10, 100) (should be up-side down):", NSMakeRect(10,85,300,12), self);
+      AddLabel(@"Draw image at (10, 155) using respectFlipped: YES:", NSMakeRect(10,140,300,12), self);
+      gsImage = [ImageFromBundle(@"gs", @"png") retain];
+    }
+  return self;
+}
+
+- (void)dealloc
+{
+  [gsImage release];
+  [super dealloc];
+}
+
+- (BOOL) isFlipped
+{
+  return YES;
+}
+
+- (void) drawRect: (NSRect)dirty
+{
+  NSDrawDarkBezel([self bounds], dirty);
+
+  [gsImage compositeToPoint: NSMakePoint(10,80)
+		   fromRect: NSZeroRect
+		  operation: NSCompositeSourceOver
+		   fraction: 1.0];
+
+  [gsImage drawAtPoint: NSMakePoint(10,100)
+	      fromRect: NSZeroRect
+	     operation: NSCompositeSourceOver
+	      fraction: 1.0];
+
+  [gsImage drawInRect: NSMakeRect(10,155, [gsImage size].width, [gsImage size].height)
+	     fromRect: NSZeroRect
+	    operation: NSCompositeSourceOver
+	     fraction: 1.0
+       respectFlipped: YES
+		hints: nil];
+}
 
 @end
 
@@ -62,6 +134,9 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
   
   if (self != nil)
     {
+      NSView *flipped = [[FlippedTestView alloc] initWithFrame: NSMakeRect(10, 200, 260, 200)];
+      [self addSubview: flipped];
+      [flipped release];
     }
   return self;
 }
