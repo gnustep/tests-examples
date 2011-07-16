@@ -1,5 +1,10 @@
 2011-07-15  Eric Wasylishen  <ewasylishen@gmail.com>
 
+	* Image-test/Image-test.m: Test drawing images with a combination
+	of flip, rotation, scale, and translation
+
+2011-07-15  Eric Wasylishen  <ewasylishen@gmail.com>
+
 	* Image-test/Image-test.m: Test drawing images in a a flipped view
 
 2011-07-15  Eric Wasylishen  <ewasylishen@gmail.com>

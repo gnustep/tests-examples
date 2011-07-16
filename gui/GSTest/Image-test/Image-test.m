@@ -41,6 +41,20 @@ static void AddLabel(NSString *text, NSRect frame, NSView *dest)
   [labelView release];
 }
 
+/**
+ * Draws a crosshair centered on the rectangle NSMakeRect(point.x, point.y, 1, 1)
+ */
+static void DrawCrosshair(NSPoint point)
+{
+  [[NSGraphicsContext currentContext] saveGraphicsState];
+  [[[NSColor redColor] colorWithAlphaComponent: 0.5] setFill];
+  NSFrameRect(NSMakeRect(point.x + 1, point.y, 10, 1));
+  NSFrameRect(NSMakeRect(point.x - 10, point.y, 10, 1));
+  NSFrameRect(NSMakeRect(point.x, point.y + 1, 1, 10));
+  NSFrameRect(NSMakeRect(point.x, point.y - 10, 1, 10));
+  [[NSGraphicsContext currentContext] restoreGraphicsState];
+}
+
 @interface ImageTest : NSObject <GSTest>
 {
   NSWindow *win;
@@ -69,10 +83,10 @@ static void AddLabel(NSString *text, NSRect frame, NSView *dest)
   self = [super initWithFrame: aFrame];
   if (self)
     {
-      AddLabel(@"(10, 10) This is a flipped view", NSMakeRect(10,10,300,12), self);
-      AddLabel(@"Composite image to (10, 80):", NSMakeRect(10,30,300,12), self);
-      AddLabel(@"Draw image at (10, 100) (should be up-side down):", NSMakeRect(10,85,300,12), self);
-      AddLabel(@"Draw image at (10, 155) using respectFlipped: YES:", NSMakeRect(10,140,300,12), self);
+      AddLabel(@"(10, 10) This is a flipped view with an 80% bounds scale, 3 degrees rotation, and a translation", NSMakeRect(10,10,500,12), self);
+      AddLabel(@"Composite image to (10, 80) (should be bigger and not rotated):", NSMakeRect(10,30,500,12), self);
+      AddLabel(@"Draw image at (10, 100) (should be up-side down and rotated):", NSMakeRect(10,85,500,12), self);
+      AddLabel(@"Draw image at (10, 155) using respectFlipped: YES (should be right-side-up and rotated):", NSMakeRect(10,140,500,12), self);
       gsImage = [ImageFromBundle(@"gs", @"png") retain];
     }
   return self;
@@ -91,17 +105,20 @@ static void AddLabel(NSString *text, NSRect frame, NSView *dest)
 
 - (void) drawRect: (NSRect)dirty
 {
-  NSDrawDarkBezel([self bounds], dirty);
+  [[[NSColor whiteColor] colorWithAlphaComponent: 0.2] setFill];
+  [[NSBezierPath bezierPathWithRect: [self bounds]] fill];
 
   [gsImage compositeToPoint: NSMakePoint(10,80)
 		   fromRect: NSZeroRect
 		  operation: NSCompositeSourceOver
 		   fraction: 1.0];
+  DrawCrosshair(NSMakePoint(10, 80));
 
   [gsImage drawAtPoint: NSMakePoint(10,100)
 	      fromRect: NSZeroRect
 	     operation: NSCompositeSourceOver
 	      fraction: 1.0];
+  DrawCrosshair(NSMakePoint(10, 100));
 
   [gsImage drawInRect: NSMakeRect(10,155, [gsImage size].width, [gsImage size].height)
 	     fromRect: NSZeroRect
@@ -109,6 +126,7 @@ static void AddLabel(NSString *text, NSRect frame, NSView *dest)
 	     fraction: 1.0
        respectFlipped: YES
 		hints: nil];
+  DrawCrosshair(NSMakePoint(10, 155));
 }
 
 @end
@@ -134,7 +152,11 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
   
   if (self != nil)
     {
-      NSView *flipped = [[FlippedTestView alloc] initWithFrame: NSMakeRect(10, 200, 260, 200)];
+      NSView *flipped = [[FlippedTestView alloc] initWithFrame: NSMakeRect(10, 200, 400, 200)];
+      [flipped setBounds: NSMakeRect(0, 0, 500, 250)];
+      [flipped setBoundsRotation: 3.0];
+      [flipped translateOriginToPoint: NSMakePoint(25, 0)];
+      
       [self addSubview: flipped];
       [flipped release];
     }
