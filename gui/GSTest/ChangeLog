@@ -1,3 +1,7 @@
+2011-07-19  Eric Wasylishen  <ewasylishen@gmail.com>
+
+	* Image-test/Image-test.m: Test SVG and PDF drawing.
+
 2011-07-15  Eric Wasylishen  <ewasylishen@gmail.com>
 
 	* Image-test/Image-test.m: Test drawing images with a combination

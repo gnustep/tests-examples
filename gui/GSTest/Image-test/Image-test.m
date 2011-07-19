@@ -134,6 +134,7 @@ static void DrawCrosshair(NSPoint point)
 
 @interface ImageTestView : NSView
 {
+  NSImage *pdfexample, *svgexample;
 }
 
 @end
@@ -159,8 +160,18 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
       
       [self addSubview: flipped];
       [flipped release];
+
+      pdfexample = [ImageFromBundle(@"pdfexample", @"pdf") retain];
+      svgexample = [ImageFromBundle(@"svgexample", @"svg") retain];
     }
   return self;
+}
+
+- (void) dealloc
+{
+  [pdfexample release];
+  [svgexample release];
+  [super dealloc];
 }
 
 - (void) drawRect: (NSRect)dirty
@@ -263,6 +274,18 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
     [[NSColor purpleColor] setStroke];
     [[NSBezierPath bezierPathWithOvalInRect:NSMakeRect(400,0,64,64)] stroke];
     [[NSBezierPath bezierPathWithOvalInRect:NSMakeRect(432,0,64,64)] stroke];
+  }
+
+  // Test PDF and SVG
+  {
+    [pdfexample drawAtPoint: NSMakePoint(400, 64)
+		   fromRect: NSZeroRect
+		  operation: NSCompositeSourceOver
+		   fraction: 1.0];
+    [svgexample drawAtPoint: NSMakePoint(464, 64)
+		   fromRect: NSZeroRect
+		  operation: NSCompositeSourceOver
+		   fraction: 1.0];
   }
 }
 @end
