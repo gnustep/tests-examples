@@ -70,11 +70,16 @@ static void DrawCrosshair(NSPoint point)
 
 @end
 
+@interface DrawingDelegate : NSObject
+@end
+
 @interface FlippedTestView : NSView
 {
   NSImage *gsImage;
 }
 @end
+
+
 
 @implementation FlippedTestView
 
@@ -287,6 +292,29 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
 		  operation: NSCompositeSourceOver
 		   fraction: 1.0];
   }
+
+  // Test NSCustomImageRep
+  {
+    NSImage *img = [[NSImage alloc] init];
+
+    id delegate = [[DrawingDelegate alloc] init];
+    NSCustomImageRep *rep = [[NSCustomImageRep alloc] initWithDrawSelector: @selector(draw:)
+								  delegate: delegate];
+    [img addRepresentation: rep];
+    [rep release];
+
+    // NOTE: We'll test with the rep size (0, 0); it should still work.
+
+    [img setSize: NSMakeSize(64, 64)];
+
+    [img drawAtPoint: NSMakePoint(532, 0)
+	    fromRect: NSZeroRect
+	   operation: NSCompositeSourceOver
+	    fraction: 1.0];
+
+    [delegate release];
+    [img release];
+  }
 }
 @end
 
@@ -365,6 +393,35 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
   NSImage *img = [[[NSImage alloc] initWithSize: NSMakeSize(32, 32)] autorelease];
   [img addRepresentation: [[[self alloc] init] autorelease]];
   return img;
+}
+
+@end
+
+
+/**
+ * A delegate to use with NSCustomImageRep.
+ */
+@implementation DrawingDelegate
+
+- (void) draw: (NSCustomImageRep*)rep
+{
+  [[[NSColor magentaColor] colorWithAlphaComponent: 0.5] set];
+  [NSBezierPath setDefaultLineWidth: 2.0];
+  [NSBezierPath strokeRect: NSMakeRect(1, 1, 60, 60)];
+  
+  [[[NSColor blueColor] colorWithAlphaComponent: 0.5] set];
+  [NSBezierPath setDefaultLineWidth: 1.0];
+  [[NSBezierPath bezierPathWithOvalInRect: NSMakeRect(2,2,58,58)] stroke];
+  
+  [@"Custom Rep" drawInRect: NSMakeRect(2,2,58,58)
+	     withAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+						 [NSFont userFontOfSize: 10], NSFontAttributeName,
+					   nil]];
+
+  [@"CLIPPED" drawInRect: NSMakeRect(2,2,400,30)
+	  withAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+					      [NSFont userFontOfSize: 24], NSFontAttributeName,
+					nil]];
 }
 
 @end
