@@ -1,5 +1,9 @@
 2011-08-15  Eric Wasylishen  <ewasylishen@gmail.com>
 
+	* Image-test/Image-test.m: Test NSDrawNinePartImage in a flipped view
+
+2011-08-15  Eric Wasylishen  <ewasylishen@gmail.com>
+
 	* Image-test/Image-test.m: Test NSDrawNinePartImage
 
 2011-08-15  Eric Wasylishen  <ewasylishen@gmail.com>

@@ -136,6 +136,35 @@ static void DrawCrosshair(NSPoint point)
 
 @end
 
+@interface FlippedNinePartView : NSView
+@end
+
+@implementation FlippedNinePartView
+
+- (BOOL) isFlipped
+{
+  return YES;
+}
+
+- (void) drawRect: (NSRect)dirty
+{
+  NSDrawNinePartImage(NSMakeRect(0, 0, 128, 128), 
+		      ImageFromBundle(@"1", @"png"),
+		      ImageFromBundle(@"2", @"png"),
+		      ImageFromBundle(@"3", @"png"),
+		      ImageFromBundle(@"4", @"png"),
+		      ImageFromBundle(@"5", @"png"),
+		      ImageFromBundle(@"6", @"png"),
+		      ImageFromBundle(@"7", @"png"),
+		      ImageFromBundle(@"8", @"png"),
+		      ImageFromBundle(@"9", @"png"),
+		      NSCompositeSourceOver,
+		      1.0,
+		      YES);
+}
+
+@end
+
 
 @interface ImageTestView : NSView
 {
@@ -168,6 +197,15 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
 
       pdfexample = [ImageFromBundle(@"pdfexample", @"pdf") retain];
       svgexample = [ImageFromBundle(@"svgexample", @"svg") retain];
+
+      {
+	NSView *flippedNinePartView = [[FlippedNinePartView alloc] initWithFrame: NSMakeRect(670, 128, 128, 128)];
+	
+	[self addSubview: flippedNinePartView];
+	[flippedNinePartView release];
+
+	AddLabel(@"Flipped NSDrawNinePartImage", NSMakeRect(670,260,128,12), self);
+      }
     }
   return self;
 }
