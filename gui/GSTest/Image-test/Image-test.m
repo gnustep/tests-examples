@@ -148,7 +148,21 @@ static void DrawCrosshair(NSPoint point)
 
 - (void) drawRect: (NSRect)dirty
 {
-  NSDrawNinePartImage(NSMakeRect(0, 0, 128, 128), 
+  NSDrawNinePartImage(NSMakeRect(0, 0, 128, 64), 
+		      ImageFromBundle(@"1", @"png"),
+		      ImageFromBundle(@"2", @"png"),
+		      ImageFromBundle(@"3", @"png"),
+		      ImageFromBundle(@"4", @"png"),
+		      ImageFromBundle(@"5", @"png"),
+		      ImageFromBundle(@"6", @"png"),
+		      ImageFromBundle(@"7", @"png"),
+		      ImageFromBundle(@"8", @"png"),
+		      ImageFromBundle(@"9", @"png"),
+		      NSCompositeSourceOver,
+		      1.0,
+		      YES);
+
+  NSDrawNinePartImage(NSMakeRect(0, 96, 24, 32), 
 		      ImageFromBundle(@"1", @"png"),
 		      ImageFromBundle(@"2", @"png"),
 		      ImageFromBundle(@"3", @"png"),
@@ -356,7 +370,20 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
 
   // Test NSDrawNinePartImage
   {
-    NSDrawNinePartImage(NSMakeRect(532, 128, 128, 128), 
+    NSDrawNinePartImage(NSMakeRect(532, 192, 128, 64), 
+			ImageFromBundle(@"1", @"png"),
+			ImageFromBundle(@"2", @"png"),
+			ImageFromBundle(@"3", @"png"),
+			ImageFromBundle(@"4", @"png"),
+			ImageFromBundle(@"5", @"png"),
+			ImageFromBundle(@"6", @"png"),
+			ImageFromBundle(@"7", @"png"),
+			ImageFromBundle(@"8", @"png"),
+			ImageFromBundle(@"9", @"png"),
+			NSCompositeSourceOver,
+			1.0,
+			NO);
+   NSDrawNinePartImage(NSMakeRect(532, 128, 24, 32), 
 			ImageFromBundle(@"1", @"png"),
 			ImageFromBundle(@"2", @"png"),
 			ImageFromBundle(@"3", @"png"),

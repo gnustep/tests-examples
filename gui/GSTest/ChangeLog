@@ -1,5 +1,10 @@
 2011-08-15  Eric Wasylishen  <ewasylishen@gmail.com>
 
+	* Image-test/Image-test.m: Test NSDrawNinePartImage with not enough space
+	for drawing all of the parts
+
+2011-08-15  Eric Wasylishen  <ewasylishen@gmail.com>
+
 	* Image-test/Image-test.m: Test NSDrawNinePartImage in a flipped view
 
 2011-08-15  Eric Wasylishen  <ewasylishen@gmail.com>
