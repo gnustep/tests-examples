@@ -315,6 +315,23 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
     [delegate release];
     [img release];
   }
+
+  // Test NSDrawNinePartImage
+  {
+    NSDrawNinePartImage(NSMakeRect(532, 128, 128, 128), 
+			ImageFromBundle(@"1", @"png"),
+			ImageFromBundle(@"2", @"png"),
+			ImageFromBundle(@"3", @"png"),
+			ImageFromBundle(@"4", @"png"),
+			ImageFromBundle(@"5", @"png"),
+			ImageFromBundle(@"6", @"png"),
+			ImageFromBundle(@"7", @"png"),
+			ImageFromBundle(@"8", @"png"),
+			ImageFromBundle(@"9", @"png"),
+			NSCompositeSourceOver,
+			1.0,
+			NO);
+  }
 }
 @end
 

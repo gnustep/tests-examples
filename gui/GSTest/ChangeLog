@@ -1,5 +1,9 @@
 2011-08-15  Eric Wasylishen  <ewasylishen@gmail.com>
 
+	* Image-test/Image-test.m: Test NSDrawNinePartImage
+
+2011-08-15  Eric Wasylishen  <ewasylishen@gmail.com>
+
 	* Image-test/Image-test.m: Test NSCustomImageRep, and test that
 	drawing it still works even if the rep size is not set.
 
