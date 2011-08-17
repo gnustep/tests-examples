@@ -218,8 +218,10 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
 	[self addSubview: flippedNinePartView];
 	[flippedNinePartView release];
 
-	AddLabel(@"Flipped NSDrawNinePartImage", NSMakeRect(670,260,128,12), self);
+	AddLabel(@"Flipped NSDrawNinePartImage", NSMakeRect(670,260,128,30), self);
       }
+
+      AddLabel(@"Clipped image at 20x. Should not have faded edge.", NSMakeRect(670,30,128,50), self);
     }
   return self;
 }
@@ -396,6 +398,20 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
 			NSCompositeSourceOver,
 			1.0,
 			NO);
+  }
+
+  // Test drawing a single pixel of an image scaled up 20x.
+  // It should have not fade out towards the edge of the image.
+  {
+    [NSGraphicsContext saveGraphicsState];
+    NSRectClip(NSMakeRect(670,5,20,20));
+    [ImageFromBundle(@"1", @"png") drawInRect: NSMakeRect(670,5,300,400)
+				     fromRect: NSZeroRect
+				    operation: NSCompositeSourceOver
+				     fraction: 1.0
+			       respectFlipped: YES
+					hints: nil];
+    [NSGraphicsContext restoreGraphicsState];
   }
 }
 @end

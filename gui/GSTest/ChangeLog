@@ -1,3 +1,8 @@
+2011-08-16  Eric Wasylishen  <ewasylishen@gmail.com>
+
+	* Image-test/Image-test.m: Test the edges of an image remain sharp when
+	it's scaled up a lot (20x).
+
 2011-08-15  Eric Wasylishen  <ewasylishen@gmail.com>
 
 	* Image-test/Image-test.m: Test NSDrawNinePartImage with not enough space
