@@ -55,6 +55,35 @@ static void DrawCrosshair(NSPoint point)
   [[NSGraphicsContext currentContext] restoreGraphicsState];
 }
 
+static NSImage *ResizedIcon(NSImage *icon, int size, BOOL createBitmap)
+{
+  NSSize icnsize = [icon size];
+  NSRect srcr = NSMakeRect(0, 0, icnsize.width, icnsize.height);
+  float fact = (icnsize.width >= icnsize.height) ? (icnsize.width / size) : (icnsize.height / size);
+  NSSize newsize = NSMakeSize(floor(icnsize.width / fact + 0.5), floor(icnsize.height / fact + 0.5));	
+  NSRect dstr = NSMakeRect(0, 0, newsize.width, newsize.height);
+  NSImage *newIcon = [[NSImage alloc] initWithSize: newsize];
+  
+  [newIcon lockFocus];
+
+  [icon drawInRect: dstr 
+          fromRect: srcr 
+         operation: NSCompositeSourceOver 
+          fraction: 1.0];
+
+  // It should work with or without this block executing
+  if (createBitmap)
+    {
+      NSBitmapImageRep *rep = [[NSBitmapImageRep alloc] initWithFocusedViewRect: dstr];
+      [newIcon addRepresentation: rep];
+      [rep release];
+    }
+
+  [newIcon unlockFocus];
+
+  return [newIcon autorelease];  
+}
+
 @interface ImageTest : NSObject <GSTest>
 {
   NSWindow *win;
@@ -211,7 +240,6 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
 
       pdfexample = [ImageFromBundle(@"pdfexample", @"pdf") retain];
       svgexample = [ImageFromBundle(@"svgexample", @"svg") retain];
-
       {
 	NSView *flippedNinePartView = [[FlippedNinePartView alloc] initWithFrame: NSMakeRect(670, 128, 128, 128)];
 	
@@ -373,31 +401,31 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
   // Test NSDrawNinePartImage
   {
     NSDrawNinePartImage(NSMakeRect(532, 192, 128, 64), 
-			ImageFromBundle(@"1", @"png"),
-			ImageFromBundle(@"2", @"png"),
-			ImageFromBundle(@"3", @"png"),
-			ImageFromBundle(@"4", @"png"),
-			ImageFromBundle(@"5", @"png"),
-			ImageFromBundle(@"6", @"png"),
-			ImageFromBundle(@"7", @"png"),
-			ImageFromBundle(@"8", @"png"),
-			ImageFromBundle(@"9", @"png"),
-			NSCompositeSourceOver,
-			1.0,
-			NO);
+                       ImageFromBundle(@"1", @"png"),
+                       ImageFromBundle(@"2", @"png"),
+                       ImageFromBundle(@"3", @"png"),
+                       ImageFromBundle(@"4", @"png"),
+                       ImageFromBundle(@"5", @"png"),
+                       ImageFromBundle(@"6", @"png"),
+                       ImageFromBundle(@"7", @"png"),
+                       ImageFromBundle(@"8", @"png"),
+                       ImageFromBundle(@"9", @"png"),
+                       NSCompositeSourceOver,
+                       1.0,
+                       NO);
    NSDrawNinePartImage(NSMakeRect(532, 128, 24, 32), 
-			ImageFromBundle(@"1", @"png"),
-			ImageFromBundle(@"2", @"png"),
-			ImageFromBundle(@"3", @"png"),
-			ImageFromBundle(@"4", @"png"),
-			ImageFromBundle(@"5", @"png"),
-			ImageFromBundle(@"6", @"png"),
-			ImageFromBundle(@"7", @"png"),
-			ImageFromBundle(@"8", @"png"),
-			ImageFromBundle(@"9", @"png"),
-			NSCompositeSourceOver,
-			1.0,
-			NO);
+                       ImageFromBundle(@"1", @"png"),
+                       ImageFromBundle(@"2", @"png"),
+                       ImageFromBundle(@"3", @"png"),
+                       ImageFromBundle(@"4", @"png"),
+                       ImageFromBundle(@"5", @"png"),
+                       ImageFromBundle(@"6", @"png"),
+                       ImageFromBundle(@"7", @"png"),
+                       ImageFromBundle(@"8", @"png"),
+                       ImageFromBundle(@"9", @"png"),
+                       NSCompositeSourceOver,
+                       1.0,
+                       NO);
   }
 
   // Test drawing a single pixel of an image scaled up 20x.
@@ -413,6 +441,24 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
 					hints: nil];
     [NSGraphicsContext restoreGraphicsState];
   }
+
+  // Test using lockFocus and drawing an image into an image
+  {
+    NSImage *test = [NSImage imageNamed: @"common_Unknown"];
+    NSImage *testWithCreateBitmap, *testWithoutCreateBitmap;
+    [test compositeToPoint: NSMakePoint(800,0)
+		 operation: NSCompositeSourceOver];
+
+    // These should behve the same
+    testWithCreateBitmap = ResizedIcon(test, 16, YES);
+    testWithoutCreateBitmap = ResizedIcon(test, 16, NO);
+
+    [testWithCreateBitmap compositeToPoint: NSMakePoint(864, 0)
+				 operation: NSCompositeSourceOver];
+
+    [testWithoutCreateBitmap compositeToPoint: NSMakePoint(864, 32)
+				    operation: NSCompositeSourceOver];
+  }
 }
 @end
 
@@ -421,7 +467,7 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
 -(id) init
 {
   NSView *content;
-  content = [[ImageTestView alloc] initWithFrame: NSMakeRect(0,0,800,445)];
+  content = [[ImageTestView alloc] initWithFrame: NSMakeRect(0,0,900,445)];
 
   // Create the window
   win = [[NSWindow alloc] initWithContentRect: [content frame]
