@@ -459,6 +459,23 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
     [testWithoutCreateBitmap compositeToPoint: NSMakePoint(864, 32)
 				    operation: NSCompositeSourceOver];
   }
+
+  // Test a 92x92dpi and 138x92dpi image. They are both approximately
+  // 50.1 pt square.
+  {
+    NSImage *a = ImageFromBundle(@"92x92dpi", @"tiff");
+    NSImage *b = ImageFromBundle(@"138x92dpi", @"tiff");
+    
+    [a drawAtPoint: NSMakePoint(800, 128)
+	  fromRect: NSZeroRect
+	 operation: NSCompositeSourceOver
+	  fraction: 1.0];
+    
+    [b drawAtPoint: NSMakePoint(850, 128)
+	  fromRect: NSZeroRect
+	 operation: NSCompositeSourceOver
+	  fraction: 1.0];
+  }
 }
 @end
 

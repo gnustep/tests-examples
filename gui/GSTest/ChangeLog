@@ -1,5 +1,9 @@
 2011-08-29  Eric Wasylishen  <ewasylishen@gmail.com>
 
+	* Image-test/Image-test.m: Test drawing images with strange DPI's
+
+2011-08-29  Eric Wasylishen  <ewasylishen@gmail.com>
+
 	* Image-test/Image-test.m: Test using lockFocus and drawing an image
 	into an image
 
