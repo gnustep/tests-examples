@@ -1,3 +1,7 @@
+2011-09-12  Eric Wasylishen  <ewasylishen@gmail.com>
+
+	* Transparency-test: Add a test for window opacity and background color alpha
+
 2011-08-29  Eric Wasylishen  <ewasylishen@gmail.com>
 
 	* Image-test/Image-test.m: Test drawing images with strange DPI's

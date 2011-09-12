@@ -54,7 +54,8 @@ SUBPROJECTS = \
   NSProgressIndicator-test \
   PixelExactDrawing-test \
   ImageSelection-test \
-  Image-test
+  Image-test \
+  Transparency-test
 
 #
 # MAIN APP
