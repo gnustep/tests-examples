@@ -79,8 +79,17 @@ static void AddLabel(NSString *text, NSRect frame, NSView *dest)
       AddLabel(@"Window background color (please verify that adjusting the opacity works):", 
 	       NSMakeRect(0, 210, 200, 50), self);
       {
+	NSColor *defaultColor;
 	NSColorWell *well = [[[NSColorWell alloc] initWithFrame: NSMakeRect(200, 220, 30, 30)] autorelease];
-	[well setColor: [NSColor windowBackgroundColor]];
+	
+	// Convert the window background to NSCalibratedRGBColorSpace
+	// so it is possible to change the alpha component
+	defaultColor = [[NSColor windowBackgroundColor] colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
+	if (defaultColor != nil)
+	  {
+	    [well setColor: defaultColor];
+	  }
+
 	[well setTarget: self];
 	[well setAction: @selector(changeColor:)];
 	[self addSubview: well];

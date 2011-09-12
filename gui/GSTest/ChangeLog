@@ -1,5 +1,11 @@
 2011-09-12  Eric Wasylishen  <ewasylishen@gmail.com>
 
+	* Transparency-test/Transparency-Test.m: Convert the window background
+	to NSCalibratedRGBColorSpace so it is possible to change the alpha
+	component.
+
+2011-09-12  Eric Wasylishen  <ewasylishen@gmail.com>
+
 	* Transparency-test: Add a test for window opacity and background color alpha
 
 2011-08-29  Eric Wasylishen  <ewasylishen@gmail.com>
