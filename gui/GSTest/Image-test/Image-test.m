@@ -261,6 +261,16 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
   [super dealloc];
 }
 
+- (NSBezierPath *) gBezierPathAtPoint: (NSPoint)p
+{
+  NSFont *font = [NSFont fontWithName: @"Helvetica" size: 64.0];
+  NSBezierPath *path = [NSBezierPath bezierPath];
+  [path moveToPoint: p];
+  [path appendBezierPathWithGlyph: [font glyphWithName: @"a"]
+			   inFont: font];
+  return path;
+}
+
 - (void) drawRect: (NSRect)dirty
 {
   // Test drawing with a complex clip path
@@ -270,20 +280,31 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
     [[NSGraphicsContext currentContext] saveGraphicsState];
 
     // Set the clipping path to a 'g' character
-    {
-      NSFont *font = [NSFont fontWithName: @"Helvetica" size: 64.0];
-      NSBezierPath *clip = [NSBezierPath bezierPath];
-      [clip moveToPoint: NSMakePoint(68,68)];
-      [clip appendBezierPathWithGlyph: [font glyphWithName: @"a"]
-			       inFont: font];
-      [clip addClip];
-    }
+    [[self gBezierPathAtPoint: NSMakePoint(68,68)] addClip];
 
     [img drawInRect: NSMakeRect(64,64,128,128)
 	   fromRect: NSZeroRect
 	  operation: NSCompositeSourceOver
 	  fraction: 1.0];
 
+    [[NSGraphicsContext currentContext] restoreGraphicsState];
+  }
+
+  // Test saveGraphicsState preserves a complex clip path
+  // (expected fail as of 26/09/2011)
+  {
+    NSImage *img = ImageFromBundle(@"plasma", @"png");
+
+    [[NSGraphicsContext currentContext] saveGraphicsState];
+    [[self gBezierPathAtPoint: NSMakePoint(68,132)] addClip];
+    [[NSGraphicsContext currentContext] saveGraphicsState];
+
+    [img drawInRect: NSMakeRect(64,128,128,128)
+	   fromRect: NSZeroRect
+	  operation: NSCompositeSourceOver
+	  fraction: 1.0];
+
+    [[NSGraphicsContext currentContext] restoreGraphicsState];
     [[NSGraphicsContext currentContext] restoreGraphicsState];
   }
 

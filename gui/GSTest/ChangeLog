@@ -1,3 +1,10 @@
+2011-09-26  Eric Wasylishen  <ewasylishen@gmail.com>
+
+	* Image-test/Image-test.m: Test that
+	[NSGraphicsContext saveGraphicsState] preserves complicated (bezier-path)
+	clipping paths. (currently an expected fail.)
+	When passing, two copies of the 'g' figure should show up.
+
 2011-09-12  Eric Wasylishen  <ewasylishen@gmail.com>
 
 	* Transparency-test/Transparency-Test.m: Convert the window background
