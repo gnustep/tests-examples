@@ -55,7 +55,8 @@ SUBPROJECTS = \
   PixelExactDrawing-test \
   ImageSelection-test \
   Image-test \
-  Transparency-test
+  Transparency-test \
+  TextSystem-test
 
 #
 # MAIN APP

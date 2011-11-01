@@ -1,5 +1,9 @@
 2011-09-26  Eric Wasylishen  <ewasylishen@gmail.com>
 
+	* TextSystem-test: add an experimental test for text system stuff
+
+2011-09-26  Eric Wasylishen  <ewasylishen@gmail.com>
+
 	* Image-test/Image-test.m: Test that
 	[NSGraphicsContext saveGraphicsState] preserves complicated (bezier-path)
 	clipping paths. (currently an expected fail.)
