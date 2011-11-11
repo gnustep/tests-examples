@@ -1,5 +1,9 @@
 2011-11-11  Eric Wasylishen  <ewasylishen@gmail.com>
 
+	* ImageSelection-test/ImageSelection-test.m: Test button scaling modes.
+
+2011-11-11  Eric Wasylishen  <ewasylishen@gmail.com>
+
 	* NSWindow-test/NSWindow-test.m: Don't implement windowDidUpdate:
 	delegate method as it isn't very interesting and spams the log
 

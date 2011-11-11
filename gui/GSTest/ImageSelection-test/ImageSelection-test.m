@@ -149,10 +149,19 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
 
 - (void) imageScaling: (id)sender
 {
+  NSInteger mode = [[scalingModesPopUp selectedItem] tag];
   if ([imageView isKindOfClass: [NSImageView class]])
     {
-      [imageView setImageScaling: [[scalingModesPopUp selectedItem] tag]];
+      [imageView setImageScaling: mode];
     }
+  else if ([imageView isKindOfClass: [NSButton class]])
+    {
+      NSButtonCell *cell = [imageView cell];
+      [cell setImageScaling: mode];
+    }
+  
+  // FIXME: We need this line... but not sure if we should.
+  [[imageView superview] setNeedsDisplayInRect: [imageView frame]];
 }
 
 - (void) imageClass: (id)sender
