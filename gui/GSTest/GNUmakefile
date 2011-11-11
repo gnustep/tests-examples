@@ -56,7 +56,8 @@ SUBPROJECTS = \
   ImageSelection-test \
   Image-test \
   Transparency-test \
-  TextSystem-test
+  TextSystem-test \
+  NSWindow-test
 
 #
 # MAIN APP
