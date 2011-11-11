@@ -226,10 +226,12 @@ willPositionSheet: (NSWindow *)sheet
 {
   [self log: [NSString stringWithFormat: @"windowDidResize %@", aNotification]];
 }
+/*
 - (void) windowDidUpdate: (NSNotification*)aNotification
 {
   [self log: [NSString stringWithFormat: @"windowDidUpdate %@", aNotification]];
 }
+*/
 - (void) windowWillClose: (NSNotification*)aNotification
 {
   [self log: [NSString stringWithFormat: @"windowWillClose %@", aNotification]];

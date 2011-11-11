@@ -1,5 +1,10 @@
 2011-11-11  Eric Wasylishen  <ewasylishen@gmail.com>
 
+	* NSWindow-test/NSWindow-test.m: Don't implement windowDidUpdate:
+	delegate method as it isn't very interesting and spams the log
+
+2011-11-11  Eric Wasylishen  <ewasylishen@gmail.com>
+
 	* NSWindow-test: add a window test.
 
 2011-09-26  Eric Wasylishen  <ewasylishen@gmail.com>
