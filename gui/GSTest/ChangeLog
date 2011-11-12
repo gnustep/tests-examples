@@ -1,5 +1,9 @@
 2011-11-11  Eric Wasylishen  <ewasylishen@gmail.com>
 
+	* Image-test/Image-test.m: Add a test for scalesWhenResized
+
+2011-11-11  Eric Wasylishen  <ewasylishen@gmail.com>
+
 	* ImageSelection-test/ImageSelection-test.m: Test button scaling modes.
 
 2011-11-11  Eric Wasylishen  <ewasylishen@gmail.com>

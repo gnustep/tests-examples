@@ -497,6 +497,29 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
 	 operation: NSCompositeSourceOver
 	  fraction: 1.0];
   }
+
+  {
+    NSRect r = NSMakeRect(800,200,44,44);
+
+    NSImage *a = ImageFromBundle(@"testTIFFIconWithAllImages72DPI", @"tiff");
+
+    [a setScalesWhenResized: YES];
+    [a setSize: NSMakeSize(48, 48)];
+
+    [@"fail fail fail fail" drawInRect: r withAttributes: nil];
+    
+    // This should still fill the given rect
+
+    [a drawInRect: r
+	 fromRect: NSZeroRect
+	operation: NSCompositeSourceOver
+	 fraction: 1.0
+       respectFlipped: YES
+	    hints: nil];
+    
+    [[NSColor redColor] set];
+    NSFrameRect(r);
+  }
 }
 @end
 
