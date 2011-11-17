@@ -49,10 +49,7 @@
 -(void) sizeToFit;
 @end
 
-@implementation TrivialTextView: NSView
-{
-  NSAttributedString *attr;
-}
+@implementation TrivialTextView
 -(void) dealloc
 {
   TEST_RELEASE (attr);

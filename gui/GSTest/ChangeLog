@@ -1,3 +1,7 @@
+2011-11-17  Eric Wasylishen  <ewasylishen@gmail.com>
+
+	* StringDrawing-test/StringDrawing-test.m: Fix copy/paste mistake
+
 2011-11-11  Eric Wasylishen  <ewasylishen@gmail.com>
 
 	* Image-test/Image-test.m: Add a test for scalesWhenResized
