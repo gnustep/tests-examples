@@ -1,3 +1,9 @@
+2011-12-23  Eric Wasylishen  <ewasylishen@gmail.com>
+
+	* English.lproj/MainMenu.gorm: Connect "Print" to printDocument:
+	instead of print: so the document's print info is used, so changes
+	made in the page layout panel are used for printing.
+
 2011-04-26  Eric Wasylishen  <ewasylishen@gmail.com>
 
 	* Document.m: Call -[NSTextView breakUndoCoalescing] when
