@@ -30,10 +30,6 @@
 //
 
 @implementation CalcFace: NSWindow
-{
-  NSButton *buttons[18];
-  NSTextField *display;
-}
 
 -(id)init
 {

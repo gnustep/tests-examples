@@ -1,3 +1,10 @@
+2012-01-23 Fred Kiefer <FredKiefer@gmx.de>
+
+	* Calculator/CalcBrain.m,
+	* Calculator/CalcFace.m: Remove duplicated ivar declaration in
+	implementation file.
+	Patch by Sebastian Reitenbach <sebastia@l00-bugdead-prods.de>
+
 2011-05-19 Fred Kiefer <FredKiefer@gmx.de>
 
 	* Old/nscursor.m

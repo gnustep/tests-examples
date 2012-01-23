@@ -27,15 +27,6 @@
 #include <math.h>
 
 @implementation CalcBrain: NSObject
-{
-  CalcFace *face;
-  double result;
-  double enteredNumber;
-  calcOperation operation;
-  int fractionalDigits;
-  BOOL decimalSeparator;
-  BOOL editing;
-}
 -(id) init
 {
   [super init];
