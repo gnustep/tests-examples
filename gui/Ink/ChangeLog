@@ -1,3 +1,9 @@
+2012-10-03  Wolfgang Lux  <wolfgang.lux@gmail.com>
+
+	* AppDelegate.m (-openSelection:userData:error:): Update change
+	count of a fresh document created with the Open Selection service,
+	so it cannot be accidentally closed.
+
 2011-12-23  Eric Wasylishen  <ewasylishen@gmail.com>
 
 	* English.lproj/MainMenu.gorm: Connect "Print" to printDocument:

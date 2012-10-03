@@ -69,6 +69,7 @@
 	  [doc loadDataRepresentation: [pb dataForType: NSStringPboardType]
 			       ofType: @"text"];
 	}
+      [doc updateChangeCount: NSChangeDone];
     }
 }
 
