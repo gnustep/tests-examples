@@ -1,3 +1,8 @@
+2013-02-22  Fred Kiefer <FredKiefer@gmx.de>
+
+	* GNUMakefile: Use correct comment character.
+	Patch by Carl Hansen <carlhansen1234@gmail.com>
+
 Sun Jan 24 2009 Riccardo Mottola <rmottola@users.sf.net>
 
 	* GNUMakefile : set package name and version

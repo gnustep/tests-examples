@@ -14,7 +14,7 @@ GFractal_OBJC_FILES = main.m  \
 
 
 # The Resource files to be copied into the app's resources directory
-// GFractal_RESOURCE_FILES = Icons/*
+# GFractal_RESOURCE_FILES = Icons/*
 
 include $(GNUSTEP_MAKEFILES)/application.make
 
