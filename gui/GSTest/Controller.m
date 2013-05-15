@@ -89,7 +89,7 @@ int nameSort(id path1, id path2, void *context);
   i = [sender tag];
   if ( [[loadedTests objectAtIndex: i] conformsToProtocol: @protocol(GSTest)])
     {
-      [(<GSTest>)[loadedTests objectAtIndex: i] restart];
+      [(id<GSTest>)[loadedTests objectAtIndex: i] restart];
       return;
     }
   else // not started yet
