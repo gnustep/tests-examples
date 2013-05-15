@@ -662,7 +662,7 @@ LEGAL
   result=[constructor runPanelTitled:@"Testing With Multiline Buttons"
 		      withFormat:@"Two lines of message\n"
 		      @"and four lines of button."
-		      defaultButton:@"Yes!\nOui !\nJa !\n¡ Si !"
+		      defaultButton:@"Yes!\nOui !\nJa !\nÂ¡ Si !"
 		      alternateButton:@"No"
 		      otherButton:@"May be"
 		      andWithObject:nil];
