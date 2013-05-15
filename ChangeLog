@@ -12,6 +12,8 @@
 	  some NSInteger conversions
 	* gui/GFractal/FractalView.m
 	  some CGFloat conversions
+	* gui/GSTest/CoordinateCheck-test/CoordinateCheck-test.m
+	  move @interface before @implementation
 
 2010-06-02  Adam Fedor  <fedor@gnu.org>
 

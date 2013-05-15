@@ -27,6 +27,9 @@
 #include "../GSTestProtocol.h"
 
 /* The checking categories */
+@interface NSView (CheckCoordinates)
+- (NSString *) checkCoordinates;
+@end
 
 @implementation NSView (CheckCoordinates)
 - (NSString *) checkCoordinates
@@ -76,10 +79,6 @@
   return string;
 }
 
-@end
-
-@interface NSView (CheckCoordinates)
-- (NSString *) checkCoordinates;
 @end
 
 @implementation NSWindow (CheckCoordinates)
