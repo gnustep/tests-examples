@@ -236,7 +236,7 @@ static id cschemes[] =
   int rept, impt;
   double zzbar, esc;
   
-  float colr, colg, colb;
+  CGFloat colr, colg, colb;
   
   id colors, color;
   int count, maxit, cols;

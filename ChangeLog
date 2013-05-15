@@ -10,6 +10,8 @@
 	* gui/GSTest/NSTableView-test/NSTableView-test.m
 	  gui/GSTest/NSOutlineView-test/NSOutlineView-test.m
 	  some NSInteger conversions
+	* gui/GFractal/FractalView.m
+	  some CGFloat conversions
 
 2010-06-02  Adam Fedor  <fedor@gnu.org>
 
