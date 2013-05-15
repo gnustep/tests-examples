@@ -174,10 +174,10 @@ static NSString *test[20] =
 
 // required methods for data source
 - (id)outlineView: (NSOutlineView *)outlineView
-	    child: (int)index
+	    child: (NSInteger)index
 	   ofItem: (id)item
 {
-  //NSLog(@"child: %d ofItem: %@", index, item);
+  //NSLog(@"child: %"PRIiPTR" ofItem: %@", index, item);
   if ([item isEqual: @"NSObject"])
     {
       switch(index)
@@ -240,7 +240,7 @@ static NSString *test[20] =
   return NO;
 }
 
-- (int)        outlineView: (NSOutlineView *)outlineView 
+- (NSInteger)  outlineView: (NSOutlineView *)outlineView 
     numberOfChildrenOfItem: (id)item
 {
   //NSLog(@"numberOfChildren:....");
@@ -378,7 +378,7 @@ static NSString *test[20] =
 }
 
 // delegate methods
-- (BOOL) outlineView: (NSOutlineView *)aTableView 
+- (void) outlineView: (NSOutlineView *)aTableView 
      willDisplayCell: (id)aCell 
       forTableColumn: (NSTableColumn *)aTableColumn
 		item: (id)item
@@ -410,10 +410,10 @@ static NSString *test[20] =
 - (NSDragOperation) outlineView: (NSOutlineView *) ov
 		   validateDrop: (id <NSDraggingInfo>) info
 		   proposedItem: (id) item
-	     proposedChildIndex: (int) childIndex
+	     proposedChildIndex: (NSInteger) childIndex
 
 {
-  NSLog(@"Validate drop %@ at %i", item, childIndex);
+  NSLog(@"Validate drop %@ at %"PRIiPTR"", item, childIndex);
   /*if (item == nil)
     [ov setDropItem: @"NSObject"
 	dropChildIndex: NSOutlineViewDropOnItemIndex];

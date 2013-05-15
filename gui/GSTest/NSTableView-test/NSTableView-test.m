@@ -341,7 +341,7 @@ static NSString *test[20] =
 
 - (NSDragOperation) tableView: (NSTableView *) tv
 		 validateDrop: (id <NSDraggingInfo>) info
-		  proposedRow: (int) row
+		  proposedRow: (NSInteger) row
 	proposedDropOperation: (NSTableViewDropOperation) operation
 
 {
@@ -355,7 +355,7 @@ static NSString *test[20] =
 
 - (BOOL) tableView: (NSTableView *)tv
 	acceptDrop: (id <NSDraggingInfo>) info
-	       row: (int) row
+	       row: (NSInteger) row
      dropOperation: (NSTableViewDropOperation) operation
 {
   NSDragOperation dragOperation;
@@ -367,10 +367,10 @@ static NSString *test[20] =
     dragOperation = NSDragOperationNone;
 
   {
-    int i, j;
+    NSInteger i, j;
     NSArray *pl = [[info draggingPasteboard] propertyListForType:
 					       NSTableViewTestPboardType];
-    int count = [pl count];
+    NSUInteger count = [pl count];
 
     for ( i = count - 1; i >= 0; i-- )
       {

@@ -7,6 +7,9 @@
 	  the CurrencyConverter honours NSTextFieldDelegate protocol
 	* gui/ExampleService/example.m
 	  fix implicit declaration of fork and setsid
+	* gui/GSTest/NSTableView-test/NSTableView-test.m
+	  gui/GSTest/NSOutlineView-test/NSOutlineView-test.m
+	  some NSInteger conversions
 
 2010-06-02  Adam Fedor  <fedor@gnu.org>
 
