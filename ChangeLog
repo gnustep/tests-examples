@@ -1,6 +1,8 @@
 2013-05-15: Sebastian Reitenbach <sebastia@l00-bugdead-prods.de>
 	* gui/Classes/NSPanelTest/NSPanelTest.m
 	  convert to UTF-8
+	* gui/Classes/NSScreenTest/screen_main.m
+	  some NSInteger conversions
 
 2010-06-02  Adam Fedor  <fedor@gnu.org>
 

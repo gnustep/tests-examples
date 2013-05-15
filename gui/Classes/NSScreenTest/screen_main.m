@@ -63,7 +63,7 @@ int main (int argc, const char *argv[])
     }
   
   puts("\n**** Various other tests ****");
-  printf("Components = %d\n", 
+  printf("Components = %"PRIiPTR"\n", 
 	 NSNumberOfColorComponents(NSCalibratedRGBColorSpace));
   printf("NSBestDepth(NSCalibratedRGBColorSpace,8,32,YES,&exactMatch) = %d\n",
 	 NSBestDepth(NSCalibratedRGBColorSpace, 8, 32, YES, &exactMatch));
@@ -77,9 +77,9 @@ int main (int argc, const char *argv[])
       for( index = 0; depths[index] != 0; index++ )
 	{
 	  printf("depths[%d]=%d\n",index,depths[index]);
-	  printf("bits per sample = %d\n",
+	  printf("bits per sample = %"PRIiPTR"\n",
 		 NSBitsPerSampleFromDepth(depths[index]));
-	  printf("bits per pixel = %d\n",
+	  printf("bits per pixel = %"PRIiPTR"\n",
 		 NSBitsPerPixelFromDepth(depths[index]));
 	  printf("color space = %s\n",
 		 [NSColorSpaceFromDepth(depths[index]) cString]);
@@ -94,9 +94,9 @@ int main (int argc, const char *argv[])
       for( index = 0; depths[index] != 0; index++ )
 	{
 	  printf("depths[%d]=%d\n",index,depths[index]);
-	  printf("bits per sample = %d\n",
+	  printf("bits per sample = %"PRIiPTR"\n",
 		 NSBitsPerSampleFromDepth(depths[index]));
-	  printf("bits per pixel = %d\n",
+	  printf("bits per pixel = %"PRIiPTR"\n",
 		 NSBitsPerPixelFromDepth(depths[index]));
 	  printf("color space = %s\n",
 		 [NSColorSpaceFromDepth(depths[index]) cString]);
