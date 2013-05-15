@@ -28,7 +28,7 @@
 #include <AppKit/AppKit.h>
 
 // @interface 'class' : 'superClass'
-@interface CurrencyConverter : NSObject
+@interface CurrencyConverter : NSObject <NSTextFieldDelegate>
 {
   // Instance variables
   NSTextField* field[3];

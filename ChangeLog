@@ -3,6 +3,8 @@
 	  convert to UTF-8
 	* gui/Classes/NSScreenTest/screen_main.m
 	  some NSInteger conversions
+	* gui/CurrencyConverter/CurrencyConverter.h
+	  the CurrencyConverter honours NSTextFieldDelegate protocol
 
 2010-06-02  Adam Fedor  <fedor@gnu.org>
 
