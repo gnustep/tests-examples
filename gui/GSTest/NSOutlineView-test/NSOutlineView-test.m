@@ -384,7 +384,6 @@ static NSString *test[20] =
 		item: (id)item
 {
   //NSLog(@"outlineView:willDisplayCell:forTableColumn:item:");
-  return YES;
 }
 
 - (BOOL) outlineView: (NSOutlineView *)anOutlineView
