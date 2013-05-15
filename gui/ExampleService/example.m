@@ -40,6 +40,8 @@
 #include "wgetopt.h"
 
 #include	<signal.h>
+#include	<sys/types.h>
+#include 	<unistd.h>
 
 #ifndef	NSIG
 #define	NSIG	32
