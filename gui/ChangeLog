@@ -1,3 +1,13 @@
+2013-07-03 Ivan Vucica <ivan@vucica.net>
+
+	* MyTransparentGL/MyGL.gorm/data.classes:
+	* MyTransparentGL/MyGL.gorm/objects.gorm:
+	* MyTransparentGL/MyGL.gorm/data.info:
+	* MyTransparentGL/README:
+	* MyTransparentGL/AppController.m:
+	* MyTransparentGL/GNUmakefile:
+	A demo that demonstrates how to create a transparent NSOpenGLView.
+
 2012-01-23 Fred Kiefer <FredKiefer@gmx.de>
 
 	* Calculator/CalcBrain.m,
