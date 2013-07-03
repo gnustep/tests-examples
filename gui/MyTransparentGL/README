@@ -1,0 +1,16 @@
+This is a modification of the MyGL example which tests creation of a
+transparent NSOpenGLView.
+
+AUTHOR: Ivan Vucica
+
+Readme from MyGL follows.
+
+---------
+
+This is a simple example of how to use NSOpenGLView in GNUstep.
+The example demonstrates parsing a simple COLLADA file with a simple
+but very incomplete method. The example simulate lighting using dot product
+of vertice normals.
+
+AUTHOR: Banlu Kemiyatorn
+
