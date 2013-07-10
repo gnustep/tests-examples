@@ -132,6 +132,7 @@ static NSString *test[20] =
   NSScrollView *scrollView;
   int i;
   NSString *string;
+  NSCell *cell;
 
   keysArray = [[NSMutableArray alloc] initWithObjects: keys
 				      count:20];
@@ -168,10 +169,23 @@ static NSString *test[20] =
   //  [tableView setAutoresizesAllColumnsToFit: YES];
   [tableView setAllowsMultipleSelection: YES];
 
-
+  /* column with selectable but not editable cell */  
+  string = @"Selectable";
+  tb = AUTORELEASE ([[NSTableColumn alloc] initWithIdentifier: string]);
+  [tb setEditable: YES];
+  [tb setMinWidth: 50];
+  [tb setMaxWidth: 400];
+  [[tb headerCell] setStringValue: string];
+ 
+  cell = [tb dataCell];
+  [cell setSelectable: YES];
+  [cell setEditable: YES];
+  [tb setDataCell: cell];
+  NSLog(@"data cell %@", cell);
+  [tableView addTableColumn: tb];
 
   /* Now add some more columns */
-  for (i = 0; i < 5; i++)
+  for (i = 1; i < 5; i++)
     {
       string = [NSString stringWithFormat: @"Column %d", i];
       tb = AUTORELEASE ([[NSTableColumn alloc] initWithIdentifier: string]);

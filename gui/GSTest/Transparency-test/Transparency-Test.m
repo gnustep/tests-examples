@@ -51,6 +51,7 @@ static void AddLabel(NSString *text, NSRect frame, NSView *dest)
 
 - (void) changeColor: (id)sender;
 - (void) windowOpacity: (id)sender;
+- (void) ignoreMouse: (id)sender;
   
 @end
 
@@ -62,6 +63,20 @@ static void AddLabel(NSString *text, NSRect frame, NSView *dest)
   
   if (self != nil)
     {
+      AddLabel(@"Ignore mouse events", NSMakeRect(0, 380, 150, 20), self);
+      {
+        NSButton *ignoreMouse = [[NSButton alloc] initWithFrame: NSMakeRect(200, 380, 80, 20)];
+
+        [ignoreMouse setButtonType: NSToggleButton];
+        [ignoreMouse setTitle: @"Ignore mouse events"];
+	[ignoreMouse setKeyEquivalent: @"i"];
+	[ignoreMouse setKeyEquivalentModifierMask: NSCommandKeyMask];
+	[ignoreMouse setTarget: self];
+	[ignoreMouse setAction: @selector(ignoreMouse:)];
+        [self addSubview: ignoreMouse];
+        RELEASE(ignoreMouse);
+      }
+
       AddLabel(@"On X11, for the window opacity setting or the window background color alpha value to have any effect, you must be running a window manager with compositing enabled.", NSMakeRect(0, 310, 400, 50), self);
 
       AddLabel(@"Window opacity (including title bar):", NSMakeRect(0, 260, 200, 50), self);
@@ -122,6 +137,12 @@ static void AddLabel(NSString *text, NSRect frame, NSView *dest)
   [[self window] setAlphaValue: [sender floatValue]];
 }
 
+- (void) ignoreMouse: (id)sender
+{  
+  NSLog(@"Set ignore mouse to %f", [sender state]);
+  [[self window] setIgnoresMouseEvents: [sender state]];
+}
+
 @end
 
 @implementation TransparencyTest : NSObject
@@ -129,7 +150,7 @@ static void AddLabel(NSString *text, NSRect frame, NSView *dest)
 -(id) init
 {
   NSView *content;
-  content = [[TransparencyTestView alloc] initWithFrame: NSMakeRect(0,0,400,360)];
+  content = [[TransparencyTestView alloc] initWithFrame: NSMakeRect(0,0,380,430)];
 
   // Create the window
   win = [[NSWindow alloc] initWithContentRect: [content frame]

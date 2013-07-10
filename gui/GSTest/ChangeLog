@@ -1,3 +1,9 @@
+2013-07-10  Fred Kiefer  <FredKiefer@gmx.de>
+
+	* Transparency-test/Transparency-Test.m: Add toggle button to
+	ignore mouse events. Toggle with NSCommandKeyMask-i.
+	* NSTableView-test/NSTableView-test.m: Make first column selectable.
+
 2011-11-17  Eric Wasylishen  <ewasylishen@gmail.com>
 
 	* StringDrawing-test/StringDrawing-test.m: Fix copy/paste mistake
@@ -231,7 +237,7 @@
 
 2009-12-05  Quentin Mathe  <quentin.mathe@gmail.com>
 
-	* NSOutlineView-test/NSOutlineView-test.m: Reindented more sensibly and 
+	* NSOutlineView-test/NSOutlineView-test.m: Reindented more sensibly and
 	rearranged a bit the if else statements logic to be simpler.
 
 2007-02-14  Nicola Pero <nicola.pero@meta-innovation.com>
@@ -277,13 +283,13 @@
 	* main.m
 	Changed type of variable menuItem in main() to remove compiler warnings.
 	* Composite-test/MyView.m
-	* NSTableView-test/NSTableView-test.m 
+	* NSTableView-test/NSTableView-test.m
 	Added [dealloc] method.
-	* NSBox-test/NSBox-test.m 
+	* NSBox-test/NSBox-test.m
 	In [NSBoxTest init] release the cell prototype.
-	* NSSavePanel-test/NSSavePanel-test.m 
+	* NSSavePanel-test/NSSavePanel-test.m
 	Added missing @end.
-	
+
 Mon Jun 10 09:36:57 2002  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* NSButton-test/GNUmakefile: New file.
@@ -293,13 +299,13 @@ Mon Jun 10 09:36:57 2002  Nicola Pero  <n.pero@mi.flashnet.it>
 2002-04-24  Adam Fedor  <fedor@gnu.org>
 
 	* main.m ([Controller -startUnlistedTest:sender]): Retain unlisted
-	tests in an array so they don't disappear after the next autorelease 
+	tests in an array so they don't disappear after the next autorelease
 	loop.
 
 Thu Apr 11 22:59:34 2002  Nicola Pero  <n.pero@mi.flashnet.it>
 
-	* NSSavePanel-test/NSSavePanel-test.m ([NSSavePanelTest -init]): Updated 
-	for newer gnustep-gui: no longer adjust manually button size, 
+	* NSSavePanel-test/NSSavePanel-test.m ([NSSavePanelTest -init]): Updated
+	for newer gnustep-gui: no longer adjust manually button size,
 	the new gnustep-gui gets them right automatically.
 	* StringDrawing-test/StringDrawing-test.m ([StringDrawingTest
 	-init]): Idem.
@@ -307,17 +313,17 @@ Thu Apr 11 22:59:34 2002  Nicola Pero  <n.pero@mi.flashnet.it>
 	([NSWindowStyleMaskTest -init]): Idem.
 	* EncodingDecoding-test/EncodingDecoding-test.m
 	([EncodingDecodingTest -init]): Idem.
-	* main.m: Version 1.0.	
+	* main.m: Version 1.0.
 
 2002-03-22  Pierre-Yves Rivaille <pyrivail@ens-lyon.fr>
 
-	* NSTableView-test/NSTableView-test.m : 
+	* NSTableView-test/NSTableView-test.m :
 	Modified to use drag'n'drop.
 	keys, values and test are now declared as static.
-	* NSOutlineView-test/NSOutlineView-test.m 
+	* NSOutlineView-test/NSOutlineView-test.m
 	Modified to use drag'n'drop.
 	keys, values and test are now declared as static.
-	
+
 2002-03-05  Gregory John Casamento <greg_casamento@yahoo.com>
 
 	* NSOutlineView-test/NSOutlineView-test.m made modifications
@@ -326,7 +332,7 @@ Thu Apr 11 22:59:34 2002  Nicola Pero  <n.pero@mi.flashnet.it>
 
 2002-03-05  Pierre-Yves Rivaille <pyrivail@ens-lyon.fr>
 
-	* NSTableView-test/NSTableView-test.m ([NSTableViewTest -init]): 
+	* NSTableView-test/NSTableView-test.m ([NSTableViewTest -init]):
 	Set minWidth for all columns. Don't call sizeToFit: anymore.
 
 Mon Mar  4 09:31:04 2002  Nicola Pero  <n.pero@mi.flashnet.it>
@@ -339,7 +345,7 @@ Mon Mar  4 09:31:04 2002  Nicola Pero  <n.pero@mi.flashnet.it>
 	([Controller -startListedTest:]): Retain the new bundle principal
 	class instance.
 	([Controller -applicationWillTerminate:]): New method.
-	
+
 Sat Feb 27 01:54:10 2002  Gregory Casamento <greg_casamento@yahoo.com>
 
 	* NSOutlineView-test/NSOutlineView-test.m:  Added code to test
@@ -364,7 +370,7 @@ Wed Feb 20 19:28:52 2002  Nicola Pero  <nicola@brainstorm.co.uk>
 	* main.m: Do not include MemoryPanel.h.
 	(main): Do not add the memory panel submenu.
 	* GNUmakefile: Do not compile MemoryPanel.m
-	
+
 Wed Jan 16 22:12:24 2002  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* NSSlider-test/NSSlider-test.m ([-init]): Added enable/disable
@@ -384,7 +390,7 @@ Fri Dec 21 14:28:48 2001  Nicola Pero  <nicola@brainstorm.co.uk>
 	-keyDown:]): Use the new falitites to display pretty names for
 	function keys.
 	* main.m: Updated version to 0.8.
-	
+
 Wed Jul  4 18:41:29 2001  Nicola Pero  <nicola@brainstorm.co.uk>
 
 	* GNUmakefile (SUBPROJECTS), testList.h (testList): Added
@@ -393,7 +399,7 @@ Wed Jul  4 18:41:29 2001  Nicola Pero  <nicola@brainstorm.co.uk>
 	* NSTextView-test/NSTextView-test.m: New file.
 	* NSTextView-test/GNumakefile: New file.
 	* main.m: Updated version to 0.7.
-	
+
 Sun Jun 10 20:00:51 2001  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* StringDrawing-test/StringDrawing-test.m
@@ -428,7 +434,7 @@ Sun Jan 28 19:14:45 2001  Nicola Pero  <n.pero@mi.flashnet.it>
 
 2001-01-08  Fred Kiefer  <FredKiefer@gmx.de>
 
-	* NSColorWell-test/NSColorWell-test.m 
+	* NSColorWell-test/NSColorWell-test.m
 	([NSColorWellTest -showColorList]) release the hboxes.
 
 Tue Dec 12 02:32:35 2000  Nicola Pero  <n.pero@mi.flashnet.it>
@@ -456,29 +462,29 @@ Tue Sep  5 00:55:55 2000  Nicola Pero  <nicola@brainstorm.co.uk>
 
 Sun Sep  3 21:28:46 2000  Nicola Pero  <nicola@brainstorm.co.uk>
 
-	* NSSlider-test/NSSlider-test.m ([NSSliderTest -init]): Set title 
+	* NSSlider-test/NSSlider-test.m ([NSSliderTest -init]): Set title
 	of horizontal slider.
 
 Sat Sep  2 01:05:48 2000  Nicola Pero  <nicola@brainstorm.co.uk>
 
 	* MemoryPanel.m ([NSMenu -addMemoryPanelSubmenu]): Create the
 	shared memory panel later.
-	* MemoryPanel.h, MemoryPanel.m ([MemoryPanel +update:]): New method.  
-	* main.m (main): Empty autorelease pool before running 
+	* MemoryPanel.h, MemoryPanel.m ([MemoryPanel +update:]): New method.
+	* main.m (main): Empty autorelease pool before running
 	application.
 
 Fri Sep  1 22:47:42 2000  Nicola Pero  <nicola@brainstorm.co.uk>
 
-	* MemoryPanel.m ([MemoryPanel -init]): Order entries by number 
+	* MemoryPanel.m ([MemoryPanel -init]): Order entries by number
 	of allocated objects by default.
 
 Fri Sep  1 16:18:50 2000  Nicola Pero  <nicola@brainstorm.co.uk>
 
 	Implemented a memory panel to track memory leaks in the library.
-	* main.m (main): Added memory menu.  
-	* MemoryPanel.m, MemoryPabel.h: New files.  
+	* main.m (main): Added memory menu.
+	* MemoryPanel.m, MemoryPabel.h: New files.
 	* GNUmakefile: Added the new files.
-	
+
 Thu Jul 20 01:53:27 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* NSWindowStyleMask: New test.
@@ -489,9 +495,9 @@ Tue Jul 18 17:46:12 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 	* KeyboardInput-test/KeyboardInput-test.m ([-init]): Fixed min
 	size of window.
 	* NSBox-test/NSBox-test.m ([-init]): Idem.
-	* NSColorWell-test/NSColorWell-test.m ([-init]): Idem. 
+	* NSColorWell-test/NSColorWell-test.m ([-init]): Idem.
 	* NSSlider-test/NSSlider-test.m ([-init]): Idem.
-	
+
 Thu Apr 13 19:00:36 2000  Nicola Pero  <nicola@brainstorm.co.uk>
 
 	* EncodingDecoding-test/EncodingDecoding-test.m ([-decode:]):
@@ -524,7 +530,7 @@ Thu Apr 13 18:31:08 2000  Nicola Pero  <nicola@brainstorm.co.uk>
 	Idem.
 	* StringDrawing-test/StringDrawing-test.m ([StringDrawingTest
 	-init]): Idem.
-	
+
 Sat Mar 18 00:11:31 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* NSTableView-test: New test.
@@ -537,7 +543,7 @@ Sat Mar 18 00:11:31 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 Mon Feb 14 22:14:14 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* NSSavePanel-test/NSSavePanel-test.m ([-startSavePanel:sender]):
-	Emit a warning panel and refuse to run the save panel if a 
+	Emit a warning panel and refuse to run the save panel if a
 	not-valid filename, ie one beginning with "/", is supplied.
 
 Sun Feb 13 01:18:37 2000  Nicola Pero  <n.pero@mi.flashnet.it>
@@ -548,7 +554,7 @@ Sun Feb 13 01:18:37 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 Sat Feb 12 18:03:01 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
-	* StringDrawing-test/StringDrawing-test.m ([-init]): Improved 
+	* StringDrawing-test/StringDrawing-test.m ([-init]): Improved
 	autoresizing.
 
 Sat Feb  5 03:37:52 2000  Nicola Pero  <n.pero@mi.flashnet.it>
@@ -556,20 +562,20 @@ Sat Feb  5 03:37:52 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 	* main.m (main): Added "Hide" menu item.
 	* StringDrawing-test/StringDrawing-test.m ([-init]): Changed
 	button text.
-	
+
 Thu Feb  3 01:23:59 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
-	* main.m (main): Added "..." to Info Panel, Help and 
+	* main.m (main): Added "..." to Info Panel, Help and
 	Test Not In The List menu items.
-	
+
 Mon Jan 31 22:31:09 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
-	* NSSlider-test/NSSlider-test.m ([NSSliderTest -init]): Fixed 
+	* NSSlider-test/NSSlider-test.m ([NSSliderTest -init]): Fixed
 	attributes of text fields.
 
 Mon Jan 31 22:01:07 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
-	* KeyboardInput-test/KeyboardInput-test.m: Test rewritten 
+	* KeyboardInput-test/KeyboardInput-test.m: Test rewritten
 	with new interface design.
 
 Tue Jan 25 23:40:24 2000  Nicola Pero  <n.pero@mi.flashnet.it>
@@ -578,31 +584,31 @@ Tue Jan 25 23:40:24 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 	-drawRect:]): Fix for nil attr.
 	([StringDrawingTest -chooseTextFile:]): Fixed memory leak.
 	([StringDrawingTest -init]): Made the scrollview bigger.
-	
+
 Tue Jan 25 00:41:11 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
-	* main.m ([Controller -runInfoPanel:sender]): Use the new 
+	* main.m ([Controller -runInfoPanel:sender]): Use the new
 	standard Info Panel provided by the GNUstep libraries;
 	* main.m (main): Invoke the Help Panel even if not yet implemented
 	yet.
-	* infoPanel.m, infoPanel.h: Added comment saying that this class 
+	* infoPanel.m, infoPanel.h: Added comment saying that this class
 	is unused.
 	* GNUmakefile: Removed any reference to infoPanel.m, infoPanel.h.
-	
+
 Mon Jan 24 23:17:12 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	New test StringDrawing-test:
 	* StringDrawing-test/StringDrawing-test.m: New file.
 	* StringDrawing-test/GNUmakefile: New file.
 	* GNUmakefile: Added StringDrawing-test.
-	* testList.h: Added StringDrawing-test. 
-	
+	* testList.h: Added StringDrawing-test.
+
 Fri Jan 14 06:55:29 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* EncodingDecoding-test/EncodingDecoding-test.m ([-init]): Set
  	autoresizing mask of the browser; removed border in excess.
 	* NSBox-test/NSBox-test.m ([-init]): Set vertical intercell
- 	spacing of set boxes to 4; added boxes to group options; centered 
+ 	spacing of set boxes to 4; added boxes to group options; centered
 	option matrixes inside boxes.
 	* NSColorList-test/NSColorList-test.m ([-init]): Set autoresizing
  	mask of the browser.  ([-showColorList:]): Added border around
@@ -614,14 +620,14 @@ Fri Jan 14 06:55:29 2000  Nicola Pero  <n.pero@mi.flashnet.it>
  	group of buttons; rewritten result output presentation.
 	* NSSlider-test/NSSlider-test.m ([-init]): Changed alignment,
  	disposition of things.
-	
+
 Sat Jan  8 23:33:21 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* main.m: ([Controller -init]): Added missing retain.
   	([Controller -dealloc]): Added method.  ([Controller
  	-runInfoPanel:sender]): Simplified.  ([Controller
  	-startUnlistedTest:sender]): Use the Open Panel.
-	* NSBox-test/NSBox-test.m ([-dealloc]): Added method.	
+	* NSBox-test/NSBox-test.m ([-dealloc]): Added method.
 	* NSColorWell-test/NSColorWell-test.m ([-init]): The color well is
  	not any longer an instance variable. ([-dealloc]): Added method.
 	* NSSavePanel-test/NSSavePanel-test.m ([-dealloc]): Added method.
@@ -636,24 +642,24 @@ Sat Jan  8 23:33:21 2000  Nicola Pero  <n.pero@mi.flashnet.it>
  	method.
 
 	New test NSColorList-test.
-	* NSColorList-test: New directory. 
-	* NSColorList-test/GNUmakefile: New file. 
-	* NSColorList-test/NSColorList-test.m: New file. 
+	* NSColorList-test: New directory.
+	* NSColorList-test/GNUmakefile: New file.
+	* NSColorList-test/NSColorList-test.m: New file.
 	* testList.h: Added test to the list.
 	* GNUmakefile: idem.
-	
+
 Fri Dec 17 06:16:30 1999  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* NSSavePanel-test/NSSavePanel-test.m ([NSSavePanelTest -init]):
  	Make 'Start Save Panel' button bigger; add more space over the
  	button.
-	
-	New test EncodingDecoding-test.  This test is meant for library 
+
+	New test EncodingDecoding-test.  This test is meant for library
 	developing.  It will be replaced with a test more focused as a demo.
 	* EncodingDecoding-test: New directory.
 	* EncodingDecoding-test/GNUmakefile: New file.
 	* EncodingDecoding-test/EncodingDecoding-test.m: New file.
-	
+
 Thu Dec  9 20:47:06 1999  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	New test NSSavePanel-test.
@@ -662,10 +668,10 @@ Thu Dec  9 20:47:06 1999  Nicola Pero  <n.pero@mi.flashnet.it>
 	* NSSavePanel-test/NSSavePanel-test.m: New file.
 	* testList.h: Added test to the list.
 	* GNUmakefile: idem.
-	
+
 Tue Dec  7 04:28:15 1999  Nicola Pero  <n.pero@mi.flashnet.it>
 
-	* KeyboardInput-test/KeyboardInput-test.m ([-init]): Set background 
+	* KeyboardInput-test/KeyboardInput-test.m ([-init]): Set background
 	color of non editable text fields.
 
 Fri Dec  3 20:38:26 1999  Nicola Pero  <n.pero@mi.flashnet.it>
@@ -674,14 +680,14 @@ Fri Dec  3 20:38:26 1999  Nicola Pero  <n.pero@mi.flashnet.it>
 	* GSHbox-test: New directory.
 	* GSHbox-test/GNUmakefile: New file.
 	* GSHbox-test/GSHbox-test.m: New directory.
-	* NSForm-test/NSForm-test.m ([-dealloc]): Added. 
+	* NSForm-test/NSForm-test.m ([-dealloc]): Added.
 
 Sun Nov 28 18:09:46 1999  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	New test NSForm-test.
-	* NSForm-test: New directory. 
-	* NSForm-test/GNUmakefile: New file. 
-	* NSForm-test/NSForm-test.m: New file. 
+	* NSForm-test: New directory.
+	* NSForm-test/GNUmakefile: New file.
+	* NSForm-test/NSForm-test.m: New file.
 
 Sat Nov 27 05:25:15 1999  Nicola Pero  <n.pero@mi.flashnet.it>
 
