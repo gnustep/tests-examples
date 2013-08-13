@@ -7,7 +7,7 @@ MyTransparentGL_MAIN_MODEL_FILE=MyTransparentGL.gorm
 MyTransparentGL_APPLICATION_ICON=MyTransparentGL.tiff
 
 MyTransparentGL_OBJC_FILES = main.m AppController.m
-MyTransparentGL_RESOURCE_FILES = MyTransparentGL.gorm MyTransparentGL.tiff
+MyTransparentGL_RESOURCE_FILES = MyTransparentGL.gorm girl.dae
 
 
 ifeq ($(GNUSTEP_TARGET_OS), mingw32)

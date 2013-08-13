@@ -1,3 +1,9 @@
+2012-08-13 Fred Kiefer <FredKiefer@gmx.de>
+
+	* MyTransparentGL/AppController.m:
+	* MyTransparentGL/GNUmakefile: Get the code to work properly.
+	Patch by Johannes Lundberg <johannes@brilliantservice.co.jp>
+
 2013-07-03 Ivan Vucica <ivan@vucica.net>
 
 	* MyTransparentGL/MyGL.gorm/data.classes:
