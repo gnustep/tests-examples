@@ -1,0 +1,38 @@
+1 Announcement
+**************
+
+The GNUstep Examples Package, version 1.4.0, is now available.
+
+1.1 What is the GNUstep Examples Package?
+=====================================
+
+In this directory there is a full collection of examples for the GNUstep
+libraries.  Some tests are very old, other are newer; some are 
+up-to-date, other are not.
+
+Quick start to compile and run the tests:
+
+make
+openapp ./testYouWantToSee.app
+
+For more information, see the README file associated with each subdirectory.
+Currently there is only one, for gui tests.
+
+   There is more information available at the GNUstep homepage at
+`http://www.gnustep.org'.
+
+1.2 Noteworthy changes in version `1.4.0'
+==========================================
+
+   * Updated compiler support
+
+1.3 Where can you get it?  How can you compile it?
+==================================================
+
+The gnustep-examples-1.4.0.tar.gz distribution file has been placed at
+`ftp://ftp.gnustep.org/pub/gnustep/usr-apps'.
+
+Please log bug reports on the GNUstep project page
+`http://savannah.gnu.org/bugs/?group=gnustep' or send bug reports to
+<bug-gnustep@gnu.org>.
+
