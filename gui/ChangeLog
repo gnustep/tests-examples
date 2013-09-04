@@ -1,3 +1,10 @@
+2012-09-03 Fred Kiefer <FredKiefer@gmx.de>
+
+	* MyGL: Merge changes from MyTransparentGL into this project.
+	You need to comment out the definition of TRANSPARENT to get no
+	transparent view.
+	* MyTransparentGL: Remove the whole project.
+
 2012-08-13 Fred Kiefer <FredKiefer@gmx.de>
 
 	* MyTransparentGL/AppController.m:

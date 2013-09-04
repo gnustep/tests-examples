@@ -6,3 +6,9 @@ of vertice normals.
 
 AUTHOR: Banlu Kemiyatorn
 
+---------
+
+This is a modification of the MyGL example which tests creation of a
+transparent NSOpenGLView.
+
+AUTHOR: Ivan Vucica
