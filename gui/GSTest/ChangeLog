@@ -1,3 +1,8 @@
+2013-09-26 Riccardo Mottola <rm@gnu.org>
+
+	* NSBrowser-test
+	new test for NSBrowser, with a static and an editable version.
+
 2013-07-10  Fred Kiefer  <FredKiefer@gmx.de>
 
 	* Transparency-test/Transparency-Test.m: Add toggle button to
