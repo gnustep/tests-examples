@@ -62,6 +62,7 @@
   GSHbox *hLabelBox;
   GSHbox *vLabelBox;
   NSRect winFrame;
+  NSSlider *circSlider;
 
   // Vertical Slider Box
   vButton1 = [NSButton new];
@@ -259,6 +260,20 @@
   [table setXResizingEnabled: NO
 	 forColumn: 0];
   [table setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)];
+
+  circSlider = [[NSSlider alloc] initWithFrame: NSMakeRect(100,100,32,32)];
+  [[circSlider cell] setSliderType: NSCircularSlider];
+  [table putView: circSlider
+	 atRow: 0
+	 column:0
+	 withMinXMargin: 0
+	 maxXMargin: 0
+	 minYMargin: 0
+	 maxYMargin: 0];
+
+  [circSlider release];
+
+
   
   winFrame.size = [table frame].size;
   winFrame.origin = NSMakePoint (150, 150);

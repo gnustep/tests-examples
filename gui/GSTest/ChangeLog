@@ -1,3 +1,7 @@
+2013-10-03  Eric Wasylishen  <ewasylishen@gmail.com>
+
+	* NSSlider-test/NSSlider-test.m: Add a circular slider
+
 2013-09-26 Riccardo Mottola <rm@gnu.org>
 
 	* NSBrowser-test
