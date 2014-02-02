@@ -1,0 +1,26 @@
+{
+    "## Comment" = "Do NOT change this file, Gorm maintains it";
+    FirstResponder = {
+	Actions = (
+	    "setColor:",
+	    "setTool:"
+	);
+	Super = NSObject;
+    };
+    PPDocumentClass = {
+	Actions = (
+	);
+	Outlets = (
+	    view
+	);
+	Super = NSDocument;
+    };
+    PPDocumentView = {
+	Actions = (
+	);
+	Outlets = (
+	    document
+	);
+	Super = NSView;
+    };
+}

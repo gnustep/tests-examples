@@ -1,0 +1,23 @@
+{
+  ApplicationName = PowerPaint;
+  ApplicationDescription = "My first Document App!";
+  ApplicationRelease = "0.1";
+  NSBuildVersion = "February 2014";
+  Copyright = "Copyright (C) 2014";
+  CopyrightDescription = "Released under the licence GPLv3";
+  Authors = (
+      "Germ\U00E1n Arias"
+  );
+  URL = www.gnustep.org;
+  NSTypes = (
+    {
+      NSName = "jpg";
+      NSHumanReadableName = "Imagen JPG";
+      NSIcon = "FileIcon_.jpg.tiff";
+      NSUnixExtensions = ( jpg );
+      NSDOSExtensions = ( jpg );
+      NSRole = Editor;
+      NSDocumentClass = PPDocumentClass;
+    }
+  );
+}

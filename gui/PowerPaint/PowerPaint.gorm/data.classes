@@ -1,0 +1,25 @@
+{
+    "## Comment" = "Do NOT change this file, Gorm maintains it";
+    FirstResponder = {
+	Actions = (
+	    "setTool:"
+	);
+	Super = NSObject;
+    };
+    PPController = {
+	Actions = (
+	    "setTool:"
+	);
+	Outlets = (
+	    colorWell
+	);
+	Super = NSObject;
+    };
+    PPToolsPanel = {
+	Actions = (
+	);
+	Outlets = (
+	);
+	Super = NSPanel;
+    };
+}
