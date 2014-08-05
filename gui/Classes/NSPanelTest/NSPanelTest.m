@@ -755,11 +755,11 @@ LEGAL
 // actions:
 
 
--showInformations:sender
+-showInformation:sender
 {
   [[NSApplication sharedApplication] orderFrontStandardInfoPanel: self];
   return(self);
-}//showInformations:;
+}//showInformation:;
 
 
 -useAlertPanels:sender
@@ -807,7 +807,7 @@ LEGAL
 	     keyEquivalent:key]; [item setEnabled:YES]; [item setTarget:self]
 
   menu=[[NSMenu alloc] initWithTitle:[[self class]description]];
-  makeitem(menu,@"Informations",           showInformations:,       @"i");
+  makeitem(menu,@"Information",           showInformation:,       @"i");
         
   subm=[[NSMenu alloc] initWithTitle:@"Panel Kind"];
   makeitem(subm,@"Use Alert Panels",        useAlertPanels:,        @"");
