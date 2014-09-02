@@ -1,3 +1,8 @@
+2014-08-31  German Arias <germanandre@gmx.es>
+
+	* NSAnimation-test/AnimationView.m: Use NSAnimationNonblocking, this
+	way the app responds to user events.
+
 2013-10-03  Eric Wasylishen  <ewasylishen@gmail.com>
 
 	* NSSlider-test/NSSlider-test.m: Add a circular slider

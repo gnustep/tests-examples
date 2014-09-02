@@ -51,9 +51,9 @@
 
 @end
 
-//#define ANIMATION_MODE NSAnimationNonblocking
+#define ANIMATION_MODE NSAnimationNonblocking
 //#define ANIMATION_MODE NSAnimationBlocking // NA
-#define ANIMATION_MODE NSAnimationNonblockingThreaded
+//#define ANIMATION_MODE NSAnimationNonblockingThreaded
 
 @implementation AnimationView
 
