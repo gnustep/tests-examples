@@ -1,3 +1,7 @@
+2015-03-24  Eric Wasylishen  <ewasylishen@gmail.com>
+
+	* NSWindow-test/NSWindow-test.m: Add a button to open a sheet.
+
 2014-08-31  German Arias <germanandre@gmx.es>
 
 	* NSAnimation-test/AnimationView.m: Use NSAnimationNonblocking, this

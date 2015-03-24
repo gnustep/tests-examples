@@ -49,6 +49,19 @@ static void AddLabel(NSString *text, NSRect frame, NSView *dest)
   [labelView release];
 }
 
+static NSButton *AddButton(NSString *label, NSRect frame, NSView *dest, id target, SEL action)
+{
+  NSButton *button = [NSButton new];
+  [button setFrame: frame];
+  [button setTitle: label];
+  [button setTarget: target];
+  if (action)
+    [button setAction: action];
+  [button setContinuous: YES];
+  [button setToolTip: label];
+  [dest addSubview: button];
+  return [button autorelease];
+}
 
 @implementation NSWindowTest
 
@@ -63,6 +76,9 @@ static void AddLabel(NSString *text, NSRect frame, NSView *dest)
 					       defer: NO];
   [testWindow setReleasedWhenClosed: NO];
   [testWindow setTitle: @"Test Window"];
+
+  AddButton(@"Open Sheet", NSMakeRect(0,0,100,50), [testWindow contentView], self, @selector(openSheet:));
+  AddButton(@"nothing", NSMakeRect(110,0,50,50), [testWindow contentView], self, (SEL)0);
 
   panel = [[NSPanel alloc] initWithContentRect: NSMakeRect(0,0,200, 400)
 					   styleMask: (NSTitledWindowMask 
@@ -80,6 +96,14 @@ static void AddLabel(NSString *text, NSRect frame, NSView *dest)
 
   [self restart];
   return self;
+}
+
+- (void) openSheet: (id)sender
+{
+  NSLog(@"Opening sheet...");
+
+  NSBeginAlertSheet(@"My title", @"default button", @"alt button", @"other button",
+    testWindow, self, (SEL)0, (SEL)0, NULL, @"Here is a sheet...");
 }
 
 - (void) setupTextView
