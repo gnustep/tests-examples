@@ -6,6 +6,7 @@
   Copyright = "Copyright (c) 2000 Fred Kiefer <fredkiefer@gmx.de>";
   CopyrightDescription = "This program is released under the GNU General Public License"; 
   NSIcon = Ink_app;
+  CFBundleIdentifier = org.gnustep.Ink;
   NSServices = (
         {
              NSMenuItem = { default = "Ink/Open Selection"; };
