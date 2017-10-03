@@ -118,16 +118,17 @@
   return [combo autorelease];
 }
 
-- (NSPopUpButton *) addPopUpButtonWithLabel: (NSString *)label pullsDown:(BOOL)pullsDown to: (id)box
+- (NSPopUpButton *) addPopUpButtonWithLabel: (NSString *)label pullsDown:(BOOL)pullsDown to: (id)box andItems:(NSArray *)items;
 {
+  NSUInteger i;
   NSPopUpButton *button = [NSPopUpButton new];
+  
   [button setFrame: NSMakeRect (0, 0, 200, 32)];
   [button setPullsDown: pullsDown];
   [button setAutoresizingMask: NSViewMaxXMargin];
 
-  [button addItemWithTitle: @"First"];
-  [button addItemWithTitle: @"Second"];
-  [button addItemWithTitle: @"Third"];
+  for (i = 0; i < [items count]; i++)
+    [button addItemWithTitle: [items objectAtIndex:i]];
 
   [button setTarget: self];
   [button setAction: @selector (action:)];
@@ -141,12 +142,50 @@
   return [button autorelease];
 }
 
+
+- (NSPopUpButton *) addPopUpButtonWithLabel: (NSString *)label pullsDown:(BOOL)pullsDown to: (id)box
+{
+  NSMutableArray *arr;
+  NSPopUpButton *button;
+
+  arr = [NSMutableArray arrayWithCapacity:3];
+
+  [arr addObject: @"First"];
+  [arr addObject: @"Second"];
+  [arr addObject: @"Third"];
+
+  button = [self addPopUpButtonWithLabel: label pullsDown:pullsDown to:box andItems:arr];
+
+  return button;
+}
+
 - (NSPopUpButton *) addPopUpButtonWithLabel: (NSString *)label pullsDown:(BOOL)pullsDown bezel:(NSBezelStyle)bezel to: (id)box
 {
   NSPopUpButton *button = [self addPopUpButtonWithLabel: label pullsDown: pullsDown to: box];
   [button setBezelStyle: bezel];
   return button;
 }
+
+- (NSPopUpButton *) addPopUpButtonWithLabel: (NSString *)label pullsDown:(BOOL)pullsDown to: (id)box withItemCount:(NSUInteger)itemNum
+{
+  NSMutableArray *arr;
+  NSPopUpButton *button;
+  NSUInteger c;
+
+  arr = [NSMutableArray arrayWithCapacity:itemNum];
+
+  for (c = 0; c < itemNum; c++)
+    {
+      NSString *str;
+      str = [NSString stringWithFormat:@"Item N. %lu", (unsigned long)c];
+      [arr addObject: str];
+    }
+
+  button = [self addPopUpButtonWithLabel: label pullsDown:pullsDown to:box andItems:arr];
+
+  return button;
+}
+
 
 
 
@@ -245,7 +284,9 @@
 
   [self addPopUpButtonWithLabel: @"NSPopUpButton" pullsDown:NO to: column]; 
   [self addPopUpButtonWithLabel: @"NSPopUpButton pullsDown" pullsDown:YES to: column]; 
-  [self addPopUpButtonWithLabel: @"NSPopUpButton NSRoundedBezelStyle" pullsDown:NO bezel: NSRoundedBezelStyle to: column]; 
+  [self addPopUpButtonWithLabel: @"NSPopUpButton NSRoundedBezelStyle" pullsDown:NO bezel: NSRoundedBezelStyle to: column];
+  [self addPopUpButtonWithLabel: @"NSPopUpButton 500 items" pullsDown:NO to: column withItemCount:500]; 
+  [self addPopUpButtonWithLabel: @"NSPopUpButton 100 items" pullsDown:NO to: column withItemCount:100]; 
 
   [hbox addView: column];  
   RELEASE(column);
