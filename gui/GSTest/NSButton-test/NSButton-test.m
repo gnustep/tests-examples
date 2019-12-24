@@ -284,6 +284,7 @@
 
   [self addPopUpButtonWithLabel: @"NSPopUpButton" pullsDown:NO to: column]; 
   [self addPopUpButtonWithLabel: @"NSPopUpButton pullsDown" pullsDown:YES to: column]; 
+  [self addPopUpButtonWithLabel: @"NSPopUpButton pullsDown NSRoundedBezelStyle" pullsDown:YES bezel: NSRoundedBezelStyle to: column];
   [self addPopUpButtonWithLabel: @"NSPopUpButton NSRoundedBezelStyle" pullsDown:NO bezel: NSRoundedBezelStyle to: column];
   [self addPopUpButtonWithLabel: @"NSPopUpButton 500 items" pullsDown:NO to: column withItemCount:500]; 
   [self addPopUpButtonWithLabel: @"NSPopUpButton 100 items" pullsDown:NO to: column withItemCount:100]; 
