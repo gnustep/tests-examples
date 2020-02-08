@@ -28,33 +28,6 @@
 #include <GNUstepGUI/GSVbox.h>
 #include "../GSTestProtocol.h"
 
-// Something to show in the table
-static NSString *keys[20] = 
-{ 
-  @"NSObject",
-  @"NSApplication",
-  @"NSResponder", 
-  @"NSWindow",
-  @"NSPanel"
-}; 
-static NSString *values[20] = 
-{ 
-  @"Nicola Pero <n.pero@mi.flashnet.it>",
-  @"Nicola Pero <n.pero@mi.flashnet.it>",
-  @"richard@brainstorm.co.uk",
-  @"ettore@helixcode.com",
-  @"greg_casamento@yahoo.com"
-};
-
-static NSString *test[20] = 
-{ 
-  @"Other info (1)",
-  @"Other info (2)",
-  @"Other info (3)",
-  @"Other info (4)",
-  @"Other info (5)"
-};
-//
 @interface NSOutlineViewTest: NSObject <GSTest>
 {
   NSWindow *win;

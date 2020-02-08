@@ -166,7 +166,6 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
 
 - (void) imageClass: (id)sender
 {
-  Class c = Nil;
   NSRect frame;
   NSString *selected = [[classesPopUp selectedItem] title];
 

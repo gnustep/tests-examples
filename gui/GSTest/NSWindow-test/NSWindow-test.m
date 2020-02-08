@@ -36,19 +36,6 @@
 - (void) setupTextView;
 @end
 
-
-static void AddLabel(NSString *text, NSRect frame, NSView *dest)
-{
-  NSTextField *labelView = [[NSTextField alloc] initWithFrame: frame];
-  [labelView setStringValue: text];
-  [labelView setEditable: NO];
-  [labelView setSelectable: NO];
-  [labelView setBezeled: NO];
-  [labelView setFont: [NSFont labelFontOfSize: 10]];
-  [dest addSubview: labelView];
-  [labelView release];
-}
-
 static NSButton *AddButton(NSString *label, NSRect frame, NSView *dest, id target, SEL action)
 {
   NSButton *button = [NSButton new];

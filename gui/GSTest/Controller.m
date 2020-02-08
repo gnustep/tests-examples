@@ -1,6 +1,6 @@
 #include "Controller.h"
 
-int nameSort(id path1, id path2, void *context);
+NSComparisonResult nameSort(id path1, id path2, void *context);
 
 @implementation Controller
 
@@ -175,7 +175,7 @@ int nameSort(id path1, id path2, void *context);
   [tests sortUsingFunction: nameSort context: nil];
 }
 
-int nameSort(id path1, id path2, void *context)
+NSComparisonResult nameSort(id path1, id path2, void *context)
 {
   return [[path1 lastPathComponent] compare: [path2 lastPathComponent]];
 }

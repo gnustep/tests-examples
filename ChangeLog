@@ -1,3 +1,10 @@
+2020-02-08 Fred Kiefer <FredKiefer@gmx.de>
+
+	* gui/GSTest/NSOutlineView-test/NSOutlineView-test.m,
+	* gui/GSTest/ImageSelection-test/ImageSelection-test.m,
+	* gui/GSTest/NSWindow-test/NSWindow-test.m,
+	* gui/GSTest/Controller.m: Fix a few compiler warnings.
+
 2019-12-24 Fred Kiefer <FredKiefer@gmx.de>
 
 	* gui/Classes/NSButton-test/NSButton-test.m: Add rounded pull down button.
