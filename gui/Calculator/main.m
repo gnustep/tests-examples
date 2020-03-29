@@ -20,69 +20,21 @@
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software
    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA. */
-#include <Foundation/Foundation.h>
-#include <AppKit/AppKit.h>
-#include "CalcBrain.h"
-#include "CalcFace.h"
+#import <Foundation/Foundation.h>
+#import <AppKit/AppKit.h>
+#import "CalcFace.h"
 
 int main (void)
 { 
-  CalcBrain *brain;
+  ENTER_POOL
   CalcFace *face;
-  NSAutoreleasePool *pool;
   NSApplication *app;
-  NSMenu *mainMenu;
-  NSMenu *menu;
-  NSMenuItem *menuItem;
 
-  pool = [NSAutoreleasePool new];
   app = [NSApplication sharedApplication];
-  [app setApplicationIconImage: [NSImage imageNamed: 
-					   @"Calculator.app.tiff"]];
-  mainMenu = AUTORELEASE ([NSMenu new]);
-  // Info
-  [mainMenu addItemWithTitle: @"Info..." 
-	    action: @selector (orderFrontStandardInfoPanel:) 
-	    keyEquivalent: @""];
-  // Edit SubMenu
-  menuItem = [mainMenu addItemWithTitle: @"Edit" 	
-		       action: NULL 
-		       keyEquivalent: @""];
-  menu = AUTORELEASE ([NSMenu new]);
-  [mainMenu setSubmenu: menu forItem: menuItem];
-  /*
-  [menu addItemWithTitle: @"Cut" 
-	action: @selector (cut:) 
-	keyEquivalent: @"x"];
-  */
-  [menu addItemWithTitle: @"Copy" 
-	action: @selector (copy:) 
-	keyEquivalent: @"c"];
-  /* 
-  [menu addItemWithTitle: @"Paste" 
-	action: @selector (paste:) 
-	keyEquivalent: @"v"];
-  */
-  [menu addItemWithTitle: @"SelectAll" 
-	action: @selector (selectAll:) 
-	keyEquivalent: @"a"];
-
-  [mainMenu addItemWithTitle: @"Hide" 
-	action: @selector (hide:) 
-	keyEquivalent: @"h"];  
-  [mainMenu addItemWithTitle: @"Quit" 
-	    action: @selector (terminate:)
-	    keyEquivalent: @"q"];	
-  
-  [app setMainMenu: mainMenu];
-  
-  brain = [CalcBrain new];
   face = [CalcFace new]; 
-  [brain setFace: face];
-  [face setBrain: brain];
   [app setDelegate: face];
   
   [app run];
+  LEAVE_POOL
   return 0;
 }
-

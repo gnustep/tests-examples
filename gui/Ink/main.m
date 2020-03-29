@@ -21,11 +21,8 @@
    along with this program; if not, write to the Free Software
    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
-#include <Foundation/Foundation.h>
-#include <AppKit/AppKit.h>
-#include <AppKit/NSDocumentController.h>
-#include "Document.h"
-
+#import <Foundation/Foundation.h>
+#import <AppKit/AppKit.h>
 
 int
 main(int argc, const char **argv, char** env)

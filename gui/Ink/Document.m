@@ -38,7 +38,6 @@
 - (void) dealloc
 {
   RELEASE (ts);
-  RELEASE (pi);
   [super dealloc];
 }
 

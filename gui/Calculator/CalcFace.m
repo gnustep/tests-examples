@@ -23,6 +23,7 @@
 #include <Foundation/Foundation.h>
 #include <AppKit/AppKit.h>
 #include "CalcFace.h"
+#include "CalcBrain.h"
 
 //
 // Thanks to Andrew Lindesay for drawing the app icon,
@@ -244,6 +245,52 @@
 
 - (void)applicationDidFinishLaunching: (NSNotification *)aNotification
 {
+  CalcBrain *brain;
+  NSMenu *mainMenu;
+  NSMenu *menu;
+  NSMenuItem *menuItem;
+
+    mainMenu = AUTORELEASE ([NSMenu new]);
+  // Info
+  [mainMenu addItemWithTitle: @"Info..." 
+	    action: @selector (orderFrontStandardInfoPanel:) 
+	    keyEquivalent: @""];
+  // Edit SubMenu
+  menuItem = [mainMenu addItemWithTitle: @"Edit" 	
+		       action: NULL 
+		       keyEquivalent: @""];
+  menu = AUTORELEASE ([NSMenu new]);
+  [mainMenu setSubmenu: menu forItem: menuItem];
+  /*
+  [menu addItemWithTitle: @"Cut" 
+	action: @selector (cut:) 
+	keyEquivalent: @"x"];
+  */
+  [menu addItemWithTitle: @"Copy" 
+	action: @selector (copy:) 
+	keyEquivalent: @"c"];
+  /* 
+  [menu addItemWithTitle: @"Paste" 
+	action: @selector (paste:) 
+	keyEquivalent: @"v"];
+  */
+  [menu addItemWithTitle: @"SelectAll" 
+	action: @selector (selectAll:) 
+	keyEquivalent: @"a"];
+
+  [mainMenu addItemWithTitle: @"Hide" 
+	action: @selector (hide:) 
+	keyEquivalent: @"h"];  
+  [mainMenu addItemWithTitle: @"Quit" 
+	    action: @selector (terminate:)
+	    keyEquivalent: @"q"];	
+  
+  [NSApp setMainMenu: mainMenu];
+  
+  brain = [CalcBrain new];
+  [brain setFace: self];
+  [self setBrain: brain];
+
   [self orderFront: self];
 }
 @end

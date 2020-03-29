@@ -28,16 +28,13 @@
 
 int main (int argc, const char *argv[])
 {
-  NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-  NSApplication *anApplication = nil;
+  ENTER_POOL
   NSArray *screenArray = nil;               
   NSEnumerator *screenEnumerator = nil;
   NSScreen *aScreen = nil;
   const NSWindowDepth *depths = NULL;
   BOOL exactMatch = NO;
   
-  // insert your code here
-  anApplication = [NSApplication sharedApplication];
   screenArray = [NSScreen screens];
   screenEnumerator = [screenArray objectEnumerator];
   
@@ -103,7 +100,7 @@ int main (int argc, const char *argv[])
 	}
     }
   
-  [pool release];
+  LEAVE_POOL
   exit(0);       // insure the process exit status is 0
   return 0;      // ...and make main fit the ANSI spec.
 }

@@ -37,11 +37,11 @@
  */
 
 // Include the definition of our custom class.
-#include "CurrencyConverter.h"
+#import "CurrencyConverter.h"
 
 // Include GNUstep layout extension classes
-#include <GNUstepGUI/GSHbox.h>
-#include <GNUstepGUI/GSVbox.h>
+#import <GNUstepGUI/GSHbox.h>
+#import <GNUstepGUI/GSVbox.h>
 
 
 // Text to be displayed in the labels
@@ -232,93 +232,89 @@ static NSString* fieldString[3] = {
 // Execution starts from here. 
 int main (void)
 {
-   NSAutoreleasePool *pool;
-   NSApplication *app;
-   NSMenu *mainMenu;
-   NSMenu *menu;
-   NSMenuItem *menuItem;
-   CurrencyConverter *converter;
+  ENTER_POOL
+  NSApplication *app;
+  NSMenu *mainMenu;
+  NSMenu *menu;
+  NSMenuItem *menuItem;
+  CurrencyConverter *converter;
 
-   // We need to explicitly create this object only in the main function;     
-   // instead, while the app is running, the gui library creates these objects
-   // automatically for us.
-   pool = [NSAutoreleasePool new];
-
-   // Get the object representing our application.
-   app = [NSApplication sharedApplication];
+  // Get the object representing our application.
+  app = [NSApplication sharedApplication];
   
-   //
-   // Create the Menu 
-   //
+  //
+  // Create the Menu 
+  //
 
-   // Main Menu
-   mainMenu = AUTORELEASE ([NSMenu new]);
+  // Main Menu
+  mainMenu = AUTORELEASE ([NSMenu new]);
+  
+  // Info Item
+  // The object receiving this message is determined at run time;
+  // it will be the NSApplication
+  [mainMenu addItemWithTitle: @"Info..." 
+                      action: @selector (orderFrontStandardInfoPanel:) 
+               keyEquivalent: @""];
+  
+  // Edit Submenu
+  menuItem = [mainMenu addItemWithTitle: @"Edit" 
+                                 action: NULL 
+                          keyEquivalent: @""];
+  menu = AUTORELEASE ([NSMenu new]);
+  [mainMenu setSubmenu: menu forItem: menuItem];
+  
+  // The object which should receive the messages cut:, copy:, paste: is not 
+  // specified, so that the library will have to determine it at run time. 
+  // At first, it will (try to) send them to the 'first responder' 
+  // -- the object which is receiving keyboard input.  
+  // In our case that is precisely what we want, since the first responder 
+  // is the NSText being edited (which knows how to handle cut:, copy:, 
+  // paste:), if any.  
+  [menu addItemWithTitle: @"Cut" 
+                  action: @selector (cut:) 
+           keyEquivalent: @"x"];
 
-   // Info Item
-   // The object receiving this message is determined at run time;
-   // it will be the NSApplication
-   [mainMenu addItemWithTitle: @"Info..." 
-	     action: @selector (orderFrontStandardInfoPanel:) 
-	     keyEquivalent: @""];
+  [menu addItemWithTitle: @"Copy" 
+                  action: @selector (copy:) 
+           keyEquivalent: @"c"];
 
-   // Edit Submenu
-   menuItem = [mainMenu addItemWithTitle: @"Edit" 
-			action: NULL 
-			keyEquivalent: @""];
-   menu = AUTORELEASE ([NSMenu new]);
-   [mainMenu setSubmenu: menu forItem: menuItem];
+  [menu addItemWithTitle: @"Paste" 
+                  action: @selector (paste:) 
+           keyEquivalent: @"v"];
 
-   // The object which should receive the messages cut:, copy:, paste: is not 
-   // specified, so that the library will have to determine it at run time. 
-   // At first, it will (try to) send them to the 'first responder' 
-   // -- the object which is receiving keyboard input.  
-   // In our case that is precisely what we want, since the first responder 
-   // is the NSText being edited (which knows how to handle cut:, copy:, 
-   // paste:), if any.  
-   [menu addItemWithTitle: @"Cut" 
-	 action: @selector (cut:) 
-	 keyEquivalent: @"x"];
+  [menu addItemWithTitle: @"SelectAll" 
+                  action: @selector (selectAll:) 
+           keyEquivalent: @"a"];
 
-   [menu addItemWithTitle: @"Copy" 
-	 action: @selector (copy:) 
-	 keyEquivalent: @"c"];
+  // Hide MenuItem
+  [mainMenu addItemWithTitle: @"Hide" 
+                      action: @selector (hide:) 
+               keyEquivalent: @""];
+  // Quit MenuItem
+  [mainMenu addItemWithTitle: @"Quit" 
+                      action: @selector (terminate:)
+               keyEquivalent: @"q"];	
 
-   [menu addItemWithTitle: @"Paste" 
-	 action: @selector (paste:) 
-	 keyEquivalent: @"v"];
-
-   [menu addItemWithTitle: @"SelectAll" 
-	 action: @selector (selectAll:) 
-	 keyEquivalent: @"a"];
-
-   // Hide MenuItem
-   [mainMenu addItemWithTitle: @"Hide" 
-	     action: @selector (hide:) 
-	     keyEquivalent: @""];
-   // Quit MenuItem
-   [mainMenu addItemWithTitle: @"Quit" 
-	     action: @selector (terminate:)
-	     keyEquivalent: @"q"];	
-
-   [app setMainMenu: mainMenu];
-   // The default title @"Currency Converter" is a bit too long
-   [mainMenu setTitle: @"CurrConv"];
+  [app setMainMenu: mainMenu];
+  // The default title @"Currency Converter" is a bit too long
+  [mainMenu setTitle: @"CurrConv"];
 
 
-   // Create and initializes an instance of our custom object.
-   converter = [[CurrencyConverter alloc] init];
-   
-   // Set our custom object instance as the application delegate. 
-   // This means that 'converter' will receive certain messages 
-   // (documented in the doc) before/after important events for the app 
-   // life, such as starting, ending, closing last window, etc.
-   // In this context, we are interested in receiving the 
-   // [-applicationDidFinishLaunching:] message.
-   [app setDelegate: converter];
+  // Create and initializes an instance of our custom object.
+  converter = [[CurrencyConverter alloc] init];
+ 
+  // Set our custom object instance as the application delegate. 
+  // This means that 'converter' will receive certain messages 
+  // (documented in the doc) before/after important events for the app 
+  // life, such as starting, ending, closing last window, etc.
+  // In this context, we are interested in receiving the 
+  // [-applicationDidFinishLaunching:] message.
+  [app setDelegate: converter];
 
-   // Finally, all is ready to run our application.
-   [app run];
-   return 0;
+  // Finally, all is ready to run our application.
+  [app run];
+  LEAVE_POOL
+  return 0;
 }
 
 @end

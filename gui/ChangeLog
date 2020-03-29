@@ -1,3 +1,15 @@
+2020-03-29 Fred Kiefer <FredKiefer@gmx.de>
+
+	* gui/Calculator/CalcBrain.m
+	* gui/Calculator/CalcFace.m
+	* gui/Calculator/main.m
+	* gui/Classes/NSScreenTest/screen_main.m
+	* gui/CurrencyConverter/CurrencyConverter.m
+	* gui/ExampleService/example.m
+	* gui/Ink/Document.h
+	* gui/Ink/Document.m
+	* gui/Ink/main.m: Small cleanup of compiler warnings.
+
 2012-09-03 Fred Kiefer <FredKiefer@gmx.de>
 
 	* MyGL: Merge changes from MyTransparentGL into this project.
@@ -111,15 +123,15 @@
 	* Ink/Document.m ([Document -makeWindow]): Set text view to import
 	graphics and added vertical ruler.
 	* Old/nscombobox.m: Added one more combobox in window.
-	
-	
+
+
 2004-09-28  Adam Fedor  <fedor@gnu.org>
 
-	* Classes/NSPanelTest/NSPanelTest.m: Make NSPanelTest an application 
+	* Classes/NSPanelTest/NSPanelTest.m: Make NSPanelTest an application
 	delegate. Reindent. Fix compiler warnings.
 	* Classes/NSPanelTest/GNUmakefile: Don't make NSPanelTest the app class.
 	* Classes/NSPanelTest/NSPanelTestInfo.plist: New file.
-	* Classes/NSPanelTest/NSPanelTest_main.m: Use normal app startup 
+	* Classes/NSPanelTest/NSPanelTest_main.m: Use normal app startup
 	function.
 
 	* Classes/NSScreenTest/screen_main.m: Fix warning.
@@ -127,7 +139,7 @@
 	* GPuzzle/GNUmakefile: Don't define GNUSTEP_MAKEFILES.
 
 2004-04-15  Quentin Mathe <qmathe@club-internet.fr>
-	
+
 	* ToolbarExample: Added a demo application for the toolbar
 	implementation.
 	* ToolbarExample/GNUmakefile: New file
@@ -147,7 +159,7 @@
 
 Sat Mar  6 13:57:07 2004  Brent Fulgham <bfulg@pacbell.net>,
  	                  Nicola Pero  <n.pero@mi.flashnet.it>
-	
+
 	* Classes/NSPanelTest/GNUmakefile: Tidied - use GNUSTEP_MAKEFILES,
 	do not set GNUSTEP_INSTALLATION_DIR, and do not include additional
 	makefiles.
@@ -221,7 +233,7 @@ Thu Jan 17 20:27:59 2002  Nicola Pero  <n.pero@mi.flashnet.it>
 	Compile testpb
 	* NSPanelTest/
 	Removed this directory
-	
+
 2001-09-23  Fred Kiefer <FredKiefer@gmx.de>
 
 	* Old/popupbuttons.m
@@ -236,7 +248,7 @@ Thu Jan 17 20:27:59 2002  Nicola Pero  <n.pero@mi.flashnet.it>
 	Ignore all temporary files.
 	* Edit/
 	Removed obsolete directory.
-	
+
 2001-08-03  Gregory John Casamento <greg_casamento@yahoo.com>
 
 	* Ink/Document.m ([Document -makeWindow]): added call to make
@@ -261,7 +273,7 @@ Wed Jul  4 18:32:22 2001  Nicola Pero  <nicola@brainstorm.co.uk>
 
 	* Added menu item to allow Ink to bring up the NSSpellChecker
 	GUI.
-	
+
 2001-06-16  Fred Kiefer <FredKiefer@gmx.de>
 
 	* Ink/InkInfo.plist
@@ -271,7 +283,7 @@ Wed Jul  4 18:32:22 2001  Nicola Pero  <nicola@brainstorm.co.uk>
 	[dataRepresentationOfType:] create RTFD data.
 	[loadFileWrapperRepresentation:ofType:] load RTFD files.
 	[loadDataRepresentation:ofType:] load RTFD data.
-	
+
 Tue Jun 12 02:01:25 2001  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* Ink/main.m ([MyDelegate -applicationWillFinishLaunching:]):
@@ -279,14 +291,14 @@ Tue Jun 12 02:01:25 2001  Nicola Pero  <n.pero@mi.flashnet.it>
 	<stefanurbanek@yahoo.fr>).
 	* Ink/Document.m ([-insertFile:]): New method (patch by Stefan
 	Urbanek modified).
-	([-textView:doubleClickedOnCell:inRect:atIndex:]): New method 
+	([-textView:doubleClickedOnCell:inRect:atIndex:]): New method
 	(patch by Stefan Urbanek).
-	
+
 2001-05-09  Fred Kiefer <FredKiefer@gmx.de>
 
-	* Old/GSImageTabViewItem.m 
+	* Old/GSImageTabViewItem.m
 	Adopted to changes in superclass.
-	
+
 Sat Feb 17 19:08:29 2001  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* Ink/Document.m ([-makeWindow]): Use a white background.
@@ -299,7 +311,7 @@ Sat Feb 17 19:08:29 2001  Nicola Pero  <n.pero@mi.flashnet.it>
 Tue Jan 20  Michael Hanni  <mhanni@sprintmail.com>
 
 	* Classes/NSBrowserTest/.cvsignore,
-	NSPanelTest/.cvsignore, 
+	NSPanelTest/.cvsignore,
 	NSScreenTest/.cvsignore: added for cleanliness.
 
 Fri Jan 26 23:11:18 2001  Nicola Pero  <n.pero@mi.flashnet.it>
@@ -309,10 +321,10 @@ Fri Jan 26 23:11:18 2001  Nicola Pero  <n.pero@mi.flashnet.it>
 	* HostAddress/AppController.h: New file.
 	* HostAddress/AppController.m: Idem.
 	* HostAddress/GNUmakefile: Idem.
-	* HostAddress/Info-project.plist: Idem.  	
+	* HostAddress/Info-project.plist: Idem.
 	* HostAddress/PC.project: Idem.
 	* HostAddress/Resolver.h: Idem.
-	* HostAddress/Resolver.m: Idem.	
+	* HostAddress/Resolver.m: Idem.
 	* HostAddress/main.m: Idem.
 
 Sun Jan 21 23:33:04 2001  Nicola Pero  <n.pero@mi.flashnet.it>
@@ -329,7 +341,7 @@ Mon Jan  9 23:21:34 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 	* Classes/NSScreen: Moved from screen in top level.
 	* GNUmakefile: Rewritten from scratch.
 	* README: Updated for new rearrangement.
-	
+
 Sat Jan  6 20:01:07 2001  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* Ink/Document.m ([-makeWindow]): Set the text container size and
@@ -339,9 +351,9 @@ Sat Jan  6 20:01:07 2001  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* Ink/Ink_app.tiff:
 	TIFF version of icon.
-	* Ink/main.m: 
-	* Ink/InkInfo.plist: 
-	* Ink/GNUmakefile: 
+	* Ink/main.m:
+	* Ink/InkInfo.plist:
+	* Ink/GNUmakefile:
 	Get the application icon from the plist.
 
 Tue Dec 12 02:44:06 2000  Nicola Pero <n.pero@mi.flashnet.it>
@@ -356,10 +368,10 @@ Tue Dec 12 02:44:06 2000  Nicola Pero <n.pero@mi.flashnet.it>
 Tue Dec 12 02:37:42 2000  Nicola Pero <n.pero@mi.flashnet.it>
 
 	* Calculator/GNUmakefile: Updated/simplified.
-	* CurrencyConverter/GNUmakefile: Idem.	
+	* CurrencyConverter/GNUmakefile: Idem.
 	* Finger/GNUmakefile: Idem.
 	* Ink/GNUmakefile: Idem.
-	
+
 2000-11-06  Fred Kiefer <FredKiefer@gmx.de>
 
 	* Ink/Document.m: Improved resizing of views
@@ -394,7 +406,7 @@ Tue Dec 12 02:37:42 2000  Nicola Pero <n.pero@mi.flashnet.it>
 	* Ink/*
 	Added new application for testing the text classes and the
 	document framework.This should replace Edit!
-	
+
 2000-08-28  Adam Fedor  <fedor@gnu.org>
 
 	* */GNUmakefile: Make sure GNUSTEP_MAKEFILES points to the right place.
@@ -416,7 +428,7 @@ Sat Jul 29 22:17:35 2000  Nicola Pero  <nicola@brainstorm.co.uk>
 	* CurrencyConverter/CurrencyConverter.h: Removed runInfoPanel:
 	* CurrencyConverter/CurrencyConverterInfo.plist: New file.
 	* CurrencyConverter/GNUmakefile: Removed useless includes.
-	
+
 Sat Jul 29 22:03:39 2000  Nicola Pero  <nicola@brainstorm.co.uk>
 
 	Simplified the Calculator example/demo.
@@ -424,15 +436,15 @@ Sat Jul 29 22:03:39 2000  Nicola Pero  <nicola@brainstorm.co.uk>
 	* Calculator/CalcFace.m ([CalcFace -runInfoPanel:]): Removed
 	method, now using CalculatorInfo.plist
 	* Calculator/CalcFace.h: Removed method runInfoPanel:.
-	* Calculator/main.m: Removed class CalcController; changed 
-	Info menu item's action; do not call initialize_gnustep_backend; 
+	* Calculator/main.m: Removed class CalcController; changed
+	Info menu item's action; do not call initialize_gnustep_backend;
 	this is now done automatically.
-	* Calculator/CalcFace.m ([CalcFace -init]): Made window 
+	* Calculator/CalcFace.m ([CalcFace -init]): Made window
 	not closable.
 	* Calculator/GNUmakefile: Removed inclusion of
 	GNUmakefile.preamble, GNUmakefile.postamble.
 
-	
+
 Tue Jul 18 17:53:16 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* CurrencyConverter/CurrencyConverter.m ([-init]): Fixed minimum
@@ -444,8 +456,8 @@ Tue Jul 18 17:53:16 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 	* Edit/GNUmakefile: Added new file Readme.rtf as ressource
 	* Edit/Controller.m:
 	* Edit/Controller.h:
-	* Edit/Edit.m: 
-	* Edit/Document.m: 
+	* Edit/Edit.m:
+	* Edit/Document.m:
 	* Edit/Document.h: Added font and ruler pasting
 
 2000-05-04 Richard Frith-Macdonald <rfm@gnu.org>
@@ -470,7 +482,7 @@ Tue Jul 18 17:53:16 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 Wed Mar  8 21:42:03 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
-	* TestView.m: Do not include configure.h.  Some other tidying, 
+	* TestView.m: Do not include configure.h.  Some other tidying,
 	removed some unuseful historical code.
 
 2000-02-25  Adam Fedor  <fedor@gnu.org>
@@ -480,14 +492,14 @@ Wed Mar  8 21:42:03 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 Tue Feb 22 18:19:11 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
-	Contributed by Fred Kiefer: 
-	* Edit/Controller.m ([Controller -applicationDidFinishLaunching:]): 
+	Contributed by Fred Kiefer:
+	* Edit/Controller.m ([Controller -applicationDidFinishLaunching:]):
 	Use the font manager.
 	* Edit/Edit.m (createMenu): Create the format menu.
-	
+
 Tue Jan 25 15:02:41 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
-	* fontpanel.m: Rewritten completely, based on a contribution 
+	* fontpanel.m: Rewritten completely, based on a contribution
 	by Fred Kiefer.
 
 Sun Feb 13 02:14:29 2000  Nicola Pero  <n.pero@mi.flashnet.it>
@@ -508,7 +520,7 @@ Thu Feb 10 09:55:00 2000  Richard Frith-Macdonald <richard@brainstorm.co.uk>
 
 Thu Feb 10 01:29:48 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
-	* nsscroller.m ([MyObject -scrollerAction:]): Print some 
+	* nsscroller.m ([MyObject -scrollerAction:]): Print some
 	useful information.
 
 Mon Feb  7 12:25:24 2000  Nicola Pero  <n.pero@mi.flashnet.it>
@@ -519,30 +531,30 @@ Mon Feb  7 12:25:24 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 Sat Feb  5 03:35:09 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
-	* Calculator/main.m (main): Added Hide item in menu; 
+	* Calculator/main.m (main): Added Hide item in menu;
 	removed Info menu, superseded by a single Info... item.
-	* CurrencyConverter/CurrencyConverter.m (main): Idem; plus, 
+	* CurrencyConverter/CurrencyConverter.m (main): Idem; plus,
 	set main menu title to a shorter "CurrConv"
-	
+
 Fri Feb  4 01:40:58 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* README: New file.
 
 Thu Feb  3 01:21:53 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
-	* Calculator/main.m (main): Added "..." to Info Panel 
+	* Calculator/main.m (main): Added "..." to Info Panel
 	and Help menu items.
 	* CurrencyConverter/CurrencyConverter.m (main): Idem.
-	
+
 Tue Feb  1 23:35:20 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* windows.m: Set alternate title of the momentary change button.
-	
+
 Tue Feb  1 23:21:04 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
-	* windows.m: Put the text key view loop in natural 
+	* windows.m: Put the text key view loop in natural
 	order.  (Bug reported by Jory van Zessen).
-	
+
 Mon Jan 31 01:03:16 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* popupbuttons.m ([buttonsController
@@ -558,10 +570,10 @@ Tue Jan 25 00:28:31 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 	* Calculator/CalcFace.m ([-runInfoPanel:sender]): Added method.
 	* Calculator/CalcFace.h: Idem.
 	* CurrencyConverter/CurrencyConverter.m (main): Added Info menu.
-	* CurrencyConverter/CurrencyConverter.m ([-runInfoPanel:sender]):	
+	* CurrencyConverter/CurrencyConverter.m ([-runInfoPanel:sender]):
 	Added method.
 	* CurrencyConverter/CurrencyConverter.h: Idem.
-	
+
 2000-01-21  Adam Fedor  <fedor@gnu.org>
 
 	* scrollview.m; Rewrite with application delegate.
@@ -572,7 +584,7 @@ Tue Jan 25 00:28:31 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
 Thu Jan 13 11:59:41 2000  Nicola Pero  <n.pero@mi.flashnet.it>
 
-	* CurrencyConverter/CurrencyConverter.m ([CurrencyConverter -init]): 
+	* CurrencyConverter/CurrencyConverter.m ([CurrencyConverter -init]):
 	Refined setting size of textfields.
 
 Fri Jan  7 02:20:43 2000  Nicola Pero  <n.pero@mi.flashnet.it>
@@ -597,7 +609,7 @@ Fri Nov 26 01:05:04 1999  Nicola Pero  <n.pero@mi.flashnet.it>
 	* Calculator/main.m (main): Added menu, to test cut&paste between
  	Calculator and CurrencyConverter.
 	* Calculator/CalcFace.m, Calculator/CalcFace.h: Order out self
- 	when application did finish launching.	
+ 	when application did finish launching.
 	* GSTest/: New directory.
 	* GSTest/main.m: New file.
 	* GSTest/infoPanel.h: New file.
@@ -619,7 +631,7 @@ Fri Nov 26 01:05:04 1999  Nicola Pero  <n.pero@mi.flashnet.it>
 	* GSTest/NSSlider-test: New directory.
 	* GSTest/NSSlider-test/GNUmakefile: New file.
 	* GSTest/NSSlider-test/NSSlider-test.m: New file.
-	
+
 Thu Nov 25 05:26:29 1999  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	New little demo app showing text fields working.
@@ -630,7 +642,7 @@ Thu Nov 25 05:26:29 1999  Nicola Pero  <n.pero@mi.flashnet.it>
 
 	* Calculator/GNUmakefile.postamble: Removed file, so that
  	Calculator.app remains in its directory after compile.
-	
+
 1999-11-22  Richard frith-Macdonald <richard@brainstorm.co.uk>
 
 	* GNUstepInstaller.m; Use [-orderFrontRegardless] before app is active.
@@ -680,7 +692,7 @@ Tue Oct 12  1999  Nicola Pero  <n.pero@mi.flashnet.it>
 
 1999-09-07  Adam Fedor  <fedor@gnu.org>
 
-	* buttons.m ([buttonsController -applicationDidFinishLaunching:]): 
+	* buttons.m ([buttonsController -applicationDidFinishLaunching:]):
 	Move main menu creation to here, since it screws up xdps if it's
 	in main - must look into this...
 

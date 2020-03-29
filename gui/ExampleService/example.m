@@ -22,20 +22,9 @@
 
 */ 
 
-#include <Foundation/NSString.h>
-#include <Foundation/NSData.h>
-#include <Foundation/NSArray.h>
-#include <Foundation/NSAutoreleasePool.h>
-#include <Foundation/NSDictionary.h>
-#include <Foundation/NSException.h>
-#include <Foundation/NSRunLoop.h>
-#include <Foundation/NSProcessInfo.h>
-#include <Foundation/NSString.h>
-#include <Foundation/NSException.h>
-#include <Foundation/NSTask.h>
-#include <Foundation/NSUserDefaults.h>
-#include <AppKit/NSApplication.h>
-#include <AppKit/NSPasteboard.h>
+#import <Foundation/Foundation.h>
+#import <AppKit/NSApplication.h>
+#import <AppKit/NSPasteboard.h>
 
 #include "wgetopt.h"
 
@@ -104,7 +93,6 @@
   NSArray	*types;
   NSArray	*args;
   NSString	*path;
-  NSTask	*task;
   NSString      *browser;
   NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
 
@@ -135,9 +123,10 @@
     [NSString stringWithFormat: browser, url],
     nil];
 
-  task = [NSTask launchedTaskWithLaunchPath: path
-				  arguments: args];
+  [NSTask launchedTaskWithLaunchPath: path
+                           arguments: args];
 }
+
 - (void) tolower: (NSPasteboard*)pb
 	userData: (NSString*)ud
 	   error: (NSString**)err
@@ -167,6 +156,7 @@
   [pb setString: out forType: NSStringPboardType];
 
 }
+
 - (void) toupper: (NSPasteboard*)pb
 	userData: (NSString*)ud
 	   error: (NSString**)err
@@ -337,13 +327,9 @@ init(int argc, char** argv)
 int
 main(int argc, char** argv, char **env)
 {
-  NSAutoreleasePool *pool;
+  ENTER_POOL
   ExampleServices *server;
 
-#ifdef GS_PASS_ARGUMENTS
-  [NSProcessInfo initializeWithArguments:argv count:argc environment:env];
-#endif
-  pool = [NSAutoreleasePool new];
   server = [ExampleServices new];
   init(argc, argv);
 
@@ -359,6 +345,7 @@ main(int argc, char** argv, char **env)
 
   [[NSRunLoop currentRunLoop] run];
 
+  LEAVE_POOL
   exit(EXIT_SUCCESS);
 }
 

@@ -25,13 +25,11 @@
 #include <Foundation/NSAttributedString.h>
 #include <AppKit/NSDocument.h>
 #include <AppKit/NSTextView.h>
-#include <AppKit/NSPrintInfo.h>
 
 @interface Document : NSDocument
 {
     NSMutableAttributedString *ts;
     NSTextView *tv;
-    NSPrintInfo *pi;
 }
 
 - (void)insertFile: (id)sender;

@@ -39,12 +39,14 @@
   face = nil;
   return self;
 }
+
 -(void) dealloc
 {
   if (face) 
     [face release];
   [super dealloc];
 }
+
 // Set the corresponding face
 -(void) setFace: (CalcFace *)aFace
 {
@@ -52,6 +54,7 @@
   [face setDisplayedNumber: enteredNumber withSeparator: decimalSeparator
 	fractionalDigits: fractionalDigits];
 }
+
 // The various buttons 
 -(void) clear: (id)sender
 {
@@ -63,6 +66,7 @@
   editing = YES;
   [face setDisplayedNumber: 0 withSeparator: NO fractionalDigits: 0];
 }
+
 -(void) equal: (id)sender
 {
   switch (operation)
@@ -100,6 +104,7 @@
   operation = none;
   editing = NO;
 }
+
 -(void) digit: (id)sender
 {
   if (!editing)
@@ -128,6 +133,7 @@
   [face setDisplayedNumber: enteredNumber withSeparator: decimalSeparator
 	fractionalDigits: fractionalDigits];
 }
+
 -(void) decimalSeparator: (id)sender
 {
   if (!editing)
@@ -144,6 +150,7 @@
 	    fractionalDigits: 0];
     }
 }
+
 -(void) operation: (id)sender
 {
   if (operation == none)
@@ -160,6 +167,7 @@
       [self operation: sender];
     }
 }
+
 -(void) squareRoot: (id)sender
 {
   if (operation == none)
@@ -178,6 +186,7 @@
       [self squareRoot: sender];
     }
 } 
+
 -(void) error
 {
   result = 0;
