@@ -24,8 +24,12 @@
 include $(GNUSTEP_MAKEFILES)/common.make
 
 APP_NAME = CurrencyConverter
+
+CurrencyConverter_APPLICATION_ICON = CurrencyConverter.png
 CurrencyConverter_OBJC_FILES = CurrencyConverter.m 
 CurrencyConverter_HEADERS = CurrencyConverter.h
+
+CurrencyConverter_RESOURCE_FILES = CurrencyConvert.png
 
 include $(GNUSTEP_MAKEFILES)/application.make
 
