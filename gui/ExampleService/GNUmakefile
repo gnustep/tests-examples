@@ -24,6 +24,9 @@ include $(GNUSTEP_MAKEFILES)/common.make
 
 APP_NAME = md5Digest
 SERVICE_NAME = example
+md5Digest_APPLICATION_ICON = hash.png
+
+md5Digest_RESOURCE_FILES = hash.png
 
 # The source files to be compiled
 md5Digest_OBJC_FILES = md5Digest.m 
