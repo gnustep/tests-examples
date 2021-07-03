@@ -23,7 +23,10 @@
 include $(GNUSTEP_MAKEFILES)/common.make
 
 APP_NAME = NSBrowserTest
+
+NSBrowserTest_APPLICATION_ICON = NSBrowserTest.png
 NSBrowserTest_OBJC_FILES = nsbrowser.m
+NSBrowserTest_RESOURCE_FILES = NSBrowserTest.png
 
 include $(GNUSTEP_MAKEFILES)/application.make
 
