@@ -29,7 +29,7 @@ CurrencyConverter_APPLICATION_ICON = CurrencyConverter.png
 CurrencyConverter_OBJC_FILES = CurrencyConverter.m 
 CurrencyConverter_HEADERS = CurrencyConverter.h
 
-CurrencyConverter_RESOURCE_FILES = CurrencyConvert.png
+CurrencyConverter_RESOURCE_FILES = CurrencyConverter.png
 
 include $(GNUSTEP_MAKEFILES)/application.make
 

@@ -30,7 +30,9 @@ SUBPROJECTS =             \
 	CurrencyConverter \
 	Ink               \
 	ExampleService    \
-	GSTest
+	GSTest            \
+	PowerPaint        \
+	TestDrawing
 
 # MyGL commented out because it required OpenGL which some people
 # don't have.
