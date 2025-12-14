@@ -98,24 +98,33 @@
 
   *err = nil;
   types = [pb types];
-  if (![types containsObject: NSStringPboardType])
+  if (![types containsObject: NSURLPboardType]
+    && ![types containsObject: NSStringPboardType])
     {
-      *err = @"No string type supplied on pasteboard";
+      *err = @"No URL or string type supplied on pasteboard";
       return;
     }
 
-  url = [pb stringForType: NSStringPboardType];
+  if ([types containsObject: NSURLPboardType])
+    {
+      url = [pb stringForType: NSURLPboardType];
+    }
+  else
+    {
+      url = [pb stringForType: NSStringPboardType];
+    }
   if (url == nil)
     {
-      *err = @"No string value supplied on pasteboard";
+      *err = @"No URL string value supplied on pasteboard";
       return;
     }
 
   browser = [defs objectForKey:@"NSWebBrowser"];
-  if(!browser || [browser isEqualToString:@""])
-  {
-    browser = @"mozilla -remote \"openURL(%@,new-window)\"";
-  }
+  if (!browser || [browser isEqualToString:@""])
+    {
+      browser = @"firefox -new-window \"%@\"";
+      //browser = @"mozilla -remote \"openURL(%@,new-window)\"";
+    }
 
   path = @"/bin/sh";
   args = [NSArray arrayWithObjects:

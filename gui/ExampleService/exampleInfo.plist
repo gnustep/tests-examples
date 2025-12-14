@@ -24,7 +24,7 @@
       NSPortName = ExampleServices;
       NSMessage = openURL;
       NSSendTypes = (
-	NSStringPboardType
+	NSURLPboardType
       );
       NSMenuItem = {
 	default = "Open URL";
