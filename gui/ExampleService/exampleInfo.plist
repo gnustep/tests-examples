@@ -22,6 +22,7 @@
     },
     {
       NSPortName = ExampleServices;
+      NSTimeout = 1;
       NSMessage = openURL;
       NSSendTypes = (
 	NSURLPboardType
