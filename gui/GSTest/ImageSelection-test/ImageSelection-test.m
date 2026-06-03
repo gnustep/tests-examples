@@ -48,7 +48,7 @@
   NSImage *test72DPIAnd288DPI;
   NSImage *testICNSIcon;
   NSImage *testTIFFIconWithAllImages72DPI;
-  NSImageView *imageView;
+  NSView *imageView;
 
   NSPopUpButton *classesPopUp;
   NSPopUpButton *scalingModesPopUp;
