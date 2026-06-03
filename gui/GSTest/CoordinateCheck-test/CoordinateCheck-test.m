@@ -130,7 +130,7 @@
   [scrollView setHasVerticalScroller: YES]; 
   [scrollView setAutoresizingMask: NSViewHeightSizable | NSViewWidthSizable];
 
-  text = [[NSText alloc] initWithFrame: [[scrollView contentView] frame]];
+  text = [[NSTextView alloc] initWithFrame: [[scrollView contentView] frame]];
   [text setEditable: NO];
   [text setRichText: YES];
   [text setDelegate: self];
