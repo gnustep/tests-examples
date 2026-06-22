@@ -1,22 +1,22 @@
 #import "Controller.h"
 
-
 @interface TestView : NSView
 {
-	@public
-	BOOL isFlipped;
+  //	@public
+  //	BOOL isFlipped;
 }
 @end
 
 @interface CopyBitsView : NSView
 {
-	@public
-	BOOL isFlipped;
+//	@public
+//	BOOL isFlipped;
 }
 @end
 
 @implementation TestView
 
+/*
 #ifdef GNUSTEP
 - (BOOL) isFlipped
 {
@@ -28,6 +28,7 @@
 	return isFlipped;
 }
 #endif
+*/
 
 - (void) drawRect: (NSRect)aRect
 {
@@ -90,6 +91,7 @@
 
 @implementation CopyBitsView
 
+/*
 #ifdef GNUSTEP
 - (BOOL) isFlipped
 {
@@ -101,6 +103,7 @@
 	return isFlipped;
 }
 #endif
+*/
 
 - (void) drawRect: (NSRect)aRect
 {
@@ -150,7 +153,8 @@
 	CopyBitsView *view3 = [[CopyBitsView alloc] initWithFrame: NSMakeRect(200, 200, 200, 150)];
 
 #ifdef GNUSTEP
-	view1->_rFlags.flipped_view = YES;
+	[view1 setFlipped: YES];
+	// view1->_rFlags.flipped_view = YES;
 	[view1 _rebuildCoordinates];
         //view3->_rFlags.flipped_view = YES;
 	//[view3 _rebuildCoordinates];
