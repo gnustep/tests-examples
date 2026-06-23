@@ -34,7 +34,7 @@ main (void)
    NSApplication *app;
    NSMenu *mainMenu;
    NSMenu *menu;
-   NSMenuItem *menuItem;
+   id<NSMenuItem> menuItem;
    Controller *controller;
 
    pool = [NSAutoreleasePool new];
@@ -140,5 +140,4 @@ main (void)
    RELEASE (pool);
    return 0;
 }
-
 
