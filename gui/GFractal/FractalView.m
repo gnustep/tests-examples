@@ -1,7 +1,7 @@
 
 #import "FractalView.h"
 
-#define _FRACTALVIEW_DEBUG 1
+#define _FRACTALVIEW_DEBUG 0
 
 static double defaultregs[] =
 { -1.5, 0.5, -1, 1,
@@ -252,8 +252,6 @@ static id cschemes[] =
   esc = escape[ftype];
   maxit = maxiter[ftype];
   
-  [image lockFocus];
-  
   for (recur = minre, rept = 0; rept < res; recur += redelta, rept++)
     {
       for (imcur = minim, impt=0; impt < res; imcur += imdelta, impt++)
@@ -293,15 +291,10 @@ static id cschemes[] =
 	  base[0] = (int)(colr*255);
 	  base[1] = (int)(colg*255);
 	  base[2] = (int)(colb*255);
-	  
-	  [color set];
-	  PSrectfill(rept, impt, 1, 1);
 	}
     }
-  
-  [image unlockFocus];
-  
-#ifdef _FRACTALVIEW_DEBUG
+
+#if _FRACTALVIEW_DEBUG
     {
       static int starter = 1;
       Class todebug[] = { 
@@ -432,7 +425,6 @@ static id cschemes[] =
 {
   NSData *data;
   BOOL result;
-  NSRect rect = [self frame];
   
   data = 
     [rep TIFFRepresentationUsingCompression:
@@ -450,5 +442,3 @@ static id cschemes[] =
 }
 
 @end
-
-
