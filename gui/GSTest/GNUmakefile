@@ -73,7 +73,12 @@ GSTest_OBJC_FILES = \
        main.m \
        Controller.m
 
-GSTest_RESOURCE_FILES = MainMenu.gorm
+GSTest_RESOURCE_FILES = \
+       MainMenu.gorm \
+       GSTestIcon.png \
+       GSTestIcon.svg
+
+GSTest_APPLICATION_ICON = GSTestIcon.png
 
 -include GNUmakefile.preamble
 

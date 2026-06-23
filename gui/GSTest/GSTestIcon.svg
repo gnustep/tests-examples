@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GSTest icon">
+  <defs>
+    <linearGradient id="windowFill" x1="11" y1="10" x2="37" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#dbe6f3"/>
+    </linearGradient>
+    <linearGradient id="titleFill" x1="10" y1="8" x2="38" y2="17" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2f80c0"/>
+      <stop offset="1" stop-color="#235b98"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="9" y="8" width="30" height="31" rx="4" fill="#243447" opacity="0.16"/>
+  <rect x="8" y="7" width="30" height="31" rx="4" fill="url(#windowFill)" stroke="#233142" stroke-width="2"/>
+  <path d="M12 7H34C36.2091 7 38 8.79086 38 11V17H8V11C8 8.79086 9.79086 7 12 7Z" fill="url(#titleFill)" stroke="#233142" stroke-width="2"/>
+
+  <circle cx="13" cy="12" r="1.5" fill="#d7ecff"/>
+  <circle cx="18" cy="12" r="1.5" fill="#d7ecff"/>
+  <circle cx="23" cy="12" r="1.5" fill="#d7ecff"/>
+
+  <rect x="13" y="22" width="8" height="7" rx="1.5" fill="#edf4fb" stroke="#6482a3" stroke-width="1.5"/>
+  <rect x="25" y="22" width="8" height="7" rx="1.5" fill="#edf4fb" stroke="#6482a3" stroke-width="1.5"/>
+  <rect x="13" y="32" width="8" height="2" rx="1" fill="#7a91aa"/>
+  <rect x="25" y="32" width="8" height="2" rx="1" fill="#7a91aa"/>
+
+  <circle cx="32" cy="33" r="10" fill="#ffffff" stroke="#233142" stroke-width="2"/>
+  <path d="M27 33L30.5 36.5L37.5 28.5" fill="none" stroke="#1f9d55" stroke-width="3.25" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
