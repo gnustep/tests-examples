@@ -248,7 +248,7 @@
   CalcBrain *brain;
   NSMenu *mainMenu;
   NSMenu *menu;
-  NSMenuItem *menuItem;
+  id<NSMenuItem> menuItem;
 
     mainMenu = AUTORELEASE ([NSMenu new]);
   // Info
