@@ -24,7 +24,8 @@ include $(GNUSTEP_MAKEFILES)/common.make
 
 APP_NAME = NSImageTest
 NSImageTest_OBJC_FILES = nsimage.m
+NSImageTest_APPLICATION_ICON = NSImageTest.tiff
+NSImageTest_RESOURCE_FILES = NSImageTest.tiff
 
 include $(GNUSTEP_MAKEFILES)/application.make
-
 
