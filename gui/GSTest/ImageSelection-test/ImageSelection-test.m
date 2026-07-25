@@ -48,7 +48,7 @@
   NSImage *test72DPIAnd288DPI;
   NSImage *testICNSIcon;
   NSImage *testTIFFIconWithAllImages72DPI;
-  NSImageView *imageView;
+  NSView *imageView;
 
   NSPopUpButton *classesPopUp;
   NSPopUpButton *scalingModesPopUp;
@@ -152,11 +152,11 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
   NSInteger mode = [[scalingModesPopUp selectedItem] tag];
   if ([imageView isKindOfClass: [NSImageView class]])
     {
-      [imageView setImageScaling: mode];
+      [(NSImageView *)imageView setImageScaling: mode];
     }
   else if ([imageView isKindOfClass: [NSButton class]])
     {
-      NSButtonCell *cell = [imageView cell];
+      NSButtonCell *cell = [(NSButton *)imageView cell];
       [cell setImageScaling: mode];
     }
   
@@ -184,13 +184,13 @@ static NSImage *ImageFromBundle(NSString *name, NSString *type)
   if ([selected isEqual: @"NSImageView"])
     {
       imageView = [[[NSImageView alloc] initWithFrame: frame] autorelease];
-      [imageView setImage: testTIFFIconWithAllImages72DPI];
-      [imageView setImageFrameStyle: NSImageFrameGrayBezel];
+      [(NSImageView *)imageView setImage: testTIFFIconWithAllImages72DPI];
+      [(NSImageView *)imageView setImageFrameStyle: NSImageFrameGrayBezel];
     }
   else if ([selected isEqual: @"NSButton"])
     {
       imageView = [[[NSButton alloc] initWithFrame: frame] autorelease];
-      [imageView setImage: testTIFFIconWithAllImages72DPI];
+      [(NSButton *)imageView setImage: testTIFFIconWithAllImages72DPI];
     }
 
   if (imageView)
