@@ -40,7 +40,7 @@ Ink_RESOURCE_FILES = \
 
 Ink_LANGUAGES = English
 
-Ink_LOCALIZED_RESOURCE_FILES = MainMenu.gorm
+Ink_LOCALIZED_RESOURCE_FILES = MainMenu.gorm InfoPlist.strings
 
 Ink_OBJC_FILES = \
   main.m \

@@ -1,0 +1,3 @@
+/* This file provides localised replacements for string values for keys in the info plist.
+ */
+  ApplicationDescription = "An Example of how to use NSTextView (English Localization)";

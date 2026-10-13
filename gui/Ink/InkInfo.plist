@@ -1,4 +1,8 @@
 {
+  /* This file is merged into the application's info plist file by gnustep-make
+   * The string values for keys in this file may be localized by adding them to
+   * InfoPlist.strings files in the language.lproj directory.
+   */
   ApplicationName = "Ink";
   ApplicationDescription = "An Example of how to use NSTextView";
   ApplicationRelease = "0.1";
