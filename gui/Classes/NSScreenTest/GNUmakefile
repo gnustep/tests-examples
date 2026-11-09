@@ -25,6 +25,9 @@ include $(GNUSTEP_MAKEFILES)/common.make
 APP_NAME = NSScreenTest
 NSScreenTest_OBJC_FILES = screen_main.m
 
+NSScreenTest_APPLICATION_ICON = NSScreenTest.png
+NSScreenTest_RESOURCE_FILES += NSScreenTest.png
+
 include $(GNUSTEP_MAKEFILES)/application.make
 
 

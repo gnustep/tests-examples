@@ -2,7 +2,7 @@ include $(GNUSTEP_MAKEFILES)/common.make
 
 PACKAGE_NAME = ToolbarExample
 APP_NAME = ToolbarExample
-ToolbarExample_APPLICATION_ICON =
+ToolbarExample_APPLICATION_ICON = ToolbarExample.png
 ToolbarExample_MAIN_MODEL_FILE = ToolbarExample.gorm
 
 ToolbarExample_RESOURCE_FILES= \
@@ -28,5 +28,7 @@ SecondWindowOwner.m \
 ButtonWithValidation.m
 
 -include GNUmakefile.preamble
+ToolbarExample_RESOURCE_FILES += ToolbarExample.png
+
 include $(GNUSTEP_MAKEFILES)/application.make
 -include GNUmakefile.postamble

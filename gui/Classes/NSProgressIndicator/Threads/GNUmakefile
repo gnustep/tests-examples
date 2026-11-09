@@ -26,4 +26,7 @@ APP_NAME = NSProgressIndicator
 NSProgressIndicator_OBJC_FILES = \
 main.m MainThread.m SharedArea.m AuxiliaryThread.m
 
+NSProgressIndicator_APPLICATION_ICON = NSProgressIndicator.png
+NSProgressIndicator_RESOURCE_FILES += NSProgressIndicator.png
+
 include $(GNUSTEP_MAKEFILES)/application.make

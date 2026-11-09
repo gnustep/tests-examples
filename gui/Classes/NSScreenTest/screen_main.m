@@ -35,6 +35,9 @@ int main (int argc, const char *argv[])
   const NSWindowDepth *depths = NULL;
   BOOL exactMatch = NO;
   
+  // Initialize the window server connection before querying screens.
+  [NSApplication sharedApplication];
+
   screenArray = [NSScreen screens];
   screenEnumerator = [screenArray objectEnumerator];
   
@@ -104,3 +107,4 @@ int main (int argc, const char *argv[])
   exit(0);       // insure the process exit status is 0
   return 0;      // ...and make main fit the ANSI spec.
 }
+
