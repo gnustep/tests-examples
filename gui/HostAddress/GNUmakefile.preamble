@@ -1,0 +1,2 @@
+HostAddress_APPLICATION_ICON = HostAddress.png
+HostAddress_RESOURCE_FILES += HostAddress.png

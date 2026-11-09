@@ -1,0 +1,106 @@
+{
+  "generator": "Built-in image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: GNUstep desktop application icon. Create one square icon, classic NeXTSTEP/GNUstep aesthetic: crisp sculpted forms, subtle beveled gray metal, restrained vivid color accents, strong silhouette legible at 48 pixels. Centered isolated subject occupying 85% of canvas. Transparent background, no lettering, no watermark, no rounded-square app tile. Subject: ",
+  "icons": [
+    {
+      "app": "MyGL",
+      "path": "gui/MyGL/MyGL.tiff",
+      "subject": "a colorful faceted three-dimensional cube with fine wireframe edges, representing OpenGL rendering"
+    },
+    {
+      "app": "HostAddress",
+      "path": "gui/HostAddress/HostAddress.png",
+      "subject": "a small blue globe joined to two silver network nodes, representing hostname lookup"
+    },
+    {
+      "app": "ToolbarExample",
+      "path": "gui/ToolbarExample/ToolbarExample.png",
+      "subject": "a miniature gray application window with a prominent toolbar containing three colorful tool buttons"
+    },
+    {
+      "app": "GFractal",
+      "path": "gui/GFractal/GFractal.png",
+      "subject": "a striking teal and violet Mandelbrot fractal silhouette, clean bold spiraling boundary"
+    },
+    {
+      "app": "TestDrawing",
+      "path": "gui/TestDrawing/TestDrawing.png",
+      "subject": "a pencil drawing an overlapping red circle and blue square on a small white drawing board"
+    },
+    {
+      "app": "NSScreenTest",
+      "path": "gui/Classes/NSScreenTest/NSScreenTest.png",
+      "subject": "two overlapping desktop monitors with blue screens and a small measurement ruler"
+    },
+    {
+      "app": "NSProgressIndicator",
+      "path": "gui/Classes/NSProgressIndicator/Threads/NSProgressIndicator.png",
+      "subject": "a silver progress gauge filled halfway with blue segments and two interlocking small gears"
+    },
+    {
+      "app": "nscombobox",
+      "path": "gui/Old/nscombobox.png",
+      "subject": "a gray combo box control with a blue selected row and a down arrow"
+    },
+    {
+      "app": "nstabview",
+      "path": "gui/Old/nstabview.png",
+      "subject": "three layered file folder tabs in blue orange and teal"
+    },
+    {
+      "app": "nsimagecell",
+      "path": "gui/Old/nsimagecell.png",
+      "subject": "a framed tiny landscape picture inside a silver grid cell"
+    },
+    {
+      "app": "popupbuttons",
+      "path": "gui/Old/popupbuttons.png",
+      "subject": "a raised gray popup button with a downward triangle and three floating menu rows"
+    },
+    {
+      "app": "testpb",
+      "path": "gui/Old/testpb.png",
+      "subject": "a silver clipboard holding two overlapping sheets and a blue curved transfer arrow, representing the pasteboard"
+    },
+    {
+      "app": "nsprogressindicator",
+      "path": "gui/Old/nsprogressindicator.png",
+      "subject": "a silver horizontal progress gauge with green segments and a small clock"
+    },
+    {
+      "app": "matrix",
+      "path": "gui/Old/matrix.png",
+      "subject": "a three by three matrix of raised square buttons with one blue selected button"
+    },
+    {
+      "app": "nsscroller",
+      "path": "gui/Old/nsscroller.png",
+      "subject": "a vertical silver scrollbar with blue slider thumb and triangular end arrows"
+    },
+    {
+      "app": "nscursor",
+      "path": "gui/Old/nscursor.png",
+      "subject": "a bold black desktop arrow cursor with white beveled outline above a small blue crosshair"
+    },
+    {
+      "app": "buttons",
+      "path": "gui/Old/buttons.png",
+      "subject": "three sculpted GUI controls: a blue pushbutton, a checked checkbox and a selected radio button"
+    },
+    {
+      "app": "windows",
+      "path": "gui/Old/windows.png",
+      "subject": "two overlapping silver application windows with blue title bars"
+    },
+    {
+      "app": "fontpanel",
+      "path": "gui/Old/fontpanel.png",
+      "subject": "a metal typesetter block bearing a single prominent serif capital A and a small blue typography slider"
+    },
+    {
+      "app": "menu",
+      "path": "gui/Old/menu.png",
+      "subject": "a silver dropdown menu with four dark horizontal rows and one blue highlighted row"
+    }
+  ]
+}
