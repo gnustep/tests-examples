@@ -5,6 +5,7 @@
 @interface PPDocumentView : NSView
 {
   BOOL selection;
+  BOOL drawing;
   NSPoint locA, locB;
   NSRect selectedRect;
   NSBitmapImageRep *lastFrame;
